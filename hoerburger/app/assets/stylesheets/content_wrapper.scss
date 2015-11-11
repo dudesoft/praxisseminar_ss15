@@ -1,0 +1,61 @@
+$header-height: 110px;
+$footer-height: 70px;
+
+$searchbar-margin-right: 130px;
+
+.wrapper {
+  padding: 15px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  right: 0;
+  left: 0;
+  font-family: 'Handlee', cursive;
+  font-size: large;
+  background-color: #d1c192;
+}
+
+#header {
+  vertical-align: middle;
+  border-bottom: solid;
+  height: $header-height;
+  top: 0;
+}
+
+#footer {
+  text-align: center;
+  border-top: solid;
+  height: $footer-height;
+  bottom: 0;
+}
+
+#content {
+  position: absolute;
+  top: $header-height;
+  bottom: $footer-height;
+  left: 0;
+  right: 0;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#search-bar {
+  position: relative;
+  float: right;
+  display: table;
+  top: 30%;
+  right: $searchbar-margin-right;
+}
+
+#logo_hoerburger {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}

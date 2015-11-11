@@ -1,0 +1,13 @@
+<%=
+    map(:center => {
+        :latlng => [33.374735, 53.952391],
+        :zoom => 5
+    },
+        :markers => @locations
+    )
+%>
+
+<script type="text/javascript">
+  map.on('zoomend', function () {
+  });
+</script>
