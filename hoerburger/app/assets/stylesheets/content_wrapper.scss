@@ -3,6 +3,8 @@ $footer-height: 70px;
 
 $searchbar-margin-right: 130px;
 
+@import "constants/_colors";
+
 .wrapper {
   padding: 15px;
   -moz-box-sizing: border-box;
@@ -13,7 +15,7 @@ $searchbar-margin-right: 130px;
   left: 0;
   font-family: 'Handlee', cursive;
   font-size: large;
-  background-color: #d1c192;
+  background-color: $color-primary-0;
 }
 
 #header {
