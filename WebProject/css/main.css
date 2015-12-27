@@ -1,3 +1,50 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#wrapper {
+    min-height: 100%;
+    position: relative;
+}
+
+header {
+    position: relative;
+    padding: 0px;
+    height: 100px;
+}
+
+#main_content {
+    padding-bottom: 100px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+}
+
 .navigation_element {
     background-color: #D1C192;
+}
+
+#header_icon {
+    float: left;
+    height: 100px;
+    width: auto;
+}
+
+#search_bar {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+}
+
+#dropdown {
+    position: absolute;
+    bottom: 0px;
+    right: 20px;
 }
