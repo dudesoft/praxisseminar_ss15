@@ -36,10 +36,15 @@ header {
     right: 20px;
 }
 
-#dropdown {
+#pop_over {
     position: absolute;
     bottom: 0px;
     right: 20px;
+}
+
+#pop_over_content {
+    width: 220px;
+    height: 300px;
 }
 
 

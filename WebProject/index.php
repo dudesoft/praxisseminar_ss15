@@ -2,8 +2,14 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
     <script src="libs/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <!-- PopOver Lib -->
+    <script src="libs/WebuiPopover/jquery.webui-popover.js"></script>
+    <link rel="stylesheet" href="libs/WebuiPopover/jquery.webui-popover.css">
+
+
     <script src="js/sample.js"></script>
     <title>Hoerburger Reisen</title>
 </head>
