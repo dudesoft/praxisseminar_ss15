@@ -7,7 +7,7 @@
 
     <!-- PopOver Lib -->
     <script src="libs/WebuiPopover/jquery.webui-popover.js"></script>
-    <link rel="stylesheet" href="libs/WebuiPopover/jquery.webui-popover.css">
+    <link rel="stylesheet" type="text/css" href="libs/WebuiPopover/jquery.webui-popover.css">
 
 
     <script src="js/sample.js"></script>
