@@ -11,12 +11,12 @@
 }
 
 h1 {
-  text-align: center;
+    text-align: center;
 }
 
 #text_info {
-  float: left;
-  width: 60%;
+    float: left;
+    width: 60%;
 }
 
 #mini_map {
@@ -27,11 +27,11 @@ h1 {
 }
 
 #picture_galery {
-  margin-top: 25px;
+    margin-top: 25px;
 }
 
 .gallery {
-  background: blue;
+    background: blue;
     width: 100%;
     float: left;
     margin-bottom: 10px;
