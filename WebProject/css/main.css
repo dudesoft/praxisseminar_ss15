@@ -52,6 +52,11 @@ footer {
     height: 100px;
 }
 
+.footer_link {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 
 /* Content */
 
