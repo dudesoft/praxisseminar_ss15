@@ -1,7 +1,10 @@
-var $popOverContent = $('#pop_over_content');
-$popOverContent.hide();
+define(['jquery'], function($){
+	var $popOverContent = $('#pop_over_content');
 
-$('#pop_over').webuiPopover({
-    url: '#pop_over_content',
-    animation: 'pop'
+	require(['popover'], function() {
+		$('#pop_over').webuiPopover({
+			url: '#pop_over_content',
+			animation: 'pop'
+		});
+	})
 });

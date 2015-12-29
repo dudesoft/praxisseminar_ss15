@@ -9,27 +9,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" href="css/normalize.min.css">
-
-    <!-- PopOver Lib -->
-    <script src="libs/WebuiPopover/jquery.webui-popover.js"></script>
-    <link rel="stylesheet" type="text/css" href="libs/WebuiPopover/jquery.webui-popover.css">
-
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body>
     <div id="wrapper">
         <?php include 'header.php';?>
         <div id="main_content">
-            <p>Hier kommt der Content rein huehuehue</p>
+            <p>Hier kommt der  rein husdehuehue</p>
         </div>
         <?php include 'footer.php';?>
     </div>
 
-    <script src="js/vendor/jquery-2.1.4.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
 </body>
 
+<script data-main="js/common" src="js/vendor/require.js"></script>
+<script>
+    require(['common'], function() {
+        require(['main']);
+    });
+</script>
 </html>
