@@ -15,7 +15,6 @@
     <div id="wrapper">
         <?php include 'header.php';?>
         <div id="main_content">
-            <p>Hier kommt der  rein husdehuehue</p>
         </div>
         <?php include 'footer.php';?>
     </div>
@@ -26,6 +25,7 @@
 <script>
     require(['common'], function() {
         require(['main']);
+        require(['maps']);
     });
 </script>
 </html>
