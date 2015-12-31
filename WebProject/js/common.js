@@ -4,7 +4,10 @@ requirejs.config({
         'jquery': 'vendor/jquery.min',
         'modernizr': 'vendor/modernizr.min',
         'underscore': 'vendor/underscore.min',
-        'popover': 'vendor/jquery.webui-popover',
+        'jquery.popover': 'vendor/jquery.webui-popover',
         'leaflet': 'vendor/leaflet/leaflet'
+    },
+    shim: {
+    	"jquery.popover": ["jquery"]
     }
 });
