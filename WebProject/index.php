@@ -24,7 +24,7 @@
 <script data-main="js/common" src="js/vendor/require.js"></script>
 <script>
     require(['common'], function() {
-        require(['main']);
+        require(['index']);
         require(['maps']);
     });
 </script>

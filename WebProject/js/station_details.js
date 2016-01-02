@@ -1,10 +1,4 @@
-define(['jquery', 'sly', 'popover'], function($) {
-    $('#pop_over').webuiPopover({
-        url: '#pop_over_content',
-        animation: 'pop'
-    });
-
-
+define(['jquery', 'sly', 'popover_header'], function($) {
     $('#picture_galery, #audio_galery, #video_galery').sly({
         horizontal: 1,
 
