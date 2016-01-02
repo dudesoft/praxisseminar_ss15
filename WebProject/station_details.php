@@ -80,11 +80,10 @@
         </div>
     </div>
     <?php include 'footer.php';?>
+
     <script data-main="js/common" src="js/vendor/require.js"></script>
     <script>
-    require(['common'], function() {
-        require(['station_details']);
-    });
+        require(['station_details_main']);
     </script>
 </body>
 

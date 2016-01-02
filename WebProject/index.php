@@ -7,7 +7,6 @@
     <title>Hoerburger Reisen</title>
     <meta name="description" content="Hoerburger">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
@@ -18,14 +17,10 @@
         </div>
         <?php include 'footer.php';?>
     </div>
-
+    <script data-main="js/common" src="js/vendor/require.js"></script>
+    <script>
+        require(['index_main']);
+    </script>
 </body>
 
-<script data-main="js/common" src="js/vendor/require.js"></script>
-<script>
-    require(['common'], function() {
-        require(['index']);
-        require(['maps']);
-    });
-</script>
 </html>

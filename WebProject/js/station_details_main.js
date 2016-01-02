@@ -1,4 +1,4 @@
-define(['jquery', 'sly', 'popover_header'], function($) {
+require(['jquery', 'popover_header', 'sly'], function() {
     $('#picture_galery, #audio_galery, #video_galery').sly({
         horizontal: 1,
 
