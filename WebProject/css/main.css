@@ -1314,35 +1314,56 @@ textarea {
     page-break-after: avoid; } }
 #detail_content {
   position: absolute;
-  top: 40px;
-  bottom: 40px;
-  left: 40px;
-  right: 40px;
+  top: 20px;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
   background: red;
   border-style: solid;
   border-color: black;
-  border-width: 5px; }
+  border-width: 5px;
+  padding: 5px; }
 
 h1 {
   text-align: center; }
 
 #text_info {
   float: left;
-  width: 60%; }
+  width: 60%;
+  height: 50%;
+  overflow: hidden; }
 
 #mini_map {
   background: green;
   width: 40%;
-  height: 200px;
+  height: 50%;
   float: left; }
 
 #picture_galery {
   margin-top: 25px; }
 
-.gallery {
-  background: blue;
+.frame {
   width: 100%;
+  height: 15%;
+  padding: 0;
+  margin-top: 10px; }
+
+.slidee {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  list-style: none; }
+
+.slidee li {
   float: left;
-  margin-bottom: 10px; }
+  margin: 0 3px 0 0;
+  padding: 0;
+  width: 120px;
+  overflow: hidden;
+  height: 100%;
+  background: blue; }
+
+.slidee li.active {
+  box-shadow: 0px 0px 0px 2px orange inset; }
 
 /*# sourceMappingURL=main.css.map */
