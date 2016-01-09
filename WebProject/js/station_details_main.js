@@ -1,5 +1,5 @@
-require(['jquery', 'popover_header', 'sly'], function() {
-    $('#picture_galery, #audio_galery, #video_galery').sly({
+require(['jquery', 'popover_header', 'sly', 'colorbox'], function() {
+    $('#picture_gallery, #audio_gallery, #video_gallery').sly({
         horizontal: 1,
 
         itemNav: 'basic',
@@ -16,4 +16,6 @@ require(['jquery', 'popover_header', 'sly'], function() {
         speed: 600,
         startAt: 2
     });
+
+    $.colorbox({html:"<h1>Welcome</h1>"});
 });

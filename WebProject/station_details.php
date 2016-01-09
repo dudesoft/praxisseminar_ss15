@@ -12,79 +12,81 @@
 
 <body>
     <?php include 'header.php';?>
-    <div id="main_content">
-        <div id="detail_content">
-            <div id="text_info">
-                <h1>Datum</h1> Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum
-            </div>
-            <div id="mini_map">
-                <p>Minimap</p>
-            </div>
-            <div id="picture_galery" class="frame">
-                <ul class="slidee">
-                    <li>hue1</li>
-                    <li>huehue2</li>
-                    <li>huehuehue3</li>
-                    <li>hue4</li>
-                    <li>huehue5</li>
-                    <li>huehuehue6</li>
-                    <li>hue7</li>
-                    <li>huehue8</li>
-                    <li>huehuehue9</li>
-                    <li>hue10</li>
-                    <li>huehue11</li>
-                    <li>huehuehue12</li>
-                    <li>hue13</li>
-                    <li>huehue14</li>
-                    <li>huehuehue15</li>
-                </ul>
-            </div>
-            <div id="audio_galery" class="frame">
-                <ul class="slidee">
-                    <li>hue1audio</li>
-                    <li>huehue2audio</li>
-                    <li>huehuehue3audio</li>
-                    <li>hue4audio</li>
-                    <li>huehue5audio</li>
-                    <li>huehuehue6audio</li>
-                    <li>hue7audio</li>
-                    <li>huehue8audio</li>
-                    <li>huehuehue9audio</li>
-                    <li>hue10audio</li>
-                    <li>huehue11audio</li>
-                    <li>huehuehue12audio</li>
-                    <li>hue13audio</li>
-                    <li>huehue14audio</li>
-                    <li>huehuehue15audio</li>
-                </ul>
-            </div>
-            <div id="video_galery" class="frame">
-                <ul class="slidee">
-                    <li>hue1</li>
-                    <li>huehue2</li>
-                    <li>huehuehue3</li>
-                    <li>hue4</li>
-                    <li>huehue5</li>
-                    <li>huehuehue6</li>
-                    <li>hue7</li>
-                    <li>huehue8</li>
-                    <li>huehuehue9</li>
-                    <li>hue10</li>
-                    <li>huehue11</li>
-                    <li>huehuehue12</li>
-                    <li>hue13</li>
-                    <li>huehue14</li>
-                    <li>huehuehue15</li>
-                </ul>
+        <div id="main_content">
+            <div id="detail_content">
+                <div id="text_info">
+                    <h1>Datum</h1> Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum
+                </div>
+                <div id="mini_map">
+                    <p>Minimap</p>
+                </div>
+                <div id="picture_gallery" class="frame">
+                    <ul id="pic_gallery_content" class="slidee">
+                        <li>huehue1</li>
+                        <li>huehue2</li>
+                        <li>hue4</li>
+                        <li>huehue5</li>
+                        <li>huehuehue6</li>
+                        <li>hue7</li>
+                        <li>huehue8</li>
+                        <li>huehuehue9</li>
+                        <li>hue10</li>
+                        <li>huehue11</li>
+                        <li>huehuehue12</li>
+                        <li>hue13</li>
+                        <li>huehue14</li>
+                        <li>huehuehue15</li>
+                    </ul>
+                </div>
+                <div id="audio_gallery" class="frame">
+                    <ul id="audio_gallery_content" class="slidee">
+                        <li>hue1audio</li>
+                        <li>huehue2audio</li>
+                        <li>huehuehue3audio</li>
+                        <li>hue4audio</li>
+                        <li>huehue5audio</li>
+                        <li>huehuehue6audio</li>
+                        <li>hue7audio</li>
+                        <li>huehue8audio</li>
+                        <li>huehuehue9audio</li>
+                        <li>hue10audio</li>
+                        <li>huehue11audio</li>
+                        <li>huehuehue12audio</li>
+                        <li>hue13audio</li>
+                        <li>huehue14audio</li>
+                        <li>huehuehue15audio</li>
+                    </ul>
+                </div>
+                <div id="video_gallery" class="frame">
+                    <ul id="vid_gallery_content" class="slidee">
+                        <li>hue1</li>
+                        <li>huehue2</li>
+                        <li>huehuehue3</li>
+                        <li>hue4</li>
+                        <li>huehue5</li>
+                        <li>huehuehue6</li>
+                        <li>hue7</li>
+                        <li>huehue8</li>
+                        <li>huehuehue9</li>
+                        <li>hue10</li>
+                        <li>huehue11</li>
+                        <li>huehuehue12</li>
+                        <li>hue13</li>
+                        <li>huehue14</li>
+                        <li>huehuehue15</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <?php include 'footer.php';?>
-
-    <script data-main="js/common" src="js/vendor/require.js"></script>
-    <script>
-        require(['station_details_main']);
-    </script>
+        <video id='a_video' width="320" height="240" controls>
+            <source src="big_buck_bunny.mp4" type="video/mp4">
+             Your browser does not support the video tag.
+        </video>
+        <?php include 'footer.php';?>
+            <script data-main="js/common" src="js/vendor/require.js"></script>
+            <script>
+            require(['station_details_main']);
+            </script>
 </body>
 
 </html>
