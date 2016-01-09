@@ -1,4 +1,4 @@
-require(['jquery', 'popover_header', 'sly', 'colorbox'], function() {
+require(['jquery', 'MediaPlayerFactory', 'popover_header', 'sly', 'colorbox'], function($, factory) {
     $('#picture_gallery, #audio_gallery, #video_gallery').sly({
         horizontal: 1,
 
@@ -16,6 +16,10 @@ require(['jquery', 'popover_header', 'sly', 'colorbox'], function() {
         speed: 600,
         startAt: 2
     });
+    console.log(factory.getVideoPlayer("/hoerburger/WebProject/big_buck_bunny.mp4"));
 
-    $.colorbox({html:"<h1>Welcome</h1>"});
+    $.colorbox({
+        html: factory.getVideoPlayer("big_buck_bunny.mp4")
+    });
+
 });

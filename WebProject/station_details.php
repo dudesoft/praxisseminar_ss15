@@ -78,10 +78,7 @@
                 </div>
             </div>
         </div>
-        <video id='a_video' width="320" height="240" controls>
-            <source src="big_buck_bunny.mp4" type="video/mp4">
-             Your browser does not support the video tag.
-        </video>
+        
         <?php include 'footer.php';?>
             <script data-main="js/common" src="js/vendor/require.js"></script>
             <script>
