@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.27, for Win64 (x86_64)
 --
 -- Host: localhost    Database: hoerburger
 -- ------------------------------------------------------
--- Server version	5.7.9-log
+-- Server version	5.6.27-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,7 +37,31 @@ CREATE TABLE `location` (
 
 LOCK TABLES `location` WRITE;
 /*!40000 ALTER TABLE `location` DISABLE KEYS */;
+INSERT INTO `location` VALUES (45,'345wef',52234,0);
 /*!40000 ALTER TABLE `location` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `lolrofl`
+--
+
+DROP TABLE IF EXISTS `lolrofl`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `lolrofl` (
+  `idlolrofl` int(11) NOT NULL,
+  `lolroflcol3` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idlolrofl`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lolrofl`
+--
+
+LOCK TABLES `lolrofl` WRITE;
+/*!40000 ALTER TABLE `lolrofl` DISABLE KEYS */;
+/*!40000 ALTER TABLE `lolrofl` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +73,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-11 21:01:21
+-- Dump completed on 2016-01-11 21:03:32
