@@ -4,10 +4,21 @@ requirejs.config({
         'jquery': 'vendor/jquery.min',
         'modernizr': 'vendor/modernizr.min',
         'underscore': 'vendor/underscore.min',
-        'jquery.popover': 'vendor/jquery.webui-popover',
-        'leaflet': 'vendor/leaflet/leaflet'
+        'popover': 'vendor/jquery.webui-popover',
+        'leaflet': 'vendor/leaflet/leaflet',
+        'sly': 'vendor/sly.min',
+        'colorbox': 'vendor/jquery.colorbox-min'
     },
     shim: {
-    	"jquery.popover": ["jquery"]
+        'popover': {
+            deps: ['jquery']
+        },
+        'sly': {
+            deps: ['jquery']
+        },
+        'colorbox': {
+            deps: ['jquery']
+        }
     }
+
 });
