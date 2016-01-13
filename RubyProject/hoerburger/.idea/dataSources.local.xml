@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails hoerburger: production" uuid="8f051bdf-78ac-402b-9201-970efe84f71c">
+      <first-sync>true</first-sync>
+      <user-name>hoerburger</user-name>
+      <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddfe2dfe5dfefdff8dfe8dfffdff8dfeddfefdff8dff5dfeedfebdffedfebdfe8dfebdff9dfefdff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
+    </data-source>
+    <data-source name="Rails hoerburger: test" uuid="c6c56601-1735-4059-95de-a5eaed7fee1b">
+      <first-sync>true</first-sync>
+      <user-name>root</user-name>
+      <user-password>dfd8dfc5dfc5dfde</user-password>
+    </data-source>
+    <data-source name="Rails hoerburger: development" uuid="5e1ff294-6b4c-4c61-abf8-2671132d625f">
+      <first-sync>true</first-sync>
+      <user-name>root</user-name>
+      <user-password>dfd8dfc5dfc5dfde</user-password>
+    </data-source>
+  </component>
+</project>
