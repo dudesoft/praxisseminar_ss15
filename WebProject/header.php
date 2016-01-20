@@ -1,7 +1,10 @@
 <header class="navigation_element">
-    <img src="img/logo_placeholder.png" id="header_icon">
+    <div id="logo">
+        <img src="img/logo.svg" id="header_icon">
+        <p id="name-logo">Hoerburger Reisen</p>
+    </div>
     <form id="search_bar">
-        <input type="search" name="search">
+        <input type="search" name="search" placeholder="Suche..." width="200px">
     </form>
     <button type="button" id="pop_over">Erweiterte Suche</button>
     <div id="pop_over_content">
@@ -18,6 +21,7 @@
             <br> max:
             <input type="date" name="max_date" max="2010-1-1" id="max_date_input">
             <br>
+            <button type="button" id="extended_search">Suchen</button>
         </form>
     </div>
 </header>

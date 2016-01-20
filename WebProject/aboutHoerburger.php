@@ -20,7 +20,7 @@
     </div>
     <script data-main="js/common" src="js/vendor/require.js"></script>
     <script>
-        require(['index_main']);
+            require(['station_details_main']);
     </script>
 </body>
 
