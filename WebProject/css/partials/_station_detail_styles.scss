@@ -27,10 +27,13 @@ h1 {
     width: 58%;
     height: 45%;
     margin: 0.5% 0 0.5% 0;
-    //padding-right: 8%;
     overflow: auto;
-   
     text-align: center;
+}
+
+.attribute{
+    text-align:left;
+    margin-left: 5%;
 }
 
 #mini_map {

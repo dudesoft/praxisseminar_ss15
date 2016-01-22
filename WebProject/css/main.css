@@ -260,6 +260,10 @@ h1 {
   overflow: auto;
   text-align: center; }
 
+.attribute {
+  text-align: left;
+  margin-left: 5%; }
+
 #mini_map {
   background: green;
   margin-top: 0.5%;
