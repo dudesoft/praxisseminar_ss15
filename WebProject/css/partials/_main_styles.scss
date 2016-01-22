@@ -19,13 +19,10 @@ header {
     position: relative;
     padding: 0px;
     height: $header_height;
-}
-
-.navigation_element {
     background-color: $color_nav_element;
 }
 
-#logo{
+#logo {
     float: left;
 }
 
@@ -37,12 +34,11 @@ header {
     padding-top: 3px;
 }
 
-#name-logo{
-    float:right;
+#name-logo {
+    float: right;
     font-size: 230%;
     font-weight: bold;
     margin: 25px;
-
 }
 
 #search_bar {
@@ -67,8 +63,8 @@ header {
     font-size: 12px;
 }
 
-#extended_search{
-    float:right;
+#extended_search {
+    float: right;
     margin-top: 5px;
 }
 
@@ -80,6 +76,7 @@ footer {
     bottom: 0;
     width: 100%;
     height: $footer_height;
+    background-color: $color_nav_element;
 }
 
 a {
@@ -87,7 +84,7 @@ a {
     color: black;
 }
 
-a:hover{
+a:hover {
     font-weight: bold;
 }
 
@@ -113,12 +110,12 @@ a:hover{
     bottom: $footer_height;
 }
 
+
 /* Hide popover contents */
 
 #pop_over_content {
     display: none;
 }
-
 
 
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
@@ -180,39 +177,23 @@ textarea {
    ========================================================================== */
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ==========================================================================
    Media Queries
    ========================================================================== */
 
-   @media only screen and (min-width: 35em) {
+@media only screen and (min-width: 35em) {}
 
-   }
+@media print,
+(-o-min-device-pixel-ratio: 5/4),
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 120dpi) {}
 
-   @media print,
-   (-o-min-device-pixel-ratio: 5/4),
-   (-webkit-min-device-pixel-ratio: 1.25),
-   (min-resolution: 120dpi) {
-
-   }
 
 /* ==========================================================================
    Helper classes
    ========================================================================== */
 
-   .hidden {
+.hidden {
     display: none !important;
     visibility: hidden;
 }
@@ -256,11 +237,12 @@ textarea {
     *zoom: 1;
 }
 
+
 /* ==========================================================================
    Print styles
    ========================================================================== */
 
-   @media print {
+@media print {
     *,
     *:before,
     *:after {
@@ -269,51 +251,41 @@ textarea {
         box-shadow: none !important;
         text-shadow: none !important;
     }
-
     a,
     a:visited {
         text-decoration: underline;
     }
-
     a[href]:after {
         content: " (" attr(href) ")";
     }
-
     abbr[title]:after {
         content: " (" attr(title) ")";
     }
-
     a[href^="#"]:after,
     a[href^="javascript:"]:after {
         content: "";
     }
-
     pre,
     blockquote {
         border: 1px solid #999;
         page-break-inside: avoid;
     }
-
     thead {
         display: table-header-group;
     }
-
     tr,
     img {
         page-break-inside: avoid;
     }
-
     img {
         max-width: 100% !important;
     }
-
     p,
     h2,
     h3 {
         orphans: 3;
         widows: 3;
     }
-
     h2,
     h3 {
         page-break-after: avoid;

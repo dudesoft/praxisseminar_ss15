@@ -1,4 +1,4 @@
-<footer class="navigation_element">
+<footer>
     <div id="link_container">
         <a class="footer_link" href="url">Über Hoerburger</a>
         <a class="footer_link" href="url">Über Uns</a>

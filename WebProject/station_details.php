@@ -14,6 +14,7 @@
 <body>
     <?php include 'header.php';?>
         <div id="main_content">
+        <a id="arrow_left" class="arrow">pfeil links</a>
             <div id="detail_content">
                 <div id="text_info">
                     <h1>Datum</h1> Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum
@@ -78,6 +79,7 @@
                     </ul>
                 </div>
             </div>
+            <a id="arrow_right" class="arrow">pfeil rechts</a>
         </div>
         
         <?php include 'footer.php';?>

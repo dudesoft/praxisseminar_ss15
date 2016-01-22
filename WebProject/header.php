@@ -1,4 +1,4 @@
-<header class="navigation_element">
+<header>
     <div id="logo">
         <img src="img/logo.svg" id="header_icon">
         <p id="name-logo">Hoerburger Reisen</p>
