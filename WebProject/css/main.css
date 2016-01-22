@@ -257,12 +257,12 @@ h1 {
   width: 58%;
   height: 45%;
   margin: 0.5% 0 0.5% 0;
-  overflow: auto;
-  text-align: center; }
+  overflow: auto; }
 
 .attribute {
   text-align: left;
-  margin-left: 5%; }
+  margin-left: 5%;
+  margin-right: 2%; }
 
 #mini_map {
   background: green;
