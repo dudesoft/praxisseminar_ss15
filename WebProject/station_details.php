@@ -14,15 +14,16 @@
 <body>
     <?php include 'header.php';?>
         <div id="main_content">
-        <a id="arrow_left" class="arrow">pfeil links</a>
+        <a id="arrow_left" class="arrow"><img src="img/arrowLeft.jpg" id="arrow_left_img" alt="arrow left"/></a>
             <div id="detail_content">
-                <div id="text_info">
-                    <h1>Datum</h1> Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum
+                <div id="text_info" class="trans">
+                    <h1>Datum</h1>
+                    <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans. Ein kleines Bächlein namens Duden fließt durch ihren Ort und versorgt sie mit den nötigen Regelialien. Es ist ein paradiesmatisches Land, in dem einem gebratene Satzteile in den Mund fliegen. Nicht einmal von der allmächtigen Interpunktion werden die Blindtexte beherrscht – ein geradezu unorthographisches Leben. Eines Tages aber beschloß eine kleine Zeile Blindtext, ihr Name war Lorem Ipsum, hinaus zu gehen in die weite Grammatik. Der große Oxmox riet ihr davon ab, da es dort wimmele von bösen Kommata, wilden Fragezeichen und hinterhältigen Semikoli, doch das Blindtextchen ließ sich nicht beirren.</p>
                 </div>
-                <div id="mini_map">
+                <div id="mini_map" class="trans">
                     <p>Minimap</p>
                 </div>
-                <div id="picture_gallery" class="frame">
+                <div id="picture_gallery" class="frame trans">
                     <ul id="pic_gallery_content" class="slidee">
                         <li>huehue1</li>
                         <li>huehue2</li>
@@ -40,7 +41,7 @@
                         <li>huehuehue15</li>
                     </ul>
                 </div>
-                <div id="audio_gallery" class="frame">
+                <div id="audio_gallery" class="frame trans">
                     <ul id="audio_gallery_content" class="slidee">
                         <li>hue1audio</li>
                         <li>huehue2audio</li>
@@ -59,7 +60,7 @@
                         <li>huehuehue15audio</li>
                     </ul>
                 </div>
-                <div id="video_gallery" class="frame">
+                <div id="video_gallery" class="frame trans">
                     <ul id="vid_gallery_content" class="slidee">
                         <li>hue1</li>
                         <li>huehue2</li>
@@ -79,7 +80,7 @@
                     </ul>
                 </div>
             </div>
-            <a id="arrow_right" class="arrow">pfeil rechts</a>
+            <a id="arrow_right" class="arrow"><img src="img/arrowRight.jpg" id="arrow_right_img" alt="arrow right"/></a>
         </div>
         
         <?php include 'footer.php';?>
