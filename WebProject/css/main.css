@@ -232,32 +232,44 @@ textarea {
   h2,
   h3 {
     page-break-after: avoid; } }
+#main_content {
+  background-image: url(../img/pergament.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%, auto auto; }
+
 #detail_content {
   position: absolute;
+  width: 70%;
   top: 20px;
   bottom: 20px;
   left: 20px;
   right: 20px;
-  background: red;
-  border-style: solid;
-  border-color: black;
-  border-width: 5px;
-  padding: 5px; }
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto; }
 
 h1 {
   text-align: center; }
 
 #text_info {
   float: left;
-  width: 60%;
-  height: 50%;
-  overflow: hidden; }
+  width: 58%;
+  height: 45%;
+  margin: 0.5% 0 0.5% 0;
+  overflow: auto; }
+
+.attribute {
+  text-align: left;
+  margin-left: 5%;
+  margin-right: 2%; }
 
 #mini_map {
   background: green;
+  margin-top: 0.5%;
   width: 40%;
-  height: 50%;
-  float: left; }
+  height: 45%;
+  float: right; }
 
 #picture_galery {
   margin-top: 25px; }
@@ -276,11 +288,11 @@ h1 {
 
 .slidee li {
   float: left;
-  margin: 0 3px 0 0;
+  margin: 3px;
   padding: 0;
   width: 120px;
   overflow: hidden;
-  height: 100%;
+  height: 90%;
   background: blue; }
 
 .slidee li.active {
@@ -290,8 +302,26 @@ video {
   width: 320px;
   height: 240px; }
 
-#arrow_left {
-  float: left; }
+.trans {
+  background-image: url(../img/transparentBackground.png);
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+  border-radius: 2px; }
+
+#arrow_left_img {
+  width: 2%;
+  float: left;
+  position: absolute;
+  top: 50%;
+  left: 2%; }
+
+#arrow_right_img {
+  width: 2%;
+  float: right;
+  position: absolute;
+  top: 50%;
+  left: 96%; }
 
 /*
     Colorbox Core Style:
