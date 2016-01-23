@@ -14,10 +14,9 @@ body {
 header {
   position: relative;
   padding: 0px;
-  height: 100px; }
-
-.navigation_element {
-  background-color: #D1C192; }
+  height: 100px;
+  width: auto;
+  background-image: url("/praxisseminar_ss15/WebProject/img/papier.jpg"); }
 
 #logo {
   float: left; }
@@ -63,7 +62,8 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 60px; }
+  height: 60px;
+  background-image: url("/praxisseminar_ss15/WebProject/img/papier.jpg"); } 
 
 a {
   text-decoration: none;
@@ -291,8 +291,8 @@ video {
   width: 320px;
   height: 240px; }
 
-body {
-  background-color: red; }
+#arrow_left {
+  float: left; }
 
 /*
     Colorbox Core Style:

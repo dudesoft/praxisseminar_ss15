@@ -14,14 +14,14 @@
 <body>
     <div id="wrapper">
         <?php include 'header.php';?>
+
         <div id="main_content">
+        
         </div>
+
         <?php include 'footer.php';?>
     </div>
-    <script data-main="js/common" src="js/vendor/require.js"></script>
-    <script>
-            require(['station_details_main']);
-    </script>
+   
 </body>
 
 </html>
