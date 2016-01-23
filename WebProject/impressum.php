@@ -15,7 +15,7 @@
     <div id="wrapper">
         <?php include 'header.php';?>
 
-        <div id="main_content">
+        <div id="content">
         
         </div>
 
