@@ -4,9 +4,9 @@
         <p id="name-logo">Hoerburger Reisen</p>
     </div>
     <form id="search_bar">
-        <input type="search" name="search" placeholder="Suche..." width="200px">
+        <input id="search-input" type="search" name="search" placeholder="Suche..." width="200px">
     </form>
-    <button type="button" id="pop_over">Erweiterte Suche</button>
+    <button type="button" id="pop_over">Erweiterte Suche <i class="icon-sort-down"></i> </button>
     <div id="pop_over_content">
         <form>
             <p>Ort:</p>
