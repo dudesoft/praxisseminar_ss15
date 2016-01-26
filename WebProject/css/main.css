@@ -5,6 +5,7 @@ body {
     height: 100%;
     position: relative;
     font-family: papyrus;
+    font-color: #D1C192;
     background-image: url("/praxisseminar_ss15/WebProject/img/wood2.jpg");
 }
 
@@ -41,30 +42,47 @@ header {
     font-weight: bold;
     margin: 25px;
     color: #D1C192;
+    font-family: papyrus;
 }
 
 #search_bar {
     position: absolute;
-    top: 50%;
+    top: 40px;
     transform: translateY(-50%);
-    right: 20px;
+    right: 3%;
+    width: 200px;
+    height: auto;
 }
 
 #search-input {
     padding-left: 10px;
     padding-right: 10px;
-    border-radius: 10px;
+    border-color: #fef7ef;
+    background-color: transparent;
+    color: #D1C192;
+    font-family: Segoe UI;
 }
+
+#search-button {
+  background-color: transparent;
+  color: #D1C192;   
+}
+
+
+
+
+/* Pop-Over */
 
 #pop_over {
     position: absolute;
     width: 150px;
     height: 25px;
-    bottom: 10px;
-    right: 20px;
-    font-family: Comic sans-serif;
-    font-size: 15px;
-    border-radius: 10px;
+    top: 57%;
+    right: 3%;
+    font-family: Segoe UI;
+    font-size: 12px;
+    background-color: #D1C192;
+    border-color: #fef7ef;
 }
 
 #pop_over_content {
@@ -108,6 +126,9 @@ a:hover {
 .footer_link {
     margin-left: 20px;
     margin-right: 20px;
+    font-family: papyrus;
+    color: white;
+    text-decoration: none;
 }
 
 
@@ -135,11 +156,11 @@ a:hover {
     bottom: 60px;
 }
 
-h2{
-  color: white;
-  padding-left: 250px;
-
+h2 {
+    color: white;
+    padding-left: 250px;
 }
+
 
 /* Hide popover contents */
 

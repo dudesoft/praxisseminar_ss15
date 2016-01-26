@@ -3,10 +3,30 @@
         <img src="img/logo.svg" id="header_icon">
         <p id="name-logo">Hoerburger Reisen</p>
     </div>
-    <form id="search_bar">
-        <input id="search-input" type="search" name="search" placeholder="Suche..." width="200px">
-    </form>
-    <button type="button" id="pop_over">Erweiterte Suche <i class="icon-sort-down"></i> </button>
+
+<!--
+    <div id="search_bar" class="left-inner-addon">
+     <i class="glyphicon glyphicon-search"></i>
+     <input id="search-input" class="form-control" type="search" name="search" placeholder="Suche..." width="200px">
+    </div>
+
+    <button type="button" id="pop_over" class="btn btn-primary btn-xs">Erweiterte Suche <span class="glyphicon glyphicon-menu-down"></span> </button>
+    
+-->
+
+    
+    <div id="search_bar" class="input-group">
+      <input id="search-input" class="form-control" type="search" name="search" placeholder="Suche..." width="200px">
+      <span class="input-group-btn">
+        <button id="search-button" class="btn btn-default" type="button"> 
+            <i class="glyphicon glyphicon-search"></i>
+        </button>
+      </span>
+    </div>
+    
+
+    <button type="button" id="pop_over" class="btn btn-primary btn-xs">Erweiterte Suche <span class="glyphicon glyphicon-menu-down"></span> </button>
+
     <div id="pop_over_content">
         <form>
             <p>Ort:</p>
