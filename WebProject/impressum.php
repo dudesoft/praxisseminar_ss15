@@ -15,8 +15,9 @@
     <div id="wrapper">
         <?php include 'header.php';?>
 
-        <div id="content">
-        
+        <div id="link_content">
+        <h2>Impressum</h1>
+        <div id="text_content">Hier sollte einmal das Impressum <br/> der Seite "Hoerburger Reisen stehen, von welchem ich noch nicht weiß wie es letztendlich aussieht.        Falls irgendwer einen Vorschlag hat soll er sich bitte melden, ansonsten bleibt hier der Beispieltext bestehen bis ein besserer Vorschlag eingeht. Evtl. kann man auch Herrn Schupfner noch einmal zu Rate ziehen, ob er Texte zur Verfügung stellt.</div>
         </div>
 
         <?php include 'footer.php';?>

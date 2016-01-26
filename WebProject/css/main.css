@@ -40,19 +40,20 @@ header {
     font-size: 230%;
     font-weight: bold;
     margin: 25px;
-    color:  #D1C192;
+    color: #D1C192;
 }
 
 #search_bar {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 20px; }
+    right: 20px;
+}
 
-#search-input{
-  padding-left: 10px;
-  padding-right: 10px;
-  border-radius: 10px;
+#search-input {
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
 }
 
 #pop_over {
@@ -90,7 +91,7 @@ footer {
 
 a {
     text-decoration: none;
-     color: white;
+    color: white;
 }
 
 a:hover {
@@ -119,6 +120,26 @@ a:hover {
     bottom: 60px;
 }
 
+#link_content {
+    position: absolute;
+    width: 100%;
+    top: 100px;
+    bottom: 60px;
+}
+
+#text_content {
+    color: white;
+    padding-left: 250px;
+    padding-right: 250px;
+    font-family: Segoe UI;
+    bottom: 60px;
+}
+
+h2{
+  color: white;
+  padding-left: 250px;
+
+}
 
 /* Hide popover contents */
 

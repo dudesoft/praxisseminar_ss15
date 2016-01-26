@@ -15,7 +15,10 @@
     <div id="wrapper">
         <?php include 'header.php';?>
         
-        <div id="main_content">
+        <div id="link_content">
+        <h2>Über Uns</h1>
+        <div id="text_content">Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text.
+         Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text </div>
         </div>
 
         <?php include 'footer.php';?>
