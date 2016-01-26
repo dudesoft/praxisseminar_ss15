@@ -64,11 +64,9 @@ header {
 }
 
 #search-button {
-  background-color: transparent;
-  color: #D1C192;   
+    background-color: transparent;
+    color: #D1C192;
 }
-
-
 
 
 /* Pop-Over */
@@ -107,13 +105,11 @@ footer {
     height: 60px;
 }
 
-a {
-    text-decoration: none;
-    color: white;
-}
 
-a:hover {
+a:focus, a:hover {
+    text-decoration: none;
     font-weight: bold;
+    color: #D1C192;
 }
 
 #link_container {
@@ -127,7 +123,7 @@ a:hover {
     margin-left: 20px;
     margin-right: 20px;
     font-family: papyrus;
-    color: white;
+    color: #D1C192;
     text-decoration: none;
 }
 
