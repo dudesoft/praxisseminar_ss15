@@ -16,10 +16,9 @@ require(['jquery', 'MediaPlayerFactory', 'popover_header', 'sly', 'colorbox'], f
         speed: 600,
         startAt: 2
     });
-    console.log(factory.getVideoPlayer("/hoerburger/WebProject/big_buck_bunny.mp4"));
 
     $.colorbox({
-        html: factory.getVideoPlayer("big_buck_bunny.mp4")
+        html: factory.getAudioPlayer("big_buck_bunny.mp4") 
     });
 
 });

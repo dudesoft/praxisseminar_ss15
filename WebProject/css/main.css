@@ -1583,8 +1583,16 @@ h1 {
 .slidee li.active {
   box-shadow: 0px 0px 0px 2px orange inset; }
 
-video {
-  width: 320px;
-  height: 240px; }
+#lightbox_content {
+  width: 800px;
+  height: 600px; }
+
+#video_container {
+  width: 640px;
+  height: 360px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -180px 0 0 -320px; }
 
 /*# sourceMappingURL=main.css.map */

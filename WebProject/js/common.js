@@ -1,7 +1,7 @@
 requirejs.config({
     baseUrl: 'js',
     paths: {
-        'jquery': 'vendor/jquery.min',
+        'jquery': 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min',
         'modernizr': 'vendor/modernizr.min',
         'underscore': 'vendor/underscore.min',
         'popover': 'vendor/jquery.webui-popover',
@@ -19,6 +19,8 @@ requirejs.config({
         'colorbox': {
             deps: ['jquery']
         }
+        'popover_header': {
+            deps: ['jquery']
+        }
     }
-
 });
