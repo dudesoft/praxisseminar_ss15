@@ -4,7 +4,6 @@ body {
     padding: 0;
     height: 100%;
     position: relative;
-    font-family: papyrus;
     font-color: $standard_color;
     background-image: url("/praxisseminar_ss15/WebProject/img/wood2.jpg");
 }
@@ -83,18 +82,36 @@ header {
     width: 220px;
     height: 300px;
     font-size: 12px;
+    font-family: Segoe UI;
 }
 
-#extended_search {
+#enter_search {
     float: right;
     margin-top: 5px;
     border-radius: 10px;
+    background-color: green;
+    color: white;
 }
 
 /* Hide popover contents */
 
 #pop_over_content {
     display: none;
+}
+
+p{
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-style: bold;
+}
+
+#min_date_input, #max_date_input{
+    margin-bottom: 5px;
+}
+
+.form-group{
+    margin: 0px;
 }
 
 

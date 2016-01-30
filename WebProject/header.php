@@ -19,24 +19,43 @@
 
     <div id="pop_over_content">
         <form>
-            <p>Ort:</p>
-            <input type="text" name="location" id="location_input">
+
+            <div class="form-group">
+                <p> <strong>Ort:</strong></p>
+                <input type="text" class="form-control" name="location" id="location_input">
+            </div>
+
+            <div class="form-group">
+                <p><strong>Interpret:</strong></p>
+                <input type="text" class="form-control" name="interpret" id="interpret_input">
+            </div>
+
+            <div class="form-group">
+                <p><strong>Musikinstrument:</strong></p>
+                <input type="text" class="form-control" name="instrument" id="instrument_input">
+            </div>
+
+            <div >
+                <p><strong>Datum:</strong></p>
+                <div class="form-group">
+                    <p class="control-label col-sm-2" for="min_date">min:</p>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control" id="min_date_input" >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <p class="control-label col-sm-2" for="max_date">max:</p>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control" id="max_date_input" >
+                    </div>
+                </div>
+            </div>
             
-            <p>Interpret:</p>
-            <input type="text" name="interpret" id="interpret_input">
-            
-            <p>Musikinstrument:</p>
-            <input type="text" name="instrument" id="instrument_input">
-            
-            <p>Datum:</p>
-            min:
-            <input type="date" name="min_date" min="1960-1-1" id="min_date_input">
-           
-            <br> max:
-            <input type="date" name="max_date" max="2010-1-1" id="max_date_input">
-            <br>
-            
-            <button type="button" id="extended_search">Suchen</button>
+            <button id="enter_search" type="button"> 
+                <i class="glyphicon glyphicon-ok"></i>
+            </button>
+
         </form>
     </div>
 </header>

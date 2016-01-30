@@ -23,13 +23,62 @@ h2 {
   padding-left: 250px;
   font-family: papyrus; }
 
+/* Content */
+#main_content {
+  position: absolute;
+  width: 100%;
+  top: 100px;
+  bottom: 60px; }
+
+#link_content {
+  position: absolute;
+  width: 100%;
+  top: 100px;
+  bottom: 60px; }
+
+#text_content {
+  color: white;
+  padding-left: 250px;
+  padding-right: 250px;
+  font-family: Segoe UI;
+  bottom: 60px; }
+
+h2 {
+  color: white;
+  padding-left: 250px;
+  font-family: papyrus; }
+
+/* Content */
+#main_content {
+  position: absolute;
+  width: 100%;
+  top: 100px;
+  bottom: 60px; }
+
+#link_content {
+  position: absolute;
+  width: 100%;
+  top: 100px;
+  bottom: 60px; }
+
+#text_content {
+  color: white;
+  padding-left: 250px;
+  padding-right: 250px;
+  font-family: Segoe UI;
+  bottom: 60px; }
+
+h2 {
+  color: white;
+  padding-left: 250px;
+  font-family: papyrus; }
+
 html,
 body {
   margin: 0;
   padding: 0;
   height: 100%;
   position: relative;
-  font-family: papyrus;
   font-color: #D1C192;
   background-image: url("/praxisseminar_ss15/WebProject/img/wood2.jpg"); }
 
@@ -66,27 +115,14 @@ header {
   top: 40px;
   width: 250px;
   right: 4%;
-  transform: translateY(-50%);
-  /*position: absolute;
-  top: 40px;
-  transform: translateY(-50%);
-  right: 3%;
-  width: 200px;
-  height: auto;*/ }
+  transform: translateY(-50%); }
 
 #search-input {
   background-color: transparent;
   height: 20px;
   font-family: Segoe UI;
   color: #D1C192;
-  width: 200px;
-  /*padding-left: 10px;
-  padding-right: 10px;
-  border-color: #fef7ef;
-  height: 34px;
-  background-color: transparent;
-  color: $standard_color;
-  font-family: Segoe UI;*/ }
+  width: 200px; }
 
 #search-button {
   background-color: transparent;
@@ -107,16 +143,31 @@ header {
 #pop_over_content {
   width: 220px;
   height: 300px;
-  font-size: 12px; }
+  font-size: 12px;
+  font-family: Segoe UI; }
 
-#extended_search {
+#enter_search {
   float: right;
   margin-top: 5px;
-  border-radius: 10px; }
+  border-radius: 10px;
+  background-color: green;
+  color: white; }
 
 /* Hide popover contents */
 #pop_over_content {
   display: none; }
+
+p {
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-style: bold; }
+
+#min_date_input, #max_date_input {
+  margin-bottom: 5px; }
+
+.form-group {
+  margin: 0px; }
 
 /* Footer */
 footer {
