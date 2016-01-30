@@ -103,6 +103,8 @@ header {
   padding-top: 3px; }
 
 #name-logo {
+  /*position: absolute;
+  left: 8%;*/
   float: right;
   font-size: 230%;
   font-weight: bold;

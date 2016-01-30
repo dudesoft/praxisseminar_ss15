@@ -1,6 +1,6 @@
 <header>
     <div id="logo">
-        <a href="index.php">
+        <a href="index.php" width="500px">
             <img src="img/logo.svg" id="header_icon">
             <p id="name-logo">Hoerburger Reisen</p>
         </a>
