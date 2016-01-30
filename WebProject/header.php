@@ -1,7 +1,9 @@
 <header>
     <div id="logo">
-        <img src="img/logo.svg" id="header_icon">
-        <p id="name-logo">Hoerburger Reisen</p>
+        <a href="index.php">
+            <img src="img/logo.svg" id="header_icon">
+            <p id="name-logo">Hoerburger Reisen</p>
+        </a>
     </div>
     
     <div id="search_bar" class="input-group">

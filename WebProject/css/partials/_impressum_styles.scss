@@ -1,3 +1,33 @@
 body {
 	
 }
+
+/* Content */
+
+#main_content {
+    position: absolute;
+    width: 100%;
+    top: $header_height;
+    bottom: $footer_height;
+}
+
+#link_content {
+    position: absolute;
+    width: 100%;
+    top: 100px;
+    bottom: 60px;
+}
+
+#text_content {
+    color: white;
+    padding-left: 250px;
+    padding-right: 250px;
+    font-family: Segoe UI;
+    bottom: 60px;
+}
+
+h2 {
+    color: white;
+    padding-left: 250px;
+    font-family: papyrus;
+}

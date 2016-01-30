@@ -5,7 +5,7 @@ body {
     height: 100%;
     position: relative;
     font-family: papyrus;
-    font-color: #D1C192;
+    font-color: $standard_color;
     background-image: url("/praxisseminar_ss15/WebProject/img/wood2.jpg");
 }
 
@@ -21,7 +21,6 @@ header {
     position: relative;
     padding: 0px;
     height: $header_height;
-    background-color: $color_nav_element;
 }
 
 #logo {
@@ -41,22 +40,43 @@ header {
     font-size: 230%;
     font-weight: bold;
     margin: 25px;
+    color: $standard_color;
+    font-family: papyrus;
 }
 
 #search_bar {
     position: absolute;
-    top: 50%;
+    top: 40px;
+    width: 250px;
+    right: 4%;
     transform: translateY(-50%);
-    right: 20px;
 }
+
+#search-input {
+    background-color: transparent;
+    height: 20px;
+    font-family: Segoe UI;
+    color: $standard_color;
+    width: 200px;
+}
+
+#search-button {
+    background-color: transparent;
+    color: $standard_color;
+}
+
+/* Pop-Over */
 
 #pop_over {
     position: absolute;
-    width: 170px;
+    width: 150px;
     height: 25px;
-    bottom: 10px;
-    right: 20px;
-    font-size: 15px;
+    top: 57%;
+    right: 3%;
+    font-family: Segoe UI;
+    font-size: 12px;
+    background-color: $standard_color;
+    border-color: #fef7ef;
 }
 
 #pop_over_content {
@@ -68,6 +88,13 @@ header {
 #extended_search {
     float: right;
     margin-top: 5px;
+    border-radius: 10px;
+}
+
+/* Hide popover contents */
+
+#pop_over_content {
+    display: none;
 }
 
 
@@ -78,7 +105,6 @@ footer {
     bottom: 0;
     width: 100%;
     height: $footer_height;
-    background-color: $color_nav_element;
 }
 
 a {
@@ -86,8 +112,11 @@ a {
     color: black;
 }
 
+a:focus,
 a:hover {
+    text-decoration: none;
     font-weight: bold;
+    color: $standard_color;
 }
 
 #link_container {
@@ -100,6 +129,9 @@ a:hover {
 .footer_link {
     margin-left: 20px;
     margin-right: 20px;
+    font-family: papyrus;
+    color: $standard_color;
+    text-decoration: none;
 }
 
 
@@ -110,13 +142,6 @@ a:hover {
     width: 100%;
     top: $header_height;
     bottom: $footer_height;
-}
-
-
-/* Hide popover contents */
-
-#pop_over_content {
-    display: none;
 }
 
 
