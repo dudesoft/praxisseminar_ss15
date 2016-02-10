@@ -1,10 +1,86 @@
+/* Content */
+#main_content {
+  position: absolute;
+  width: 100%;
+  top: 100px;
+  bottom: 60px; }
+
+#link_content {
+  position: absolute;
+  width: 100%;
+  top: 100px;
+  bottom: 60px; }
+
+#text_content {
+  color: white;
+  padding-left: 250px;
+  padding-right: 250px;
+  font-family: Segoe UI;
+  bottom: 60px; }
+
+h2 {
+  color: white;
+  padding-left: 250px;
+  font-family: papyrus; }
+
+/* Content */
+#main_content {
+  position: absolute;
+  width: 100%;
+  top: 100px;
+  bottom: 60px; }
+
+#link_content {
+  position: absolute;
+  width: 100%;
+  top: 100px;
+  bottom: 60px; }
+
+#text_content {
+  color: white;
+  padding-left: 250px;
+  padding-right: 250px;
+  font-family: Segoe UI;
+  bottom: 60px; }
+
+h2 {
+  color: white;
+  padding-left: 250px;
+  font-family: papyrus; }
+
+/* Content */
+#main_content {
+  position: absolute;
+  width: 100%;
+  top: 100px;
+  bottom: 60px; }
+
+#link_content {
+  position: absolute;
+  width: 100%;
+  top: 100px;
+  bottom: 60px; }
+
+#text_content {
+  color: white;
+  padding-left: 250px;
+  padding-right: 250px;
+  font-family: Segoe UI;
+  bottom: 60px; }
+
+h2 {
+  color: white;
+  padding-left: 250px;
+  font-family: papyrus; }
+
 html,
 body {
   margin: 0;
   padding: 0;
   height: 100%;
   position: relative;
-  font-family: papyrus; }
+  font-color: #D1C192;
+  background-image: url("/praxisseminar_ss15/WebProject/img/wood2.jpg"); }
 
 #wrapper {
   min-height: 100%;
@@ -14,8 +90,7 @@ body {
 header {
   position: relative;
   padding: 0px;
-  height: 100px;
-  background-color: #D1C192; }
+  height: 100px; }
 
 #logo {
   float: left; }
@@ -28,48 +103,90 @@ header {
   padding-top: 3px; }
 
 #name-logo {
+  /*position: absolute;
+  left: 8%;*/
   float: right;
   font-size: 230%;
   font-weight: bold;
-  margin: 25px; }
+  margin: 25px;
+  color: #D1C192;
+  font-family: papyrus; }
 
 #search_bar {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 20px; }
+  top: 40px;
+  width: 250px;
+  right: 4%;
+  transform: translateY(-50%); }
 
+#search-input {
+  background-color: transparent;
+  height: 20px;
+  font-family: Segoe UI;
+  color: #D1C192;
+  width: 200px; }
+
+#search-button {
+  background-color: transparent;
+  color: #D1C192; }
+
+/* Pop-Over */
 #pop_over {
   position: absolute;
-  width: 170px;
+  width: 150px;
   height: 25px;
-  bottom: 10px;
-  right: 20px;
-  font-size: 15px; }
+  top: 57%;
+  right: 3%;
+  font-family: Segoe UI;
+  font-size: 12px;
+  background-color: #D1C192;
+  border-color: #fef7ef; }
 
 #pop_over_content {
   width: 220px;
   height: 300px;
-  font-size: 12px; }
+  font-size: 12px;
+  font-family: Segoe UI; }
 
-#extended_search {
+#enter_search {
   float: right;
-  margin-top: 5px; }
+  margin-top: 5px;
+  border-radius: 10px;
+  background-color: green;
+  color: white; }
+
+/* Hide popover contents */
+#pop_over_content {
+  display: none; }
+
+p {
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-style: bold; }
+
+#min_date_input, #max_date_input {
+  margin-bottom: 5px; }
+
+.form-group {
+  margin: 0px; }
 
 /* Footer */
 footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 60px;
-  background-color: #D1C192; }
+  height: 60px; }
 
 a {
   text-decoration: none;
   color: black; }
 
+a:focus,
 a:hover {
-  font-weight: bold; }
+  text-decoration: none;
+  font-weight: bold;
+  color: #D1C192; }
 
 #link_container {
   position: absolute;
@@ -79,7 +196,10 @@ a:hover {
 
 .footer_link {
   margin-left: 20px;
-  margin-right: 20px; }
+  margin-right: 20px;
+  font-family: papyrus;
+  color: #D1C192;
+  text-decoration: none; }
 
 /* Content */
 #main_content {
@@ -87,10 +207,6 @@ a:hover {
   width: 100%;
   top: 100px;
   bottom: 60px; }
-
-/* Hide popover contents */
-#pop_over_content {
-  display: none; }
 
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
 html {

@@ -4,7 +4,8 @@ body {
     padding: 0;
     height: 100%;
     position: relative;
-    font-family: papyrus;
+    font-color: $standard_color;
+    background-image: url("/praxisseminar_ss15/WebProject/img/wood2.jpg");
 }
 
 #wrapper {
@@ -19,7 +20,6 @@ header {
     position: relative;
     padding: 0px;
     height: $header_height;
-    background-color: $color_nav_element;
 }
 
 #logo {
@@ -35,37 +35,85 @@ header {
 }
 
 #name-logo {
+    /*position: absolute;
+    left: 8%;*/
     float: right;
     font-size: 230%;
     font-weight: bold;
     margin: 25px;
+    color: $standard_color;
+    font-family: papyrus;
 }
 
 #search_bar {
     position: absolute;
-    top: 50%;
+    top: 40px;
+    width: 250px;
+    right: 4%;
     transform: translateY(-50%);
-    right: 20px;
 }
+
+#search-input {
+    background-color: transparent;
+    height: 20px;
+    font-family: Segoe UI;
+    color: $standard_color;
+    width: 200px;
+}
+
+#search-button {
+    background-color: transparent;
+    color: $standard_color;
+}
+
+/* Pop-Over */
 
 #pop_over {
     position: absolute;
-    width: 170px;
+    width: 150px;
     height: 25px;
-    bottom: 10px;
-    right: 20px;
-    font-size: 15px;
+    top: 57%;
+    right: 3%;
+    font-family: Segoe UI;
+    font-size: 12px;
+    background-color: $standard_color;
+    border-color: #fef7ef;
 }
 
 #pop_over_content {
     width: 220px;
     height: 300px;
     font-size: 12px;
+    font-family: Segoe UI;
 }
 
-#extended_search {
+#enter_search {
     float: right;
     margin-top: 5px;
+    border-radius: 10px;
+    background-color: green;
+    color: white;
+}
+
+/* Hide popover contents */
+
+#pop_over_content {
+    display: none;
+}
+
+p{
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-style: bold;
+}
+
+#min_date_input, #max_date_input{
+    margin-bottom: 5px;
+}
+
+.form-group{
+    margin: 0px;
 }
 
 
@@ -76,7 +124,6 @@ footer {
     bottom: 0;
     width: 100%;
     height: $footer_height;
-    background-color: $color_nav_element;
 }
 
 a {
@@ -84,8 +131,11 @@ a {
     color: black;
 }
 
+a:focus,
 a:hover {
+    text-decoration: none;
     font-weight: bold;
+    color: $standard_color;
 }
 
 #link_container {
@@ -98,6 +148,9 @@ a:hover {
 .footer_link {
     margin-left: 20px;
     margin-right: 20px;
+    font-family: papyrus;
+    color: $standard_color;
+    text-decoration: none;
 }
 
 
@@ -108,13 +161,6 @@ a:hover {
     width: 100%;
     top: $header_height;
     bottom: $footer_height;
-}
-
-
-/* Hide popover contents */
-
-#pop_over_content {
-    display: none;
 }
 
 
