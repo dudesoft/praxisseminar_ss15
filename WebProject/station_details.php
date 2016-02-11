@@ -19,7 +19,7 @@
 
 <body>
     <?php include 'header.php';?>
-        <div id="main_content">
+        <div id="main_content_station">
         <!--<a id="arrow_left" class="arrow"><img src="img/arrow-right.png" id="arrow_left_img" alt="arrow left"/></a>-->
             <div class="nav">
                 <label for="prev_diary" class="prev">&#x2039;</label>
