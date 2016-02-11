@@ -352,11 +352,17 @@ textarea {
   h2,
   h3 {
     page-break-after: avoid; } }
-#detail_content {
+#main_content_station {
+  position: absolute;
+  width: 100%;
+  top: 100px;
+  bottom: 60px;
   background-image: url(../img/pergament-background.png);
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 100% 100%, auto auto;
+  background-size: 100% 100%, auto auto; }
+
+#detail_content {
   position: absolute;
   width: 70%;
   top: 20px;

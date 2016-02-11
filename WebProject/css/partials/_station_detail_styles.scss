@@ -1,6 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito|Signika|Pacifico|Quicksand|Patua+One|Chewy|Fredoka+One|Cabin+Condensed|Courgette|Audiowide|Days+One);
 
-#main_content{
+#main_content_station{
+    position: absolute;
+    width: 100%;
+    top: 100px;
+    bottom: 60px;
     background-image: url(../img/pergament-background.png);
     background-position: center center;
     background-repeat: no-repeat;
