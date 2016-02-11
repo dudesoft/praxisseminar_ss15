@@ -18,8 +18,7 @@ body {
     bottom: 60px;
 }
 
-#text_content {
-    color: white;
+/*#text_content {
     padding-left: 250px;
     padding-right: 250px;
     font-family: Segoe UI;
@@ -27,7 +26,12 @@ body {
 }
 
 h2 {
-    color: white;
+    color: black;
     padding-left: 250px;
     font-family: papyrus;
+}*/
+.trans_background{
+    background-image: url(../img/transparentBackground.png);
+    border-bottom: white 1px solid;
+    border-top: white 1px solid;  
 }

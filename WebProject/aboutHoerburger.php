@@ -21,9 +21,9 @@
     <div id="wrapper">
         <?php include 'header.php';?>
 
-        <div id="link_content">
-        <h2>Über Hoerburger</h1>
-        <div id="text_content">Felix Hoerburger wurde im Jahr 1916 in München geboren
+        <div id="link_content" class="trans_background">
+        <h2>Über Hoerburger</h2>
+            <div id="text_content">Felix Hoerburger wurde im Jahr 1916 in München geboren
             und studierte dort Musikwissenschaft und -ethnologie. 1941 promovierte
             er über Musik aus Ungoni, 1963 habilitierte er sich mit
             einer Arbeit über Tanz und Tanzmusik der Albaner im Kosovo und
@@ -33,7 +33,7 @@
             am 3. Februar 1997. Er gilt als Schöpfer der sogenannten »nordsüdneuhochschnubiglbaierischen
             Mundart«.
             <br/>(Hoerburger, F. (2008). neueste nachrichten aus der schnubiglputanischen provinz. München: buch & media GmbH. Verfügbar unter: http://www.allitera.de/dbfiles/leseproben/9783865202932.pdf. )
-         </div>
+            </div>
         </div>
         
         <?php include 'footer.php';?>
