@@ -20,7 +20,10 @@
 <body>
     <?php include 'header.php';?>
         <div id="main_content">
-        <a id="arrow_left" class="arrow"><img src="img/arrowLeft.jpg" id="arrow_left_img" alt="arrow left"/></a>
+        <!--<a id="arrow_left" class="arrow"><img src="img/arrow-right.png" id="arrow_left_img" alt="arrow left"/></a>-->
+            <div class="nav">
+                <label for="prev_diary" class="prev">&#x2039;</label>
+            </div>
             <div id="detail_content">
                 <div id="text_info" class="trans">
                     <h1>Datum</h1>
@@ -88,7 +91,10 @@
                     </ul>
                 </div>
             </div>
-            <a id="arrow_right" class="arrow"><img src="img/arrowRight.jpg" id="arrow_right_img" alt="arrow right"/></a>
+            <!--<a id="arrow_right" class="arrow"><img src="img/arrow-right.png" id="arrow_right_img" alt="arrow right"/></a>-->
+            <div class="nav">
+                <label for="next_diary" class="next">&#x203a;</label>
+            </div>
         </div>
         
         <?php include 'footer.php';?>

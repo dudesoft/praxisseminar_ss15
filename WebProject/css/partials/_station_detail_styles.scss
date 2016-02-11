@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito|Signika|Pacifico|Quicksand|Patua+One|Chewy|Fredoka+One|Cabin+Condensed|Courgette|Audiowide|Days+One);
+
 #main_content{
     background-image: url(../img/pergament-background.png);
     background-position: center center;
@@ -89,17 +91,31 @@ video {
     border-radius: 2px;
 }
 
-#arrow_left_img {
-    width: 2%;
-    float: left;
+.nav label {
+    top: 10%;
     position: absolute;
-    top: 50%;
-    left: 2%;
+
+    opacity: 0.3;
+    cursor: pointer;
+
+    color: #FFF;
+    font-size: 120pt;
+    text-align: center;
+    line-height: 380px;
+    font-family: 'Nunito', sans-serif;
+   
+    text-shadow: 0px 0px 15px rgb(119, 119, 119);
+    transition: opacity .2s;
 }
-#arrow_right_img{
-    width: 2%;
-    float: right;
-    position:absolute;
-    top: 50%;
-    left: 96%;
+
+.nav label:hover { 
+    opacity: 1; 
+}
+
+.nav .next {
+   right: 2%;
+}
+
+.nav .prev {
+    left: 2%;
 }
