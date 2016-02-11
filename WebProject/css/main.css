@@ -12,15 +12,45 @@
   top: 100px;
   bottom: 60px; }
 
+/*#text_content {
+    padding-left: 250px;
+    padding-right: 250px;
+    font-family: Segoe UI;
+    bottom: 60px;
+}
+
+h2 {
+    color: black;
+    padding-left: 250px;
+    font-family: papyrus;
+}*/
+.trans_background {
+  background-image: url(../img/transparentBackground.png);
+  border-bottom: white 1px solid;
+  border-top: white 1px solid; }
+
+/* Content */
+#main_content {
+  position: absolute;
+  width: 100%;
+  top: 100px;
+  bottom: 60px; }
+
+#link_content {
+  position: absolute;
+  width: 100%;
+  top: 100px;
+  bottom: 60px; }
+
 #text_content {
-  color: white;
+  color: black;
   padding-left: 250px;
   padding-right: 250px;
   font-family: Segoe UI;
   bottom: 60px; }
 
 h2 {
-  color: white;
+  color: black;
   padding-left: 250px;
   font-family: papyrus; }
 
@@ -38,39 +68,12 @@ h2 {
   bottom: 60px; }
 
 #text_content {
-  color: white;
   padding-left: 250px;
   padding-right: 250px;
   font-family: Segoe UI;
   bottom: 60px; }
 
 h2 {
-  color: white;
-  padding-left: 250px;
-  font-family: papyrus; }
-
-/* Content */
-#main_content {
-  position: absolute;
-  width: 100%;
-  top: 100px;
-  bottom: 60px; }
-
-#link_content {
-  position: absolute;
-  width: 100%;
-  top: 100px;
-  bottom: 60px; }
-
-#text_content {
-  color: white;
-  padding-left: 250px;
-  padding-right: 250px;
-  font-family: Segoe UI;
-  bottom: 60px; }
-
-h2 {
-  color: white;
   padding-left: 250px;
   font-family: papyrus; }
 
@@ -349,13 +352,11 @@ textarea {
   h2,
   h3 {
     page-break-after: avoid; } }
-#main_content {
+#detail_content {
   background-image: url(../img/pergament-background.png);
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 100% 100%, auto auto; }
-
-#detail_content {
+  background-size: 100% 100%, auto auto;
   position: absolute;
   width: 70%;
   top: 20px;

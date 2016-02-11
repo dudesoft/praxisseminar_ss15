@@ -21,10 +21,11 @@
     <div id="wrapper">
         <?php include 'header.php';?>
         
-        <div id="link_content">
-        <h2>Über Uns</h1>
-        <div id="text_content">Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text.
-         Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text </div>
+        <div id="link_content" class="trans_background">
+        <h2>Über Uns</h2>
+            <div id="text_content">Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text.
+            Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text 
+            </div>
         </div>
 
         <?php include 'footer.php';?>
