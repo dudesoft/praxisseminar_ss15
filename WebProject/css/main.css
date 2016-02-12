@@ -360,7 +360,8 @@ textarea {
   background-image: url(../img/pergament-background.png);
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 100% 100%, auto auto; }
+  background-size: 95% 100%, auto auto;
+  -webkit-filter: drop-shadow(10px 10px 20px black); }
 
 #detail_content {
   position: absolute;
@@ -373,8 +374,20 @@ textarea {
   margin-left: auto;
   margin-right: auto; }
 
+/*scrollbar properties*/
+::-webkit-scrollbar {
+  width: 1em; }
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
+
+::-webkit-scrollbar-thumb {
+  background-color: grey;
+  outline: 1px solid slategrey; }
+
 h1 {
-  text-align: center; }
+  text-align: center;
+  font-family: 'Nunito'; }
 
 #text_info {
   float: left;
@@ -422,6 +435,11 @@ h1 {
 .slidee li.active {
   box-shadow: 0px 0px 0px 2px orange inset; }
 
+.slidee li:hover {
+  cursor: pointer;
+  opacity: 0.3;
+  transition: opacity .2s; }
+
 video {
   width: 320px;
   height: 240px; }
@@ -434,7 +452,7 @@ video {
   border-radius: 2px; }
 
 .nav label {
-  top: 10%;
+  top: 5%;
   position: absolute;
   opacity: 0.3;
   cursor: pointer;
@@ -579,7 +597,11 @@ video {
 
 #cboxContent {
   background: #fff;
-  overflow: hidden; }
+  overflow: hidden;
+  border-style: solid;
+  border-width: 10px;
+  border-color: white;
+  border-radius: 2px; }
 
 .cboxIframe {
   background: #fff; }
