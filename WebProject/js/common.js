@@ -18,7 +18,7 @@ requirejs.config({
         },
         'colorbox': {
             deps: ['jquery']
-        }
+        },
         'popover_header': {
             deps: ['jquery']
         }
