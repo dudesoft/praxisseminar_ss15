@@ -4,6 +4,8 @@ body {
     padding: 0;
     height: 100%;
     position: relative;
+    font-color: $standard_color;
+    background-image: url("/praxisseminar_ss15/WebProject/img/wood2.jpg");
 }
 
 #wrapper {
@@ -17,35 +19,101 @@ body {
 header {
     position: relative;
     padding: 0px;
-    height: $header_footer_height;
+    height: $header_height;
 }
 
-.navigation_element {
-    background-color: $color_nav_element;
+#logo {
+    float: left;
 }
 
 #header_icon {
     float: left;
-    height: $header_footer_height;
+    height: 94px;
     width: auto;
+    padding-left: 20px;
+    padding-top: 3px;
+}
+
+#name-logo {
+    /*position: absolute;
+    left: 8%;*/
+    float: right;
+    font-size: 230%;
+    font-weight: bold;
+    margin: 25px;
+    color: $standard_color;
+    font-family: papyrus;
 }
 
 #search_bar {
     position: absolute;
-    top: 50%;
+    top: 40px;
+    width: 250px;
+    right: 4%;
     transform: translateY(-50%);
-    right: 20px;
 }
+
+#search-input {
+    background-color: transparent;
+    height: 20px;
+    font-family: Segoe UI;
+    color: $standard_color;
+    width: 200px;
+}
+
+#search-button {
+    background-color: transparent;
+    color: $standard_color;
+}
+
+/* Pop-Over */
 
 #pop_over {
     position: absolute;
-    bottom: 0px;
-    right: 20px;
+    width: 150px;
+    height: 25px;
+    top: 57%;
+    right: 3%;
+    font-family: Segoe UI;
+    font-size: 12px;
+    background-color: $standard_color;
+    border-color: #fef7ef;
 }
 
 #pop_over_content {
     width: 220px;
     height: 300px;
+    font-size: 12px;
+    font-family: Segoe UI;
+}
+
+#enter_search {
+    float: right;
+    margin-top: 5px;
+    border-radius: 10px;
+    background-color: green;
+    color: white;
+}
+
+/* Hide popover contents */
+
+#pop_over_content {
+    display: none;
+}
+
+p{
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-style: bold;
+}
+
+#min_date_input, #max_date_input{
+    margin-bottom: 5px;
+}
+
+.form-group{
+    margin: 0px;
 }
 
 
@@ -55,7 +123,19 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: $header_footer_height;
+    height: $footer_height;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:focus,
+a:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color: $standard_color;
 }
 
 #link_container {
@@ -68,6 +148,9 @@ footer {
 .footer_link {
     margin-left: 20px;
     margin-right: 20px;
+    font-family: papyrus;
+    color: $standard_color;
+    text-decoration: none;
 }
 
 
@@ -76,14 +159,8 @@ footer {
 #main_content {
     position: absolute;
     width: 100%;
-    top: 100px;
-    bottom: 100px;
-}
-
-/* Hide popover contents */
-
-#pop_over_content {
-    display: none;
+    top: $header_height;
+    bottom: $footer_height;
 }
 
 
@@ -146,39 +223,23 @@ textarea {
    ========================================================================== */
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ==========================================================================
    Media Queries
    ========================================================================== */
 
-   @media only screen and (min-width: 35em) {
+@media only screen and (min-width: 35em) {}
 
-   }
+@media print,
+(-o-min-device-pixel-ratio: 5/4),
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 120dpi) {}
 
-   @media print,
-   (-o-min-device-pixel-ratio: 5/4),
-   (-webkit-min-device-pixel-ratio: 1.25),
-   (min-resolution: 120dpi) {
-
-   }
 
 /* ==========================================================================
    Helper classes
    ========================================================================== */
 
-   .hidden {
+.hidden {
     display: none !important;
     visibility: hidden;
 }
@@ -222,11 +283,12 @@ textarea {
     *zoom: 1;
 }
 
+
 /* ==========================================================================
    Print styles
    ========================================================================== */
 
-   @media print {
+@media print {
     *,
     *:before,
     *:after {
@@ -235,51 +297,41 @@ textarea {
         box-shadow: none !important;
         text-shadow: none !important;
     }
-
     a,
     a:visited {
         text-decoration: underline;
     }
-
     a[href]:after {
         content: " (" attr(href) ")";
     }
-
     abbr[title]:after {
         content: " (" attr(title) ")";
     }
-
     a[href^="#"]:after,
     a[href^="javascript:"]:after {
         content: "";
     }
-
     pre,
     blockquote {
         border: 1px solid #999;
         page-break-inside: avoid;
     }
-
     thead {
         display: table-header-group;
     }
-
     tr,
     img {
         page-break-inside: avoid;
     }
-
     img {
         max-width: 100% !important;
     }
-
     p,
     h2,
     h3 {
         orphans: 3;
         widows: 3;
     }
-
     h2,
     h3 {
         page-break-after: avoid;
