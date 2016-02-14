@@ -33,7 +33,7 @@
                 <div id="mini_map" class="trans">
                     <p>Minimap</p>
                 </div>
-                <div id="picture_gallery" class="frame trans">
+                <div id="picture_gallery" class="frame trans gallery">
                     <ul id="pic_gallery_content" class="slidee">
                         <li>huehue1</li>
                         <li>huehue2</li>
@@ -51,7 +51,7 @@
                         <li>huehuehue15</li>
                     </ul>
                 </div>
-                <div id="audio_gallery" class="frame trans">
+                <div id="audio_gallery" class="frame trans gallery">
                     <ul id="audio_gallery_content" class="slidee">
                         <li>hue1audio</li>
                         <li>huehue2audio</li>
@@ -70,7 +70,7 @@
                         <li>huehuehue15audio</li>
                     </ul>
                 </div>
-                <div id="video_gallery" class="frame trans">
+                <div id="video_gallery" class="frame trans gallery">
                     <ul id="vid_gallery_content" class="slidee">
                         <li>hue1</li>
                         <li>huehue2</li>

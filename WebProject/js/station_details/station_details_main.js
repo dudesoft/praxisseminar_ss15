@@ -1,4 +1,10 @@
 require(['jquery', 'station_details/MediaPlayerFactory', 'popover_header', 'sly', 'colorbox'], function($, factory) {
+    $(".gallery").click(function() {
+        $.colorbox({
+            html: factory.getVideoPlayer("big_buck_bunny.mp4")
+        });
+    });
+
     $('#picture_gallery, #audio_gallery, #video_gallery').sly({
         horizontal: 1,
 
@@ -16,9 +22,4 @@ require(['jquery', 'station_details/MediaPlayerFactory', 'popover_header', 'sly'
         speed: 600,
         startAt: 2
     });
-
-    $.colorbox({
-        html: factory.getAudioPlayer("big_buck_bunny.mp4")
-    });
-
 });
