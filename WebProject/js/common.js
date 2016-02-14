@@ -7,7 +7,7 @@ requirejs.config({
         'popover': 'vendor/jquery.webui-popover',
         'leaflet': 'vendor/leaflet/leaflet',
         'sly': 'vendor/sly.min',
-        'colorbox': 'vendor/jquery.colorbox-min'
+        'colorbox': 'vendor/jquery.colorbox-min',
     },
     shim: {
         'popover': {

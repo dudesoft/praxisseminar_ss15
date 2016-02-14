@@ -1,4 +1,4 @@
-require(['jquery', 'MediaPlayerFactory', 'popover_header', 'sly', 'colorbox'], function($, factory) {
+require(['jquery', 'station_details/MediaPlayerFactory', 'popover_header', 'sly', 'colorbox'], function($, factory) {
     $('#picture_gallery, #audio_gallery, #video_gallery').sly({
         horizontal: 1,
 
@@ -18,7 +18,7 @@ require(['jquery', 'MediaPlayerFactory', 'popover_header', 'sly', 'colorbox'], f
     });
 
     $.colorbox({
-        html: factory.getAudioPlayer("big_buck_bunny.mp4") 
+        html: factory.getAudioPlayer("big_buck_bunny.mp4")
     });
 
 });
