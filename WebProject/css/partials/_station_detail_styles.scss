@@ -10,7 +10,6 @@
     background-repeat: no-repeat;
     background-size: 95% 100%, auto auto;
     -webkit-filter: drop-shadow(10px 10px 20px black);
-
 }
 
 #detail_content {
@@ -119,13 +118,9 @@ video {
     border-radius: 2px;
 }
 
-.nav label {
-    top: 5%;
-    position: absolute;
-
+label {
     opacity: 0.3;
     cursor: pointer;
-
     color: #FFF;
     font-size: 120pt;
     text-align: center;
@@ -136,14 +131,28 @@ video {
     transition: opacity .2s;
 }
 
-.nav label:hover { 
+label:hover { 
     opacity: 1; 
 }
 
-.nav .next {
-   right: 2%;
+.nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.nav .prev {
-    left: 2%;
+.navigation_element{
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+
+    width: 20%;
+}
+
+.nav_left{
+    left: 10px;
+}
+
+.nav_right{
+    right: 10px;
 }
