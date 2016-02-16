@@ -20,7 +20,6 @@
 <body>
     <?php include 'header.php';?>
         <div id="main_content_station">
-        <!--<a id="arrow_left" class="arrow"><img src="img/arrow-right.png" id="arrow_left_img" alt="arrow left"/></a>-->
             <div class="nav">
                 <label for="prev_diary" class="prev">&#x2039;</label>
             </div>
@@ -34,7 +33,7 @@
                 <div id="mini_map" class="trans">
                     <p>Minimap</p>
                 </div>
-                <div id="picture_gallery" class="frame trans">
+                <div id="picture_gallery" class="frame trans gallery">
                     <ul id="pic_gallery_content" class="slidee">
                         <li>huehue1</li>
                         <li>huehue2</li>
@@ -52,7 +51,7 @@
                         <li>huehuehue15</li>
                     </ul>
                 </div>
-                <div id="audio_gallery" class="frame trans">
+                <div id="audio_gallery" class="frame trans gallery">
                     <ul id="audio_gallery_content" class="slidee">
                         <li>hue1audio</li>
                         <li>huehue2audio</li>
@@ -71,7 +70,7 @@
                         <li>huehuehue15audio</li>
                     </ul>
                 </div>
-                <div id="video_gallery" class="frame trans">
+                <div id="video_gallery" class="frame trans gallery">
                     <ul id="vid_gallery_content" class="slidee">
                         <li>hue1</li>
                         <li>huehue2</li>
@@ -91,16 +90,15 @@
                     </ul>
                 </div>
             </div>
-            <!--<a id="arrow_right" class="arrow"><img src="img/arrow-right.png" id="arrow_right_img" alt="arrow right"/></a>-->
             <div class="nav">
                 <label for="next_diary" class="next">&#x203a;</label>
             </div>
         </div>
-        
+
         <?php include 'footer.php';?>
             <script data-main="js/common" src="js/vendor/require.js"></script>
             <script>
-            require(['station_details_main']);
+            require(['station_details/station_details_main']);
             </script>
 </body>
 

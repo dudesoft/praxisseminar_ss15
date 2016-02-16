@@ -84,7 +84,7 @@ body {
   height: 100%;
   position: relative;
   font-color: #D1C192;
-  background-image: url("/praxisseminar_ss15/WebProject/img/wood2.jpg"); }
+  background-image: url(../img/wood2.jpg); }
 
 #wrapper {
   min-height: 100%;
@@ -597,11 +597,7 @@ video {
 
 #cboxContent {
   background: #fff;
-  overflow: hidden;
-  border-style: solid;
-  border-width: 10px;
-  border-color: white;
-  border-radius: 2px; }
+  overflow: hidden; }
 
 .cboxIframe {
   background: #fff; }
