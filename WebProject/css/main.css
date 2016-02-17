@@ -84,7 +84,7 @@ body {
   height: 100%;
   position: relative;
   font-color: #D1C192;
-  background-image: url("/praxisseminar_ss15/WebProject/img/wood2.jpg"); }
+  background-image: url(../img/wood2.jpg); }
 
 #wrapper {
   min-height: 100%;
@@ -495,9 +495,7 @@ video {
   border-color: white;
   border-radius: 2px; }
 
-.nav label {
-  top: 5%;
-  position: absolute;
+label {
   opacity: 0.3;
   cursor: pointer;
   color: #FFF;
@@ -508,14 +506,25 @@ video {
   text-shadow: 0px 0px 15px #777777;
   transition: opacity .2s; }
 
-.nav label:hover {
+label:hover {
   opacity: 1; }
 
-.nav .next {
-  right: 2%; }
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); }
 
-.nav .prev {
-  left: 2%; }
+.navigation_element {
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  width: 20%; }
+
+.nav_left {
+  left: 10px; }
+
+.nav_right {
+  right: 10px; }
 
 /*
     Colorbox Core Style:
