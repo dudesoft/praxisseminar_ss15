@@ -13,54 +13,6 @@ body {
     position: relative;
 }
 
-/* Styles erweiterte Suche neu */
-
-.dropdown.dropdown-lg .dropdown-menu {
-    margin-top: -1px;
-    padding: 6px 20px;
-}
-.input-group-btn .btn-group {
-    display: flex !important;
-}
-.btn-group .btn {
-    border-radius: 0;
-    margin-left: -1px;
-}
-.btn-group .btn:last-child {
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-}
-.btn-group .form-horizontal .btn[type="submit"] {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-.form-horizontal .form-group {
-    margin-left: 0;
-    margin-right: 0;
-}
-.form-group .form-control:last-child {
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-}
-
-#advancedSearchDropdownMenu{
-    background-image: url(../img/transBackgroundSearchBar.png);
-    background-color: transparent; 
-    font-family: Segoe UI;
-    width: 256px;
-    padding-left: 18px;
-    padding-right: 18px;
-}
-
-#advancedSearchButton{
-    background-color: transparent;
-    color: $standard_color;
-}
-
-#location_input, #interpret_input, #instrument_input{
-    width: 200px;
-}
-
 
 /* Header */
 
@@ -68,7 +20,6 @@ header {
     position: relative;
     padding: 0px;
     height: $header_height;
-    z-index: 10000;
 }
 
 #logo {
@@ -163,7 +114,6 @@ p{
 
 .form-group{
     margin: 0px;
-    float: left;
 }
 
 
@@ -206,15 +156,12 @@ a:hover {
 
 /* Content */
 
-
 #main_content {
     position: absolute;
     width: 100%;
     top: $header_height;
     bottom: $footer_height;
-    background-color: transparent;
 }
-
 
 
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */

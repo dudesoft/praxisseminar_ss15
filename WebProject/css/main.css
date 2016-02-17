@@ -90,55 +90,11 @@ body {
   min-height: 100%;
   position: relative; }
 
-/* Styles erweiterte Suche neu */
-.dropdown.dropdown-lg .dropdown-menu {
-  margin-top: -1px;
-  padding: 6px 20px; }
-
-.input-group-btn .btn-group {
-  display: flex !important; }
-
-.btn-group .btn {
-  border-radius: 0;
-  margin-left: -1px; }
-
-.btn-group .btn:last-child {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px; }
-
-.btn-group .form-horizontal .btn[type="submit"] {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px; }
-
-.form-horizontal .form-group {
-  margin-left: 0;
-  margin-right: 0; }
-
-.form-group .form-control:last-child {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px; }
-
-#advancedSearchDropdownMenu {
-  background-image: url(../img/transBackgroundSearchBar.png);
-  background-color: transparent;
-  font-family: Segoe UI;
-  width: 256px;
-  padding-left: 18px;
-  padding-right: 18px; }
-
-#advancedSearchButton {
-  background-color: transparent;
-  color: #D1C192; }
-
-#location_input, #interpret_input, #instrument_input {
-  width: 200px; }
-
 /* Header */
 header {
   position: relative;
   padding: 0px;
-  height: 100px;
-  z-index: 10000; }
+  height: 100px; }
 
 #logo {
   float: left; }
@@ -217,8 +173,7 @@ p {
   margin-bottom: 5px; }
 
 .form-group {
-  margin: 0px;
-  float: left; }
+  margin: 0px; }
 
 /* Footer */
 footer {
@@ -255,8 +210,7 @@ a:hover {
   position: absolute;
   width: 100%;
   top: 100px;
-  bottom: 60px;
-  background-color: transparent; }
+  bottom: 60px; }
 
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
 html {
