@@ -127,7 +127,7 @@ body {
   padding-right: 18px; }
 
 #advancedSearchButton {
-  background-color: transparent;
+  background-color: #190a05;
   color: #D1C192; }
 
 #location_input, #interpret_input, #instrument_input {
@@ -138,7 +138,7 @@ header {
   position: relative;
   padding: 0px;
   height: 100px;
-  z-index: 10000; }
+  z-index: 9; }
 
 #logo {
   float: left; }
@@ -168,14 +168,14 @@ header {
   transform: translateY(-50%); }
 
 #search-input {
-  background-color: transparent;
+  background-color: #190a05;
   height: 20px;
   font-family: Segoe UI;
   color: #D1C192;
   width: 200px; }
 
 #search-button {
-  background-color: transparent;
+  background-color: #190a05;
   color: #D1C192; }
 
 /* Pop-Over */
@@ -187,8 +187,7 @@ header {
   right: 3%;
   font-family: Segoe UI;
   font-size: 12px;
-  background-color: #D1C192;
-  border-color: #fef7ef; }
+  background-color: #D1C192; }
 
 #pop_over_content {
   width: 220px;
@@ -407,6 +406,7 @@ textarea {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 95% 100%, auto auto;
+  padding-left: 111px;
   -webkit-filter: drop-shadow(10px 10px 20px black); }
 
 #detail_content {
