@@ -90,11 +90,55 @@ body {
   min-height: 100%;
   position: relative; }
 
+/* Styles erweiterte Suche neu */
+.dropdown.dropdown-lg .dropdown-menu {
+  margin-top: -1px;
+  padding: 6px 20px; }
+
+.input-group-btn .btn-group {
+  display: flex !important; }
+
+.btn-group .btn {
+  border-radius: 0;
+  margin-left: -1px; }
+
+.btn-group .btn:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px; }
+
+.btn-group .form-horizontal .btn[type="submit"] {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px; }
+
+.form-horizontal .form-group {
+  margin-left: 0;
+  margin-right: 0; }
+
+.form-group .form-control:last-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px; }
+
+#advancedSearchDropdownMenu {
+  background-image: url(../img/transBackgroundSearchBar.png);
+  background-color: transparent;
+  font-family: Segoe UI;
+  width: 256px;
+  padding-left: 18px;
+  padding-right: 18px; }
+
+#advancedSearchButton {
+  background-color: #190a05;
+  color: #D1C192; }
+
+#location_input, #interpret_input, #instrument_input {
+  width: 200px; }
+
 /* Header */
 header {
   position: relative;
   padding: 0px;
-  height: 100px; }
+  height: 100px;
+  z-index: 9; }
 
 #logo {
   float: left; }
@@ -124,14 +168,14 @@ header {
   transform: translateY(-50%); }
 
 #search-input {
-  background-color: transparent;
+  background-color: #190a05;
   height: 20px;
   font-family: Segoe UI;
   color: #D1C192;
   width: 200px; }
 
 #search-button {
-  background-color: transparent;
+  background-color: #190a05;
   color: #D1C192; }
 
 /* Pop-Over */
@@ -143,8 +187,7 @@ header {
   right: 3%;
   font-family: Segoe UI;
   font-size: 12px;
-  background-color: #D1C192;
-  border-color: #fef7ef; }
+  background-color: #D1C192; }
 
 #pop_over_content {
   width: 220px;
@@ -173,7 +216,8 @@ p {
   margin-bottom: 5px; }
 
 .form-group {
-  margin: 0px; }
+  margin: 0px;
+  float: left; }
 
 /* Footer */
 footer {
@@ -210,7 +254,8 @@ a:hover {
   position: absolute;
   width: 100%;
   top: 100px;
-  bottom: 60px; }
+  bottom: 60px;
+  background-color: transparent; }
 
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
 html {
@@ -361,6 +406,7 @@ textarea {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 95% 100%, auto auto;
+  padding-left: 111px;
   -webkit-filter: drop-shadow(10px 10px 20px black); }
 
 #detail_content {
@@ -451,9 +497,7 @@ video {
   border-color: white;
   border-radius: 2px; }
 
-.nav label {
-  top: 5%;
-  position: absolute;
+label {
   opacity: 0.3;
   cursor: pointer;
   color: #FFF;
@@ -464,14 +508,25 @@ video {
   text-shadow: 0px 0px 15px #777777;
   transition: opacity .2s; }
 
-.nav label:hover {
+label:hover {
   opacity: 1; }
 
-.nav .next {
-  right: 2%; }
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); }
 
-.nav .prev {
-  left: 2%; }
+.navigation_element {
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  width: 20%; }
+
+.nav_left {
+  left: 10px; }
+
+.nav_right {
+  right: 10px; }
 
 /*
     Colorbox Core Style:

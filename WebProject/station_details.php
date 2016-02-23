@@ -20,9 +20,9 @@
 <body>
     <?php include 'header.php';?>
         <div id="main_content_station">
-            <div class="nav">
-                <label for="prev_diary" class="prev">&#x2039;</label>
-            </div>
+            
+            <label for="prev_diary" class="nav nav_left">&#x2039;</label>
+            
             <div id="detail_content">
                 <div id="text_info" class="trans">
                     <h1>Datum</h1>
@@ -90,9 +90,9 @@
                     </ul>
                 </div>
             </div>
-            <div class="nav">
-                <label for="next_diary" class="next">&#x203a;</label>
-            </div>
+            
+            <label for="next_diary" class="nav nav_right">&#x203a;</label>
+       
         </div>
 
         <?php include 'footer.php';?>
