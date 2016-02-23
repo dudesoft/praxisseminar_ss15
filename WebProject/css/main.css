@@ -255,7 +255,7 @@ a:hover {
   width: 100%;
   top: 100px;
   bottom: 60px;
-  background-color: transparent; }
+  background: rgba(255, 255, 255, 0.3); }
 
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
 html {
