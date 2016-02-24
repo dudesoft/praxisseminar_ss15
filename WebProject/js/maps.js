@@ -5,7 +5,7 @@ define(['leaflet'], function(leaflet) {
     var locationLayer = leaflet.layerGroup();
 
     var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-    var osm = new leaflet.TileLayer('https://api.tiles.mapbox.com/v4/andipri.o4il298m/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYW5kaXByaSIsImEiOiJjaWd0c2l0cnMwMGY1dnZrbGV1ZzdhNmwzIn0.MJRx4pntHRsGq17ZJ6xBSQ', {
+    var osm = new leaflet.TileLayer('https://api.tiles.mapbox.com/v4/andipri.0a769b03/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYW5kaXByaSIsImEiOiJjaWd0c2l0cnMwMGY1dnZrbGV1ZzdhNmwzIn0.MJRx4pntHRsGq17ZJ6xBSQ', {
         minZoom: 3,
         maxZoom: 13,
         attribution: osmAttrib
@@ -16,12 +16,35 @@ define(['leaflet'], function(leaflet) {
         bounds = leaflet.latLngBounds(southWest, northEast);
 
     var map = leaflet.map('main_content', {
-        center: [28.635308, 77.22496],
+        center: [42.135308, 20.52496],
         zoom: 8,
         layers: [osm, locationLayer],
         maxBounds: bounds
     });
 
+    $.ajax({
+        type: 'GET',
+        url: 'sql/get_locations.php',
+        cache: 'true',
+        dataType: 'json',
+        success: function(response) {
+            fillLocationData(response);
+        },
+        error: function() {
+            alert("Fehler beim Laden der Ortsdaten");
+        }
+    });
+
+    var fillLocationData = function(data) {
+        var locationLayer = leaflet.layerGroup();
+        console.log("done!");
+
+        data.forEach(function(location) {
+            new leaflet.marker([location.latitude, location.longitude]).bindPopup(location.name).addTo(locationLayer);
+        })
+
+        locationLayer.addTo(map);
+    }
 });
 
 
