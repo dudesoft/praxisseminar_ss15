@@ -1,4 +1,4 @@
-define(['leaflet'], function(leaflet) {
+define(['leaflet', 'db_connector'], function(leaflet, db) {
     // get rid of global dependencies
     L.noConflict();
 
@@ -22,22 +22,10 @@ define(['leaflet'], function(leaflet) {
         maxBounds: bounds
     });
 
-    $.ajax({
-        type: 'GET',
-        url: 'sql/get_locations.php',
-        cache: 'true',
-        dataType: 'json',
-        success: function(response) {
-            fillLocationData(response);
-        },
-        error: function() {
-            alert("Fehler beim Laden der Ortsdaten");
-        }
-    });
+    db.getAllLocations(fillLocationData);
 
-    var fillLocationData = function(data) {
+    function fillLocationData(data) {
         var locationLayer = leaflet.layerGroup();
-        console.log("done!");
 
         data.forEach(function(location) {
             new leaflet.marker([location.latitude, location.longitude]).bindPopup(location.name).addTo(locationLayer);
