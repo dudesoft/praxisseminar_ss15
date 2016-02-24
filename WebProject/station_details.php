@@ -43,12 +43,7 @@
                         <li>hue7</li>
                         <li>huehue8</li>
                         <li>huehuehue9</li>
-                        <li>hue10</li>
-                        <li>huehue11</li>
-                        <li>huehuehue12</li>
-                        <li>hue13</li>
-                        <li>huehue14</li>
-                        <li>huehuehue15</li>
+
                     </ul>
                 </div>
                 <div id="audio_gallery" class="frame trans gallery">
@@ -74,19 +69,6 @@
                     <ul id="vid_gallery_content" class="slidee">
                         <li>hue1</li>
                         <li>huehue2</li>
-                        <li>huehuehue3</li>
-                        <li>hue4</li>
-                        <li>huehue5</li>
-                        <li>huehuehue6</li>
-                        <li>hue7</li>
-                        <li>huehue8</li>
-                        <li>huehuehue9</li>
-                        <li>hue10</li>
-                        <li>huehue11</li>
-                        <li>huehuehue12</li>
-                        <li>hue13</li>
-                        <li>huehue14</li>
-                        <li>huehuehue15</li>
                     </ul>
                 </div>
             </div>
