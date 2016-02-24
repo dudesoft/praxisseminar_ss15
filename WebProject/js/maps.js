@@ -16,12 +16,35 @@ define(['leaflet'], function(leaflet) {
         bounds = leaflet.latLngBounds(southWest, northEast);
 
     var map = leaflet.map('main_content', {
-        center: [28.635308, 77.22496],
+        center: [42.135308, 20.52496],
         zoom: 8,
         layers: [osm, locationLayer],
         maxBounds: bounds
     });
 
+    $.ajax({
+        type: 'GET',
+        url: 'sql/get_locations.php',
+        cache: 'true',
+        dataType: 'json',
+        success: function(response) {
+            fillLocationData(response);
+        },
+        error: function() {
+            alert("Fehler beim Laden der Ortsdaten");
+        }
+    });
+
+    var fillLocationData = function(data) {
+        var locationLayer = leaflet.layerGroup();
+        console.log("done!");
+
+        data.forEach(function(location) {
+            new leaflet.marker([location.latitude, location.longitude]).bindPopup(location.name).addTo(locationLayer);
+        })
+
+        locationLayer.addTo(map);
+    }
 });
 
 
