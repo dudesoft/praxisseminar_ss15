@@ -34,40 +34,41 @@
                 </div>
                 <div id="picture_gallery" class="frame trans gallery">
                     <ul id="pic_gallery_content" class="slidee">
-                        <li>huehue1</li>
-                        <li>huehue2</li>
-                        <li>hue4</li>
-                        <li>huehue5</li>
-                        <li>huehuehue6</li>
-                        <li>hue7</li>
-                        <li>huehue8</li>
-                        <li>huehuehue9</li>
+                        <li class="picture">1</li>
+                        <li class="picture">2</li>
+                        <li class="picture">3</li>
+                        <li class="picture">4</li>
+                        <li class="picture">5</li>
+                        <li class="picture">6</li>
+                        <li class="picture">7</li>
+                        <li class="picture">8</li>
 
                     </ul>
                 </div>
                 <div id="audio_gallery" class="frame trans gallery">
                     <ul id="audio_gallery_content" class="slidee">
-                        <li>hue1audio</li>
-                        <li>huehue2audio</li>
-                        <li>huehuehue3audio</li>
-                        <li>hue4audio</li>
-                        <li>huehue5audio</li>
-                        <li>huehuehue6audio</li>
-                        <li>hue7audio</li>
-                        <li>huehue8audio</li>
-                        <li>huehuehue9audio</li>
-                        <li>hue10audio</li>
-                        <li>huehue11audio</li>
-                        <li>huehuehue12audio</li>
-                        <li>hue13audio</li>
-                        <li>huehue14audio</li>
-                        <li>huehuehue15audio</li>
+                        <li class="audio">1</li>
+                        <li class="audio">2</li>
+                        <li class="audio">3</li>
+                        <li class="audio">4</li>
+                        <li class="audio">5</li>
+                        <li class="audio">6</li>
+                        <li class="audio">7</li>
+                        <li class="audio">8</li>
+                        <li class="audio">9</li>
+                        <li class="audio">10</li>
+                        <li class="audio">11</li>
+                        <li class="audio">12</li>
+                        <li class="audio">13</li>
+                        <li class="audio">14</li>
+                        <li class="audio">15</li>
                     </ul>
                 </div>
                 <div id="video_gallery" class="frame trans gallery">
                     <ul id="vid_gallery_content" class="slidee">
-                        <li>hue1</li>
-                        <li>huehue2</li>
+                        <li class="video">1</li>
+                        <li class="video">2</li>
+                        <li class="video">3</li>
                     </ul>
                 </div>
             </div>
