@@ -448,7 +448,6 @@ h1 {
   margin-right: 2%; }
 
 #mini_map {
-  background: green;
   margin-top: 0.5%;
   width: 40%;
   height: 45%;
@@ -527,6 +526,12 @@ label:hover {
 
 .nav_right {
   right: 10px; }
+
+.custom-popup .leaflet-popup-tip,
+.custom-popup .leaflet-popup-content-wrapper {
+  background: #ffffff;
+  color: #000000;
+  bottom: 100px; }
 
 /*
     Colorbox Core Style:

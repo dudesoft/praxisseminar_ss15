@@ -29,9 +29,30 @@ define(['leaflet', 'db_connector'], function(leaflet, db) {
         },
 
         fillLocationData: function(data) {
+            var customOptions = {
+                'className': 'custom-popup'
+            }
+
+            var icon = leaflet.icon({
+                iconUrl: 'js/vendor/leaflet/images/marker-icon.png',
+                shadowUrl: 'js/vendor/leaflet/images/marker-shadow.png',
+                popupAnchor: [14, -1]
+            });
+
             data.forEach(function(location) {
-                new leaflet.marker([location.latitude, location.longitude]).bindPopup(location.name).addTo(locationLayer);
-            })
+                var marker = new leaflet.marker([location.latitude, location.longitude], { icon: icon }).bindPopup(location.name, customOptions).addTo(locationLayer);
+                marker.on('mouseover', function(e) {
+                    this.openPopup();
+                });
+
+                marker.on('mouseout', function(e) {
+                    this.closePopup();
+                });
+
+                marker.on('click', function(e) {
+                    window.open("station_details.php", "_self");
+                });
+            });
 
             locationLayer.addTo(map);
         }
