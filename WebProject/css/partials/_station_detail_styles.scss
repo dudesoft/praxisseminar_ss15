@@ -92,7 +92,7 @@ h1 {
     width: 120px;
     overflow: hidden;
     height: 90%;
-    background: blue;
+    background-color: $gray;
 }
 
 .slidee li.active {
@@ -155,4 +155,25 @@ label:hover {
 
 .nav_right{
     right: 10px;
+}
+
+ul li.picture {
+    background-image: url(../img/img-icon.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 40%;
+}
+  
+ul li.audio {
+    background-image: url(../img/audio-icon.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 40%;
+}
+
+ul li.video {
+    background-image: url(../img/video-icon.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 40%;
 }

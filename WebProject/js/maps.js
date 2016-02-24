@@ -50,7 +50,7 @@ define(['leaflet', 'db_connector'], function(leaflet, db) {
                 });
 
                 marker.on('click', function(e) {
-                    window.open("station_details.php", "_self");
+                    window.open("station_details.php?location=" + location.name, "_self");
                 });
             });
 
