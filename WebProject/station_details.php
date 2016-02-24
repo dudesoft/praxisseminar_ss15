@@ -31,7 +31,6 @@
                     <p class="attribute">Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans. Ein kleines Bächlein namens Duden fließt durch ihren Ort und versorgt sie mit den nötigen Regelialien. Es ist ein paradiesmatisches Land, in dem einem gebratene Satzteile in den Mund fliegen. Nicht einmal von der allmächtigen Interpunktion werden die Blindtexte beherrscht – ein geradezu unorthographisches Leben. Eines Tages aber beschloß eine kleine Zeile Blindtext, ihr Name war Lorem Ipsum, hinaus zu gehen in die weite Grammatik. Der große Oxmox riet ihr davon ab, da es dort wimmele von bösen Kommata, wilden Fragezeichen und hinterhältigen Semikoli, doch das Blindtextchen ließ sich nicht beirren.</p>
                 </div>
                 <div id="mini_map" class="trans">
-                    <p>Minimap</p>
                 </div>
                 <div id="picture_gallery" class="frame trans gallery">
                     <ul id="pic_gallery_content" class="slidee">
@@ -43,13 +42,7 @@
                         <li class="picture">6</li>
                         <li class="picture">7</li>
                         <li class="picture">8</li>
-                        <li class="picture">9</li>
-                        <li class="picture">10</li>
-                        <li class="picture">11</li>
-                        <li class="picture">12</li>
-                        <li class="picture">13</li>
-                        <li class="picture">14</li>
-                        <li class="picture">15</li>
+
                     </ul>
                 </div>
                 <div id="audio_gallery" class="frame trans gallery">
@@ -76,18 +69,6 @@
                         <li class="video">1</li>
                         <li class="video">2</li>
                         <li class="video">3</li>
-                        <li class="video">4</li>
-                        <li class="video">5</li>
-                        <li class="video">6</li>
-                        <li class="video">7</li>
-                        <li class="video">8</li>
-                        <li class="video">9</li>
-                        <li class="video">10</li>
-                        <li class="video">11</li>
-                        <li class="video">12</li>
-                        <li class="video">13</li>
-                        <li class="video">14</li>
-                        <li class="video">15</li>
                     </ul>
                 </div>
             </div>

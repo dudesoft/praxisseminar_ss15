@@ -1,28 +1,44 @@
-define(['leaflet'], function(leaflet) {
+define(['leaflet', 'db_connector'], function(leaflet, db) {
     // get rid of global dependencies
     L.noConflict();
+    var map, locationLayer;
 
-    var locationLayer = leaflet.layerGroup();
+    var Maps = {
+        setupMap: function(containerId) {
+            locationLayer = leaflet.layerGroup();
 
-    var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-    var osm = new leaflet.TileLayer('https://api.tiles.mapbox.com/v4/andipri.o4il298m/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYW5kaXByaSIsImEiOiJjaWd0c2l0cnMwMGY1dnZrbGV1ZzdhNmwzIn0.MJRx4pntHRsGq17ZJ6xBSQ', {
-        minZoom: 3,
-        maxZoom: 13,
-        attribution: osmAttrib
-    });
+            var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+            var osm = new leaflet.TileLayer('https://api.tiles.mapbox.com/v4/andipri.0a769b03/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYW5kaXByaSIsImEiOiJjaWd0c2l0cnMwMGY1dnZrbGV1ZzdhNmwzIn0.MJRx4pntHRsGq17ZJ6xBSQ', {
+                minZoom: 3,
+                maxZoom: 13,
+                attribution: osmAttrib
+            });
 
-    var southWest = leaflet.latLng(250, 250),
-        northEast = leaflet.latLng(-250, -250),
-        bounds = leaflet.latLngBounds(southWest, northEast);
+            var southWest = leaflet.latLng(250, 250),
+                northEast = leaflet.latLng(-250, -250),
+                bounds = leaflet.latLngBounds(southWest, northEast);
 
-    var map = leaflet.map('main_content', {
-        center: [28.635308, 77.22496],
-        zoom: 8,
-        layers: [osm, locationLayer],
-        maxBounds: bounds
-    });
+            map = leaflet.map(containerId, {
+                center: [42.135308, 20.52496],
+                zoom: 8,
+                layers: [osm, locationLayer],
+                maxBounds: bounds
+            });
 
+            db.getAllLocations(this.fillLocationData);
+        },
+
+        fillLocationData: function(data) {
+            data.forEach(function(location) {
+                new leaflet.marker([location.latitude, location.longitude]).bindPopup(location.name).addTo(locationLayer);
+            })
+
+            locationLayer.addTo(map);
+        }
+    };
+    return Maps;
 });
+
 
 
 // setTravelPath();

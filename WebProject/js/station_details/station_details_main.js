@@ -1,4 +1,4 @@
-require(['jquery', 'station_details/MediaPlayerFactory', 'popover_header', 'sly', 'colorbox'], function($, factory) {
+require(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'popover_header', 'sly', 'colorbox'], function($, factory, map) {
     $(".gallery").click(function() {
         $.colorbox({
             html: factory.getVideoPlayer("big_buck_bunny.mp4")
@@ -22,4 +22,6 @@ require(['jquery', 'station_details/MediaPlayerFactory', 'popover_header', 'sly'
         speed: 600,
         startAt: 2
     });
+
+    map.setupMap('mini_map');
 });
