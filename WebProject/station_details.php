@@ -42,14 +42,17 @@
                 <div id="mini_map" class="trans">
                 </div>
                 <div id="picture_gallery" class="frame trans gallery">
+                <span id="image_not_available" class="not_available_label">Für diese Station sind leider (noch) keine Bilder vorhanden.</span>
                     <ul id="pic_gallery_content" class="slidee">
                     </ul>
                 </div>
                 <div id="audio_gallery" class="frame trans gallery">
+                <span id="audio_not_available" class="not_available_label">Für diese Station ist leider (noch) kein Tonmaterial vorhanden.</span>
                     <ul id="audio_gallery_content" class="slidee">
                     </ul>
                 </div>
                 <div id="video_gallery" class="frame trans gallery">
+                <span id="video_not_available" class="not_available_label">Für diese Station sind leider (noch) keine Videos vorhanden.</span>
                     <ul id="vid_gallery_content" class="slidee">
                     </ul>
                 </div>

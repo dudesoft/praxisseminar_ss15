@@ -92,6 +92,15 @@ h1 {
     height: 90%;
 }
 
+.not_available_label {
+    display: none;
+    position: relative;
+    top: 30%;
+    -webkit-transform: translateY(-30%);
+    -ms-transform: translateY(-30%);
+    transform: translateY(-30%);
+}
+
 .slidee li.active {
     box-shadow: 0px 0px 0px 2px orange inset;
 }
@@ -113,6 +122,7 @@ video {
     border-width: 1px;
     border-color: white;
     border-radius: 2px;
+    text-align: center;
 }
 
 label {
