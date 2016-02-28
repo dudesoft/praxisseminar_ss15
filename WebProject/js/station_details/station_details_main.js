@@ -1,25 +1,38 @@
-require(['jquery', 'station_details/MediaPlayerFactory', 'popover_header', 'sly', 'colorbox'], function($, factory) {
-    $(".gallery").click(function() {
-        $.colorbox({
-            html: factory.getVideoPlayer("big_buck_bunny.mp4")
-        });
-    });
+define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 'popover_header', 'sly', 'colorbox'], function($, factory, map, connector) {
 
-    $('#picture_gallery, #audio_gallery, #video_gallery').sly({
-        horizontal: 1,
+    return {
+        setupUI: function() {
+            $(".gallery").click(function() {
+                $.colorbox({
+                    html: factory.getVideoPlayer("big_buck_bunny.mp4")
+                });
+            });
 
-        itemNav: 'basic',
-        smart: 1,
-        activateOn: 'click',
+            $('#picture_gallery, #audio_gallery, #video_gallery').sly({
+                horizontal: 1,
 
-        scrollBy: 1,
+                itemNav: 'basic',
+                smart: 1,
+                activateOn: 'click',
 
-        mouseDragging: 1,
-        swingSpeed: 0.2,
+                scrollBy: 1,
 
-        dragHandle: 1,
+                mouseDragging: 1,
+                swingSpeed: 0.2,
 
-        speed: 600,
-        startAt: 2
-    });
+                dragHandle: 1,
+
+                speed: 600,
+                startAt: 2
+            });
+
+            map.setupMap('mini_map');
+        },
+
+        setupDetails: function(location) {
+            connector.getLocationDetails(location, function(data) {
+                map.scrollToMapPosition(data.latitude, data.longitude);
+            });
+        }
+    }
 });

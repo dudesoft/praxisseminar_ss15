@@ -1,3 +1,3 @@
-define(['popover_header', 'maps'], function() {
-
+define(['maps', 'popover_header'], function(map) {
+    map.setupMap('main_content');
 });

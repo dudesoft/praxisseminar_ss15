@@ -1,6 +1,6 @@
 /* Content */
 @import url(https://fonts.googleapis.com/css?family=Nunito|Signika|Pacifico|Quicksand|Patua+One|Chewy|Fredoka+One|Cabin+Condensed|Courgette|Audiowide|Days+One);
-#main_content {
+#main_content { 
   position: absolute;
   width: 100%;
   top: 100px;
@@ -255,7 +255,7 @@ a:hover {
   width: 100%;
   top: 100px;
   bottom: 60px;
-  background-color: transparent; }
+  background: rgba(255, 255, 255, 0.3); }
 
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
 html {
