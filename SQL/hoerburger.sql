@@ -16,29 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `location`
+-- Table structure for table `images`
 --
 
-DROP TABLE IF EXISTS `location`;
+DROP TABLE IF EXISTS `images`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `location` (
-  `id` int(11) NOT NULL,
-  `name` varchar(45) DEFAULT NULL,
-  `latitude` double DEFAULT NULL,
-  `longitude` double DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+CREATE TABLE `images` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `url` varchar(45) DEFAULT NULL,
+  `location_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `location_id_idx` (`location_id`),
+  CONSTRAINT `location_id` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf16;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `location`
+-- Dumping data for table `images`
 --
 
-LOCK TABLES `location` WRITE;
-/*!40000 ALTER TABLE `location` DISABLE KEYS */;
-INSERT INTO `location` VALUES (45,'345wef',52234,0);
-/*!40000 ALTER TABLE `location` ENABLE KEYS */;
+LOCK TABLES `images` WRITE;
+/*!40000 ALTER TABLE `images` DISABLE KEYS */;
+INSERT INTO `images` VALUES (1,'test',1),(2,'test2',1),(3,'test23',1);
+/*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -49,10 +50,12 @@ DROP TABLE IF EXISTS `locations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `locations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `location` text COLLATE utf8_bin NOT NULL,
   `latitude` double NOT NULL,
-  `longitude` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `longitude` double NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,31 +64,8 @@ CREATE TABLE `locations` (
 
 LOCK TABLES `locations` WRITE;
 /*!40000 ALTER TABLE `locations` DISABLE KEYS */;
-INSERT INTO `locations` VALUES ('Bellobrad/ Belobrod',42.117772,20.683192),('Bidžovo /Bidzhevo',41.229982,20.699209),('Brodosavce/ Brodosanë',42.10843,20.725045),('Frangovo',41.146855,20.626576),('Gjonaj/ Đonaj',42.253673,20.624341),('Gllogovc/ Glogovac',42.621063,20.890502),('Glumovo',41.980211,21.304624),('Krani',40.940113,21.107889),('Nakolec',40.89352,21.10799),('Ohrid',41.123098,20.801648),('Peć',42.659287,20.288736),('Prishtinë/ Priština',42.662914,21.165503),('Radolishta',41.164943,20.626576),('Rugovo',42.683204,21.15798),('Skopje',41.997346,21.427996),('Veleshta',41.235323,20.653321),('Vranishtë/ Vranište',42.042176,20.628996),('Zym/ Zjum',42.113459,20.668293);
+INSERT INTO `locations` VALUES (1,'Bellobrad/ Belobrod',42.117772,20.683192),(2,'Bidžovo /Bidzhevo',41.229982,20.699209),(3,'Brodosavce/ Brodosanë',42.10843,20.725045),(4,'Frangovo',41.146855,20.626576),(5,'Gjonaj/ Đonaj',42.253673,20.624341),(6,'Gllogovc/ Glogovac',42.621063,20.890502),(7,'Glumovo',41.980211,21.304624),(8,'Krani',40.940113,21.107889),(9,'Nakolec',40.89352,21.10799),(10,'Ohrid',41.123098,20.801648),(11,'Peć',42.659287,20.288736),(12,'Prishtinë/ Priština',42.662914,21.165503),(13,'Radolishta',41.164943,20.626576),(14,'Rugovo',42.683204,21.15798),(15,'Skopje',41.997346,21.427996),(16,'Veleshta',41.235323,20.653321),(17,'Vranishtë/ Vranište',42.042176,20.628996),(18,'Zym/ Zjum',42.113459,20.668293);
 /*!40000 ALTER TABLE `locations` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `lolrofl`
---
-
-DROP TABLE IF EXISTS `lolrofl`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `lolrofl` (
-  `idlolrofl` int(11) NOT NULL,
-  `lolroflcol3` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idlolrofl`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `lolrofl`
---
-
-LOCK TABLES `lolrofl` WRITE;
-/*!40000 ALTER TABLE `lolrofl` DISABLE KEYS */;
-/*!40000 ALTER TABLE `lolrofl` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -157,4 +137,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-02-28 14:00:40
+-- Dump completed on 2016-02-28 16:09:20
