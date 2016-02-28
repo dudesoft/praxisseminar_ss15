@@ -4,9 +4,10 @@ $response = array();
 
 foreach($db->query('SELECT * FROM locations') as $row) {
     $location = [
+    "id" => $row['id'],
     "name" => $row['location'],
     "latitude" => $row['latitude'],
-    "longitude" => $row['longitude'],
+    "longitude" => $row['longitude']
     ];
 
     $response[] = $location;

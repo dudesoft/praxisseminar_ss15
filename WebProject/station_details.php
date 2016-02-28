@@ -21,26 +21,18 @@
     <?php include 'header.php';?>
         <div id="main_content_station">
             <label for="prev_diary" class="nav nav_left">&#x2039;</label>
-            <div id="detail_content">
+            <div id="loader_container"></div>
+            <span id="detail_content">
                 <div id="text_info" class="trans">
                     <h1>Datum</h1>
                     <div class="attribute">Ort: <span id="location">
-                    <?php
-
-                    if (isset($_GET["location"])) {
-                        $location = $_GET["location"];
-                        echo $_GET["location"];
-                    } else {
-                        $location = "";
-                        echo "___________";
-                    }
-                    ?>
                     </span></div>
                     <div class="attribute">Dauer: <span id="time">___________</span></div>
                     <p class="attribute">Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans. Ein kleines Bächlein namens Duden fließt durch ihren Ort und versorgt sie mit den nötigen Regelialien. Es ist ein paradiesmatisches Land, in dem einem gebratene Satzteile in den Mund fliegen. Nicht einmal von der allmächtigen Interpunktion werden die Blindtexte beherrscht – ein geradezu unorthographisches Leben. Eines Tages aber beschloß eine kleine Zeile Blindtext, ihr Name war Lorem Ipsum, hinaus zu gehen in die weite Grammatik. Der große Oxmox riet ihr davon ab, da es dort wimmele von bösen Kommata, wilden Fragezeichen und hinterhältigen Semikoli, doch das Blindtextchen ließ sich nicht beirren.</p>
                 </div>
                 <div id="mini_map" class="trans">
                 </div>
+                
                 <div id="picture_gallery" class="frame trans gallery">
                 <span id="image_not_available" class="not_available_label">Für diese Station sind leider (noch) keine Bilder vorhanden.</span>
                     <ul id="pic_gallery_content" class="slidee">
@@ -56,15 +48,19 @@
                     <ul id="vid_gallery_content" class="slidee">
                     </ul>
                 </div>
+            </span>
             </div>
             <label for="next_diary" class="nav nav_right">&#x203a;</label>
-        </div>
-        <?php include 'footer.php';?>
+        <?php include 'footer.php';
+        if (isset($_GET["location_id"])) {
+            $location_id = $_GET["location_id"];
+        }?>
+
             <script data-main="js/common" src="js/vendor/require.js"></script>
             <script>
             require(['station_details/station_details_main'], function(stationDetails) {
-                stationDetails.setupUI();
-                stationDetails.setupDetails(<?php echo json_encode($location); ?>);
+                //stationDetails.setupUI();
+                stationDetails.setupDetails(<?php echo json_encode($location_id); ?>);
             });
             </script>
 </body>

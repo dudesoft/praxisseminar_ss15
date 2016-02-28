@@ -5,9 +5,14 @@ define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 
             map.setupMap('mini_map');
         },
 
-        setupDetails: function(location) {
-            connector.getLocationDetails(location, function(data) {
-                map.scrollToMapPosition(data.latitude, data.longitude);
+        setupDetails: function(locationId) {
+            connector.getLocationDetails(locationId, function(data) {
+                $("#loader_container").fadeOut("fast");
+                $("#detail_content").fadeIn("slow", function() {
+                    map.scrollToMapPosition(data.latitude, data.longitude);
+                });
+                map.setupMap('mini_map');
+                $("#location").html(data.name);
 
                 for (var i = 0; i < data.images.length; i++) {
                     $('#pic_gallery_content').append("<li class='picture'> <img src='" + data.images[i] + "' class='gallery-picture'> </li>");
