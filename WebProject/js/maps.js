@@ -40,7 +40,9 @@ define(['leaflet', 'db_connector'], function(leaflet, db) {
             });
 
             data.forEach(function(location) {
-                var marker = new leaflet.marker([location.latitude, location.longitude], { icon: icon }).bindPopup(location.name, customOptions).addTo(locationLayer);
+                var marker = new leaflet.marker([location.latitude, location.longitude], {
+                    icon: icon
+                }).bindPopup(location.name, customOptions).addTo(locationLayer);
                 marker.on('mouseover', function(e) {
                     this.openPopup();
                 });
@@ -55,6 +57,11 @@ define(['leaflet', 'db_connector'], function(leaflet, db) {
             });
 
             locationLayer.addTo(map);
+        },
+
+        scrollToMapPosition: function(latitude, longitude) {
+            console.log(latitude + " - " + longitude);
+            map.panTo(new leaflet.LatLng(latitude, longitude));
         }
     };
     return Maps;

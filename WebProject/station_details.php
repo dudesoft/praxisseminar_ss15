@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -18,20 +19,21 @@
 
 <body>
     <?php include 'header.php';?>
-
         <div id="main_content_station">
-            
             <label for="prev_diary" class="nav nav_left">&#x2039;</label>
-            
             <div id="detail_content">
                 <div id="text_info" class="trans">
                     <h1>Datum</h1>
                     <div class="attribute">Ort: <span id="location">
                     <?php
-                    if (isset($_GET["location"]))
+
+                    if (isset($_GET["location"])) {
+                        $location = $_GET["location"];
                         echo $_GET["location"];
-                    else
+                    } else {
+                        $location = "";
                         echo "___________";
+                    }
                     ?>
                     </span></div>
                     <div class="attribute">Dauer: <span id="time">___________</span></div>
@@ -49,7 +51,6 @@
                         <li class="picture">6</li>
                         <li class="picture">7</li>
                         <li class="picture">8</li>
-
                     </ul>
                 </div>
                 <div id="audio_gallery" class="frame trans gallery">
@@ -79,15 +80,15 @@
                     </ul>
                 </div>
             </div>
-            
             <label for="next_diary" class="nav nav_right">&#x203a;</label>
-       
         </div>
-
         <?php include 'footer.php';?>
             <script data-main="js/common" src="js/vendor/require.js"></script>
             <script>
-            require(['station_details/station_details_main']);
+            require(['station_details/station_details_main'], function(stationDetails) {
+                stationDetails.setupUI();
+                stationDetails.setupDetails(<?php echo json_encode($location); ?>);
+            });
             </script>
 </body>
 

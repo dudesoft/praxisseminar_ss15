@@ -1,15 +1,16 @@
-    <?php
-        $db = new PDO('mysql:host=localhost;dbname=hoerburger;charset=utf8mb4', 'hoerburger', 'hoerburger');
-        $response = array();
-        foreach($db->query('SELECT * FROM locations') as $row) {
-            $location = [
-            	"name" => $row['location'],
-            	"latitude" => $row['latitude'],
-            	"longitude" => $row['longitude'],
-            ];
+<?php
+$db = new PDO('mysql:host=localhost;dbname=hoerburger;charset=utf8mb4', 'hoerburger', 'hoerburger');
+$response = array();
 
-            $response[] = $location;
-        }
+foreach($db->query('SELECT * FROM locations') as $row) {
+    $location = [
+    "name" => $row['location'],
+    "latitude" => $row['latitude'],
+    "longitude" => $row['longitude'],
+    ];
 
-        echo json_encode($response);
-    ?>
+    $response[] = $location;
+}
+
+echo json_encode($response);
+?>
