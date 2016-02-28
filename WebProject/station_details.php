@@ -43,14 +43,6 @@
                 </div>
                 <div id="picture_gallery" class="frame trans gallery">
                     <ul id="pic_gallery_content" class="slidee">
-                        <li class="picture">1</li>
-                        <li class="picture">2</li>
-                        <li class="picture">3</li>
-                        <li class="picture">4</li>
-                        <li class="picture">5</li>
-                        <li class="picture">6</li>
-                        <li class="picture">7</li>
-                        <li class="picture">8</li>
                     </ul>
                 </div>
                 <div id="audio_gallery" class="frame trans gallery">

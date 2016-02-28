@@ -60,7 +60,6 @@ define(['leaflet', 'db_connector'], function(leaflet, db) {
         },
 
         scrollToMapPosition: function(latitude, longitude) {
-            console.log(latitude + " - " + longitude);
             map.panTo(new leaflet.LatLng(latitude, longitude));
         }
     };
