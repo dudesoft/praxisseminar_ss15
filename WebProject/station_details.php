@@ -47,28 +47,10 @@
                 </div>
                 <div id="audio_gallery" class="frame trans gallery">
                     <ul id="audio_gallery_content" class="slidee">
-                        <li class="audio">1</li>
-                        <li class="audio">2</li>
-                        <li class="audio">3</li>
-                        <li class="audio">4</li>
-                        <li class="audio">5</li>
-                        <li class="audio">6</li>
-                        <li class="audio">7</li>
-                        <li class="audio">8</li>
-                        <li class="audio">9</li>
-                        <li class="audio">10</li>
-                        <li class="audio">11</li>
-                        <li class="audio">12</li>
-                        <li class="audio">13</li>
-                        <li class="audio">14</li>
-                        <li class="audio">15</li>
                     </ul>
                 </div>
                 <div id="video_gallery" class="frame trans gallery">
                     <ul id="vid_gallery_content" class="slidee">
-                        <li class="video">1</li>
-                        <li class="video">2</li>
-                        <li class="video">3</li>
                     </ul>
                 </div>
             </div>

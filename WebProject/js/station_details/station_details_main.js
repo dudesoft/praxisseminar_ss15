@@ -2,8 +2,6 @@ define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 
 
     var StationDetails = {
         setupUI: function() {
-
-
             map.setupMap('mini_map');
         },
 
@@ -14,6 +12,15 @@ define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 
                 for (var i = 0; i < data.images.length; i++) {
                     $('#pic_gallery_content').append("<li class='picture'> <img src='" + data.images[i] + "' class='gallery-picture'> </li>");
                 }
+
+                for (var i = 0; i < data.songs.length; i++) {
+                    $('#audio_gallery_content').append("<li class='audio'></li>");
+                }
+
+                for (var i = 0; i < data.videos.length; i++) {
+                    $('#vid_gallery_content').append("<li class='video'></li>");
+                }
+
 
                 $('#picture_gallery, #audio_gallery, #video_gallery').sly({
                     horizontal: 1,

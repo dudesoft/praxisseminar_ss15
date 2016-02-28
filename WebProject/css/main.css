@@ -534,13 +534,15 @@ ul li.audio {
   background-image: url(../img/audio-icon.png);
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 40%; }
+  background-size: 40%;
+  width: 90px; }
 
 ul li.video {
   background-image: url(../img/video-icon.png);
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 40%; }
+  background-size: 40%;
+  width: 90px; }
 
 .gallery-picture {
   max-height: 100%;
