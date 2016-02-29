@@ -26,10 +26,20 @@ $query = $db -> prepare("SELECT url FROM videos WHERE id IN (" . $video_ids . ")
 $query -> execute();
 $videos = $query->fetchAll(PDO::FETCH_COLUMN, 0);
 
+$names = explode("/", $location['location']);
+$name = trim($names[0]);
+
+if (isset($names[1])) {
+	$alt_name = trim($names[1]);
+} else {
+	$alt_name = NULL;
+}
+
 $response = [
 	"id" => $location['id'],
-	"name" => $location['location'],
-	"latitude" => $location['latitude'],
+    "name" => $name,
+    "altname" => $alt_name,	
+    "latitude" => $location['latitude'],
     "longitude" => $location['longitude'],
     "images" => $images,
     "songs" => $songs,

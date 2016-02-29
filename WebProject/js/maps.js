@@ -1,4 +1,4 @@
-define(['leaflet', 'db_connector'], function(leaflet, db) {
+define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
     // get rid of global dependencies
     L.noConflict();
     var map, locationLayer;
@@ -42,7 +42,7 @@ define(['leaflet', 'db_connector'], function(leaflet, db) {
             data.forEach(function(location) {
                 var marker = new leaflet.marker([location.latitude, location.longitude], {
                     icon: icon
-                }).bindPopup(location.name, customOptions).addTo(locationLayer);
+                }).bindPopup(utils.buildLocationName(location), customOptions).addTo(locationLayer);
                 marker.on('mouseover', function(e) {
                     this.openPopup();
                 });

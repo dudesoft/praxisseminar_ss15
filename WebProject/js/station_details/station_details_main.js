@@ -1,9 +1,9 @@
-define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 'popover_header', 'sly', 'colorbox'], function($, factory, map, connector) {
+define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 'utils', 'popover_header', 'sly', 'colorbox'], function($, factory, map, connector, utils) {
     var StationDetails = {
         setupDetails: function(locationId) {
             connector.getLocationDetails(locationId, function(data) {
 
-                $("#location").html(data.name);
+                $("#location").html(utils.buildLocationName(data));
                 $("#loader_container").fadeOut("fast");
                 $("#detail_content").fadeIn("slow", function() {
                     map.scrollToMapPosition(data.latitude, data.longitude);
