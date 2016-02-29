@@ -30,7 +30,9 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
 
         fillLocationData: function(data) {
             var customOptions = {
-                'className': 'custom-popup'
+                'className': 'custom-popup',
+                'closeButton': false,
+                'maxWidth': 500
             }
 
             var icon = leaflet.icon({
@@ -42,7 +44,7 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
             data.forEach(function(location) {
                 var marker = new leaflet.marker([location.latitude, location.longitude], {
                     icon: icon
-                }).bindPopup(utils.buildLocationName(location), customOptions).addTo(locationLayer);
+                }).bindPopup(utils.generatePopup(location), customOptions).addTo(locationLayer);
                 marker.on('mouseover', function(e) {
                     this.openPopup();
                 });

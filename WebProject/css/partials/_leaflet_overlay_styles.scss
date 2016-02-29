@@ -1,5 +1,33 @@
 .custom-popup .leaflet-popup-tip,
 .custom-popup .leaflet-popup-content-wrapper {
-    background: #ffffff;
-    color: #000000;
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+}
+
+.image_anchor {
+    margin-bottom: 10px;
+    margin-right: 5px;
+    width: 25px;
+    height: 25px;
+}
+
+.audio_anchor {
+    margin-bottom: 10px;
+    margin-right: 5px;
+    width: 25px;
+    height: 25px;
+}
+
+.video_anchor {
+    margin-bottom: 10px;
+    width: 25px;
+    height: 25px;
+}
+
+.centered_anchor {
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin: auto 0;
+    font-size: 14px;
 }
