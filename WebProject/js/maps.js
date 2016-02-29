@@ -71,7 +71,7 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
 
             var travelPath = new leaflet.Polyline(pointList, {
                 color: 'black',
-                weight: 1.5,
+                weight: 2,
                 opacity: 0.3,
                 smoothFactor: 1
             });
@@ -81,7 +81,7 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
         },
 
         scrollToMapPosition: function(latitude, longitude) {
-            map.panTo(new leaflet.LatLng(latitude, longitude));
+            map.panTo(new leaflet.LatLng(latitude, longitude), {animate: true, duration: 2.0});
         }
     };
     return Maps;
