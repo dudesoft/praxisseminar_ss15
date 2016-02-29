@@ -29,6 +29,8 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
         },
 
         fillLocationData: function(data) {
+            var pointList = [];
+
             var customOptions = {
                 'className': 'custom-popup',
                 'closeButton': false,
@@ -38,7 +40,8 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
             var icon = leaflet.icon({
                 iconUrl: 'js/vendor/leaflet/images/marker-icon.png',
                 shadowUrl: 'js/vendor/leaflet/images/marker-shadow.png',
-                popupAnchor: [14, -1]
+                iconAnchor: [12, 40],
+                popupAnchor: [0, -42]
             });
 
             data.forEach(function(location) {
@@ -53,6 +56,8 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
                     this.closePopup();
                 });
 
+                pointList.push(new leaflet.LatLng(location.latitude, location.longitude));
+
                 marker.on('click', function(e) {
                     if ($("#detail_content").length) {
                         $("#detail_content").fadeOut("fast", function() {
@@ -64,6 +69,14 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
                 });
             });
 
+            var travelPath = new leaflet.Polyline(pointList, {
+                color: 'black',
+                weight: 1.5,
+                opacity: 0.3,
+                smoothFactor: 1
+            });
+
+            travelPath.addTo(map);
             locationLayer.addTo(map);
         },
 
