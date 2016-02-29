@@ -52,7 +52,13 @@ define(['leaflet', 'db_connector'], function(leaflet, db) {
                 });
 
                 marker.on('click', function(e) {
-                    window.open("station_details.php?location_id=" + location.id, "_self");
+                    if ($("#detail_content").length) {
+                        $("#detail_content").fadeOut("fast", function() {
+                            window.open("station_details.php?location_id=" + location.id, "_self");
+                        });
+                    } else {
+                        window.open("station_details.php?location_id=" + location.id, "_self");
+                    }
                 });
             });
 

@@ -436,6 +436,18 @@ textarea {
   margin-right: auto; }
 
 /*scrollbar properties*/
+.centered {
+  text-align: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+  font-family: 'Nunito'; }
+
+#time {
+  font-style: italic;
+  font-size: 16px; }
+
 ::-webkit-scrollbar {
   width: 1em; }
 
@@ -455,7 +467,8 @@ h1 {
   width: 58%;
   height: 45%;
   margin: 0.5% 0 0.5% 0;
-  overflow: auto; }
+  overflow-y: scroll;
+  overflow-x: hidden; }
 
 .attribute {
   text-align: left;

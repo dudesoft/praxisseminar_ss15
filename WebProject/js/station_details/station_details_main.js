@@ -1,18 +1,15 @@
 define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 'popover_header', 'sly', 'colorbox'], function($, factory, map, connector) {
-
     var StationDetails = {
-        setupUI: function() {
-            map.setupMap('mini_map');
-        },
-
         setupDetails: function(locationId) {
             connector.getLocationDetails(locationId, function(data) {
+
+                $("#location").html(data.name);
                 $("#loader_container").fadeOut("fast");
                 $("#detail_content").fadeIn("slow", function() {
                     map.scrollToMapPosition(data.latitude, data.longitude);
                 });
+
                 map.setupMap('mini_map');
-                $("#location").html(data.name);
 
                 for (var i = 0; i < data.images.length; i++) {
                     $('#pic_gallery_content').append("<li class='picture'> <img src='" + data.images[i] + "' class='gallery-picture'> </li>");
@@ -37,7 +34,6 @@ define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 
                 if (data.videos.length == 0) {
                     $("#video_not_available").show();
                 }
-
 
                 $('#picture_gallery, #audio_gallery, #video_gallery').sly({
                     horizontal: 1,
