@@ -30,6 +30,7 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
         },
 
         fillLocationData: function(data) {
+            console.log(data);
             var pointList = [];
             var locationMarkerList = [];
 

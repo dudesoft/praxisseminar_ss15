@@ -1,15 +1,15 @@
 BEGIN;
 SET SQL_SAFE_UPDATES = 0;
 
- ALTER TABLE `songs` 
+ ALTER TABLE `stations` 
   ADD COLUMN `date_conversion` DATE;
 
- UPDATE `songs` 
+ UPDATE `stations` 
   SET `date_conversion` = STR_TO_DATE(`date`, '%d.%c.%Y');
 
- ALTER TABLE `songs` 
+ ALTER TABLE `stations` 
   DROP COLUMN `date`;
 
- ALTER TABLE `songs` 
+ ALTER TABLE `stations` 
   CHANGE COLUMN `date_conversion` `date` DATE;
 COMMIT;
