@@ -50,16 +50,16 @@
             </div>
             <label for="next_diary" class="nav nav_right">&#x203a;</label>
         <?php include 'footer.php';
-        if (isset($_GET["location_id"])) {
-            $location_id = $_GET["location_id"];
+        if (isset($_GET["station_id"])) {
+            $station_id = $_GET["station_id"];
         }?>
 
-            <script data-main="js/common" src="js/vendor/require.js"></script>
-            <script>
+        <script data-main="js/common" src="js/vendor/require.js"></script>
+        <script>
             require(['station_details/station_details_main'], function(stationDetails) {
-                stationDetails.setupDetails(<?php echo json_encode($location_id); ?>);
+                stationDetails.setupDetails(<?php echo json_encode($station_id); ?>);
             });
-            </script>
+        </script>
 </body>
 
 </html>

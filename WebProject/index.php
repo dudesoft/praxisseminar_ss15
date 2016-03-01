@@ -37,5 +37,4 @@
         require(['index_main']);
     </script>
 </body>
-
 </html>

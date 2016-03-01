@@ -17,12 +17,12 @@ define([], function() {
             });
         },
 
-        getLocationDetails: function(locationId, callback) {
+        getLocationDetails: function(stationId, callback) {
             $.ajax({
                 type: 'GET',
                 url: 'sql/get_location_details.php',
                 data: {
-                    'location_id': locationId
+                    'station_id': stationId
                 },
                 cache: 'true',
                 dataType: 'json',

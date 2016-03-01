@@ -25,10 +25,10 @@ DROP TABLE IF EXISTS `images`;
 CREATE TABLE `images` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` mediumtext,
-  `location_id` int(11) DEFAULT NULL,
+  `station_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `location_id_idx` (`location_id`),
-  CONSTRAINT `images_locations` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `location_id_idx` (`station_id`),
+  CONSTRAINT `images_locations` FOREIGN KEY (`station_id`) REFERENCES `stations` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf16;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -177,10 +177,10 @@ DROP TABLE IF EXISTS `videos`;
 CREATE TABLE `videos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` text,
-  `location_id` int(11) DEFAULT NULL,
+  `station_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `videos_locations_idx` (`location_id`),
-  CONSTRAINT `videos_locations` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `videos_locations_idx` (`station_id`),
+  CONSTRAINT `videos_locations` FOREIGN KEY (`station_id`) REFERENCES `stations` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf16;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -203,4 +203,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-01 16:53:08
+-- Dump completed on 2016-03-01 17:47:39

@@ -30,7 +30,6 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
         },
 
         fillLocationData: function(data) {
-            console.log(data);
             var pointList = [];
             var locationMarkerList = [];
 
@@ -71,11 +70,11 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
                 marker.on('click', function(e) {
                     if ($("#detail_content").length) {
                         $("#detail_content").fadeOut("slow", function() {
-                            window.open("station_details.php?location_id=" + location.id, "_self");
+                            window.open("station_details.php?station_id=" + location.id, "_self");
                         });
                     } else {
                         if (location.stations.length == 1) {
-                            window.open("station_details.php?location_id=" + location.stations[0].id, "_self");
+                            window.open("station_details.php?station_id=" + location.stations[0].id, "_self");
                         } else {
                             Maps.showStationList(location.stations);
                             Maps.disableMapControls();
@@ -148,7 +147,7 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
             });
 
             stations.forEach(function(station) {
-                $("#stations").append("<li><a href='station_details.php?location_id=" + station.id + "'>" + station.date + "</a></li>");
+                $("#stations").append("<li><a href='station_details.php?station_id=" + station.id + "'>" + station.date + "</a></li>");
             });
         },
 
