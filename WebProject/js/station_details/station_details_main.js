@@ -1,8 +1,7 @@
 define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 'utils', 'popover_header', 'sly', 'colorbox'], function($, factory, map, connector, utils) {
     var StationDetails = {
-        setupDetails: function(locationId) {
-            connector.getLocationDetails(locationId, function(data) {
-
+        setupDetails: function(stationId) {
+            connector.getLocationDetails(stationId, function(data) {
                 $("#location").html(utils.buildLocationName(data));
                 $("#loader_container").fadeOut("fast");
                 $("#detail_content").fadeIn("slow", function() {

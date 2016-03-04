@@ -17,12 +17,12 @@ define([], function() {
             });
         },
 
-        getLocationDetails: function(locationId, callback) {
+        getLocationDetails: function(stationId, callback) {
             $.ajax({
                 type: 'GET',
                 url: 'sql/get_location_details.php',
                 data: {
-                    'location_id': locationId
+                    'station_id': stationId
                 },
                 cache: 'true',
                 dataType: 'json',
@@ -34,6 +34,24 @@ define([], function() {
                     return null;
                 }
             });
+        },
+
+        getSearchResult: function(searchString, callback) {
+            $.ajax({
+                type: 'GET',
+                url: 'sql/get_search_results.php',
+                data: {
+                    'search_string': searchString
+                },
+                success: function(response) {
+                    console.log(response);
+                    return null;
+                },
+                error: function() {
+                    alert("Fehler beim Laden der Suchergebnisse");
+                    return null;
+                }
+            })
         }
     };
 
