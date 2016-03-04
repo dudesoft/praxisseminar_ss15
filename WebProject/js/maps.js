@@ -30,7 +30,6 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
         },
 
         fillLocationData: function(data) {
-            console.log(data);
             var pointList = [];
             var locationMarkerList = [];
 
@@ -70,11 +69,17 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
 
                 marker.on('click', function(e) {
                     if ($("#detail_content").length) {
-                        $("#detail_content").fadeOut("fast", function() {
-                            window.open("station_details.php?location_id=" + location.id, "_self");
+                        $("#detail_content").fadeOut("slow", function() {
+                            window.open("station_details.php?station_id=" + location.id, "_self");
                         });
                     } else {
-                        window.open("station_details.php?location_id=" + location.id, "_self");
+                        if (location.stations.length == 1) {
+                            window.open("station_details.php?station_id=" + location.stations[0].id, "_self");
+                        } else {
+                            Maps.showStationList(location.stations);
+                            Maps.disableMapControls();
+                            $("#map_overlay").fadeIn("fast");
+                        }
                     }
                 });
 
@@ -127,6 +132,39 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
 
         scrollToMapPosition: function(latitude, longitude) {
             map.panTo(new leaflet.LatLng(latitude, longitude), { animate: true, duration: 2.0 });
+        },
+
+        showStationList: function(stations) {
+            $("#stations").empty();
+
+            $(".overlay_centered").click(function(evt) {
+                evt.stopPropagation();
+            });
+
+            $("#map_overlay").click(function() {
+                $("#map_overlay").fadeOut("slow");
+                Maps.enableMapControls();
+            });
+
+            stations.forEach(function(station) {
+                $("#stations").append("<li><a href='station_details.php?station_id=" + station.id + "'>" + station.date + "</a></li>");
+            });
+        },
+
+        disableMapControls: function() {
+            map.dragging.disable();
+            map.touchZoom.disable();
+            map.doubleClickZoom.disable();
+            map.scrollWheelZoom.disable();
+            map.keyboard.disable();
+        },
+
+        enableMapControls: function() {
+            map.dragging.enable();
+            map.touchZoom.enable();
+            map.doubleClickZoom.enable();
+            map.scrollWheelZoom.enable();
+            map.keyboard.enable();
         }
     };
     return Maps;
