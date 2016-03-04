@@ -1,11 +1,12 @@
-define(['leaflet', 'db_connector'], function(leaflet, db) {
+define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
     // get rid of global dependencies
     L.noConflict();
-    var map, locationLayer;
+    var map, locationLayer, travelLayer;
 
     var Maps = {
         setupMap: function(containerId) {
             locationLayer = leaflet.layerGroup();
+            travelLayer = leaflet.layerGroup();
 
             var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
             var osm = new leaflet.TileLayer('https://api.tiles.mapbox.com/v4/andipri.0a769b03/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYW5kaXByaSIsImEiOiJjaWd0c2l0cnMwMGY1dnZrbGV1ZzdhNmwzIn0.MJRx4pntHRsGq17ZJ6xBSQ', {
@@ -29,11 +30,103 @@ define(['leaflet', 'db_connector'], function(leaflet, db) {
         },
 
         fillLocationData: function(data) {
+            console.log(data);
+            var pointList = [];
+            var locationMarkerList = [];
+
+            var customOptions = {
+                'className': 'custom-popup',
+                'closeButton': false,
+                'maxWidth': 500
+            }
+
+            var icon = leaflet.icon({
+                iconUrl: 'js/vendor/leaflet/images/marker-icon.png',
+                shadowUrl: 'js/vendor/leaflet/images/marker-shadow.png',
+                iconAnchor: [12, 40],
+                popupAnchor: [0, -42]
+            });
+
+            var travelIcon = leaflet.icon({
+                iconUrl: 'img/mapmarker2.png',
+                iconAnchor: [32, 64],
+                popupAnchor: [0, -64]
+            });
+
+            // Build locationMarker
             data.forEach(function(location) {
-                new leaflet.marker([location.latitude, location.longitude]).bindPopup(location.name).addTo(locationLayer);
+                var marker = new leaflet.marker([location.latitude, location.longitude], {
+                    icon: icon
+                }).bindPopup(utils.generatePopup(location), customOptions);
+                marker.on('mouseover', function(e) {
+                    this.openPopup();
+                });
+
+                marker.on('mouseout', function(e) {
+                    this.closePopup();
+                });
+
+                pointList.push(new leaflet.LatLng(location.latitude, location.longitude));
+
+                marker.on('click', function(e) {
+                    if ($("#detail_content").length) {
+                        $("#detail_content").fadeOut("fast", function() {
+                            window.open("station_details.php?location_id=" + location.id, "_self");
+                        });
+                    } else {
+                        window.open("station_details.php?location_id=" + location.id, "_self");
+                    }
+                });
+
+                locationMarkerList.push(marker);
+            });
+
+            var locationMarkerGroup = leaflet.featureGroup(locationMarkerList);
+            locationMarkerGroup.addTo(locationLayer);
+
+            var travelPath = new leaflet.Polyline(pointList, {
+                color: 'black',
+                weight: 2,
+                opacity: 0.3,
+                smoothFactor: 1
+            });
+
+            // Build travelMarker
+            var marker = new leaflet.marker(travelPath.getBounds().getCenter(), {
+                icon: travelIcon
+            }).bindPopup(utils.generateTravelPopup(), customOptions).addTo(travelLayer);
+
+            marker.on('mouseover', function(e) {
+                this.openPopup();
+            });
+
+            marker.on('mouseout', function(e) {
+                this.closePopup();
             })
 
+            marker.on('click', function(e) {
+                map.fitBounds(locationMarkerGroup.getBounds());
+            });
+
+            travelPath.addTo(map);
             locationLayer.addTo(map);
+
+            // Hide or show location or travelMarkers depending on zoomLevel
+            map.on("zoomend", function(e) {
+                if (map.getZoom() >= 7) {
+                    map.addLayer(locationLayer);
+                    map.addLayer(travelPath);
+                    map.removeLayer(travelLayer);
+                } else {
+                    map.removeLayer(locationLayer);
+                    map.removeLayer(travelPath);
+                    map.addLayer(travelLayer);
+                }
+            });
+        },
+
+        scrollToMapPosition: function(latitude, longitude) {
+            map.panTo(new leaflet.LatLng(latitude, longitude), { animate: true, duration: 2.0 });
         }
     };
     return Maps;
