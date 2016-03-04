@@ -90,6 +90,28 @@ body {
   min-height: 100%;
   position: relative; }
 
+#map_overlay {
+  color: #ffffff;
+  display: none;
+  text-align: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.95); }
+
+#stations {
+  list-style: none;
+  padding-left: 0; }
+
+.overlay_centered {
+  position: absolute;
+  z-index: 15;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translateX(-50%) translateY(-50%); }
+
 /* Styles erweiterte Suche neu */
 .dropdown.dropdown-lg .dropdown-menu {
   margin-top: -1px;
@@ -130,7 +152,9 @@ body {
   background-color: #190a05;
   color: #D1C192; }
 
-#location_input, #interpret_input, #instrument_input {
+#location_input,
+#interpret_input,
+#instrument_input {
   width: 200px; }
 
 /* Header */
@@ -212,7 +236,8 @@ p {
   margin-bottom: 5px;
   font-style: bold; }
 
-#min_date_input, #max_date_input {
+#min_date_input,
+#max_date_input {
   margin-bottom: 5px; }
 
 .form-group {

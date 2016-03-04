@@ -13,31 +13,63 @@ body {
     position: relative;
 }
 
+#map_overlay {
+    color: #ffffff;
+    display: none;
+    text-align: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.95);
+}
+
+#stations {
+    list-style: none;
+    padding-left: 0;
+}
+
+.overlay_centered {
+    position: absolute;
+    z-index: 15;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+
 /* Styles erweiterte Suche neu */
 
 .dropdown.dropdown-lg .dropdown-menu {
     margin-top: -1px;
     padding: 6px 20px;
 }
+
 .input-group-btn .btn-group {
     display: flex !important;
 }
+
 .btn-group .btn {
     border-radius: 0;
     margin-left: -1px;
 }
+
 .btn-group .btn:last-child {
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
 }
+
 .btn-group .form-horizontal .btn[type="submit"] {
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
 }
+
 .form-horizontal .form-group {
     margin-left: 0;
     margin-right: 0;
 }
+
 .form-group .form-control:last-child {
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -52,12 +84,14 @@ body {
     padding-right: 18px;
 }
 
-#advancedSearchButton{
+#advancedSearchButton {
     background-color: $search_bar_color;
     color: $standard_color;
 }
 
-#location_input, #interpret_input, #instrument_input{
+#location_input,
+#interpret_input,
+#instrument_input {
     width: 200px;
 }
 
@@ -115,6 +149,7 @@ header {
     color: $standard_color;
 }
 
+
 /* Pop-Over */
 
 #pop_over {
@@ -126,7 +161,6 @@ header {
     font-family: Segoe UI;
     font-size: 12px;
     background-color: $standard_color;
-   
 }
 
 #pop_over_content {
@@ -144,24 +178,26 @@ header {
     color: white;
 }
 
+
 /* Hide popover contents */
 
 #pop_over_content {
     display: none;
 }
 
-p{
+p {
     margin: 0;
     margin-top: 10px;
     margin-bottom: 5px;
     font-style: bold;
 }
 
-#min_date_input, #max_date_input{
+#min_date_input,
+#max_date_input {
     margin-bottom: 5px;
 }
 
-.form-group{
+.form-group {
     margin: 0px;
     float: left;
 }
@@ -206,15 +242,13 @@ a:hover {
 
 /* Content */
 
-
 #main_content {
     position: absolute;
     width: 100%;
     top: $header_height;
     bottom: $footer_height;
-    background:rgba(255,255,255,0.3);
+    background: rgba(255, 255, 255, 0.3);
 }
-
 
 
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */

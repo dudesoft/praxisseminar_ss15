@@ -23,6 +23,12 @@
     <div id="wrapper">
         <?php include 'header.php';?>
         <div id="main_content">
+            <div id="map_overlay">
+                <div class="overlay_centered">
+                    Bitte wähle einen Aufenthalt:
+                    <ul id="stations"></ul>
+                </div>
+            </div>
         </div>
         <?php include 'footer.php';?>
     </div>
@@ -31,5 +37,4 @@
         require(['index_main']);
     </script>
 </body>
-
 </html>
