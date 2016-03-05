@@ -5,13 +5,15 @@ define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 
                 $("#location").html(utils.buildLocationName(data));
                 $("#loader_container").fadeOut("fast");
                 $("#detail_content").fadeIn("slow", function() {
-                    map.scrollToMapPosition(data.latitude, data.longitude);
+                    //map.scrollToMapPosition(data.latitude, data.longitude);
                 });
 
-                map.setupMap('mini_map');
+                //map.setupMap('mini_map');
 
+                console.log(data.images);
                 for (var i = 0; i < data.images.length; i++) {
-                    $('#pic_gallery_content').append("<li class='picture'> <img src='" + data.images[i] + "' class='gallery-picture'> </li>");
+                    console.log(data.images[i]);
+                    $('#pic_gallery_content').append("<li class='picture'> <img src='http://localhost/hoerburger/WebProject/content/" + data.images[i] + "' class='gallery-picture'> </li>");
                 }
 
                 for (var i = 0; i < data.songs.length; i++) {
