@@ -1,4 +1,4 @@
-define(['jquery', 'maps', 'db_connector', 'popover_header'], function($, map, dbConnector) {
+define(['jquery', 'maps', 'db_connector', 'popover_header', 'bootstrap'], function($, map, dbConnector) {
     map.setupMap('main_content');
 
     
@@ -6,4 +6,11 @@ define(['jquery', 'maps', 'db_connector', 'popover_header'], function($, map, db
     $('#search-button').click(function() {
         dbConnector.getSearchResult($('#search-input').val());
     });
+
+    $('search-input').keypress(function(event) {
+    if (event.which == 13) {
+        event.preventDefault();
+        dbConnector.getSearchResult($('#search-input').val());
+    }
+});
 });

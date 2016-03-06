@@ -56,3 +56,30 @@ UPDATE `songs` SET `station_id` = 31 WHERE location = 'Peć' AND DATE = '25.08.1
 UPDATE `songs` SET `station_id` = 32 WHERE location = 'Gllogovc/ Glogovac' AND DATE = '28.08.1959';
 UPDATE `songs` SET `station_id` = 33 WHERE location = 'Gllogovc/ Glogovac' AND DATE = '29.08.1959';
 UPDATE `songs` SET `station_id` = 34 WHERE location = 'Gllogovc/ Glogovac' AND DATE = '30.08.1959';
+
+
+//Search Query Example
+SELECT * FROM songs WHERE MATCH(title, location, genre, origin, CAST, LANGUAGE, recording_situation, FUNCTION, content, interprets, interpret_1, recorded_by) AGAINST('Mari')
+
+
+//insert a folder of images into db
+INSERT INTO images (url, location_id) VALUES ('images/Kosovo59/Arvati/kosovo59_Arvati (1).jpg', 19);
+INSERT INTO images (url, location_id) VALUES ('images/kosovo59_Arvati (2).jpg', 19);
+INSERT INTO images (url, location_id) VALUES ('images/kosovo59_Arvati (3).jpg', 19);
+INSERT INTO images (url, location_id) VALUES ('images/kosovo59_Arvati (4).jpg', 19);
+INSERT INTO images (url, location_id) VALUES ('images/kosovo59_Arvati (5).jpg', 19);
+INSERT INTO images (url, location_id) VALUES ('images/kosovo59_Arvati (6).jpg', 19);
+INSERT INTO images (url, location_id) VALUES ('images/kosovo59_Arvati (7).jpg', 19);
+INSERT INTO images (url, location_id) VALUES ('images/kosovo59_Arvati (8).jpg', 19);
+INSERT INTO images (url, location_id) VALUES ('images/kosovo59_Arvati (9).jpg', 19);
+INSERT INTO images (url, location_id) VALUES ('images/kosovo59_Arvati (10).jpg', 19);
+INSERT INTO images (url, location_id) VALUES ('images/kosovo59_Arvati (11).jpg', 19);
+INSERT INTO images (url, location_id) VALUES ('images/kosovo59_Arvati (12).jpg', 19);
+INSERT INTO images (url, location_id) VALUES ('images/kosovo59_Arvati (13).jpg', 19);
+INSERT INTO images (url, location_id) VALUES ('images/kosovo59_Arvati (14).jpg', 19);
+INSERT INTO images (url, location_id) VALUES ('images/kosovo59_Arvati (15).jpg', 19);
+INSERT INTO images (url, location_id) VALUES ('images/kosovo59_Arvati (16).jpg', 19);
+INSERT INTO images (url, location_id) VALUES ('images/kosovo59_Arvati (17).jpg', 19);
+INSERT INTO images (url, location_id) VALUES ('images/kosovo59_Arvati (18).jpg', 19);
+INSERT INTO images (url, location_id) VALUES ('images/kosovo59_Arvati (19).jpg', 19);
+INSERT INTO images (url, location_id) VALUES ('images/kosovo59_Arvati (20).jpg', 19);

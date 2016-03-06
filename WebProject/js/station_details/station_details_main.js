@@ -1,4 +1,4 @@
-define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 'utils', 'popover_header', 'sly', 'colorbox'], function($, factory, map, connector, utils) {
+define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 'utils', 'popover_header', 'sly', 'colorbox', 'bootstrap'], function($, factory, map, connector, utils) {
     var StationDetails = {
         setupDetails: function(stationId) {
             connector.getLocationDetails(stationId, function(data) {
@@ -10,8 +10,9 @@ define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 
 
                 map.setupMap('mini_map');
 
+                cons
                 for (var i = 0; i < data.images.length; i++) {
-                    $('#pic_gallery_content').append("<li class='picture'> <img src='" + data.images[i] + "' class='gallery-picture'> </li>");
+                    $('#pic_gallery_content').append("<li class='picture'> <img src='http://localhost/hoerburger/WebProject/content/" + data.images[i] + "' class='gallery-picture'> </li>");
                 }
 
                 for (var i = 0; i < data.songs.length; i++) {
