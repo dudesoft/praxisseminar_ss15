@@ -30,7 +30,7 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
         },
 
         fillLocationData: function(data) {
-            var pointList = [];
+            var travels = {};
             var locationMarkerList = [];
 
             var customOptions = {
@@ -65,7 +65,17 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
                     this.closePopup();
                 });
 
-                pointList.push(new leaflet.LatLng(location.latitude, location.longitude));
+                location.stations.forEach(function(station) {
+                    if (typeof travels[station.travel.name] === 'undefined')
+                        travels[station.travel.name] = {
+                            'name': station.travel.name,
+                            'begin': station.travel.date_begin,
+                            'end': station.travel.date_end
+                        };
+                    if (typeof travels[station.travel.name].pointList === 'undefined')
+                        travels[station.travel.name].pointList = [];
+                    travels[station.travel.name].pointList.push(new leaflet.LatLng(location.latitude, location.longitude));
+                });
 
                 marker.on('click', function(e) {
                     if ($("#detail_content").length) {
@@ -89,17 +99,19 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
             var locationMarkerGroup = leaflet.featureGroup(locationMarkerList);
             locationMarkerGroup.addTo(locationLayer);
 
-            var travelPath = new leaflet.Polyline(pointList, {
-                color: 'black',
-                weight: 2,
-                opacity: 0.3,
-                smoothFactor: 1
-            });
-
             // Build travelMarker
-            var marker = new leaflet.marker(travelPath.getBounds().getCenter(), {
-                icon: travelIcon
-            }).bindPopup(utils.generateTravelPopup(), customOptions).addTo(travelLayer);
+            for (key in travels) {
+                var travelPath = new leaflet.Polyline(travels[key].pointList, {
+                    color: 'black',
+                    weight: 2,
+                    opacity: 0.3,
+                    smoothFactor: 1
+                });
+
+                var marker = new leaflet.marker(travelPath.getBounds().getCenter(), {
+                    icon: travelIcon
+                }).bindPopup(utils.generateTravelPopup(travels[key]), customOptions).addTo(travelLayer);
+            }
 
             marker.on('mouseover', function(e) {
                 this.openPopup();
@@ -147,7 +159,7 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
             });
 
             stations.forEach(function(station) {
-                $("#stations").append("<li><a href='station_details.php?station_id=" + station.id + "'>" + station.date + "</a></li>");
+                $("#stations").append("<li><a href='station_details.php?station_id=" + station.id + "'>" + station.travel.name + " " + station.date + "</a></li>");
             });
         },
 

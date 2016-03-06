@@ -1,5 +1,8 @@
 <?php
 $db = new PDO('mysql:host=localhost;dbname=hoerburger;charset=utf8mb4', 'hoerburger', 'hoerburger');
+$base_url_images = "http://localhost/Praxisseminar/WebProject/content/";
+$base_url_songs = "http://localhost/Praxisseminar/WebProject/content/";
+$base_url_videos = "http://localhost/Praxisseminar/WebProject/content/";
 
 if (isset($_GET['station_id'])) {
     $station_id = $_GET['station_id'];
@@ -31,7 +34,6 @@ $query = $db -> prepare("SELECT * FROM locations WHERE id = '$location_id'");
 $query -> execute();
 $location = $query->fetch();
 
-
 $names = explode("/", $location['location']);
 $name = trim($names[0]);
 
@@ -39,6 +41,10 @@ if (isset($names[1])) {
 	$alt_name = trim($names[1]);
 } else {
 	$alt_name = NULL;
+}
+
+for ($i = 0; $i < count($images); $i++) {
+    $images[$i] = $base_url_images.$images[$i];
 }
 
 $response = [
@@ -50,7 +56,7 @@ $response = [
     "images" => $images,
     "songs" => $songs,
     "videos" => $videos
-	];
+];
 
 echo json_encode($response);
 ?>
