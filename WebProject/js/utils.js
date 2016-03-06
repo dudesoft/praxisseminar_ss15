@@ -16,8 +16,8 @@ define([], function() {
             return popupHtml;
         },
 
-        generateTravelPopup: function() {
-            var popupHtml = "<span class='centered_anchor'>" + "Kosovo" + "</span><span class='centered_anchor'>" + "21.4.1943 - 45.6.1943" + "</span>";
+        generateTravelPopup: function(travel) {
+            var popupHtml = "<span class='centered_anchor'>" + travel.name + "</span><span class='centered_anchor'>" + travel.begin + " - " + travel.end + "</span>";
             return popupHtml;
         }
     };

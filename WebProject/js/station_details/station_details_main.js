@@ -10,10 +10,8 @@ define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 
 
                 //map.setupMap('mini_map');
 
-                console.log(data.images);
                 for (var i = 0; i < data.images.length; i++) {
-                    console.log(data.images[i]);
-                    $('#pic_gallery_content').append("<li class='picture'> <img src='http://localhost/hoerburger/WebProject/content/" + data.images[i] + "' class='gallery-picture'> </li>");
+                    $('#pic_gallery_content').append("<li class='picture'> <img src='" + data.images[i] + "' class='gallery-picture'> </li>");
                 }
 
                 for (var i = 0; i < data.songs.length; i++) {
@@ -56,6 +54,5 @@ define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 
             });
         }
     };
-
     return StationDetails;
 });
