@@ -27,6 +27,11 @@
                     <ul id="stations"></ul>
                 </div>
             </div>
+
+            <div id="list_hover">
+                <span class="centered_anchor">Alle Reisen:</span>
+                <ul id="layer_list"><li><hr></li></ul>
+            </div>
         </div>
         <?php include 'footer.php';?>
     </div>

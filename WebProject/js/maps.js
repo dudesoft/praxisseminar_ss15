@@ -97,53 +97,49 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
                     }
                 });
 
-                locationMarkerList.push(marker);
+                marker.addTo(locationLayer);
             });
-
-            var locationMarkerGroup = leaflet.featureGroup(locationMarkerList);
-            locationMarkerGroup.addTo(locationLayer);
 
             // Build travelMarker
             for (key in travels) {
                 var i = Object.keys(travels).indexOf(key);
                 pointList = utils.getSortedPointList(travels[key].stationList, data);
+                $("#layer_list").append("<li><span class='travel_name centered_anchor' id='to_travel" + i + "'>" + travels[key].name + "</span></li>");
 
                 var travelPath = new leaflet.Polyline(pointList, {
                     color: utils.provideColor(i),
                     weight: 2,
                     opacity: 0.3,
                     smoothFactor: 1
+                }).addTo(locationLayer);
+
+                $("#to_travel" + i).click(function() {
+                    map.fitBounds(travelPath.getBounds());
                 });
 
                 var marker = new leaflet.marker(travelPath.getBounds().getCenter(), {
                     icon: travelIcon
                 }).bindPopup(utils.generateTravelPopup(travels[key]), customOptions).addTo(travelLayer);
+
+                marker.on('mouseover', function(e) {
+                    this.openPopup();
+                });
+                marker.on('mouseout', function(e) {
+                    this.closePopup();
+                });
+                marker.on('click', function(e) {
+                    map.fitBounds(travelPath.getBounds());
+                });
             }
-
-            marker.on('mouseover', function(e) {
-                this.openPopup();
-            });
-
-            marker.on('mouseout', function(e) {
-                this.closePopup();
-            })
-
-            marker.on('click', function(e) {
-                map.fitBounds(locationMarkerGroup.getBounds());
-            });
-
-            travelPath.addTo(map);
             locationLayer.addTo(map);
 
             // Hide or show location or travelMarkers depending on zoomLevel
             map.on("zoomend", function(e) {
                 if (map.getZoom() >= 7) {
                     map.addLayer(locationLayer);
-                    map.addLayer(travelPath);
                     map.removeLayer(travelLayer);
                 } else {
                     map.removeLayer(locationLayer);
-                    map.removeLayer(travelPath);
                     map.addLayer(travelLayer);
                 }
             });

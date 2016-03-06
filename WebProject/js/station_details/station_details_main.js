@@ -3,6 +3,7 @@ define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 
         setupDetails: function(stationId) {
             connector.getLocationDetails(stationId, function(data) {
                 $("#location").html(utils.buildLocationName(data));
+                $("#time").html(data.date);
                 $("#loader_container").fadeOut("fast");
                 $("#detail_content").fadeIn("slow", function() {
                     map.scrollToMapPosition(data.latitude, data.longitude);
