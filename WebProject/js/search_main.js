@@ -1,4 +1,4 @@
-define(['jquery', 'db_connector', 'utils', 'search_bar', 'bootstrap'], function($, dbConnector, utils) {
+define(['jquery', 'db_connector', 'utils', 'search_bar'], function($, dbConnector, utils) {
     var urlVars = utils.getUrlVars();
     $list = $('#resut_list');
 
