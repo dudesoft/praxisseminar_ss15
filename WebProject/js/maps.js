@@ -66,15 +66,19 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
                 });
 
                 location.stations.forEach(function(station) {
-                    if (typeof travels[station.travel.name] === 'undefined')
+                    if (typeof travels[station.travel.name] === 'undefined') {
                         travels[station.travel.name] = {
                             'name': station.travel.name,
                             'begin': station.travel.date_begin,
                             'end': station.travel.date_end
                         };
-                    if (typeof travels[station.travel.name].pointList === 'undefined')
-                        travels[station.travel.name].pointList = [];
-                    travels[station.travel.name].pointList.push(new leaflet.LatLng(location.latitude, location.longitude));
+                    }
+                    if (typeof travels[station.travel.name].stationList === 'undefined') {
+                        travels[station.travel.name].stationList = [];
+                    }
+                    station.latitude = location.latitude;
+                    station.longitude = location.longitude;
+                    travels[station.travel.name].stationList.push(station);
                 });
 
                 marker.on('click', function(e) {
@@ -101,8 +105,11 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
 
             // Build travelMarker
             for (key in travels) {
-                var travelPath = new leaflet.Polyline(travels[key].pointList, {
-                    color: 'black',
+                var i = Object.keys(travels).indexOf(key);
+                pointList = utils.getSortedPointList(travels[key].stationList, data);
+
+                var travelPath = new leaflet.Polyline(pointList, {
+                    color: utils.provideColor(i),
                     weight: 2,
                     opacity: 0.3,
                     smoothFactor: 1
