@@ -43,11 +43,12 @@ define([], function() {
                 data: {
                     'search_string': searchString
                 },
+                cache: 'true',
+                dataType: 'json',
                 success: function(response) {
-                    console.log(response);
-                    return null;
+                    callback(response);
                 },
-                error: function() {
+                error: function(response) {
                     alert("Fehler beim Laden der Suchergebnisse");
                     return null;
                 }

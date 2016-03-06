@@ -8,31 +8,27 @@
     <meta name="description" content="Hoerburger">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="img/favicon.png" />
-
     <!-- Bootstrap Anbindung -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <!-- CSS-->
     <link rel="stylesheet" type="text/css" href="css/main.css">
-   
 </head>
 
 <body>
-    <div id="wrapper">
-        <?php include 'header.php';?>
-        <div id="main_content">
-            <div id="map_overlay">
-                <div class="overlay_centered">
-                    Bitte wähle einen Aufenthalt:
-                    <ul id="stations"></ul>
-                </div>
-            </div>
+    <?php include 'header.php';?>
+        <div id="main_content_station">
+            <ul id="resut_list" style="list-style-type:none">
+                
+            </ul>
         </div>
+        
         <?php include 'footer.php';?>
-    </div>
-    <script data-main="js/common" src="js/vendor/require.js"></script>
+
+        <script data-main="js/common" src="js/vendor/require.js"></script>
     <script>
-        require(['index_main']);
+        require(['search_main']);
     </script>
 </body>
+
 </html>
