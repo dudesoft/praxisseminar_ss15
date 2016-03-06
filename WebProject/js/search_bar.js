@@ -4,7 +4,6 @@ define(['jquery', 'bootstrap'], function($) {
     });
 
     $('#search-input').keypress(function(event) {
-        console.log('keypress lol');
         if (event.which == 13) {
             event.preventDefault();
             window.open("search_result.php?search=" + $('#search-input').val(), "_self");
