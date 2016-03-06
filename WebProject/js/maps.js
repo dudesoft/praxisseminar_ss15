@@ -146,7 +146,7 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
         },
 
         scrollToMapPosition: function(latitude, longitude) {
-            map.panTo(new leaflet.LatLng(latitude, longitude), { animate: true, duration: 2.0 });
+            map.panTo(new leaflet.LatLng(latitude, longitude), { animate: true, duration: 1.0 });
         },
 
         showStationList: function(stations) {
