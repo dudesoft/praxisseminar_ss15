@@ -1,4 +1,4 @@
-define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 'utils', 'popover_header', 'sly', 'colorbox', 'bootstrap'], function($, factory, map, connector, utils) {
+define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 'utils', 'search_bar', 'sly', 'colorbox', 'bootstrap'], function($, factory, map, connector, utils) {
     var StationDetails = {
         setupDetails: function(stationId) {
             connector.getLocationDetails(stationId, function(data) {
