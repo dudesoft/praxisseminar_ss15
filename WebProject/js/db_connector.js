@@ -46,7 +46,7 @@ define([], function() {
                 cache: 'true',
                 dataType: 'json',
                 success: function(response) {
-                    console.log(response);
+                    callback(response);
                 },
                 error: function(response) {
                     alert("Fehler beim Laden der Suchergebnisse");
