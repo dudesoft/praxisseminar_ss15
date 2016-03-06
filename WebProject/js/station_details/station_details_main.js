@@ -49,7 +49,7 @@ define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 
                     dragHandle: 1,
 
                     speed: 600,
-                    startAt: 2
+                    startAt: 0
                 });
             });
         }
