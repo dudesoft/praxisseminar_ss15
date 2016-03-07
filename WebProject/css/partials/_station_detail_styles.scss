@@ -13,7 +13,7 @@
 }
 
 #detail_content {
-    display:none;
+    display: none;
     position: absolute;
     width: 70%;
     top: 20px;
@@ -39,6 +39,7 @@
     margin-left: auto;
     margin-right: auto;
 }
+
 
 /*scrollbar properties*/
 
@@ -96,13 +97,12 @@ h1 {
     float: right;
 }
 
-#picture_galery {
-    margin-top: 25px;
-}
+
+//Sly Gallery for Multimedia
 
 .frame {
-    width: 100%; 
-    height: 15%; 
+    width: 100%;
+    height: 15%;
     padding: 0;
     margin-top: 10px;
 }
@@ -115,10 +115,10 @@ h1 {
 }
 
 .slidee li {
-    float: left; 
-    margin: 0 5px 0 0; 
-    padding: 0; 
-    width: 130px; 
+    float: left;
+    margin: 0 5px 0 0;
+    padding: 0;
+    width: 130px;
     height: 100%;
 }
 
@@ -142,57 +142,6 @@ h1 {
     transition: opacity .2s;
 }
 
-video {
-    width: 320px;
-    height: 240px;
-}
-
-.trans {
-    background-image: url(../img/transparentBackground.png);
-    border-style: solid;
-    border-width: 1px;
-    border-color: white;
-    border-radius: 2px;
-    text-align: center;
-}
-
-label {
-    opacity: 0.3;
-    cursor: pointer;
-    color: #FFF;
-    font-size: 120pt;
-    text-align: center;
-    line-height: 380px;
-    font-family: 'Nunito', sans-serif;
-    text-shadow: 0px 0px 15px rgb(119, 119, 119);
-    transition: opacity .2s;
-}
-
-label:hover {
-    opacity: 1;
-}
-
-.nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.navigation_element {
-    position: absolute;
-    top: 20px;
-    bottom: 20px;
-    width: 20%;
-}
-
-.nav_left {
-    left: 10px;
-}
-
-.nav_right {
-    right: 10px;
-}
-
 ul li.picture {
     background: rgba(0, 0, 0, 0.6);
 }
@@ -214,8 +163,63 @@ ul li.video {
 }
 
 .gallery-picture {
-    width: auto; 
+    width: auto;
     height: 100%;
     padding-top: 2px;
     padding-bottom: 2px;
+}
+
+label {
+    opacity: 0.3;
+    cursor: pointer;
+    color: #FFF;
+    font-size: 120pt;
+    text-align: center;
+    line-height: 380px;
+    font-family: 'Nunito', sans-serif;
+    text-shadow: 0px 0px 15px rgb(119, 119, 119);
+    transition: opacity .2s;
+}
+
+label:hover {
+    opacity: 1;
+}
+
+.trans {
+    background-image: url(../img/transparentBackground.png);
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 2px;
+    text-align: center;
+}
+
+
+//Navigation Arrows
+.nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.navigation_element {
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    width: 20%;
+}
+
+.nav_left {
+    left: 10px;
+}
+
+.nav_right {
+    right: 10px;
+}
+
+
+//Colorbox / Multimediapopup
+video {
+    width: 320px;
+    height: 240px;
 }
