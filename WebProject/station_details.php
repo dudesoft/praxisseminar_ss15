@@ -28,9 +28,8 @@
                 </div>
                 <div id="mini_map" class="trans">
                 </div>
-                
-                <div id="picture_gallery" class="frame trans gallery">
                 <span id="image_not_available" class="not_available_label">Für diese Station sind leider (noch) keine Bilder vorhanden.</span>
+                <div id="picture_gallery" class="frame trans gallery">
                     <ul id="pic_gallery_content" class="slidee">
                     </ul>
                 </div>
