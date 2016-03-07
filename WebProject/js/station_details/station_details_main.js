@@ -1,19 +1,18 @@
-define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 'utils', 'popover_header', 'sly', 'colorbox'], function($, factory, map, connector, utils) {
+define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 'utils', 'search_bar', 'sly', 'colorbox'], function($, factory, map, connector, utils) {
     var StationDetails = {
         setupDetails: function(stationId) {
             connector.getLocationDetails(stationId, function(data) {
                 $("#location").html(utils.buildLocationName(data));
+                $("#time").html(data.date);
                 $("#loader_container").fadeOut("fast");
                 $("#detail_content").fadeIn("slow", function() {
-                    //map.scrollToMapPosition(data.latitude, data.longitude);
+                    map.scrollToMapPosition(data.latitude, data.longitude);
                 });
 
-                //map.setupMap('mini_map');
+                map.setupMap('mini_map');
 
-                console.log(data.images);
                 for (var i = 0; i < data.images.length; i++) {
-                    console.log(data.images[i]);
-                    $('#pic_gallery_content').append("<li class='picture'> <img src='http://localhost/hoerburger/WebProject/content/" + data.images[i] + "' class='gallery-picture'> </li>");
+                    $('#pic_gallery_content').append("<li class='picture'> <img src='" + data.images[i] + "' class='gallery-picture'> </li>");
                 }
 
                 for (var i = 0; i < data.songs.length; i++) {
@@ -24,16 +23,16 @@ define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 
                     $('#vid_gallery_content').append("<li class='video'></li>");
                 }
 
-                if (data.images.length == 0) {
-                    $("#image_not_available").show();
+                if (data.images.length != 0) {
+                    $("#image_not_available").remove();
                 }
 
-                if (data.songs.length == 0) {
-                    $("#audio_not_available").show();
+                if (data.songs.length != 0) {
+                    $("#audio_not_available").remove();
                 }
 
-                if (data.videos.length == 0) {
-                    $("#video_not_available").show();
+                if (data.videos.length != 0) {
+                    $("#video_not_available").remove();
                 }
 
                 $('#picture_gallery, #audio_gallery, #video_gallery').sly({
@@ -51,11 +50,10 @@ define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 
                     dragHandle: 1,
 
                     speed: 600,
-                    startAt: 2
+                    startAt: 0
                 });
             });
         }
     };
-
     return StationDetails;
 });

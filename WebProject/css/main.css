@@ -529,10 +529,10 @@ h1 {
   height: 90%; }
 
 .not_available_label {
-  display: none;
   position: relative;
   top: 30%;
   color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
   -webkit-transform: translateY(-30%);
   -ms-transform: translateY(-30%);
   transform: translateY(-30%); }
@@ -639,6 +639,32 @@ ul li.video {
   display: block;
   margin: auto 0;
   font-size: 14px; }
+
+.travel_name {
+  color: #D1C192; }
+
+.travel_name:hover {
+  text-decoration: none;
+  font-weight: bold;
+  color: #D1C192; }
+
+#list_hover {
+  right: 20px;
+  top: 20px;
+  padding: 10px;
+  width: 200px;
+  position: absolute;
+  z-index: 5;
+  color: #D1C192;
+  background: rgba(0, 0, 0, 0.8); }
+
+#layer_list {
+  display: none;
+  list-style-type: none;
+  padding-left: 0px;
+  overflow: auto;
+  box-sizing: content-box;
+  -moz-box-sizing: content-box; }
 
 /*
     Colorbox Core Style:

@@ -28,7 +28,7 @@ CREATE TABLE `locations` (
   `latitude` double NOT NULL,
   `longitude` double NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `locations` (
 
 LOCK TABLES `locations` WRITE;
 /*!40000 ALTER TABLE `locations` DISABLE KEYS */;
-INSERT INTO `locations` VALUES (1,'Bellobrad/ Belobrod',42.117772,20.683192),(2,'Bidžovo /Bidzhevo',41.229982,20.699209),(3,'Brodosavce/ Brodosanë',42.10843,20.725045),(4,'Frangovo',41.146855,20.626576),(5,'Gjonaj/ Đonaj',42.253673,20.624341),(6,'Gllogovc/ Glogovac',42.621063,20.890502),(7,'Glumovo',41.980211,21.304624),(8,'Krani',40.940113,21.107889),(9,'Nakolec',40.89352,21.10799),(10,'Ohrid',41.123098,20.801648),(11,'Peć',42.659287,20.288736),(12,'Prishtinë/ Priština',42.662914,21.165503),(13,'Radolishta',41.164943,20.626576),(14,'Rugovo',42.683204,21.15798),(15,'Skopje',41.997346,21.427996),(16,'Veleshta',41.235323,20.653321),(17,'Vranishtë/ Vranište',42.042176,20.628996),(18,'Zym/ Zjum',42.113459,20.668293),(19,'Arvati',40.942663,21.111357);
+INSERT INTO `locations` VALUES (1,'Bellobrad/ Belobrod',42.117772,20.683192),(2,'Bidžovo /Bidzhevo',41.229982,20.699209),(3,'Brodosavce/ Brodosanë',42.10843,20.725045),(4,'Frangovo',41.146855,20.626576),(5,'Gjonaj/ Đonaj',42.253673,20.624341),(6,'Gllogovc/ Glogovac',42.621063,20.890502),(7,'Glumovo',41.980211,21.304624),(8,'Krani',40.940113,21.107889),(9,'Nakolec',40.89352,21.10799),(10,'Ohrid',41.123098,20.801648),(11,'Peć',42.659287,20.288736),(12,'Prishtinë/ Priština',42.662914,21.165503),(13,'Radolishta',41.164943,20.626576),(14,'Rugovo',42.683204,21.15798),(15,'Skopje',41.997346,21.427996),(16,'Veleshta',41.235323,20.653321),(17,'Vranishtë/ Vranište',42.042176,20.628996),(18,'Zym/ Zjum',42.113459,20.668293),(19,'Arvati',40.942663,21.111357),(20,'Bîrca',43.97095,23.616636),(21,'Giurgiţa ',44.015008,23.632665),(22,'Bukarest',44.426527,26.103562);
 /*!40000 ALTER TABLE `locations` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-01 11:23:18
+-- Dump completed on 2016-03-07 12:58:42
