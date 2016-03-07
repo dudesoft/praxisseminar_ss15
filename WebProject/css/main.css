@@ -523,10 +523,10 @@ h1 {
 
 .slidee li {
   float: left;
-  margin: 3px;
+  margin: 0 5px 0 0;
   padding: 0;
-  overflow: hidden;
-  height: 90%; }
+  width: 130px;
+  height: 100%; }
 
 .not_available_label {
   position: relative;
@@ -589,8 +589,6 @@ label:hover {
   right: 10px; }
 
 ul li.picture {
-  text-align: center;
-  padding: 2px;
   background: rgba(0, 0, 0, 0.6); }
 
 ul li.audio {
@@ -608,8 +606,10 @@ ul li.video {
   width: 90px; }
 
 .gallery-picture {
-  max-height: 100%;
-  max-width: 90px; }
+  width: auto;
+  height: 100%;
+  padding-top: 2px;
+  padding-bottom: 2px; }
 
 .custom-popup .leaflet-popup-tip,
 .custom-popup .leaflet-popup-content-wrapper {

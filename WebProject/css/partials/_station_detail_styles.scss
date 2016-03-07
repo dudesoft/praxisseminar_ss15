@@ -101,8 +101,8 @@ h1 {
 }
 
 .frame {
-    width: 100%;
-    height: 15%;
+    width: 100%; 
+    height: 15%; 
     padding: 0;
     margin-top: 10px;
 }
@@ -115,11 +115,11 @@ h1 {
 }
 
 .slidee li {
-    float: left;
-    margin: 3px;
-    padding: 0;
-    overflow: hidden;
-    height: 90%;
+    float: left; 
+    margin: 0 5px 0 0; 
+    padding: 0; 
+    width: 130px; 
+    height: 100%;
 }
 
 .not_available_label {
@@ -194,8 +194,6 @@ label:hover {
 }
 
 ul li.picture {
-    text-align: center;
-    padding: 2px;
     background: rgba(0, 0, 0, 0.6);
 }
 
@@ -216,6 +214,8 @@ ul li.video {
 }
 
 .gallery-picture {
-    max-height: 100%;
-    max-width: 90px;
+    width: auto; 
+    height: 100%;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
