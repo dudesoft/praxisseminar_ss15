@@ -113,7 +113,8 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
                     smoothFactor: 1
                 }).addTo(locationLayer);
 
-                $(".travel_name").click(function(e) {
+                $("#to_travel_" + i).click(function(e) {
+                    console.log(e.target.id);
                     map.fitBounds(travelPaths[e.target.id].getBounds());
                 });
 
@@ -131,7 +132,6 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
                 marker.on('click', function(e) {
                     map.fitBounds(travelPaths[e.target.options.travel_id].getBounds());
                 });
-
                 marker.addTo(travelLayer);
             }
             locationLayer.addTo(map);
@@ -149,6 +149,9 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
         },
 
         scrollToMapPosition: function(latitude, longitude) {
+            setTimeout(function() {
+                map.fitBounds(latLongCollection);
+            }, 0);
             map.panTo(new leaflet.LatLng(latitude, longitude), { animate: true, duration: 1.0 });
         },
 
