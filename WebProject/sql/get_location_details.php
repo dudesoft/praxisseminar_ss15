@@ -50,6 +50,7 @@ for ($i = 0; $i < count($images); $i++) {
 $response = [
 	"id" => $station['id'],
     "name" => $name,
+    "date" => $station['date'],
     "altname" => $alt_name,	
     "latitude" => $location['latitude'],
     "longitude" => $location['longitude'],

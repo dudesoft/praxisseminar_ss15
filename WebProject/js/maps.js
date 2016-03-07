@@ -1,7 +1,7 @@
 define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
     // get rid of global dependencies
     L.noConflict();
-    var map, locationLayer, travelLayer;
+    var map, locationLayer, travelLayer, travelPaths = [];
 
     var Maps = {
         setupMap: function(containerId) {
@@ -66,15 +66,19 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
                 });
 
                 location.stations.forEach(function(station) {
-                    if (typeof travels[station.travel.name] === 'undefined')
+                    if (typeof travels[station.travel.name] === 'undefined') {
                         travels[station.travel.name] = {
                             'name': station.travel.name,
                             'begin': station.travel.date_begin,
                             'end': station.travel.date_end
                         };
-                    if (typeof travels[station.travel.name].pointList === 'undefined')
-                        travels[station.travel.name].pointList = [];
-                    travels[station.travel.name].pointList.push(new leaflet.LatLng(location.latitude, location.longitude));
+                    }
+                    if (typeof travels[station.travel.name].stationList === 'undefined') {
+                        travels[station.travel.name].stationList = [];
+                    }
+                    station.latitude = location.latitude;
+                    station.longitude = location.longitude;
+                    travels[station.travel.name].stationList.push(station);
                 });
 
                 marker.on('click', function(e) {
@@ -93,57 +97,62 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
                     }
                 });
 
-                locationMarkerList.push(marker);
+                marker.addTo(locationLayer);
             });
-
-            var locationMarkerGroup = leaflet.featureGroup(locationMarkerList);
-            locationMarkerGroup.addTo(locationLayer);
 
             // Build travelMarker
             for (key in travels) {
-                var travelPath = new leaflet.Polyline(travels[key].pointList, {
-                    color: 'black',
+                var i = Object.keys(travels).indexOf(key);
+                pointList = utils.getSortedPointList(travels[key].stationList, data);
+                $("#layer_list").append("<li><span class='travel_name centered_anchor' id='to_travel_" + i + "'>" + travels[key].name + "</span></li>");
+
+                travelPaths["to_travel_" + i] = new leaflet.Polyline(pointList, {
+                    color: utils.provideColor(i),
                     weight: 2,
                     opacity: 0.3,
                     smoothFactor: 1
+                }).addTo(locationLayer);
+
+                $("#to_travel_" + i).click(function(e) {
+                    console.log(e.target.id);
+                    map.fitBounds(travelPaths[e.target.id].getBounds());
                 });
 
-                var marker = new leaflet.marker(travelPath.getBounds().getCenter(), {
-                    icon: travelIcon
-                }).bindPopup(utils.generateTravelPopup(travels[key]), customOptions).addTo(travelLayer);
+                var marker = new leaflet.marker(travelPaths["to_travel_" + i].getBounds().getCenter(), {
+                    icon: travelIcon,
+                    travel_id: "to_travel_" + i
+                }).bindPopup(utils.generateTravelPopup(travels[key]), customOptions);
+
+                marker.on('mouseover', function(e) {
+                    this.openPopup();
+                });
+                marker.on('mouseout', function(e) {
+                    this.closePopup();
+                });
+                marker.on('click', function(e) {
+                    map.fitBounds(travelPaths[e.target.options.travel_id].getBounds());
+                });
+                marker.addTo(travelLayer);
             }
-
-            marker.on('mouseover', function(e) {
-                this.openPopup();
-            });
-
-            marker.on('mouseout', function(e) {
-                this.closePopup();
-            })
-
-            marker.on('click', function(e) {
-                map.fitBounds(locationMarkerGroup.getBounds());
-            });
-
-            travelPath.addTo(map);
             locationLayer.addTo(map);
 
             // Hide or show location or travelMarkers depending on zoomLevel
             map.on("zoomend", function(e) {
                 if (map.getZoom() >= 7) {
                     map.addLayer(locationLayer);
-                    map.addLayer(travelPath);
                     map.removeLayer(travelLayer);
                 } else {
                     map.removeLayer(locationLayer);
-                    map.removeLayer(travelPath);
                     map.addLayer(travelLayer);
                 }
             });
         },
 
         scrollToMapPosition: function(latitude, longitude) {
-            map.panTo(new leaflet.LatLng(latitude, longitude), { animate: true, duration: 2.0 });
+            setTimeout(function() {
+                map.fitBounds(latLongCollection);
+            }, 0);
+            map.panTo(new leaflet.LatLng(latitude, longitude), { animate: true, duration: 1.0 });
         },
 
         showStationList: function(stations) {

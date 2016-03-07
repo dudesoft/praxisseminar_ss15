@@ -3,6 +3,7 @@ define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 
         setupDetails: function(stationId) {
             connector.getLocationDetails(stationId, function(data) {
                 $("#location").html(utils.buildLocationName(data));
+                $("#time").html(data.date);
                 $("#loader_container").fadeOut("fast");
                 $("#detail_content").fadeIn("slow", function() {
                     map.scrollToMapPosition(data.latitude, data.longitude);
@@ -22,16 +23,16 @@ define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 
                     $('#vid_gallery_content').append("<li class='video'></li>");
                 }
 
-                if (data.images.length == 0) {
-                    $("#image_not_available").show();
+                if (data.images.length != 0) {
+                    $("#image_not_available").remove();
                 }
 
-                if (data.songs.length == 0) {
-                    $("#audio_not_available").show();
+                if (data.songs.length != 0) {
+                    $("#audio_not_available").remove();
                 }
 
-                if (data.videos.length == 0) {
-                    $("#video_not_available").show();
+                if (data.videos.length != 0) {
+                    $("#video_not_available").remove();
                 }
 
                 $('#picture_gallery, #audio_gallery, #video_gallery').sly({
@@ -49,7 +50,7 @@ define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 
                     dragHandle: 1,
 
                     speed: 600,
-                    startAt: 2
+                    startAt: 0
                 });
             });
         }
