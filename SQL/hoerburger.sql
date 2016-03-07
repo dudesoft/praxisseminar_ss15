@@ -55,7 +55,7 @@ CREATE TABLE `locations` (
   `latitude` double NOT NULL,
   `longitude` double NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +64,7 @@ CREATE TABLE `locations` (
 
 LOCK TABLES `locations` WRITE;
 /*!40000 ALTER TABLE `locations` DISABLE KEYS */;
-INSERT INTO `locations` VALUES (1,'Bellobrad/ Belobrod',42.117772,20.683192),(2,'Bidžovo /Bidzhevo',41.229982,20.699209),(3,'Brodosavce/ Brodosanë',42.10843,20.725045),(4,'Frangovo',41.146855,20.626576),(5,'Gjonaj/ Đonaj',42.253673,20.624341),(6,'Gllogovc/ Glogovac',42.621063,20.890502),(7,'Glumovo',41.980211,21.304624),(8,'Krani',40.940113,21.107889),(9,'Nakolec',40.89352,21.10799),(10,'Ohrid',41.123098,20.801648),(11,'Peć',42.659287,20.288736),(12,'Prishtinë/ Priština',42.662914,21.165503),(13,'Radolishta',41.164943,20.626576),(14,'Rugovo',42.683204,21.15798),(15,'Skopje',41.997346,21.427996),(16,'Veleshta',41.235323,20.653321),(17,'Vranishtë/ Vranište',42.042176,20.628996),(18,'Zym/ Zjum',42.113459,20.668293),(19,'Arvati',40.942663,21.111357);
+INSERT INTO `locations` VALUES (1,'Bellobrad/ Belobrod',42.117772,20.683192),(2,'Bidžovo /Bidzhevo',41.229982,20.699209),(3,'Brodosavce/ Brodosanë',42.10843,20.725045),(4,'Frangovo',41.146855,20.626576),(5,'Gjonaj/ Đonaj',42.253673,20.624341),(6,'Gllogovc/ Glogovac',42.621063,20.890502),(7,'Glumovo',41.980211,21.304624),(8,'Krani',40.940113,21.107889),(9,'Nakolec',40.89352,21.10799),(10,'Ohrid',41.123098,20.801648),(11,'Peć',42.659287,20.288736),(12,'Prishtinë/ Priština',42.662914,21.165503),(13,'Radolishta',41.164943,20.626576),(14,'Rugovo',42.683204,21.15798),(15,'Skopje',41.997346,21.427996),(16,'Veleshta',41.235323,20.653321),(17,'Vranishtë/ Vranište',42.042176,20.628996),(18,'Zym/ Zjum',42.113459,20.668293),(19,'Arvati',40.942663,21.111357),(20,'Bîrca',43.97095,23.616636),(21,'Giurgiţa ',44.015008,23.632665),(22,'Bukarest',44.426527,26.103562);
 /*!40000 ALTER TABLE `locations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -123,12 +123,15 @@ CREATE TABLE `stations` (
   `collection` varchar(16) DEFAULT NULL,
   `location_id` int(11) DEFAULT NULL,
   `travel_id` int(11) DEFAULT NULL,
+  `has_images` tinyint(1) NOT NULL DEFAULT '0',
+  `has_songs` tinyint(1) NOT NULL DEFAULT '0',
+  `has_videos` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `stations_location_idx` (`location_id`),
   KEY `stations_travels_idx` (`travel_id`),
   CONSTRAINT `stations_locations` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `stations_travels` FOREIGN KEY (`travel_id`) REFERENCES `travels` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,7 +140,7 @@ CREATE TABLE `stations` (
 
 LOCK TABLES `stations` WRITE;
 /*!40000 ALTER TABLE `stations` DISABLE KEYS */;
-INSERT INTO `stations` VALUES (1,'Prishtinë/ Priština','1959-08-09','Kosovo','Jugoslawien 1959',12,1),(2,'Gjonaj/ Đonaj','1959-08-12','Kosovo','Jugoslawien 1959',5,1),(3,'Gjonaj/ Đonaj','1959-08-13','Kosovo','Jugoslawien 1959',5,1),(4,'UNBEKANNT',NULL,'Kosovo','Jugoslawien 1959',NULL,1),(5,'Gjonaj/ Đonaj','1959-08-14','Kosovo','Jugoslawien 1959',5,1),(6,'Vranishtë/ Vranište','1959-08-15','Kosovo/ Prizrenska Gora','Jugoslawien 1959',17,1),(7,'Vranishtë/ Vranište','1959-08-16','Kosovo/ Prizrenska Gora','Jugoslawien 1959',17,1),(8,'Vranishtë/ Vranište','1959-08-17','Kosovo/ Prizrenska Gora','Jugoslawien 1959',17,1),(9,'Bellobrad/ Belobrod','1959-08-17','Kosovo','Jugoslawien 1959',1,1),(10,'Zym/ Zjum','1959-08-18','Kosovo','Jugoslawien 1959',18,1),(11,'Rugovo','1959-08-23','Kosovo','Jugoslawien 1959',14,1),(12,'Rugovo','1959-08-24','Kosovo','Jugoslawien 1959',14,1),(13,'Rugovo','1959-08-26','Kosovo','Jugoslawien 1959',14,1),(14,'Nakolec','1959-09-05','Westmakedonien','Jugoslawien 1959',9,1),(15,'Nakolec','1959-09-06','Westmakedonien','Jugoslawien 1959',9,1),(16,'Krani','1959-09-06','Westmakedonien','Jugoslawien 1959',8,1),(17,'Arvati','1959-09-07','Westmakedonien','Jugoslawien 1959',19,1),(18,'Krani','1959-09-08','Westmakedonien','Jugoslawien 1959',8,1),(19,'Ohrid','1959-09-13','Westmakedonien','Jugoslawien 1959',10,1),(20,'Radolishta','1959-09-14','Westmakedonien','Jugoslawien 1959',13,1),(21,'Frangovo','1959-09-14','Westmakedonien','Jugoslawien 1959',4,1),(22,'Radolishta','1959-09-15','Westmakedonien','Jugoslawien 1959',13,1),(23,'Frangovo','1959-09-15','Westmakedonien','Jugoslawien 1959',4,1),(24,'Veleshta','1959-09-17','Westmakedonien','Jugoslawien 1959',16,1),(25,'Bidžovo ','1959-09-17','Westmakedonien','Jugoslawien 1959',2,1),(26,'Skopje','1959-09-24','Westmakedonien','Jugoslawien 1959',15,1),(27,'Glumovo','1959-09-27','Westmakedonien','Jugoslawien 1959',7,1),(28,'Brodosavce/ Brodosanë','1959-08-17','Kosovo','Jugoslawien 1959',3,1),(29,'Brodosavce/ Brodosanë','1959-08-18','Kosovo','Jugoslawien 1959',3,1),(30,'Bellobrad/ Belobrod','1959-08-18','Kosovo','Jugoslawien 1959',1,1),(31,'Peć','1959-08-25','Kosovo','Jugoslawien 1959',11,1),(32,'Gllogovc/ Glogovac','1959-08-28','Kosovo','Jugoslawien 1959',6,1),(33,'Gllogovc/ Glogovac','1959-08-29','Kosovo','Jugoslawien 1959',6,1),(34,'Gllogovc/ Glogovac','1959-08-30','Kosovo','Jugoslawien 1959',6,1);
+INSERT INTO `stations` VALUES (1,'Prishtinë/ Priština','1959-08-09','Kosovo','Jugoslawien 1959',12,1,0,0,0),(2,'Gjonaj/ Đonaj','1959-08-12','Kosovo','Jugoslawien 1959',5,1,0,0,0),(3,'Gjonaj/ Đonaj','1959-08-13','Kosovo','Jugoslawien 1959',5,1,0,0,0),(4,'UNBEKANNT',NULL,'Kosovo','Jugoslawien 1959',NULL,1,0,0,0),(5,'Gjonaj/ Đonaj','1959-08-14','Kosovo','Jugoslawien 1959',5,1,0,0,0),(6,'Vranishtë/ Vranište','1959-08-15','Kosovo/ Prizrenska Gora','Jugoslawien 1959',17,1,0,0,0),(7,'Vranishtë/ Vranište','1959-08-16','Kosovo/ Prizrenska Gora','Jugoslawien 1959',17,1,0,0,0),(8,'Vranishtë/ Vranište','1959-08-17','Kosovo/ Prizrenska Gora','Jugoslawien 1959',17,1,0,0,0),(9,'Bellobrad/ Belobrod','1959-08-17','Kosovo','Jugoslawien 1959',1,1,0,0,0),(10,'Zym/ Zjum','1959-08-18','Kosovo','Jugoslawien 1959',18,1,0,0,0),(11,'Rugovo','1959-08-23','Kosovo','Jugoslawien 1959',14,1,0,0,0),(12,'Rugovo','1959-08-24','Kosovo','Jugoslawien 1959',14,1,0,0,0),(13,'Rugovo','1959-08-26','Kosovo','Jugoslawien 1959',14,1,0,0,0),(14,'Nakolec','1959-09-05','Westmakedonien','Jugoslawien 1959',9,1,0,0,0),(15,'Nakolec','1959-09-06','Westmakedonien','Jugoslawien 1959',9,1,0,0,0),(16,'Krani','1959-09-06','Westmakedonien','Jugoslawien 1959',8,1,0,0,0),(17,'Arvati','1959-09-07','Westmakedonien','Jugoslawien 1959',19,1,0,0,0),(18,'Krani','1959-09-08','Westmakedonien','Jugoslawien 1959',8,1,0,0,0),(19,'Ohrid','1959-09-13','Westmakedonien','Jugoslawien 1959',10,1,0,0,0),(20,'Radolishta','1959-09-14','Westmakedonien','Jugoslawien 1959',13,1,0,0,0),(21,'Frangovo','1959-09-14','Westmakedonien','Jugoslawien 1959',4,1,0,0,0),(22,'Radolishta','1959-09-15','Westmakedonien','Jugoslawien 1959',13,1,0,0,0),(23,'Frangovo','1959-09-15','Westmakedonien','Jugoslawien 1959',4,1,0,0,0),(24,'Veleshta','1959-09-17','Westmakedonien','Jugoslawien 1959',16,1,0,0,0),(25,'Bidžovo ','1959-09-17','Westmakedonien','Jugoslawien 1959',2,1,0,0,0),(26,'Skopje','1959-09-24','Westmakedonien','Jugoslawien 1959',15,1,0,0,0),(27,'Glumovo','1959-09-27','Westmakedonien','Jugoslawien 1959',7,1,0,0,0),(28,'Brodosavce/ Brodosanë','1959-08-17','Kosovo','Jugoslawien 1959',3,1,0,0,0),(29,'Brodosavce/ Brodosanë','1959-08-18','Kosovo','Jugoslawien 1959',3,1,0,0,0),(30,'Bellobrad/ Belobrod','1959-08-18','Kosovo','Jugoslawien 1959',1,1,0,0,0),(31,'Peć','1959-08-25','Kosovo','Jugoslawien 1959',11,1,0,0,0),(32,'Gllogovc/ Glogovac','1959-08-28','Kosovo','Jugoslawien 1959',6,1,0,0,0),(33,'Gllogovc/ Glogovac','1959-08-29','Kosovo','Jugoslawien 1959',6,1,0,0,0),(34,'Gllogovc/ Glogovac','1959-08-30','Kosovo','Jugoslawien 1959',6,1,0,0,0),(35,'Bîrca','1958-05-25','Südwestrumänien','Rumänien 1958',20,2,0,0,0),(36,'Giurgiţa ','1958-05-26','Südrumänien','Rumänien 1958',21,2,0,0,0),(38,'Bukarest',NULL,NULL,'Rumänien 1958',22,2,0,0,0);
 /*!40000 ALTER TABLE `stations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -154,7 +157,7 @@ CREATE TABLE `travels` (
   `date_begin` date DEFAULT NULL,
   `date_end` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf16;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf16;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -163,7 +166,7 @@ CREATE TABLE `travels` (
 
 LOCK TABLES `travels` WRITE;
 /*!40000 ALTER TABLE `travels` DISABLE KEYS */;
-INSERT INTO `travels` VALUES (1,'Jugoslavien','1959-08-09','1959-08-30');
+INSERT INTO `travels` VALUES (1,'Kosovo 1959','1959-08-09','1959-08-30'),(2,'Rumänien 1958','1958-05-25','1958-05-26');
 /*!40000 ALTER TABLE `travels` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,4 +206,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-07  0:56:39
+-- Dump completed on 2016-03-07 13:00:41

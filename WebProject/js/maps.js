@@ -1,7 +1,7 @@
 define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
     // get rid of global dependencies
     L.noConflict();
-    var map, locationLayer, travelLayer;
+    var map, locationLayer, travelLayer, travelPaths = [];
 
     var Maps = {
         setupMap: function(containerId) {
@@ -104,22 +104,23 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
             for (key in travels) {
                 var i = Object.keys(travels).indexOf(key);
                 pointList = utils.getSortedPointList(travels[key].stationList, data);
-                $("#layer_list").append("<li><span class='travel_name centered_anchor' id='to_travel" + i + "'>" + travels[key].name + "</span></li>");
+                $("#layer_list").append("<li><span class='travel_name centered_anchor' id='to_travel_" + i + "'>" + travels[key].name + "</span></li>");
 
-                var travelPath = new leaflet.Polyline(pointList, {
+                travelPaths["to_travel_" + i] = new leaflet.Polyline(pointList, {
                     color: utils.provideColor(i),
                     weight: 2,
                     opacity: 0.3,
                     smoothFactor: 1
                 }).addTo(locationLayer);
 
-                $("#to_travel" + i).click(function() {
-                    map.fitBounds(travelPath.getBounds());
+                $(".travel_name").click(function(e) {
+                    map.fitBounds(travelPaths[e.target.id].getBounds());
                 });
 
-                var marker = new leaflet.marker(travelPath.getBounds().getCenter(), {
-                    icon: travelIcon
-                }).bindPopup(utils.generateTravelPopup(travels[key]), customOptions).addTo(travelLayer);
+                var marker = new leaflet.marker(travelPaths["to_travel_" + i].getBounds().getCenter(), {
+                    icon: travelIcon,
+                    travel_id: "to_travel_" + i
+                }).bindPopup(utils.generateTravelPopup(travels[key]), customOptions);
 
                 marker.on('mouseover', function(e) {
                     this.openPopup();
@@ -128,8 +129,10 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
                     this.closePopup();
                 });
                 marker.on('click', function(e) {
-                    map.fitBounds(travelPath.getBounds());
+                    map.fitBounds(travelPaths[e.target.options.travel_id].getBounds());
                 });
+
+                marker.addTo(travelLayer);
             }
             locationLayer.addTo(map);
 
