@@ -1,4 +1,4 @@
-define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
+define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
     // get rid of global dependencies
     L.noConflict();
     var map, locationLayer, travelLayer, travelPaths = [];

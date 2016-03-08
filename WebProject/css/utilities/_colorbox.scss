@@ -91,8 +91,9 @@
     ordered & tabbed in a way that represents the nesting of the generated HTML.
 */
 
+
 #cboxOverlay {
-    background: url(/hoerburger/WebProject/img/colorbox/overlay.png) repeat 0 0;
+    background: url(/Praxisseminar/WebProject/img/colorbox/overlay.png) repeat 0 0;
     opacity: 0.9;
     filter: alpha(opacity=90);
 }
@@ -104,45 +105,45 @@
 #cboxTopLeft {
     width: 21px;
     height: 21px;
-    background: url(/hoerburger/WebProject/img/colorbox/controls.png) no-repeat -101px 0;
+    background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) no-repeat -101px 0;
 }
 
 #cboxTopRight {
     width: 21px;
     height: 21px;
-    background: url(/hoerburger/WebProject/img/colorbox/controls.png) no-repeat -130px 0;
+    background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) no-repeat -130px 0;
 }
 
 #cboxBottomLeft {
     width: 21px;
     height: 21px;
-    background: url(/hoerburger/WebProject/img/colorbox/controls.png) no-repeat -101px -29px;
+    background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) no-repeat -101px -29px;
 }
 
 #cboxBottomRight {
     width: 21px;
     height: 21px;
-    background: url(/hoerburger/WebProject/img/colorbox/controls.png) no-repeat -130px -29px;
+    background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) no-repeat -130px -29px;
 }
 
 #cboxMiddleLeft {
     width: 21px;
-    background: url(/hoerburger/WebProject/img/colorbox/controls.png) left top repeat-y;
+    background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) left top repeat-y;
 }
 
 #cboxMiddleRight {
     width: 21px;
-    background: url(/hoerburger/WebProject/img/colorbox/controls.png) right top repeat-y;
+    background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) right top repeat-y;
 }
 
 #cboxTopCenter {
     height: 21px;
-    background: url(/hoerburger/WebProject/img/colorbox/border.png) 0 0 repeat-x;
+    background: url(/Praxisseminar/WebProject/img/colorbox/border.png) 0 0 repeat-x;
 }
 
 #cboxBottomCenter {
     height: 21px;
-    background: url(/hoerburger/WebProject/img/colorbox/border.png) 0 -29px repeat-x;
+    background: url(/Praxisseminar/WebProject/img/colorbox/border.png) 0 -29px repeat-x;
 }
 
 #cboxContent {
@@ -180,11 +181,11 @@
 }
 
 #cboxLoadingOverlay {
-    background: url(/hoerburger/WebProject/img/colorbox/loading_background.png) no-repeat center center;
+    background: url(/Praxisseminar/WebProject/img/colorbox/loading_background.png) no-repeat center center;
 }
 
 #cboxLoadingGraphic {
-    background: url(/hoerburger/WebProject/img/colorbox/loading.gif) no-repeat center center;
+    background: url(/Praxisseminar/WebProject/img/colorbox/loading.gif) no-repeat center center;
 }
 
 
@@ -223,7 +224,7 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    background: url(/hoerburger/WebProject/img/colorbox/controls.png) no-repeat -75px 0;
+    background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) no-repeat -75px 0;
     width: 25px;
     height: 25px;
     text-indent: -9999px;
@@ -237,7 +238,7 @@
     position: absolute;
     bottom: 0;
     left: 27px;
-    background: url(/hoerburger/WebProject/img/colorbox/controls.png) no-repeat -50px 0;
+    background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) no-repeat -50px 0;
     width: 25px;
     height: 25px;
     text-indent: -9999px;
@@ -251,7 +252,7 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    background: url(/hoerburger/WebProject/img/colorbox/controls.png) no-repeat -25px 0;
+    background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) no-repeat -25px 0;
     width: 25px;
     height: 25px;
     text-indent: -9999px;
