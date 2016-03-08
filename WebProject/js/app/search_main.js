@@ -12,7 +12,7 @@ define(['jquery', './db_connector', './utils', './search_bar'], function($, dbCo
     }
 
     function addListElement(object) {
-        $listItem = $('<li>' + object.title + '</li>');
+        $listItem = $('<li class="result_element">' + object.title + '</li>');
         $listItem.click(function() {
             window.open("station_details.php?station_id=" + object.station_id, "_self");
         });
