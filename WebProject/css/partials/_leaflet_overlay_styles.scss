@@ -1,0 +1,63 @@
+.custom-popup .leaflet-popup-tip,
+.custom-popup .leaflet-popup-content-wrapper {
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+}
+
+.image_anchor {
+    margin-bottom: 10px;
+    margin-right: 5px;
+    width: 25px;
+    height: 25px;
+}
+
+.audio_anchor {
+    margin-bottom: 10px;
+    margin-right: 5px;
+    width: 25px;
+    height: 25px;
+}
+
+.video_anchor {
+    margin-bottom: 10px;
+    width: 25px;
+    height: 25px;
+}
+
+.centered_anchor {
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin: auto 0;
+    font-size: 14px;
+}
+
+.travel_name {
+    color: $standard_color;
+}
+
+.travel_name:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color: $standard_color;
+}
+
+#list_hover {
+    right: 20px;
+    top: 20px;
+    padding: 10px;
+    width: 200px;
+    position: absolute;
+    z-index: 5;
+    color: $standard_color;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+#layer_list {
+    display: none;
+    list-style-type: none;
+    padding-left: 0px;
+    overflow: auto;
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+}

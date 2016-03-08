@@ -1,6 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito|Signika|Pacifico|Quicksand|Patua+One|Chewy|Fredoka+One|Cabin+Condensed|Courgette|Audiowide|Days+One);
-
-#main_content_station{
+#main_content_station {
     position: absolute;
     width: 100%;
     top: 100px;
@@ -9,10 +8,12 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 95% 100%, auto auto;
+    padding-left: 111px;
     -webkit-filter: drop-shadow(10px 10px 20px black);
 }
 
 #detail_content {
+    display: none;
     position: absolute;
     width: 70%;
     top: 20px;
@@ -20,25 +21,54 @@
     left: 20px;
     right: 20px;
     padding: 5px;
-    margin-left:auto;
-    margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+#loader_container {
+    background-image: url(../img/loader.gif);
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 70%;
+    top: 20px;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 /*scrollbar properties*/
+
+.centered {
+    text-align: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    font-family: 'Nunito';
+}
+
+#time {
+    font-style: italic;
+    font-size: 16px;
+}
 
 ::-webkit-scrollbar {
     width: 1em;
 }
- 
+
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-}
- 
-::-webkit-scrollbar-thumb {
-  background-color: grey;
-  outline: 1px solid slategrey;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
+::-webkit-scrollbar-thumb {
+    background-color: grey;
+    outline: 1px solid slategrey;
+}
 
 h1 {
     text-align: center;
@@ -50,26 +80,25 @@ h1 {
     width: 58%;
     height: 45%;
     margin: 0.5% 0 0.5% 0;
-    overflow: auto;
- }
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
 
-.attribute{
-    text-align:left;
+.attribute {
+    text-align: left;
     margin-left: 5%;
     margin-right: 2%;
 }
 
 #mini_map {
-    background: green;
-    margin-top:0.5%;
+    margin-top: 0.5%;
     width: 40%;
     height: 45%;
     float: right;
 }
 
-#picture_galery {
-    margin-top: 25px;
-}
+
+//Sly Gallery for Multimedia
 
 .frame {
     width: 100%;
@@ -87,35 +116,57 @@ h1 {
 
 .slidee li {
     float: left;
-    margin: 3px;
+    margin: 0 5px 0 0;
     padding: 0;
-    width: 120px;
-    overflow: hidden;
-    height: 90%;
-    background: blue;
+    width: 130px;
+    height: 100%;
+}
+
+.not_available_label {
+    position: relative;
+    top: 30%;
+    color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    -webkit-transform: translateY(-30%);
+    -ms-transform: translateY(-30%);
+    transform: translateY(-30%);
 }
 
 .slidee li.active {
     box-shadow: 0px 0px 0px 2px orange inset;
 }
 
-.slidee li:hover{
+.slidee li:hover {
     cursor: pointer;
     opacity: 0.3;
     transition: opacity .2s;
 }
 
-video {
-    width: 320px;
-    height: 240px;
+ul li.picture {
+    background: rgba(0, 0, 0, 0.6);
 }
 
-.trans{
-    background-image: url(../img/transparentBackground.png);
-    border-style: solid;
-    border-width: 1px;
-    border-color: white;
-    border-radius: 2px;
+ul li.audio {
+    background-image: url(../img/audio-icon.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 40%;
+    width: 130px;
+}
+
+ul li.video {
+    background-image: url(../img/video-icon.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 40%;
+    width: 130px;
+}
+
+.gallery-picture {
+    width: auto;
+    height: 100%;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
 label {
@@ -126,33 +177,49 @@ label {
     text-align: center;
     line-height: 380px;
     font-family: 'Nunito', sans-serif;
-   
     text-shadow: 0px 0px 15px rgb(119, 119, 119);
     transition: opacity .2s;
 }
 
-label:hover { 
-    opacity: 1; 
+label:hover {
+    opacity: 1;
 }
 
+.trans {
+    background-image: url(../img/transparentBackground.png);
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 2px;
+    text-align: center;
+}
+
+
+//Navigation Arrows
 .nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
 }
 
-.navigation_element{
+.navigation_element {
     position: absolute;
     top: 20px;
     bottom: 20px;
-
     width: 20%;
 }
 
-.nav_left{
+.nav_left {
     left: 10px;
 }
 
-.nav_right{
+.nav_right {
     right: 10px;
+}
+
+
+//Colorbox / Multimediapopup
+video {
+    width: 320px;
+    height: 240px;
 }
