@@ -18,9 +18,11 @@
 <body>
     <?php include 'header.php';?>
         <div id="main_content_station">
-            <ul id="resut_list" style="list-style-type:none">
+            <div id="result_list_content">
+                <ul id="resut_list" class="search_results" style="list-style-type:none">
                 
-            </ul>
+                </ul>
+            </div>
         </div>
         
         <?php include 'footer.php';?>
