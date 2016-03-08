@@ -25,10 +25,7 @@
         
         <?php include 'footer.php';?>
 
-        <script data-main="js/common" src="js/vendor/require.js"></script>
-    <script>
-        require(['search_main']);
-    </script>
+        <script data-main="js/search_result" src="js/vendor/require.js"></script>
 </body>
 
 </html>

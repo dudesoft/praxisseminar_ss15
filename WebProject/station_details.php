@@ -51,12 +51,7 @@
             $station_id = $_GET["station_id"];
         }?>
 
-        <script data-main="js/common" src="js/vendor/require.js"></script>
-        <script>
-            require(['station_details/station_details_main'], function(stationDetails) {
-                stationDetails.setupDetails(<?php echo json_encode($station_id); ?>);
-            });
-        </script>
+        <script data-main="js/station_details" src="js/vendor/require.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,8 @@
-define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 'utils', 'search_bar', 'sly', 'colorbox'], function($, factory, map, connector, utils) {
+define(['jquery', './media_player_factory', './maps', './db_connector', './utils', './search_bar', 'sly', 'colorbox'], function($, factory, map, connector, utils) {
     var StationDetails = {
-        setupDetails: function(stationId) {
+        setupDetails: function() {
+            var stationId = utils.getUrlVars().station_id;
+
             connector.getLocationDetails(stationId, function(data) {
                 $("#location").html(utils.buildLocationName(data));
                 $("#time").html(data.date);

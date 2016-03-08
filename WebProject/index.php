@@ -35,9 +35,6 @@
         </div>
         <?php include 'footer.php';?>
     </div>
-    <script data-main="js/common" src="js/vendor/require.js"></script>
-    <script>
-        require(['index_main']);
-    </script>
+    <script data-main="js/index" src="js/vendor/require.js"></script>
 </body>
 </html>
