@@ -19,6 +19,7 @@
     <?php include 'header.php';?>
         <div id="main_content_station">
             <div id="result_list_content">
+                <h4>Ergebnisse</h4>
                 <ul id="resut_list" class="search_results" style="list-style-type:none">
                 
                 </ul>
