@@ -12,7 +12,10 @@ define(['jquery', './db_connector', './utils', './search_bar'], function($, dbCo
     }
 
     function addListElement(object) {
-        $listItem = $('<li class="result_element">' + object.title + '</li>');
+        $listItem = $('<li class="result_element"> <div class="result_icon"></div> <div class="result_name">' + object.title + '</div> </li');
+
+
+
         $listItem.click(function() {
             window.open("station_details.php?station_id=" + object.station_id, "_self");
         });
@@ -20,3 +23,5 @@ define(['jquery', './db_connector', './utils', './search_bar'], function($, dbCo
     }
 
 });
+
+// $listItem = $('<li class="result_element">' + object.title + '</li>');
