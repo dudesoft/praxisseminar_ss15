@@ -36,12 +36,14 @@ define([], function() {
             });
         },
 
-        getSearchResult: function(searchString, callback) {
+        getSearchResult: function(searchString, minDate, maxDate, callback) {
             $.ajax({
                 type: 'GET',
                 url: 'sql/get_search_results.php',
                 data: {
-                    'search_string': searchString
+                    'search_string': searchString,
+                    'date_min': minDate,
+                    'date_max': maxDate
                 },
                 cache: 'true',
                 dataType: 'json',
