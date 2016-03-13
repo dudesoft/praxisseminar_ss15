@@ -5,11 +5,11 @@
             <p id="name-logo">Hoerburger Reisen</p>
         </a>
     </div>
-    
+
     <div id="search_bar" class="input-group">
       <input id="search-input" class="form-control" type="search" name="search" placeholder="Suche...">
       <span class="input-group-btn">
-        
+
         <div class="btn-group" role="group">
             <div class="dropdown dropdown-lg">
                 <button id="advancedSearchButton" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -18,12 +18,6 @@
                 <div class="dropdown-menu dropdown-menu-right" id="advancedSearchDropdownMenu" role="menu">
 
                     <form>
-
-                        <div class="form-group">
-                            <p> <strong>Ort:</strong></p>
-                            <input type="text" class="form-control" name="location" id="location_input">
-                        </div>
-
                         <div class="form-group">
                             <p><strong>Interpret:</strong></p>
                             <input type="text" class="form-control" name="interpret" id="interpret_input">
@@ -32,6 +26,12 @@
                         <div class="form-group">
                             <p><strong>Musikinstrument:</strong></p>
                             <input type="text" class="form-control" name="instrument" id="instrument_input">
+                        </div>
+
+                        <div class="form-group">
+                            <select name="Reisen" id="journey_dropdown">
+                                <option>Alle Reisen</option>
+                            </select>
                         </div>
 
                         <div class="form-group" >
@@ -50,23 +50,23 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <button id="enter_search" type="button"> 
+
+                        <button id="enter_search" type="button">
                             <i class="glyphicon glyphicon-ok"></i>
                         </button>
-                    </form>  
+                    </form>
             </div>
         </div>
 
-        
-        <button id="search-button" class="btn btn-default" type="button"> 
+
+        <button id="search-button" class="btn btn-default" type="button">
             <i class="glyphicon glyphicon-search"></i>
         </button>
-        
+
       </span>
     </div>
-    
-   <!-- 
+
+   <!--
     <button type="button" id="pop_over" class="btn btn-primary btn-xs">Erweiterte Suche <span class="glyphicon glyphicon-menu-down"></span> </button>
     -->
 
@@ -104,8 +104,8 @@
                     </div>
                 </div>
             </div>
-            
-            <button id="enter_search" type="button"> 
+
+            <button id="enter_search" type="button">
                 <i class="glyphicon glyphicon-ok"></i>
             </button>
 

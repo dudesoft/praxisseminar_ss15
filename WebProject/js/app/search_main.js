@@ -3,11 +3,11 @@ define(['jquery', './db_connector', './utils', './search_bar'], function($, dbCo
     $list = $('#resut_list');
 
     var minDateString = "";
-    if(urlVars.minDate)
+    if (urlVars.minDate)
 
-    $('#title').html('Ergebnisse für ' + urlVars.search.replace('<', '&lt'));
+        $('#title').html('Ergebnisse für ' + urlVars.search.replace('<', '&lt'));
 
-    dbConnector.getSearchResult(urlVars.search, urlVars.minDate, urlVars.maxDate, setupResultList);
+    dbConnector.getSearchResult(urlVars.search, urlVars.minDate, urlVars.maxDate, urlVars.journey, setupResultList);
 
     function setupResultList(data) {
         console.log(data);
@@ -18,16 +18,16 @@ define(['jquery', './db_connector', './utils', './search_bar'], function($, dbCo
 
     function addListElement(object) {
         var resultType = "";
-        if(object.table_name == "songs") {
+        if (object.table_name == "songs") {
             resultType = "result_type_audio";
         }
-        if(object.table_name == "images") {
+        if (object.table_name == "images") {
             resultType = "result_type_image"
         }
-        if(object.table_name == "videos") {
+        if (object.table_name == "videos") {
             resultType = "result_type_video"
         }
-        if(object.table_name == "stations") {
+        if (object.table_name == "stations") {
             resultType = "result_type_station"
         }
 
