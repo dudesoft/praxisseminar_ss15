@@ -51,6 +51,7 @@ $response = [
 	"id" => $station['id'],
     "name" => $name,
     "date" => $station['date'],
+    "travel" => $station['travel_id'],
     "altname" => $alt_name,	
     "latitude" => $location['latitude'],
     "longitude" => $location['longitude'],

@@ -18,7 +18,7 @@
 <body>
     <?php include 'header.php';?>
         <div id="main_content_station">
-            <label for="prev_diary" class="nav nav_left">&#x2039;</label>
+            <label id="prev_diary" class="nav nav_left">&#x2039;</label>
             <div id="loader_container"></div>
             <span id="detail_content">
                 <div id="text_info" class="trans">
@@ -46,7 +46,7 @@
                 </div>
             </span>
             </div>
-            <label for="next_diary" class="nav nav_right">&#x203a;</label>
+            <label id="next_diary" class="nav nav_right">&#x203a;</label>
         <?php include 'footer.php';
         if (isset($_GET["station_id"])) {
             $station_id = $_GET["station_id"];

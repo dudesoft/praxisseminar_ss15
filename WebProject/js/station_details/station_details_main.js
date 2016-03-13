@@ -9,6 +9,24 @@ define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 
                     map.scrollToMapPosition(data.latitude, data.longitude);
                 });
 
+                connector.getNextPrevStation(data.travel, data.date, function(stations) {
+                    if (!stations.next) {
+                        $("#next_diary").hide();
+                    } else {
+                        $("#next_diary").click(function() {
+                            map.openNewLocation(stations.next);
+                        });
+                    }
+
+                    if (!stations.previous) {
+                        $("#prev_diary").hide();
+                    } else {
+                        $("#prev_diary").click(function() {
+                            map.openNewLocation(stations.previous);
+                        });
+                    }
+                });
+
                 map.setupMap('mini_map');
 
                 for (var i = 0; i < data.images.length; i++) {

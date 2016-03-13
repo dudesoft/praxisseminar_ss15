@@ -82,19 +82,7 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
                 });
 
                 marker.on('click', function(e) {
-                    if ($("#detail_content").length) {
-                        $("#detail_content").fadeOut("slow", function() {
-                            window.open("station_details.php?station_id=" + location.id, "_self");
-                        });
-                    } else {
-                        if (location.stations.length == 1) {
-                            window.open("station_details.php?station_id=" + location.stations[0].id, "_self");
-                        } else {
-                            Maps.showStationList(location.stations);
-                            Maps.disableMapControls();
-                            $("#map_overlay").fadeIn("fast");
-                        }
-                    }
+                    Maps.openNewLocation(location);
                 });
 
                 marker.addTo(locationLayer);
@@ -143,6 +131,22 @@ define(['leaflet', 'db_connector', 'utils'], function(leaflet, db, utils) {
                     map.addLayer(travelLayer);
                 }
             });
+        },
+
+        openNewLocation: function(location) {
+            if ($("#detail_content").length) {
+                $("#detail_content").fadeOut("slow", function() {
+                    window.open("station_details.php?station_id=" + location.id, "_self");
+                });
+            } else {
+                if (location.stations.length == 1) {
+                    window.open("station_details.php?station_id=" + location.stations[0].id, "_self");
+                } else {
+                    this.showStationList(location.stations);
+                    this.disableMapControls();
+                    $("#map_overlay").fadeIn("fast");
+                }
+            }
         },
 
         scrollToMapPosition: function(latitude, longitude) {

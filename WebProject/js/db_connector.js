@@ -36,6 +36,26 @@ define([], function() {
             });
         },
 
+        getNextPrevStation: function(travelId, date, callback) {
+            $.ajax({
+                type: 'GET',
+                url: 'sql/get_next_prev_station.php',
+                data: {
+                    'travel_id': travelId,
+                    'date': date
+                },
+                cache: 'true',
+                dataType: 'json',
+                success: function(response) {
+                    callback(response);
+                },
+                error: function() {
+                    alert("Fehler beim Laden der Ortsdaten");
+                    return null;
+                }
+            });
+        },
+
         getSearchResult: function(searchString, callback) {
             $.ajax({
                 type: 'GET',
