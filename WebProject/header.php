@@ -19,16 +19,7 @@
 
                     <form>
                         <div class="form-group">
-                            <p><strong>Interpret:</strong></p>
-                            <input type="text" class="form-control" name="interpret" id="interpret_input">
-                        </div>
-
-                        <div class="form-group">
-                            <p><strong>Musikinstrument:</strong></p>
-                            <input type="text" class="form-control" name="instrument" id="instrument_input">
-                        </div>
-
-                        <div class="form-group">
+                            <p><strong>Reise:</strong></p>
                             <select name="Reisen" id="journey_dropdown">
                                 <option>Alle Reisen</option>
                             </select>
@@ -50,10 +41,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <button id="enter_search" type="button">
-                            <i class="glyphicon glyphicon-ok"></i>
-                        </button>
                     </form>
             </div>
         </div>
