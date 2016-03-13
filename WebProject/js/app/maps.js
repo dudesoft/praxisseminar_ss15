@@ -153,9 +153,9 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
         },
 
         scrollToMapPosition: function(latitude, longitude) {
-            setTimeout(function() {
-                map.fitBounds(latLongCollection);
-            }, 0);
+            //setTimeout(function() {
+            //    map.fitBounds(latLongCollection);
+            //}, 0);
             map.panTo(new leaflet.LatLng(latitude, longitude), { animate: true, duration: 1.0 });
         },
 
@@ -194,74 +194,3 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
     };
     return Maps;
 });
-
-
-
-// setTravelPath();
-
-// function setTravelPath() {
-//   var locationLayer = L.layerGroup();
-//   var travelLayer = L.layerGroup();
-
-//   <% @travels.each do |travel| %>
-//   var locations = [];
-//   <% travel.locations.each do |location| %>
-//   locations.push([<%= location.latitude %>, <%= location.longitude %>]);
-//   new L.marker(locations[locations.length - 1], {icon: locationIcon}).addTo(locationLayer);
-//   <% end %>
-//   var poly = new L.Polyline(locations, {
-//     color: 'red',
-//     weight: 3,
-//     opacity: 0.5,
-//     smoothFactor: 1
-//   }).addTo(locationLayer);
-//   if (locations.length > 0) {
-//     createTravelMarker(poly).addTo(travelLayer);
-//   }
-//   <% end %>
-
-//   var root = 'https://nominatim.openstreetmap.org/search.php';
-
-//   var data = $.get(root, {
-//     country: "Afghanistan",
-//     city: "Kabul",
-//     format: "json"
-//   }, function () {
-//     console.log(data.responseJSON);
-//   }, "json")
-
-//   var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-//   var osm = new L.TileLayer('<%= MAPBOX_API %>',
-//   {
-//     minZoom: 3,
-//     maxZoom: 13,
-//     attribution: osmAttrib
-//   });
-
-//   var southWest = L.latLng(250, 250),
-//   northEast = L.latLng(-250, -250),
-//   bounds = L.latLngBounds(southWest, northEast);
-
-//   var map = L.map('map', {
-//     center: [28.635308, 77.22496],
-//     zoom: 8,
-//     layers: [osm, locationLayer],
-//     maxBounds: bounds
-//   });
-
-//   var baseLayers = {
-//     "Cities": locationLayer,
-//     "Travels": travelLayer
-//   };
-
-//   L.control.layers(baseLayers, null).addTo(map);
-//   //var p = L.polygon(locations);
-// }
-
-// function createTravelMarker(poly) {
-//   var marker = new L.marker(poly.getBounds().getCenter(), {icon: travelIcon}).bindPopup("Popup content");
-//   marker.on('mouseover', function (e) {
-//     this.openPopup();
-//   });
-//   return marker;
-// }
