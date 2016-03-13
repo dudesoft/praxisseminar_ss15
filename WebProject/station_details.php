@@ -28,9 +28,8 @@
                 </div>
                 <div id="mini_map" class="trans">
                 </div>
-                
-                <div id="picture_gallery" class="frame trans gallery">
                 <span id="image_not_available" class="not_available_label">Für diese Station sind leider (noch) keine Bilder vorhanden.</span>
+                <div id="picture_gallery" class="frame trans gallery">
                     <ul id="pic_gallery_content" class="slidee">
                     </ul>
                 </div>
@@ -52,12 +51,7 @@
             $station_id = $_GET["station_id"];
         }?>
 
-        <script data-main="js/common" src="js/vendor/require.js"></script>
-        <script>
-            require(['station_details/station_details_main'], function(stationDetails) {
-                stationDetails.setupDetails(<?php echo json_encode($station_id); ?>);
-            });
-        </script>
+        <script data-main="js/station_details" src="js/vendor/require.js"></script>
 </body>
 
 </html>

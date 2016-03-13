@@ -1,6 +1,8 @@
-define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 'utils', 'search_bar', 'sly', 'colorbox'], function($, factory, map, connector, utils) {
+define(['jquery', './media_player_factory', './maps', './db_connector', './utils', './search_bar', 'sly', 'colorbox'], function($, factory, map, connector, utils) {
     var StationDetails = {
-        setupDetails: function(stationId) {
+        setupDetails: function() {
+            var stationId = utils.getUrlVars().station_id;
+
             connector.getLocationDetails(stationId, function(data) {
                 $("#location").html(utils.buildLocationName(data));
                 $("#time").html(data.date);
@@ -30,15 +32,21 @@ define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 
                 map.setupMap('mini_map');
 
                 for (var i = 0; i < data.images.length; i++) {
-                    $('#pic_gallery_content').append("<li class='picture'> <img src='" + data.images[i] + "' class='gallery-picture'> </li>");
+                    $galleryElement = $("<li class='picture'> <img src='" + data.images[i] + "' class='gallery-picture'> </li>");
+                    $galleryElement.click(factory.getPictureGallery(data.images[i]));
+                    $('#pic_gallery_content').append($galleryElement);
                 }
 
                 for (var i = 0; i < data.songs.length; i++) {
-                    $('#audio_gallery_content').append("<li class='audio'></li>");
+                    $galleryElement = $("<li class='audio'></li>");
+                    $galleryElement.click(factory.getAudioPlayer(data.images[i]));
+                    $('#audio_gallery_content').append($galleryElement);
                 }
 
                 for (var i = 0; i < data.videos.length; i++) {
-                    $('#vid_gallery_content').append("<li class='video'></li>");
+                    $galleryElement = $("<li class='video'></li>");
+                    $galleryElement.click(factory.getVideoPlayer(data.images[i]));
+                    $('#vid_gallery_content').append($galleryElement);
                 }
 
                 if (data.images.length != 0) {
@@ -53,23 +61,31 @@ define(['jquery', 'station_details/MediaPlayerFactory', 'maps', 'db_connector', 
                     $("#video_not_available").remove();
                 }
 
-                $('#picture_gallery, #audio_gallery, #video_gallery').sly({
-                    horizontal: 1,
+                $(document).ready(function() {
+                    $('#picture_gallery, #audio_gallery, #video_gallery').sly({
+                        horizontal: 1,
 
-                    itemNav: 'basic',
-                    smart: 1,
-                    activateOn: 'click',
+                        itemNav: 'basic',
+                        smart: 1,
+                        activateOn: 'click',
 
-                    scrollBy: 1,
+                        scrollBy: 1,
 
-                    mouseDragging: 1,
-                    swingSpeed: 0.2,
+                        mouseDragging: 1,
+                        swingSpeed: 0.2,
 
-                    dragHandle: 1,
+                        dragHandle: 1,
 
-                    speed: 600,
-                    startAt: 0
+                        speed: 600,
+                        startAt: 0
+                    });
+
+                    $(window).resize(function(e) {
+                        console.log("resize lol");
+                        $('#picture_gallery, #audio_gallery, #video_gallery').sly('reload');
+                    });
                 });
+
             });
         }
     };

@@ -10,6 +10,7 @@
     background-size: 95% 100%, auto auto;
     padding-left: 111px;
     -webkit-filter: drop-shadow(10px 10px 20px black);
+    font-family: Segoe UI;
 }
 
 #detail_content {
@@ -88,6 +89,7 @@ h1 {
     text-align: left;
     margin-left: 5%;
     margin-right: 2%;
+    
 }
 
 #mini_map {
@@ -97,9 +99,8 @@ h1 {
     float: right;
 }
 
-#picture_galery {
-    margin-top: 25px;
-}
+
+//Sly Gallery for Multimedia
 
 .frame {
     width: 100%;
@@ -117,10 +118,10 @@ h1 {
 
 .slidee li {
     float: left;
-    margin: 3px;
+    margin: 0 5px 0 0;
     padding: 0;
-    overflow: hidden;
-    height: 90%;
+    width: 130px;
+    height: 100%;
 }
 
 .not_available_label {
@@ -143,18 +144,31 @@ h1 {
     transition: opacity .2s;
 }
 
-video {
-    width: 320px;
-    height: 240px;
+ul li.picture {
+    background: rgba(0, 0, 0, 0.6);
 }
 
-.trans {
-    background-image: url(../img/transparentBackground.png);
-    border-style: solid;
-    border-width: 1px;
-    border-color: white;
-    border-radius: 2px;
-    text-align: center;
+ul li.audio {
+    background-image: url(../img/audio-icon.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 40%;
+    width: 130px;
+}
+
+ul li.video {
+    background-image: url(../img/video-icon.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 40%;
+    width: 130px;
+}
+
+.gallery-picture {
+    width: auto;
+    height: 100%;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
 label {
@@ -173,6 +187,17 @@ label:hover {
     opacity: 1;
 }
 
+.trans {
+    background-image: url(../img/transparentBackground.png);
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 2px;
+    text-align: center;
+}
+
+
+//Navigation Arrows
 .nav {
     position: absolute;
     top: 50%;
@@ -194,29 +219,9 @@ label:hover {
     right: 10px;
 }
 
-ul li.picture {
-    text-align: center;
-    padding: 2px;
-    background: rgba(0, 0, 0, 0.6);
-}
 
-ul li.audio {
-    background-image: url(../img/audio-icon.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 40%;
-    width: 90px;
-}
-
-ul li.video {
-    background-image: url(../img/video-icon.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 40%;
-    width: 90px;
-}
-
-.gallery-picture {
-    max-height: 100%;
-    max-width: 90px;
+//Colorbox / Multimediapopup
+video {
+    width: 320px;
+    height: 240px;
 }
