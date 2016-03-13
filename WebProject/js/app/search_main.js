@@ -7,7 +7,7 @@ define(['jquery', './db_connector', './utils', './search_bar'], function($, dbCo
 
         $('#title').html('Ergebnisse für ' + urlVars.search.replace('<', '&lt'));
 
-    dbConnector.getSearchResult(urlVars.search, urlVars.minDate, urlVars.maxDate, urlVars.journey, setupResultList);
+    dbConnector.getSearchResult(urlVars.search, urlVars.minDate, urlVars.maxDate, urlVars.journey, urlVars.resultType, setupResultList);
 
     function setupResultList(data) {
         console.log(data);

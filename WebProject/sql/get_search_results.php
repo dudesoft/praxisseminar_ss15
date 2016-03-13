@@ -18,6 +18,7 @@ catch(PDOException $e) {
 $dateMax = date('Y-m-d');
 $dateMin = '0001-01-01';
 $journey = '';
+$resultType = '';
 $searchString = '';
 if (isset($_GET['search_string'])) {
     $searchString = $_GET['search_string'];
@@ -31,6 +32,9 @@ if (isset($_GET['date_max'])) {
 }
 if (isset($_GET['journey'])) {
     $journey = $_GET['journey'];
+}
+if (isset($_GET['result_type'])) {
+    $resultType = $_GET['result_type'];
 }
 
 $conn->query("SET group_concat_max_len = 4096");
@@ -51,7 +55,7 @@ if ($searchString != '') {
       from stations
       INNER JOIN travels ON stations.travel_id = travels.id
     )
-    as sitewide WHERE relevance > 0 AND (journey = '$journey' or '$journey' = '') AND date BETWEEN '$dateMin' AND '$dateMax' ORDER BY relevance DESC");
+    as sitewide WHERE relevance > 0 AND (journey = '$journey' or '$journey' = '') AND (table_name = '$resultType' or '$resultType' = '') AND date BETWEEN '$dateMin' AND '$dateMax' ORDER BY relevance DESC");
   $query -> execute();
 } else {
   $query = $conn -> prepare("SELECT * from (
@@ -66,7 +70,7 @@ if ($searchString != '') {
       from stations
       INNER JOIN travels ON stations.travel_id = travels.id
     )
-    as sitewide WHERE (journey = '$journey' or '$journey' = '') AND date BETWEEN '$dateMin' AND '$dateMax' ORDER BY relevance DESC");
+    as sitewide WHERE (journey = '$journey' or '$journey' = '') AND (table_name = '$resultType' or '$resultType' = '') AND date BETWEEN '$dateMin' AND '$dateMax' ORDER BY relevance DESC");
   $query -> execute();
 }
 

@@ -36,7 +36,7 @@ define([], function() {
             });
         },
 
-        getSearchResult: function(searchString, minDate, maxDate, journey, callback) {
+        getSearchResult: function(searchString, minDate, maxDate, journey, resultType, callback) {
             $.ajax({
                 type: 'GET',
                 url: 'sql/get_search_results.php',
@@ -44,7 +44,8 @@ define([], function() {
                     'search_string': searchString,
                     'date_min': minDate,
                     'date_max': maxDate,
-                    'journey' : journey
+                    'journey' : journey,
+                    'result_type' : resultType
                 },
                 cache: 'true',
                 dataType: 'json',

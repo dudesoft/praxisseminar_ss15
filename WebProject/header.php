@@ -19,9 +19,20 @@
 
                     <form>
                         <div class="form-group">
+                            <p><strong>Suche nach:</strong></p>
+                            <select name="Reisen" id="result_type_dropdown">
+                                <option value="default">Alles</option>
+                                <option value="stations">Stationen</option>
+                                <option value="songs">Audio</option>
+                                <option value="images">Bilder</option>
+                                <option value="videos">Video</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <p><strong>Reise:</strong></p>
                             <select name="Reisen" id="journey_dropdown">
-                                <option>Alle Reisen</option>
+                                <option value="default">Alle Reisen</option>
                             </select>
                         </div>
 

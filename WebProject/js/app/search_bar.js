@@ -22,6 +22,7 @@ define(['jquery', './db_connector', 'bootstrap'], function($, db_connector) {
         var minDate = "";
         var maxDate = "";
         var journey = "";
+        var resultType = "";
 
         if ($('#min_date_input').val() != "") {
             minDate = "&minDate=" + $('#min_date_input').val();
@@ -29,10 +30,13 @@ define(['jquery', './db_connector', 'bootstrap'], function($, db_connector) {
         if ($('#max_date_input').val() != "") {
             maxDate = "&maxDate=" + $('#max_date_input').val();
         }
-        if ($('#journey_dropdown').val() != "Alle Reisen") {
+        if ($('#journey_dropdown').find('option:selected').val() != "default") {
             journey = "&journey=" + $('#journey_dropdown').val();
         }
+        if ($('#result_type_dropdown').find('option:selected').val() != "default") {
+            resultType = "&resultType=" + $('#result_type_dropdown').find('option:selected').val();
+        }
 
-        window.open("search_result.php?search=" + encodeURI($('#search-input').val()) + minDate + maxDate + journey, "_self");
+        window.open("search_result.php?search=" + encodeURI($('#search-input').val()) + minDate + maxDate + journey + resultType, "_self");
     }
 });
