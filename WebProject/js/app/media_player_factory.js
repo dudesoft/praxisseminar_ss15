@@ -17,7 +17,7 @@ define(function() {
         getPictureGallery: function(src) {
             return function() {
                 $.colorbox({
-                    html: "<div id='lightbox_content'><div id='audio_container'><img src='" + src + "' ></img></div></div>"
+                    html: "<div id='lightbox_content'><div><img id='image_container'src='" + src + "' ></img></div></div>"
                 });
             };
         }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 14. Mrz 2016 um 18:43
+-- Erstellungszeit: 15. Mrz 2016 um 15:14
 -- Server-Version: 10.1.9-MariaDB
 -- PHP-Version: 5.6.15
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Tabellenstruktur für Tabelle `images`
 --
 
+DROP TABLE IF EXISTS `images`;
 CREATE TABLE `images` (
   `id` int(11) NOT NULL,
   `url` varchar(53) DEFAULT NULL,
@@ -50,26 +51,26 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `url`, `station_id`, `Lnr`, `FotoNr`, `TextulFonNr`, `Aufnahme`, `location`, `Kalusch`, `Attribute`, `Aufnahmeposition`, `Situation`, `Musiker`, `Hoerburger_Notizen`, `Zuschauer`, `Bemerkungen`) VALUES
-(1, 'images/Kosovo59/Arvati/Kosovo59_Arvati_1.jpg', 19, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
-(2, 'images/Kosovo59/Arvati/Kosovo59_Arvati_2.jpg', 19, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
-(3, 'images/Kosovo59/Arvati/Kosovo59_Arvati_3.jpg', 19, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
-(4, 'images/Kosovo59/Arvati/Kosovo59_Arvati_4.jpg', 19, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
-(5, 'images/Kosovo59/Arvati/Kosovo59_Arvati_5.jpg', 19, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
-(6, 'images/Kosovo59/Arvati/Kosovo59_Arvati_6.jpg', 19, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
-(7, 'images/Kosovo59/Arvati/Kosovo59_Arvati_7.jpg', 19, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
-(8, 'images/Kosovo59/Arvati/Kosovo59_Arvati_8.jpg', 19, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
-(9, 'images/Kosovo59/Arvati/Kosovo59_Arvati_9.jpg', 19, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
-(10, 'images/Kosovo59/Arvati/Kosovo59_Arvati_10.jpg', 19, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
-(11, 'images/Kosovo59/Arvati/Kosovo59_Arvati_11.jpg', 19, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
-(12, 'images/Kosovo59/Arvati/Kosovo59_Arvati_12.jpg', 19, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
-(13, 'images/Kosovo59/Arvati/Kosovo59_Arvati_13.jpg', 19, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
-(14, 'images/Kosovo59/Arvati/Kosovo59_Arvati_14.jpg', 19, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
-(15, 'images/Kosovo59/Arvati/Kosovo59_Arvati_15.jpg', 19, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
-(16, 'images/Kosovo59/Arvati/Kosovo59_Arvati_16.jpg', 19, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
-(17, 'images/Kosovo59/Arvati/Kosovo59_Arvati_17.jpg', 19, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
-(18, 'images/Kosovo59/Arvati/Kosovo59_Arvati_18.jpg', 19, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
-(19, 'images/Kosovo59/Arvati/Kosovo59_Arvati_19.jpg', 19, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
-(20, 'images/Kosovo59/Arvati/Kosovo59_Arvati_20.jpg', 19, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(1, 'images/Kosovo59/Arvati/Kosovo59_Arvati_1.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(2, 'images/Kosovo59/Arvati/Kosovo59_Arvati_2.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(3, 'images/Kosovo59/Arvati/Kosovo59_Arvati_3.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(4, 'images/Kosovo59/Arvati/Kosovo59_Arvati_4.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(5, 'images/Kosovo59/Arvati/Kosovo59_Arvati_5.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(6, 'images/Kosovo59/Arvati/Kosovo59_Arvati_6.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(7, 'images/Kosovo59/Arvati/Kosovo59_Arvati_7.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(8, 'images/Kosovo59/Arvati/Kosovo59_Arvati_8.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(9, 'images/Kosovo59/Arvati/Kosovo59_Arvati_9.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(10, 'images/Kosovo59/Arvati/Kosovo59_Arvati_10.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(11, 'images/Kosovo59/Arvati/Kosovo59_Arvati_11.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(12, 'images/Kosovo59/Arvati/Kosovo59_Arvati_12.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(13, 'images/Kosovo59/Arvati/Kosovo59_Arvati_13.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(14, 'images/Kosovo59/Arvati/Kosovo59_Arvati_14.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(15, 'images/Kosovo59/Arvati/Kosovo59_Arvati_15.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(16, 'images/Kosovo59/Arvati/Kosovo59_Arvati_16.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(17, 'images/Kosovo59/Arvati/Kosovo59_Arvati_17.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(18, 'images/Kosovo59/Arvati/Kosovo59_Arvati_18.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(19, 'images/Kosovo59/Arvati/Kosovo59_Arvati_19.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(20, 'images/Kosovo59/Arvati/Kosovo59_Arvati_20.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
 (21, 'images/Kosovo59/Bidzovo/Kosovo59_Bidzovo_1.jpg', 2, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
 (22, 'images/Kosovo59/Bidzovo/Kosovo59_Bidzovo_2.jpg', 2, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
 (23, 'images/Kosovo59/Bidzovo/Kosovo59_Bidzovo_3.jpg', 2, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
