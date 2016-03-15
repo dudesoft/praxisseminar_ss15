@@ -54,6 +54,14 @@ if ($searchString != '') {
       $stationRelevanceMultiplier * (MATCH(location, region) AGAINST ('$searchString' IN BOOLEAN MODE)) as relevance
       from stations
       INNER JOIN travels ON stations.travel_id = travels.id
+    UNION
+    SELECT
+      'images' as 'table_name',
+      images.id, 'Bild' as name, stations.id as 'station_id', stations.date as 'date', travels.name as 'journey',
+      (MATCH(Aufnahme, images.location, Attribute, Aufnahmeposition, Situation, Musiker, Hoerburger_Notizen, Zuschauer, Bemerkungen) AGAINST ('$searchString' IN BOOLEAN MODE)) as relevance
+      from images
+      INNER JOIN stations ON images.station_id = stations.id
+      INNER JOIN travels ON stations.travel_id = travels.id
     )
     as sitewide WHERE relevance > 0 AND (journey = '$journey' or '$journey' = '') AND (table_name = '$resultType' or '$resultType' = '') AND date BETWEEN '$dateMin' AND '$dateMax' ORDER BY relevance DESC");
   $query -> execute();
@@ -69,6 +77,12 @@ if ($searchString != '') {
       'stations' as 'table_name', stations.id, location as name, stations.id as 'station_id', date as 'date', travels.name as 'journey', $stationRelevanceMultiplier * 1 as relevance
       from stations
       INNER JOIN travels ON stations.travel_id = travels.id
+    UNION
+    SELECT
+      'images' as 'table_name', images.id, 'Bild' as name, stations.id as 'station_id', stations.date as 'date', travels.name as 'journey', 1 as relevance
+      from images
+      INNER JOIN stations ON images.station_id = stations.id
+      INNER JOIN travels ON stations.travel_id = travels.id  
     )
     as sitewide WHERE (journey = '$journey' or '$journey' = '') AND (table_name = '$resultType' or '$resultType' = '') AND date BETWEEN '$dateMin' AND '$dateMax' ORDER BY relevance DESC");
   $query -> execute();
