@@ -52,7 +52,7 @@ for ($i = 0; $i < count($songs); $i++) {
 }
 
 for ($i = 0; $i < count($videos); $i++) {
-    $videos[$i] = $base_url_videos.$videos[$i];
+    $videos[$i] = $base_url_videos.$videos[$i]."mp3";
 }
 
 $response = [
