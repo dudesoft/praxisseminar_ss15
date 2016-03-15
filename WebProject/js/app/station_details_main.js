@@ -1,4 +1,11 @@
 define(['jquery', './media_player_factory', './maps', './db_connector', './utils', './search_bar', 'sly', 'colorbox'], function($, factory, map, connector, utils) {
+    var activeElementClass = "active_element";
+    var urlKey = "url";
+    var tableNameKey = "table";
+    var idKey = "id";
+
+    var $activeElement;
+    var activeData;
     var StationDetails = {
         setupDetails: function() {
             var stationId = utils.getUrlVars().station_id;
@@ -8,7 +15,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 $("#time").html(data.date);
                 $("#loader_container").fadeOut("fast");
                 $("#detail_content").fadeIn("slow", function() {
-                    map.scrollToMapPosition(data.latitude, data.longitude);
+                    //map.scrollToMapPosition(data.latitude, data.longitude);
                 });
 
                 connector.getNextPrevStation(data.travel, data.date, function(stations) {
@@ -16,7 +23,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                         $("#next_diary").hide();
                     } else {
                         $("#next_diary").click(function() {
-                            map.openNewLocation(stations.next);
+                            // map.openNewLocation(stations.next);
                         });
                     }
 
@@ -24,28 +31,36 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                         $("#prev_diary").hide();
                     } else {
                         $("#prev_diary").click(function() {
-                            map.openNewLocation(stations.previous);
+                            //map.openNewLocation(stations.previous);
                         });
                     }
                 });
 
-                map.setupMap('mini_map');
+                //map.setupMap('mini_map');
+
+
 
                 for (var i = 0; i < data.images.length; i++) {
-                    $galleryElement = $("<li class='picture'> <img src='" + data.images[i] + "' class='gallery-picture'> </li>");
-                    $galleryElement.click(factory.getPictureGallery(data.images[i]));
+                    $galleryElement = $("<li class='picture'> <img src='" + data.images[i].url + "' class='gallery-picture'> </li>");
+                    //$galleryElement.click(factory.getPictureGallery(data.images[i]));
+                    $galleryElement.data(urlKey, data.images[i].url);
+                    $galleryElement.data(idKey, data.images[i].id);
+                    $galleryElement.data(tableNameKey, "images");
+                    $galleryElement.click(function(event) {
+                        StationDetails.changeActiveElement($(event.target));
+                    });
                     $('#pic_gallery_content').append($galleryElement);
                 }
 
                 for (var i = 0; i < data.songs.length; i++) {
                     $galleryElement = $("<li class='audio'></li>");
-                    $galleryElement.click(factory.getAudioPlayer(data.images[i]));
+                    //$galleryElement.click(factory.getAudioPlayer(data.images[i]));
                     $('#audio_gallery_content').append($galleryElement);
                 }
 
                 for (var i = 0; i < data.videos.length; i++) {
                     $galleryElement = $("<li class='video'></li>");
-                    $galleryElement.click(factory.getVideoPlayer(data.images[i]));
+                    //$galleryElement.click(factory.getVideoPlayer(data.images[i]));
                     $('#vid_gallery_content').append($galleryElement);
                 }
 
@@ -86,6 +101,35 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 });
 
             });
+        },
+        changeActiveElement: function($newActiveElement) {
+            if (!$newActiveElement.is($activeElement)) {
+                if ($activeElement != null) {
+                    $activeElement.removeClass(activeElementClass);
+                    $activeElement = $newActiveElement;
+                    $activeElement.addClass(activeElementClass);
+                } else {
+                    $activeElement = $newActiveElement;
+                    $activeElement.addClass(activeElementClass);
+                }
+                this.updatePreviewField($activeElement.data(idKey), $activeElement.data(urlKey), $activeElement.data(tableNameKey));
+            }
+        },
+        updatePreviewField: function(id, url, tableName) {
+            connector.getMetaInformation(id, tableName, this.updateTextField);
+            $("#mini_map").empty();
+            $("#mini_map").append($('<img src="' + url + '"></img>'));
+        },
+        updateTextField: function(data) {
+            $list = $("#attribute_list");
+            $list.empty();
+            console.log(data);
+            Object.keys(data).forEach(function(key, index) {
+                if(data[key] != "") {
+                    $list.append($("<li>" + key + ": " + data[key] + "</li>"));
+                }
+            });
+
         }
     };
     return StationDetails;

@@ -88,8 +88,7 @@ h1 {
 .attribute {
     text-align: left;
     margin-left: 5%;
-    margin-right: 2%;
-    
+    margin-right: 2%;    
 }
 
 #mini_map {
@@ -97,6 +96,11 @@ h1 {
     width: 40%;
     height: 45%;
     float: right;
+}
+
+#mini_map img, video, audio{
+    height: 100%;
+    width: auto;
 }
 
 
@@ -134,7 +138,7 @@ h1 {
     transform: translateY(-30%);
 }
 
-.slidee li.active {
+.active_element {
     box-shadow: 0px 0px 0px 2px orange inset;
 }
 
@@ -169,6 +173,7 @@ ul li.video {
     height: 100%;
     padding-top: 2px;
     padding-bottom: 2px;
+    pointer-events: none;
 }
 
 label {

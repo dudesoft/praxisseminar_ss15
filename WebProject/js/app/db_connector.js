@@ -93,6 +93,26 @@ define([], function() {
                     return null;
                 }
             })
+        },
+
+        getMetaInformation: function(id, table, callback) {
+            $.ajax({
+                type: 'GET',
+                url: 'sql/get_meta_information.php',
+                data: {
+                    'table': table,
+                    'id': id
+                },
+                cache: 'true',
+                dataType: 'json',
+                success: function(response) {
+                    callback(response);
+                },
+                error: function(response) {
+                    alert("Fehler beim Laden der Metadaten");
+                    return null;
+                }
+            })
         }
     };
 

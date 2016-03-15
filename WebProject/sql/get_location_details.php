@@ -15,19 +15,19 @@ $query -> execute();
 $station = $query->fetch();
 
 $image_ids = $station['images'];
-$query = $db -> prepare("SELECT url FROM images WHERE id IN (" . $image_ids . ") AND url is not null");
+$query = $db -> prepare("SELECT url, id FROM images WHERE id IN (" . $image_ids . ") AND url is not null");
 $query -> execute();
-$images = $query->fetchAll(PDO::FETCH_COLUMN, 0);
+$images = $query->fetchAll(PDO::FETCH_ASSOC);
 
 $song_ids = $station['songs'];
-$query = $db -> prepare("SELECT url FROM songs WHERE id IN (" . $song_ids . ") AND url is not null");
+$query = $db -> prepare("SELECT url, id FROM songs WHERE id IN (" . $song_ids . ") AND url is not null");
 $query -> execute();
-$songs = $query->fetchAll(PDO::FETCH_COLUMN, 0);
+$songs = $query->fetchAll(PDO::FETCH_ASSOC);
 
 $video_ids = $station['videos'];
-$query = $db -> prepare("SELECT url FROM videos WHERE id IN (" . $video_ids . ") AND url is not null");
+$query = $db -> prepare("SELECT url, id FROM videos WHERE id IN (" . $video_ids . ") AND url is not null");
 $query -> execute();
-$videos = $query->fetchAll(PDO::FETCH_COLUMN, 0);
+$videos = $query->fetchAll(PDO::FETCH_ASSOC);
 
 $location_id = $station['location_id'];
 $query = $db -> prepare("SELECT * FROM locations WHERE id = '$location_id'");
@@ -44,7 +44,7 @@ if (isset($names[1])) {
 }
 
 for ($i = 0; $i < count($images); $i++) {
-    $images[$i] = $base_url_images.$images[$i];
+    $images[$i]['url'] = $base_url_images.$images[$i]['url'];
 }
 
 $response = [
