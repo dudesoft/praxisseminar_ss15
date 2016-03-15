@@ -30,6 +30,9 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
         },
 
         fillLocationData: function(data) {
+            var has_images = false;
+            var has_songs = false;
+            var has_videos = false;
             var travels = {};
             var locationMarkerList = [];
 
@@ -56,7 +59,7 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
             data.forEach(function(location) {
                 var marker = new leaflet.marker([location.latitude, location.longitude], {
                     icon: icon
-                }).bindPopup(utils.generatePopup(location), customOptions);
+                });
                 marker.on('mouseover', function(e) {
                     this.openPopup();
                 });
@@ -79,7 +82,19 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
                     station.latitude = location.latitude;
                     station.longitude = location.longitude;
                     travels[station.travel.name].stationList.push(station);
+
+                    if (station.has_images) {
+                        has_images = true;
+                    }
+                    if (station.has_songs) {
+                        has_songs = true;
+                    }
+                    if (station.has_videos) {
+                        has_videos = true;
+                    }
                 });
+
+                marker.bindPopup(utils.generatePopup(location, has_images, has_songs, has_videos), customOptions)
 
                 marker.on('click', function(e) {
                     Maps.openNewLocation(location);

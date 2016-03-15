@@ -11,9 +11,23 @@ define(['leaflet'], function(leaflet) {
             return name;
         },
 
-        generatePopup: function(location) {
-            var popupHtml = "<span class='centered_anchor'><img class='image_anchor' src='img/img-icon.png'><img class='audio_anchor' src='img/audio-icon.png'>" +
-                "<img class='video_anchor' src='img/video-icon.png'></span><span class='centered_anchor'>" + this.buildLocationName(location) + "</span>";
+        generatePopup: function(location, has_images, has_videos, has_songs) {
+            var image = "img-icon";
+            var audio = "audio-icon";
+            var video = "video-icon";
+
+            if (!has_images) {
+                image = "no-" + image;
+            }
+            if (!has_songs) {
+                audio = "no-" + audio;
+            }
+            if (!has_videos) {
+                video = "no-" + video;
+            }
+
+            var popupHtml = "<span class='centered_anchor'><img class='image_anchor' src='img/" + image + ".png'><img class='audio_anchor' src='img/" + audio + ".png'>" +
+                "<img class='video_anchor' src='img/" + video + ".png'></span><span class='centered_anchor'>" + this.buildLocationName(location) + "</span>";
             return popupHtml;
         },
 
