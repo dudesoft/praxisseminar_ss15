@@ -81,7 +81,6 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     });
 
                     $(window).resize(function(e) {
-                        console.log("resize lol");
                         $('#picture_gallery, #audio_gallery, #video_gallery').sly('reload');
                     });
                 });

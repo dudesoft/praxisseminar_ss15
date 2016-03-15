@@ -36,27 +36,32 @@ define(['jquery', './db_connector', './utils', './search_bar'], function($, dbCo
     function addListElement(object) {
         var resultUrlAddition = "";
         var idUrlAddition = "";
+        var iconURL = "";
 
         var resultType = "";
         if (object.table_name == "songs") {
             resultType = "result_type_audio";
             resultUrlAddition = urlResult_constant + "songs";
+            iconURL = "http://localhost/Praxisseminar/WebProject/img/audio-icon2.png";
         }
         if (object.table_name == "images") {
             resultType = "result_type_image"
             resultUrlAddition = urlResult_constant + "images";
+            iconURL = "http://localhost/Praxisseminar/WebProject/content/" + object.url;
         }
         if (object.table_name == "videos") {
             resultType = "result_type_video"
             resultUrlAddition = urlResult_constant + "videos";
+            iconURL = "http://localhost/Praxisseminar/WebProject/img/video-icon2.png";
         }
         idUrlAddition = urlId_constant + object.id;
         if (object.table_name == "stations") {
             resultType = "result_type_station"
             idUrlAddition = "";
+            iconURL = "http://localhost/Praxisseminar/WebProject/img/mapmarker2.png";
         }
 
-        $listItem = $('<li class="result_element"> <div class="result_icon ' + resultType + '"></div> <div class="result_name">' + object.name + ' || Datum:' + object.date + '</div> </li');
+        $listItem = $('<li class="result_element"> <div><img class="result_icon" src="' + iconURL + '"></img></div> <div class="result_name">' + object.name + ' || Datum:' + object.date + '</div> </li');
 
         $listItem.click(function() {
             window.open("station_details.php?station_id=" + object.station_id + resultUrlAddition + idUrlAddition, "_self");
