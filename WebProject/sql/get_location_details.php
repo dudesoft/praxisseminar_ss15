@@ -48,7 +48,7 @@ for ($i = 0; $i < count($images); $i++) {
 }
 
 for ($i = 0; $i < count($songs); $i++) {
-    $songs[$i]['url'] = $base_url_songs.$songs[$i]['url']."mp3";
+    $songs[$i]['url'] = $base_url_songs.$songs[$i]['url'].".mp3";
 }
 
 for ($i = 0; $i < count($videos); $i++) {
