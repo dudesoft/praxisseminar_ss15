@@ -1,8 +1,8 @@
 <?php
 $db = new PDO('mysql:host=localhost;dbname=hoerburger;charset=utf8mb4', 'hoerburger', 'hoerburger');
-$base_url_images = "http://localhost/Praxisseminar/WebProject/content/";
-$base_url_songs = "http://localhost/Praxisseminar/WebProject/content/songs/";
-$base_url_videos = "http://localhost/Praxisseminar/WebProject/content/";
+$base_url_images = "/Praxisseminar/WebProject/content/";
+$base_url_songs = "/Praxisseminar/WebProject/content/songs/";
+$base_url_videos = "/Praxisseminar/WebProject/content/";
 
 if (isset($_GET['station_id'])) {
     $station_id = $_GET['station_id'];
@@ -48,19 +48,11 @@ for ($i = 0; $i < count($images); $i++) {
 }
 
 for ($i = 0; $i < count($songs); $i++) {
-    $songs[$i]['url'] = $base_url_songs.$songs[$i]['url'];
+    $songs[$i]['url'] = $base_url_songs.$songs[$i]['url']."mp3";
 }
 
 for ($i = 0; $i < count($videos); $i++) {
     $videos[$i]['url'] = $base_url_videos.$videos[$i]['url'];
-}
-
-for ($i = 0; $i < count($songs); $i++) {
-    $songs[$i] = $base_url_songs.$songs[$i]."mp3";
-}
-
-for ($i = 0; $i < count($videos); $i++) {
-    $videos[$i] = $base_url_videos.$videos[$i];
 }
 
 $response = [
