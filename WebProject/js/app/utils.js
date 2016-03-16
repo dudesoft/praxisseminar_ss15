@@ -11,7 +11,7 @@ define(['leaflet'], function(leaflet) {
             return name;
         },
 
-        generatePopup: function(location, has_images, has_videos, has_songs) {
+        generatePopup: function(location, has_images, has_songs, has_videos) {
             var image = "img-icon";
             var audio = "audio-icon";
             var video = "video-icon";

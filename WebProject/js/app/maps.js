@@ -30,9 +30,6 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
         },
 
         fillLocationData: function(data) {
-            var has_images = false;
-            var has_songs = false;
-            var has_videos = false;
             var travels = {};
             var locationMarkerList = [];
 
@@ -57,6 +54,10 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
 
             // Build locationMarker
             data.forEach(function(location) {
+                var has_images = false;
+                var has_songs = false;
+                var has_videos = false;
+
                 var marker = new leaflet.marker([location.latitude, location.longitude], {
                     icon: icon
                 });
