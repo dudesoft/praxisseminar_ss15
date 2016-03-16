@@ -47,7 +47,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
 
 
                 for (var i = 0; i < data.images.length; i++) {
-                    $galleryElement = $("<li class='picture'> <img src='" + data.images[i].url + "' class='gallery-picture'> </li>");
+                    $galleryElement = $("<li class='picture'> <img src='" + data.images[i].thumb_url + "' class='gallery-picture'> </li>");
                     $galleryElement.data(urlKey, data.images[i].url);
                     $galleryElement.data(idKey, data.images[i].id);
                     $galleryElement.data(tableNameKey, "images");

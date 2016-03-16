@@ -1,6 +1,6 @@
 <?php
 $db = new PDO('mysql:host=localhost;dbname=hoerburger;charset=utf8mb4', 'hoerburger', 'hoerburger');
-$base_url_images = "/Praxisseminar/WebProject/content/";
+$base_url_images = "/Praxisseminar/WebProject/content/images/";
 $base_url_songs = "/Praxisseminar/WebProject/content/songs/";
 $base_url_videos = "/Praxisseminar/WebProject/content/";
 
@@ -44,7 +44,7 @@ if (isset($names[1])) {
 }
 
 for ($i = 0; $i < count($images); $i++) {
-    $images[$i]['thumb_url'] = $base_url_images."thumbnail/".$images[$i]['url'];
+    $images[$i]['thumb_url'] = $base_url_images."thumbnails/".$images[$i]['url'];
     $images[$i]['url'] = $base_url_images.$images[$i]['url'];
 }
 
