@@ -29,7 +29,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                         $("#next_diary").hide();
                     } else {
                         $("#next_diary").click(function() {
-                            // map.openNewLocation(stations.next);
+                            map.openNewLocation(stations.next);
                         });
                     }
 
@@ -37,7 +37,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                         $("#prev_diary").hide();
                     } else {
                         $("#prev_diary").click(function() {
-                            //map.openNewLocation(stations.previous);
+                            map.openNewLocation(stations.previous);
                         });
                     }
                 });

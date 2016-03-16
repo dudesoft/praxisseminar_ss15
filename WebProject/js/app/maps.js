@@ -188,7 +188,7 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
             });
 
             stations.forEach(function(station) {
-                $("#stations").append("<li><a href='station_details.php?station_id=" + station.id + "'>" + station.travel.name + " " + station.date + "</a></li>");
+                $("#stations").append("<li><a href='station_details.php?station_id=" + station.id + "'>" + station.travel.name + " " + utils.formatDate(station.date) + "</a></li>");
             });
         },
 

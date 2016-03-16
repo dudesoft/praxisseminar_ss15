@@ -32,7 +32,8 @@ define(['leaflet'], function(leaflet) {
         },
 
         generateTravelPopup: function(travel) {
-            var popupHtml = "<span class='centered_anchor'>" + travel.name + "</span><span class='centered_anchor'>" + travel.begin + " - " + travel.end + "</span>";
+            var popupHtml = "<span class='centered_anchor'>" + travel.name + "</span><span class='centered_anchor'>" + this.formatDate(travel.begin) + " - "
+            + this.formatDate(travel.end) + "</span>";
             return popupHtml;
         },
 
@@ -71,6 +72,11 @@ define(['leaflet'], function(leaflet) {
             });
 
             return latLngList;
+        },
+
+        formatDate: function(date) {
+            var dateParts = date.split("-");
+            return dateParts[2] + "." + dateParts[1] + "." + dateParts[0];
         }
     };
     return Utils;
