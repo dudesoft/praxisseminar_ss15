@@ -4,19 +4,25 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
     var tableNameKey = "table";
     var idKey = "id";
 
+    var picSly;
+    var audioSly;
+    var vidSly;
+
     var $activeElement;
     var activeData;
     var StationDetails = {
         setupDetails: function() {
-            var stationId = utils.getUrlVars().station_id;
+            var urlVars = utils.getUrlVars();
 
-            connector.getLocationDetails(stationId, function(data) {
+            connector.getLocationDetails(urlVars.station_id, function(data) {
                 $("#location").html(utils.buildLocationName(data));
                 $("#time").html(data.date);
                 $("#loader_container").fadeOut("fast");
                 $("#detail_content").fadeIn("slow", function() {
                     //map.scrollToMapPosition(data.latitude, data.longitude);
                 });
+
+
 
                 connector.getNextPrevStation(data.travel, data.date, function(stations) {
                     if (!stations.next) {
@@ -48,6 +54,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     $galleryElement.data(tableNameKey, "images");
                     $galleryElement.click(function(event) {
                         StationDetails.changeActiveElement($(event.target));
+                        picSly.toCenter(event.target);
                     });
                     $('#pic_gallery_content').append($galleryElement);
                 }
@@ -77,7 +84,8 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 }
 
                 $(document).ready(function() {
-                    $('#picture_gallery, #audio_gallery, #video_gallery').sly({
+
+                    var options = {
                         horizontal: 1,
 
                         itemNav: 'basic',
@@ -93,12 +101,23 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
 
                         speed: 600,
                         startAt: 0
-                    });
+                    };
+                    picSly = new Sly($('#picture_gallery'), options).init();
+                    audioSly = new Sly($('#audio_gallery'), options).init();
+                    vidSly = new Sly($('#video_gallery'), options).init();
 
                     $(window).resize(function(e) {
-                        $('#picture_gallery, #audio_gallery, #video_gallery').sly('reload');
+                        picSly.reload();
+                        audioSly.reload();
+                        vidSly.reload();
+                        picSly.slideTo(14);
                     });
                 });
+
+                if (urlVars.resultType && urlVars.objectId) {
+                    StationDetails.setFocusOnElement(urlVars.objectId, urlVars.resultType)
+                }
+
 
             });
         },
@@ -123,13 +142,52 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
         updateTextField: function(data) {
             $list = $("#attribute_list");
             $list.empty();
-            console.log(data);
             Object.keys(data).forEach(function(key, index) {
-                if(data[key] != "") {
+                if (data[key] != "") {
                     $list.append($("<li>" + key + ": " + data[key] + "</li>"));
                 }
             });
+        },
+        setFocusOnElement: function(id, dataType) {
+            var $element;
+            var galleryItems;
 
+            if (dataType == "images") {
+                galleryItems = $('#pic_gallery_content').children();
+                for (var i = 0; i < galleryItems.length; i++) {
+                    if ($(galleryItems[i]).data(idKey) == id) {
+                        $element = $(galleryItems[i]);
+                        if(picSly != null) {
+                            picSly.toCenter($element);
+                        }
+                    }
+                }
+            }
+            if (dataType == "songs") {
+                galleryItems = $('#audio_gallery_content').children();
+                for (var i = 0; i < galleryItems.length; i++) {
+                    console.log($(galleryItems[i]));
+                    if ($(galleryItems[i]).data(idKey) == id) {
+                        $element = $(galleryItems[i]);
+                        if(audioSly != null) {
+                            audioSly.toCenter($element);
+                        }
+                    }
+                }
+            }
+            if (dataType == "videos") {
+                galleryItems = $('#vid_gallery_content').children();
+                for (var i = 0; i < galleryItems.length; i++) {
+                    console.log($(galleryItems[i]));
+                    if ($(galleryItems[i]).data(idKey) == id) {
+                        $element = $(galleryItems[i]);
+                        if(vidSly != null) {
+                            vidSly.toCenter($element);
+                        }
+                    }
+                }
+            }
+            this.changeActiveElement($element);
         }
     };
     return StationDetails;

@@ -1,6 +1,6 @@
 define(['jquery', './db_connector', './utils', './search_bar'], function($, dbConnector, utils) {
     var urlResult_constant = "&resultType=";
-    var urlId_constant = "&ojbectId=";
+    var urlId_constant = "&objectId=";
 
     var urlVars = utils.getUrlVars();
     $list = $('#resut_list');
