@@ -485,7 +485,7 @@ h1 {
   float: left;
   width: 58%;
   height: 45%;
-  margin: 0.5% 0 2% 0;
+  margin: 0.5% 0 0 0;
   overflow-y: scroll;
   overflow-x: hidden; }
 
@@ -498,17 +498,57 @@ h1 {
   margin-top: 0.5%;
   width: 40%;
   height: 45%;
-  float: right; }
+  float: right;
+  position: relative; }
 
-#mini_map img, video, audio {
+#galleries {
+  float: left;
+  width: 100%;
+  height: 50%; }
+
+#mini_map img {
   height: 100%;
   width: auto; }
 
-.frame {
-  width: 100%;
-  height: 15%;
-  padding: 0;
+#mini_map video,
+audio {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); }
+
+button,
+button {
+  background: transparent;
+  border: 0;
+  color: #fff;
+  opacity: .5; }
+
+button:hover,
+button:hover {
+  opacity: 1; }
+
+button:disabled,
+button:disabled {
+  opacity: .2; }
+
+.forward,
+.backward {
+  float: left;
+  width: 5%;
+  height: 30%;
+  font-size: 60px;
   margin-top: 10px; }
+
+.forward {
+  float: right; }
+
+.frame {
+  width: 90%;
+  height: 30%;
+  padding: 0;
+  margin-top: 10px;
+  text-shadow: none;
+  float: left; }
 
 .slidee {
   margin: 0;
@@ -542,6 +582,10 @@ h1 {
 
 ul li.picture {
   background: rgba(0, 0, 0, 0.6); }
+
+ul li img {
+  height: 100%;
+  width: auto; }
 
 ul li.audio {
   background-image: url(../img/audio-icon.png);
@@ -590,12 +634,6 @@ label:hover {
   position: absolute;
   top: 50%;
   transform: translateY(-50%); }
-
-.navigation_element {
-  position: absolute;
-  top: 20px;
-  bottom: 20px;
-  width: 20%; }
 
 .nav_left {
   left: 10px; }
@@ -798,7 +836,7 @@ h3 {
     ordered & tabbed in a way that represents the nesting of the generated HTML.
 */
 #cboxOverlay {
-  background: url(/Praxisseminar/WebProject/img/colorbox/overlay.png) repeat 0 0;
+  background: url(../../img/colorbox/overlay.png) repeat 0 0;
   opacity: 0.9;
   filter: alpha(opacity=90); }
 
@@ -808,38 +846,38 @@ h3 {
 #cboxTopLeft {
   width: 21px;
   height: 21px;
-  background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) no-repeat -101px 0; }
+  background: url(../../img/colorbox/controls.png) no-repeat -101px 0; }
 
 #cboxTopRight {
   width: 21px;
   height: 21px;
-  background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) no-repeat -130px 0; }
+  background: url(../../img/colorbox/controls.png) no-repeat -130px 0; }
 
 #cboxBottomLeft {
   width: 21px;
   height: 21px;
-  background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) no-repeat -101px -29px; }
+  background: url(../../img/colorbox/controls.png) no-repeat -101px -29px; }
 
 #cboxBottomRight {
   width: 21px;
   height: 21px;
-  background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) no-repeat -130px -29px; }
+  background: url(../../img/colorbox/controls.png) no-repeat -130px -29px; }
 
 #cboxMiddleLeft {
   width: 21px;
-  background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) left top repeat-y; }
+  background: url(../../img/colorbox/controls.png) left top repeat-y; }
 
 #cboxMiddleRight {
   width: 21px;
-  background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) right top repeat-y; }
+  background: url(../../img/colorbox/controls.png) right top repeat-y; }
 
 #cboxTopCenter {
   height: 21px;
-  background: url(/Praxisseminar/WebProject/img/colorbox/border.png) 0 0 repeat-x; }
+  background: url(../../img/colorbox/border.png) 0 0 repeat-x; }
 
 #cboxBottomCenter {
   height: 21px;
-  background: url(/Praxisseminar/WebProject/img/colorbox/border.png) 0 -29px repeat-x; }
+  background: url(../../img/colorbox/border.png) 0 -29px repeat-x; }
 
 #cboxContent {
   background: #fff;
@@ -870,10 +908,10 @@ h3 {
   color: #949494; }
 
 #cboxLoadingOverlay {
-  background: url(/Praxisseminar/WebProject/img/colorbox/loading_background.png) no-repeat center center; }
+  background: url(../../img/colorbox/loading_background.png) no-repeat center center; }
 
 #cboxLoadingGraphic {
-  background: url(/Praxisseminar/WebProject/img/colorbox/loading.gif) no-repeat center center; }
+  background: url(../../img/colorbox/loading.gif) no-repeat center center; }
 
 /* these elements are buttons, and may need to have additional styles reset to avoid unwanted base styles */
 #cboxPrevious,
@@ -904,7 +942,7 @@ h3 {
   position: absolute;
   bottom: 0;
   left: 0;
-  background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) no-repeat -75px 0;
+  background: url(../../img/colorbox/controls.png) no-repeat -75px 0;
   width: 25px;
   height: 25px;
   text-indent: -9999px; }
@@ -916,7 +954,7 @@ h3 {
   position: absolute;
   bottom: 0;
   left: 27px;
-  background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) no-repeat -50px 0;
+  background: url(../../img/colorbox/controls.png) no-repeat -50px 0;
   width: 25px;
   height: 25px;
   text-indent: -9999px; }
@@ -928,7 +966,7 @@ h3 {
   position: absolute;
   bottom: 0;
   right: 0;
-  background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) no-repeat -25px 0;
+  background: url(../../img/colorbox/controls.png) no-repeat -25px 0;
   width: 25px;
   height: 25px;
   text-indent: -9999px; }

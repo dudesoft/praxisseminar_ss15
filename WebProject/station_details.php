@@ -29,21 +29,29 @@
                 </div>
                 <div id="mini_map" class="trans">
                 </div>
-                
-                <div id="picture_gallery" class="frame trans gallery">
-                <span id="image_not_available" class="not_available_label">Für diese Station sind leider (noch) keine Bilder vorhanden.</span>
-                    <ul id="pic_gallery_content" class="slidee">
-                    </ul>
-                </div>
-                <div id="audio_gallery" class="frame trans gallery">
-                <span id="audio_not_available" class="not_available_label">Für diese Station ist leider (noch) kein Tonmaterial vorhanden.</span>
-                    <ul id="audio_gallery_content" class="slidee">
-                    </ul>
-                </div>
-                <div id="video_gallery" class="frame trans gallery">
-                <span id="video_not_available" class="not_available_label">Für diese Station sind leider (noch) keine Videos vorhanden.</span>
-                    <ul id="vid_gallery_content" class="slidee">
-                    </ul>
+
+                <div id="galleries">
+                    <button id="backward_pic" class="backward"><i class="icon-angle-left"></i></button>
+                    <button id="forward_pic" class="forward"><i class="icon-angle-right"></i></button>
+                    <div id="picture_gallery" class="frame trans">
+                        <span id="image_not_available" class="not_available_label">Für diese Station sind leider (noch) keine Bilder vorhanden.</span>
+                        <ul id="pic_gallery_content" class="slidee">
+                        </ul>
+                    </div>
+                    <button id="backward_audio" class="backward"><i class="icon-angle-left"></i></button>
+                    <button id="forward_audio" class="forward"><i class="icon-angle-right"></i></button>
+                    <div id="audio_gallery" class="frame trans">
+                        <span id="audio_not_available" class="not_available_label">Für diese Station ist leider (noch) kein Tonmaterial vorhanden.</span>
+                        <ul id="audio_gallery_content" class="slidee">
+                        </ul>
+                    </div>
+                    <button id="backward_vid" class="backward"><i class="icon-angle-left"></i></button>
+                    <button idid="forward_vid" class="forward"><i class="icon-angle-right"></i></button>
+                    <div id="video_gallery" class="frame trans">
+                        <span id="video_not_available" class="not_available_label">Für diese Station sind leider (noch) keine Videos vorhanden.</span>
+                        <ul id="vid_gallery_content" class="slidee">
+                        </ul>
+                    </div>
                 </div>
             </span>
             </div>
