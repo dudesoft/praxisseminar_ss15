@@ -110,7 +110,6 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                         picSly.reload();
                         audioSly.reload();
                         vidSly.reload();
-                        picSly.slideTo(14);
                     });
                 });
 
@@ -166,7 +165,6 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             if (dataType == "songs") {
                 galleryItems = $('#audio_gallery_content').children();
                 for (var i = 0; i < galleryItems.length; i++) {
-                    console.log($(galleryItems[i]));
                     if ($(galleryItems[i]).data(idKey) == id) {
                         $element = $(galleryItems[i]);
                         if(audioSly != null) {
@@ -178,7 +176,6 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             if (dataType == "videos") {
                 galleryItems = $('#vid_gallery_content').children();
                 for (var i = 0; i < galleryItems.length; i++) {
-                    console.log($(galleryItems[i]));
                     if ($(galleryItems[i]).data(idKey) == id) {
                         $element = $(galleryItems[i]);
                         if(vidSly != null) {
