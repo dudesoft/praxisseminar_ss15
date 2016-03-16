@@ -47,6 +47,14 @@ for ($i = 0; $i < count($images); $i++) {
     $images[$i]['url'] = $base_url_images.$images[$i]['url'];
 }
 
+for ($i = 0; $i < count($songs); $i++) {
+    $songs[$i]['url'] = $base_url_songs.$songs[$i]['url'];
+}
+
+for ($i = 0; $i < count($videos); $i++) {
+    $videos[$i]['url'] = $base_url_videos.$videos[$i]['url'];
+}
+
 $response = [
 	"id" => $station['id'],
     "name" => $name,

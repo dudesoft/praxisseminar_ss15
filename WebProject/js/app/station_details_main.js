@@ -48,7 +48,6 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
 
                 for (var i = 0; i < data.images.length; i++) {
                     $galleryElement = $("<li class='picture'> <img src='" + data.images[i].url + "' class='gallery-picture'> </li>");
-                    //$galleryElement.click(factory.getPictureGallery(data.images[i]));
                     $galleryElement.data(urlKey, data.images[i].url);
                     $galleryElement.data(idKey, data.images[i].id);
                     $galleryElement.data(tableNameKey, "images");
@@ -61,13 +60,25 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
 
                 for (var i = 0; i < data.songs.length; i++) {
                     $galleryElement = $("<li class='audio'></li>");
-                    //$galleryElement.click(factory.getAudioPlayer(data.images[i]));
+                    $galleryElement.data(urlKey, data.songs[i].url);
+                    $galleryElement.data(idKey, data.songs[i].id);
+                    $galleryElement.data(tableNameKey, "songs");
+                    $galleryElement.click(function(event) {
+                        StationDetails.changeActiveElement($(event.target));
+                        audioSly.toCenter(event.target);
+                    });
                     $('#audio_gallery_content').append($galleryElement);
                 }
 
                 for (var i = 0; i < data.videos.length; i++) {
                     $galleryElement = $("<li class='video'></li>");
-                    //$galleryElement.click(factory.getVideoPlayer(data.images[i]));
+                    $galleryElement.data(urlKey, data.videos[i].url);
+                    $galleryElement.data(idKey, data.videos[i].id);
+                    $galleryElement.data(tableNameKey, "videos");
+                    $galleryElement.click(function(event) {
+                        StationDetails.changeActiveElement($(event.target));
+                        vidSly.toCenter(event.target);
+                    });
                     $('#vid_gallery_content').append($galleryElement);
                 }
 
@@ -136,7 +147,15 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
         updatePreviewField: function(id, url, tableName) {
             connector.getMetaInformation(id, tableName, this.updateTextField);
             $("#mini_map").empty();
-            $("#mini_map").append($('<img src="' + url + '"></img>'));
+            if (tableName == "images") {
+                $("#mini_map").append(factory.getPictureGallery(url));
+            }
+            if (tableName == "songs") {
+                $("#mini_map").append(factory.getAudioPlayer(url));
+            }
+            if (tableName == "videos") {
+                $("#mini_map").append(factory.getVideoPlayer(url));
+            }
         },
         updateTextField: function(data) {
             $list = $("#attribute_list");
@@ -156,7 +175,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 for (var i = 0; i < galleryItems.length; i++) {
                     if ($(galleryItems[i]).data(idKey) == id) {
                         $element = $(galleryItems[i]);
-                        if(picSly != null) {
+                        if (picSly != null) {
                             picSly.toCenter($element);
                         }
                     }
@@ -167,7 +186,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 for (var i = 0; i < galleryItems.length; i++) {
                     if ($(galleryItems[i]).data(idKey) == id) {
                         $element = $(galleryItems[i]);
-                        if(audioSly != null) {
+                        if (audioSly != null) {
                             audioSly.toCenter($element);
                         }
                     }
@@ -178,7 +197,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 for (var i = 0; i < galleryItems.length; i++) {
                     if ($(galleryItems[i]).data(idKey) == id) {
                         $element = $(galleryItems[i]);
-                        if(vidSly != null) {
+                        if (vidSly != null) {
                             vidSly.toCenter($element);
                         }
                     }
