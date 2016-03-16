@@ -24,6 +24,19 @@
     height: 25px;
 }
 
+.select_station {
+    font-size: 20px;
+    color: $standard_color;
+}
+
+#stations .image_anchor {
+    margin-right: 0px;
+}
+
+#stations .audio_anchor {
+    margin-right: 0px;
+}
+
 .centered_anchor {
     text-align: center;
     width: 100%;

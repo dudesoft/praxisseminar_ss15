@@ -44,6 +44,7 @@ if (isset($names[1])) {
 }
 
 for ($i = 0; $i < count($images); $i++) {
+    $images[$i]['thumb_url'] = $base_url_images."thumbnail/".$images[$i]['url'];
     $images[$i]['url'] = $base_url_images.$images[$i]['url'];
 }
 
