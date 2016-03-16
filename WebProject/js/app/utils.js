@@ -15,6 +15,7 @@ define(['leaflet'], function(leaflet) {
             var image = "img-icon";
             var audio = "audio-icon";
             var video = "video-icon";
+            var date = "";
 
             if (!has_images) {
                 image = "no-" + image;
@@ -26,14 +27,19 @@ define(['leaflet'], function(leaflet) {
                 video = "no-" + video;
             }
 
+            if (location.stations.length > 1) {
+                date = "<div class='centered_anchor'>" + this.formatDate(location.stations[0].date) + " <i>u.a.</i></div>";
+            } else {
+                date = "<div class='centered_anchor'>" + this.formatDate(location.stations[0].date) + "</div>";
+            }
+
             var popupHtml = "<span class='centered_anchor'><img class='image_anchor' src='img/" + image + ".png'><img class='audio_anchor' src='img/" + audio + ".png'>" +
-                "<img class='video_anchor' src='img/" + video + ".png'></span><span class='centered_anchor'>" + this.buildLocationName(location) + "</span>";
+                "<img class='video_anchor' src='img/" + video + ".png'></span><span class='centered_anchor'>" + this.buildLocationName(location) + "</span>" + date;
             return popupHtml;
         },
 
         generateTravelPopup: function(travel) {
-            var popupHtml = "<span class='centered_anchor'>" + travel.name + "</span><span class='centered_anchor'>" + this.formatDate(travel.begin) + " - "
-            + this.formatDate(travel.end) + "</span>";
+            var popupHtml = "<span class='centered_anchor'>" + travel.name + "</span><span class='centered_anchor'>" + this.formatDate(travel.begin) + " - " + this.formatDate(travel.end) + "</span>";
             return popupHtml;
         },
 
