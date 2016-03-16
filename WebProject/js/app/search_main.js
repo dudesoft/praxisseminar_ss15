@@ -22,15 +22,15 @@ define(['jquery', './db_connector', './utils', './search_bar'], function($, dbCo
         resultTypeString = ", suche nach: " + urlVars.resultType;
     }
 
-    $('#title').html('Ergebnisse für: "' + urlVars.search.replace('<', '&lt') + '"' + journeyString + minDateString + maxDateString + resultTypeString);
+    
 
     dbConnector.getSearchResult(urlVars.search, urlVars.minDate, urlVars.maxDate, urlVars.journey, urlVars.resultType, setupResultList);
 
     function setupResultList(data) {
-        console.log(data);
         for (var i = 0; i < data.length; i++) {
             addListElement(data[i]);
         }
+        $('#title').html(data.length + ' Ergebnisse für: "' + urlVars.search.replace('<', '&lt') + '"' + journeyString + minDateString + maxDateString + resultTypeString);
     }
 
     function addListElement(object) {
