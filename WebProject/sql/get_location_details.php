@@ -46,6 +46,10 @@ if (isset($names[1])) {
 for ($i = 0; $i < count($images); $i++) {
     $images[$i]['thumb_url'] = $base_url_images."thumbnails/".$images[$i]['url'];
     $images[$i]['url'] = $base_url_images.$images[$i]['url'];
+
+    if (!file_exists($_SERVER["DOCUMENT_ROOT"].$images[$i]['thumb_url'])) {
+        $images[$i]['thumb_url'] = $images[$i]['url'];
+    }
 }
 
 for ($i = 0; $i < count($songs); $i++) {
