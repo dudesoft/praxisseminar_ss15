@@ -230,7 +230,6 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 }
                 for (var i = 0; i < galleryItems.length; i++) {
                     if ($(galleryItems[i]).is($activeElement)) {
-                        console.log("change element");
                         if (i + value < 0 || i + value > galleryItems.length - 1) {
                             return;
                         }
