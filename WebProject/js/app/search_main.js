@@ -40,7 +40,7 @@ define(['jquery', './db_connector', './utils', './search_bar'], function($, dbCo
         if (object.table_name == "songs") {
             resultType = "result_type_audio";
             resultUrlAddition = urlResult_constant + "songs";
-            iconURL = "img/audio-icon2.png";
+            iconURL = "img/audio-icon-black.png";
         }
         if (object.table_name == "images") {
             resultType = "result_type_image"
@@ -50,7 +50,7 @@ define(['jquery', './db_connector', './utils', './search_bar'], function($, dbCo
         if (object.table_name == "videos") {
             resultType = "result_type_video"
             resultUrlAddition = urlResult_constant + "videos";
-            iconURL = "img/video-icon2.png";
+            iconURL = "img/video-icon-black.png";
         }
         idUrlAddition = urlId_constant + object.id;
         if (object.table_name == "stations") {

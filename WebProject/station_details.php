@@ -31,22 +31,22 @@
                 </div>
 
                 <div id="galleries">
-                    <button id="backward_pic" class="backward"><i class="icon-angle-left"></i></button>
-                    <button id="forward_pic" class="forward"><i class="icon-angle-right"></i></button>
+                    <button id="backward_pic" class="backward"><label id="prev_gallery" class="nav_gallery nav_gall_left">&#x2039;</label></button>
+                    <button id="forward_pic" class="forward"><label id="next_gallery" class="nav_gallery nav_gall_right">&#x203a;</label></button>
                     <div id="picture_gallery" class="frame trans">
                         <span id="image_not_available" class="not_available_label">Für diese Station sind leider (noch) keine Bilder vorhanden.</span>
                         <ul id="pic_gallery_content" class="slidee">
                         </ul>
                     </div>
-                    <button id="backward_audio" class="backward"><i class="icon-angle-left"></i></button>
-                    <button id="forward_audio" class="forward"><i class="icon-angle-right"></i></button>
+                    <button id="backward_pic" class="backward"><label id="prev_gallery" class="nav_gallery nav_gall_left">&#x2039;</label></button>
+                    <button id="forward_pic" class="forward"><label id="next_gallery" class="nav_gallery nav_gall_right">&#x203a;</label></button>
                     <div id="audio_gallery" class="frame trans">
                         <span id="audio_not_available" class="not_available_label">Für diese Station ist leider (noch) kein Tonmaterial vorhanden.</span>
                         <ul id="audio_gallery_content" class="slidee">
                         </ul>
                     </div>
-                    <button id="backward_vid" class="backward"><i class="icon-angle-left"></i></button>
-                    <button idid="forward_vid" class="forward"><i class="icon-angle-right"></i></button>
+                    <button id="backward_pic" class="backward"><label id="prev_gallery" class="nav_gallery nav_gall_left">&#x2039;</label></button>
+                    <button id="forward_pic" class="forward"><label id="next_gallery" class="nav_gallery nav_gall_right">&#x203a;</label></button>
                     <div id="video_gallery" class="frame trans">
                         <span id="video_not_available" class="not_available_label">Für diese Station sind leider (noch) keine Videos vorhanden.</span>
                         <ul id="vid_gallery_content" class="slidee">
@@ -54,8 +54,8 @@
                     </div>
                 </div>
             </span>
-            </div>
             <label id="next_diary" class="nav nav_right">&#x203a;</label>
+        </div>
         <?php include 'footer.php';
         if (isset($_GET["station_id"])) {
             $station_id = $_GET["station_id"];
