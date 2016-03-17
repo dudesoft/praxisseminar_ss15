@@ -2211,7 +2211,11 @@ th {
   position: absolute;
   top: 0;
   left: 0;
-  cursor: default; }
+  cursor: default;
+  max-height: 150px;
+  overflow-y: auto;
+  /* prevent horizontal scrollbar */
+  overflow-x: hidden; }
 
 .existing-date a {
   background-color: #42B373 !important;
@@ -2478,7 +2482,7 @@ th {
 /* Component containers
 ----------------------------------*/
 .ui-widget {
-  font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+  font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
   font-size: 1.1em; }
 
 .ui-widget .ui-widget {
@@ -2488,7 +2492,7 @@ th {
 .ui-widget select,
 .ui-widget textarea,
 .ui-widget button {
-  font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+  font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
   font-size: 1em; }
 
 .ui-widget-content {

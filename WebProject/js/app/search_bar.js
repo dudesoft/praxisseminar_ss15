@@ -1,6 +1,7 @@
 define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_connector) {
     db_connector.getAllJourneys(setupJourneyDropdown);
     db_connector.getAllDates(setupDatepicker);
+    db_connector.getAutocompleteData(setupAutocomplete);
 
     $('#search-button').click(function() {
         buildSearchURL();
@@ -16,6 +17,25 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
     $(document).on('click', '.ui-datepicker-next, .ui-datepicker-prev, .ui-datepicker', function(e) {
         e.stopPropagation();
     });
+
+    function setupAutocomplete(data) {
+        $("#search-input").autocomplete({
+            source: function(request, response) {
+                var term = $.ui.autocomplete.escapeRegex(request.term),
+                    startsWithMatcher = new RegExp("^" + term, "i"),
+                    startsWith = $.grep(data, function(value) {
+                        return startsWithMatcher.test(value.label || value.value || value);
+                    }),
+                    containsMatcher = new RegExp(term, "i"),
+                    contains = $.grep(data, function(value) {
+                        return $.inArray(value, startsWith) < 0 &&
+                            containsMatcher.test(value.label || value.value || value);
+                    });
+
+                response(startsWith.concat(contains));
+            }
+        });
+    }
 
     function setupDatepicker(data) {
         var datesObject = {};

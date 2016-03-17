@@ -111,6 +111,22 @@ define([], function() {
             })
         },
 
+        getAutocompleteData: function(callback) {
+            $.ajax({
+                type: 'GET',
+                url: 'sql/get_autocomplete_values.php',
+                cache: 'true',
+                dataType: 'json',
+                success: function(response) {
+                    callback(response);
+                },
+                error: function(response) {
+                    alert("Fehler beim Laden der Kalenderdaten");
+                    return null;
+                }
+            })
+        },
+
         getMetaInformation: function(id, table, callback) {
             $.ajax({
                 type: 'GET',
