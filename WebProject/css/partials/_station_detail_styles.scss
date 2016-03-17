@@ -67,7 +67,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: grey;
+    background-color: $dark_gray_trans;
     outline: 1px solid slategrey;
 }
 
@@ -118,9 +118,9 @@ button {
     opacity: .5;
 }
 
-button:hover,
 button:hover {
     opacity: 1;
+    transition: opacity .2s;
 }
 
 button:disabled,
@@ -131,10 +131,14 @@ button:disabled {
 .forward,
 .backward {
     float: left;
-    width: 5%;
+    width: 4%;
     height: 30%;
-    font-size: 60px;
     margin-top: 10px;
+    background-color: $dark_gray_trans;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 2px;
 }
 
 .forward {
@@ -147,7 +151,8 @@ button:disabled {
     padding: 0;
     margin-top: 10px;
     text-shadow: none;
-    float: left;
+    margin-left: auto;
+    margin-right: auto
 }
 
 .slidee {
@@ -186,7 +191,7 @@ button:disabled {
 }
 
 ul li.picture {
-    background: rgba(0, 0, 0, 0.6);
+    background: $dark_gray_trans;
 }
 
 ul li img {
@@ -195,7 +200,8 @@ ul li img {
 }
 
 ul li.audio {
-    background-image: url(../img/audio-icon.png);
+    background: $dark_gray_trans;
+    background-image: url(../img/audio-icon2.png);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 40%;
@@ -203,7 +209,8 @@ ul li.audio {
 }
 
 ul li.video {
-    background-image: url(../img/video-icon.png);
+    background: $dark_gray_trans;
+    background-image: url(../img/video-icon2.png);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 40%;
@@ -218,7 +225,17 @@ ul li.video {
     pointer-events: none;
 }
 
-label {
+.trans {
+    background-image: url(../img/transparentBackground.png);
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 2px;
+    text-align: center;
+}
+
+//Navigation Arrows Station
+label.nav {
     opacity: 0.3;
     cursor: pointer;
     color: #FFF;
@@ -234,19 +251,9 @@ label:hover {
     opacity: 1;
 }
 
-.trans {
-    background-image: url(../img/transparentBackground.png);
-    border-style: solid;
-    border-width: 1px;
-    border-color: white;
-    border-radius: 2px;
-    text-align: center;
-}
-
-//Navigation Arrows
 .nav {
     position: absolute;
-    top: 50%;
+    top: 48%;
     transform: translateY(-50%);
 }
 
@@ -256,6 +263,14 @@ label:hover {
 
 .nav_right {
     right: 10px;
+}
+
+//Navigation Arrows Gallery
+label.nav_gallery {
+    font-size: 30pt;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    vertical-align: middle;
 }
 
 //Colorbox / Multimediapopup
@@ -314,8 +329,8 @@ video {
 #tabs_container > div {
     border: 1px solid #ddd;
     height: 100%;
-    width:90%;
-    float:right;
+    width: 90%;
+    float: right;
     position: relative;
     z-index: 9;
     -moz-border-radius: 20px;
