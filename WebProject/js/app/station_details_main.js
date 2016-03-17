@@ -1,33 +1,81 @@
 define(['jquery', './media_player_factory', './maps', './db_connector', './utils', './search_bar', 'sly', 'colorbox'], function($, factory, map, connector, utils) {
+    var activeElementClass = "active_element";
+    var urlKey = "url";
+    var tableNameKey = "table";
+    var idKey = "id";
+
+    var picSly;
+    var audioSly;
+    var vidSly;
+
+    var $activeElement;
+    var activeData;
     var StationDetails = {
         setupDetails: function() {
-            var stationId = utils.getUrlVars().station_id;
+            var urlVars = utils.getUrlVars();
 
-            connector.getLocationDetails(stationId, function(data) {
+            connector.getLocationDetails(urlVars.station_id, function(data) {
                 $("#location").html(utils.buildLocationName(data));
                 $("#time").html(data.date);
                 $("#loader_container").fadeOut("fast");
                 $("#detail_content").fadeIn("slow", function() {
-                    map.scrollToMapPosition(data.latitude, data.longitude);
+                    //map.scrollToMapPosition(data.latitude, data.longitude);
                 });
 
-                map.setupMap('mini_map');
+
+
+                connector.getNextPrevStation(data.travel, data.date, function(stations) {
+                    if (!stations.next) {
+                        $("#next_diary").hide();
+                    } else {
+                        $("#next_diary").click(function() {
+                            map.openNewLocation(stations.next);
+                        });
+                    }
+
+                    if (!stations.previous) {
+                        $("#prev_diary").hide();
+                    } else {
+                        $("#prev_diary").click(function() {
+                            map.openNewLocation(stations.previous);
+                        });
+                    }
+                });
+
+                //map.setupMap('mini_map');
+
+
 
                 for (var i = 0; i < data.images.length; i++) {
-                    $galleryElement = $("<li class='picture'> <img src='" + data.images[i] + "' class='gallery-picture'> </li>");
-                    $galleryElement.click(factory.getPictureGallery(data.images[i]));
+                    $galleryElement = $("<li class='picture'> <img src='" + data.images[i].thumb_url + "' class='gallery-picture'> </li>");
+                    $galleryElement.data(urlKey, data.images[i].url);
+                    $galleryElement.data(idKey, data.images[i].id);
+                    $galleryElement.data(tableNameKey, "images");
+                    $galleryElement.click(function(event) {
+                        StationDetails.changeActiveElement($(event.target));
+                    });
                     $('#pic_gallery_content').append($galleryElement);
                 }
 
                 for (var i = 0; i < data.songs.length; i++) {
                     $galleryElement = $("<li class='audio'></li>");
-                    $galleryElement.click(factory.getAudioPlayer(data.images[i]));
+                    $galleryElement.data(urlKey, data.songs[i].url);
+                    $galleryElement.data(idKey, data.songs[i].id);
+                    $galleryElement.data(tableNameKey, "songs");
+                    $galleryElement.click(function(event) {
+                        StationDetails.changeActiveElement($(event.target));
+                    });
                     $('#audio_gallery_content').append($galleryElement);
                 }
 
                 for (var i = 0; i < data.videos.length; i++) {
                     $galleryElement = $("<li class='video'></li>");
-                    $galleryElement.click(factory.getVideoPlayer(data.images[i]));
+                    $galleryElement.data(urlKey, data.videos[i].url);
+                    $galleryElement.data(idKey, data.videos[i].id);
+                    $galleryElement.data(tableNameKey, "videos");
+                    $galleryElement.click(function(event) {
+                        StationDetails.changeActiveElement($(event.target));
+                    });
                     $('#vid_gallery_content').append($galleryElement);
                 }
 
@@ -44,31 +92,195 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 }
 
                 $(document).ready(function() {
-                    $('#picture_gallery, #audio_gallery, #video_gallery').sly({
-                        horizontal: 1,
 
+                    var options = {
+                        horizontal: 1,
                         itemNav: 'basic',
                         smart: 1,
                         activateOn: 'click',
-
                         scrollBy: 1,
-
                         mouseDragging: 1,
                         swingSpeed: 0.2,
-
                         dragHandle: 1,
-
                         speed: 600,
                         startAt: 0
-                    });
+                    };
+                    picSly = new Sly($('#picture_gallery'), options).init();
+                    audioSly = new Sly($('#audio_gallery'), options).init();
+                    vidSly = new Sly($('#video_gallery'), options).init();
 
                     $(window).resize(function(e) {
-                        console.log("resize lol");
-                        $('#picture_gallery, #audio_gallery, #video_gallery').sly('reload');
+                        picSly.reload();
+                        audioSly.reload();
+                        vidSly.reload();
                     });
                 });
 
+                if (urlVars.resultType && urlVars.objectId) {
+                    StationDetails.setFocusOnElement(urlVars.objectId, urlVars.resultType)
+                }
+
+                $('#backward_pic').click(function(event) {
+                    StationDetails.setFocusOnPrevNextElement("images", -1);
+                });
+                $('#backward_audio').click(function(event) {
+                    StationDetails.setFocusOnPrevNextElement("songs", -1);
+                });
+                $('#backward_vid').click(function(event) {
+                    StationDetails.setFocusOnPrevNextElement("videos", -1);
+                });
+                $('#forward_pic').click(function(event) {
+                    StationDetails.setFocusOnPrevNextElement("images", 1);
+                });
+                $('#forward_audio').click(function(event) {
+                    StationDetails.setFocusOnPrevNextElement("songs", 1);
+                });
+                $('#forward_vid').click(function(event) {
+                    StationDetails.setFocusOnPrevNextElement("videos", 1);
+                });
+
             });
+        },
+        changeActiveElement: function($newActiveElement) {
+            if (!$newActiveElement.is($activeElement) && $newActiveElement != null) {
+                if ($activeElement != null) {
+                    $activeElement.removeClass(activeElementClass);
+                    $activeElement = $newActiveElement;
+                    $activeElement.addClass(activeElementClass);
+                } else {
+                    $activeElement = $newActiveElement;
+                    $activeElement.addClass(activeElementClass);
+                }
+                this.updatePreviewField($activeElement.data(idKey), $activeElement.data(urlKey), $activeElement.data(tableNameKey));
+            }
+        },
+        updatePreviewField: function(id, url, tableName) {
+            connector.getMetaInformation(id, tableName, this.updateTextField);
+            $("#mini_map").empty();
+            if (tableName == "images") {
+                $("#mini_map").append(factory.getPictureGallery(url));
+            }
+            if (tableName == "songs") {
+                $("#mini_map").append(factory.getAudioPlayer(url));
+            }
+            if (tableName == "videos") {
+                $("#mini_map").append(factory.getVideoPlayer(url));
+            }
+        },
+        updateTextField: function(data) {
+            $list = $("#attribute_list");
+            $list.empty();
+            Object.keys(data).forEach(function(key, index) {
+                if (data[key] != "") {
+                    $list.append($("<li>" + key + ": " + data[key] + "</li>"));
+                }
+            });
+        },
+        setFocusOnElement: function(id, dataType) {
+            var $element;
+            var galleryItems;
+
+            if (dataType == "images") {
+                galleryItems = $('#pic_gallery_content').children();
+                for (var i = 0; i < galleryItems.length; i++) {
+                    if ($(galleryItems[i]).data(idKey) == id) {
+                        $element = $(galleryItems[i]);
+                        if (picSly != null) {
+                            picSly.toCenter($element);
+                        }
+                    }
+                }
+            }
+            if (dataType == "songs") {
+                galleryItems = $('#audio_gallery_content').children();
+                for (var i = 0; i < galleryItems.length; i++) {
+                    if ($(galleryItems[i]).data(idKey) == id) {
+                        $element = $(galleryItems[i]);
+                        if (audioSly != null) {
+                            audioSly.toCenter($element);
+                        }
+                    }
+                }
+            }
+            if (dataType == "videos") {
+                galleryItems = $('#vid_gallery_content').children();
+                for (var i = 0; i < galleryItems.length; i++) {
+                    if ($(galleryItems[i]).data(idKey) == id) {
+                        $element = $(galleryItems[i]);
+                        if (vidSly != null) {
+                            vidSly.toCenter($element);
+                        }
+                    }
+                }
+            }
+            this.changeActiveElement($element);
+        },
+        setFocusOnPrevNextElement: function(dataType, value) {
+            var galleryItems;
+
+            if (dataType == "images") {
+                galleryItems = $('#pic_gallery_content').children();
+                if(galleryItems.length == 0) {
+                    return;
+                }
+                if ($activeElement == null || $activeElement.data(tableNameKey) != "images") {
+                    this.changeActiveElement($(galleryItems[0]));
+                    picSly.toCenter($(galleryItems[0]));
+                    return;
+                }
+                for (var i = 0; i < galleryItems.length; i++) {
+                    if ($(galleryItems[i]).is($activeElement)) {
+                        if (i + value < 0 || i + value > galleryItems.length - 1) {
+                            return;
+                        }
+                        this.changeActiveElement($(galleryItems[i + value]));
+                        picSly.toCenter($(galleryItems[i + value]));
+                        return;
+                    }
+                }
+            }
+            if (dataType == "songs") {
+                galleryItems = $('#audio_gallery_content').children();
+                if(galleryItems.length == 0) {
+                    return;
+                }
+                if ($activeElement == null || $activeElement.data(tableNameKey) != "songs") {
+                    this.changeActiveElement($(galleryItems[0]));
+                    audioSly.toCenter($(galleryItems[0]));
+                    return;
+                }
+                for (var i = 0; i < galleryItems.length; i++) {
+                    if ($(galleryItems[i]).is($activeElement)) {
+                        if (i + value < 0 || i + value > galleryItems.length - 1) {
+                            return;
+                        }
+                        this.changeActiveElement($(galleryItems[i + value]));
+                        audioSly.toCenter($(galleryItems[i + value]));
+                        return;
+                    }
+                }
+            }
+            if (dataType == "videos") {
+                galleryItems = $('#vid_gallery_content').children();
+                if(galleryItems.length == 0) {
+                    return;
+                }
+                if ($activeElement == null || $activeElement.data(tableNameKey) != "videos") {
+                    this.changeActiveElement($(galleryItems[0]));
+                    videoSly.toCenter($(galleryItems[0]));
+                    return;
+                }
+                for (var i = 0; i < galleryItems.length; i++) {
+                    if ($(galleryItems[i]).is($activeElement)) {
+                        if (i + value < 0 || i + value > galleryItems.length - 1) {
+                            return;
+                        }
+                        this.changeActiveElement($(galleryItems[i + value]));
+                        vidSly.toCenter($$(galleryItems[i + value]));
+                        return;
+                    }
+                }
+            }
         }
     };
     return StationDetails;

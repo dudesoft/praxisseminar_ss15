@@ -100,10 +100,6 @@ body {
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.95); }
 
-#stations {
-  list-style: none;
-  padding-left: 0; }
-
 .overlay_centered {
   position: absolute;
   z-index: 15;
@@ -111,6 +107,21 @@ body {
   left: 50%;
   text-align: center;
   transform: translateX(-50%) translateY(-50%); }
+
+.station_element {
+  padding: 5px;
+  border-width: 1px;
+  border-color: white;
+  border-style: dashed; }
+
+.station_element:focus,
+.station_element:hover {
+  border-width: 1px;
+  border-color: white;
+  border-style: solid; }
+
+.available_data {
+  margin-top: 5px; }
 
 /* Styles erweiterte Suche neu */
 .dropdown.dropdown-lg .dropdown-menu {
@@ -219,13 +230,6 @@ header {
   font-size: 12px;
   font-family: Segoe UI; }
 
-#enter_search {
-  float: right;
-  margin-top: 5px;
-  border-radius: 10px;
-  background-color: green;
-  color: white; }
-
 /* Hide popover contents */
 #pop_over_content {
   display: none; }
@@ -258,7 +262,6 @@ a {
 a:focus,
 a:hover {
   text-decoration: none;
-  font-weight: bold;
   color: #D1C192; }
 
 #link_container {
@@ -432,7 +435,8 @@ textarea {
   background-repeat: no-repeat;
   background-size: 95% 100%, auto auto;
   padding-left: 111px;
-  -webkit-filter: drop-shadow(10px 10px 20px black); }
+  -webkit-filter: drop-shadow(10px 10px 20px black);
+  font-family: Segoe UI; }
 
 #detail_content {
   display: none;
@@ -491,7 +495,7 @@ h1 {
   float: left;
   width: 58%;
   height: 45%;
-  margin: 0.5% 0 0.5% 0;
+  margin: 0.5% 0 0 0;
   overflow-y: scroll;
   overflow-x: hidden; }
 
@@ -504,13 +508,57 @@ h1 {
   margin-top: 0.5%;
   width: 40%;
   height: 45%;
+  float: right;
+  position: relative; }
+
+#galleries {
+  float: left;
+  width: 100%;
+  height: 50%; }
+
+#mini_map img {
+  height: 100%;
+  width: auto; }
+
+#mini_map video,
+audio {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); }
+
+button,
+button {
+  background: transparent;
+  border: 0;
+  color: #fff;
+  opacity: .5; }
+
+button:hover,
+button:hover {
+  opacity: 1; }
+
+button:disabled,
+button:disabled {
+  opacity: .2; }
+
+.forward,
+.backward {
+  float: left;
+  width: 5%;
+  height: 30%;
+  font-size: 60px;
+  margin-top: 10px; }
+
+.forward {
   float: right; }
 
 .frame {
-  width: 100%;
-  height: 15%;
+  width: 90%;
+  height: 30%;
   padding: 0;
-  margin-top: 10px; }
+  margin-top: 10px;
+  text-shadow: none;
+  float: left; }
 
 .slidee {
   margin: 0;
@@ -534,7 +582,7 @@ h1 {
   -ms-transform: translateY(-30%);
   transform: translateY(-30%); }
 
-.slidee li.active {
+.active_element {
   box-shadow: 0px 0px 0px 2px orange inset; }
 
 .slidee li:hover {
@@ -544,6 +592,10 @@ h1 {
 
 ul li.picture {
   background: rgba(0, 0, 0, 0.6); }
+
+ul li img {
+  height: 100%;
+  width: auto; }
 
 ul li.audio {
   background-image: url(../img/audio-icon.png);
@@ -563,7 +615,8 @@ ul li.video {
   width: auto;
   height: 100%;
   padding-top: 2px;
-  padding-bottom: 2px; }
+  padding-bottom: 2px;
+  pointer-events: none; }
 
 label {
   opacity: 0.3;
@@ -592,12 +645,6 @@ label:hover {
   top: 50%;
   transform: translateY(-50%); }
 
-.navigation_element {
-  position: absolute;
-  top: 20px;
-  bottom: 20px;
-  width: 20%; }
-
 .nav_left {
   left: 10px; }
 
@@ -607,6 +654,10 @@ label:hover {
 video {
   width: 320px;
   height: 240px; }
+
+#image_container {
+  width: 1024px;
+  height: auto; }
 
 .custom-popup .leaflet-popup-tip,
 .custom-popup .leaflet-popup-content-wrapper {
@@ -619,6 +670,19 @@ video {
   width: 25px;
   height: 25px; }
 
+#stations {
+  font-size: 14px;
+  margin-top: 30px;
+  list-style: none;
+  padding-left: 0; }
+
+#stations li {
+  display: inline-block;
+  margin-right: 10px; }
+
+#stations a {
+  color: white; }
+
 .audio_anchor {
   margin-bottom: 10px;
   margin-right: 5px;
@@ -629,6 +693,16 @@ video {
   margin-bottom: 10px;
   width: 25px;
   height: 25px; }
+
+#select_station {
+  font-size: 20px;
+  color: #D1C192; }
+
+#stations .image_anchor {
+  margin-right: 0px; }
+
+#stations .audio_anchor {
+  margin-right: 0px; }
 
 .centered_anchor {
   text-align: center;
@@ -668,13 +742,23 @@ video {
   text-align: left;
   display: inline-block;
   width: 80%;
-  padding: 3%;
-  margin: 20px 50px auto;
+  padding: 1%;
+  margin: 20px 10px auto;
+  margin-top: 10px;
   background-image: url(../img/transparentBackground.png);
   border-style: solid;
   border-width: 1px;
   border-color: white;
   border-radius: 2px; }
+
+.result_icon {
+  height: 40px;
+  width: auto;
+  float: left; }
+
+.result_name {
+  line-height: 40px;
+  padding-left: 50px; }
 
 .search_results li:hover {
   cursor: pointer;
@@ -684,14 +768,27 @@ video {
 #result_list_content {
   padding: 10px;
   padding-right: 0;
-  width: 92%; }
+  width: 92%;
+  font-family: Segoe UI;
+  bottom: 60px;
+  overflow: hidden;
+  height: 100%; }
 
 #resut_list {
   padding-left: 0;
-  height: 550px;
   overflow-y: scroll;
   overflow-x: hidden;
-  text-align: center; }
+  text-align: center;
+  height: 80%;
+  bottom: 60px; }
+
+h3 {
+  position: static;
+  font-family: Papyrus, Segoe UI;
+  padding-left: 75px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px; }
 
 /*
     Colorbox Core Style:
@@ -772,7 +869,7 @@ video {
     ordered & tabbed in a way that represents the nesting of the generated HTML.
 */
 #cboxOverlay {
-  background: url(/Praxisseminar/WebProject/img/colorbox/overlay.png) repeat 0 0;
+  background: url(../../img/colorbox/overlay.png) repeat 0 0;
   opacity: 0.9;
   filter: alpha(opacity=90); }
 
@@ -782,38 +879,38 @@ video {
 #cboxTopLeft {
   width: 21px;
   height: 21px;
-  background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) no-repeat -101px 0; }
+  background: url(../../img/colorbox/controls.png) no-repeat -101px 0; }
 
 #cboxTopRight {
   width: 21px;
   height: 21px;
-  background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) no-repeat -130px 0; }
+  background: url(../../img/colorbox/controls.png) no-repeat -130px 0; }
 
 #cboxBottomLeft {
   width: 21px;
   height: 21px;
-  background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) no-repeat -101px -29px; }
+  background: url(../../img/colorbox/controls.png) no-repeat -101px -29px; }
 
 #cboxBottomRight {
   width: 21px;
   height: 21px;
-  background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) no-repeat -130px -29px; }
+  background: url(../../img/colorbox/controls.png) no-repeat -130px -29px; }
 
 #cboxMiddleLeft {
   width: 21px;
-  background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) left top repeat-y; }
+  background: url(../../img/colorbox/controls.png) left top repeat-y; }
 
 #cboxMiddleRight {
   width: 21px;
-  background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) right top repeat-y; }
+  background: url(../../img/colorbox/controls.png) right top repeat-y; }
 
 #cboxTopCenter {
   height: 21px;
-  background: url(/Praxisseminar/WebProject/img/colorbox/border.png) 0 0 repeat-x; }
+  background: url(../../img/colorbox/border.png) 0 0 repeat-x; }
 
 #cboxBottomCenter {
   height: 21px;
-  background: url(/Praxisseminar/WebProject/img/colorbox/border.png) 0 -29px repeat-x; }
+  background: url(../../img/colorbox/border.png) 0 -29px repeat-x; }
 
 #cboxContent {
   background: #fff;
@@ -844,10 +941,10 @@ video {
   color: #949494; }
 
 #cboxLoadingOverlay {
-  background: url(/Praxisseminar/WebProject/img/colorbox/loading_background.png) no-repeat center center; }
+  background: url(../../img/colorbox/loading_background.png) no-repeat center center; }
 
 #cboxLoadingGraphic {
-  background: url(/Praxisseminar/WebProject/img/colorbox/loading.gif) no-repeat center center; }
+  background: url(../../img/colorbox/loading.gif) no-repeat center center; }
 
 /* these elements are buttons, and may need to have additional styles reset to avoid unwanted base styles */
 #cboxPrevious,
@@ -878,7 +975,7 @@ video {
   position: absolute;
   bottom: 0;
   left: 0;
-  background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) no-repeat -75px 0;
+  background: url(../../img/colorbox/controls.png) no-repeat -75px 0;
   width: 25px;
   height: 25px;
   text-indent: -9999px; }
@@ -890,7 +987,7 @@ video {
   position: absolute;
   bottom: 0;
   left: 27px;
-  background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) no-repeat -50px 0;
+  background: url(../../img/colorbox/controls.png) no-repeat -50px 0;
   width: 25px;
   height: 25px;
   text-indent: -9999px; }
@@ -902,7 +999,7 @@ video {
   position: absolute;
   bottom: 0;
   right: 0;
-  background: url(/Praxisseminar/WebProject/img/colorbox/controls.png) no-repeat -25px 0;
+  background: url(../../img/colorbox/controls.png) no-repeat -25px 0;
   width: 25px;
   height: 25px;
   text-indent: -9999px; }

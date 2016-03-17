@@ -54,9 +54,13 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
 
             // Build locationMarker
             data.forEach(function(location) {
+                var has_images = false;
+                var has_songs = false;
+                var has_videos = false;
+
                 var marker = new leaflet.marker([location.latitude, location.longitude], {
                     icon: icon
-                }).bindPopup(utils.generatePopup(location), customOptions);
+                });
                 marker.on('mouseover', function(e) {
                     this.openPopup();
                 });
@@ -79,22 +83,22 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
                     station.latitude = location.latitude;
                     station.longitude = location.longitude;
                     travels[station.travel.name].stationList.push(station);
+
+                    if (station.has_images) {
+                        has_images = true;
+                    }
+                    if (station.has_songs) {
+                        has_songs = true;
+                    }
+                    if (station.has_videos) {
+                        has_videos = true;
+                    }
                 });
 
+                marker.bindPopup(utils.generatePopup(location, has_images, has_songs, has_videos), customOptions)
+
                 marker.on('click', function(e) {
-                    if ($("#detail_content").length) {
-                        $("#detail_content").fadeOut("slow", function() {
-                            window.open("station_details.php?station_id=" + location.id, "_self");
-                        });
-                    } else {
-                        if (location.stations.length == 1) {
-                            window.open("station_details.php?station_id=" + location.stations[0].id, "_self");
-                        } else {
-                            Maps.showStationList(location.stations);
-                            Maps.disableMapControls();
-                            $("#map_overlay").fadeIn("fast");
-                        }
-                    }
+                    Maps.openNewLocation(location);
                 });
 
                 marker.addTo(locationLayer);
@@ -114,7 +118,6 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
                 }).addTo(locationLayer);
 
                 $("#to_travel_" + i).click(function(e) {
-                    console.log(e.target.id);
                     map.fitBounds(travelPaths[e.target.id].getBounds());
                 });
 
@@ -148,10 +151,23 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
             });
         },
 
+        openNewLocation: function(location) {
+            if ($("#detail_content").length) {
+                $("#detail_content").fadeOut("slow", function() {
+                    window.open("station_details.php?station_id=" + location.id, "_self");
+                });
+            } else {
+                if (location.stations.length == 1) {
+                    window.open("station_details.php?station_id=" + location.stations[0].id, "_self");
+                } else {
+                    this.showStationList(location.stations);
+                    this.disableMapControls();
+                    $("#map_overlay").fadeIn("fast");
+                }
+            }
+        },
+
         scrollToMapPosition: function(latitude, longitude) {
-            setTimeout(function() {
-                map.fitBounds(latLongCollection);
-            }, 0);
             map.panTo(new leaflet.LatLng(latitude, longitude), { animate: true, duration: 1.0 });
         },
 
@@ -168,7 +184,22 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
             });
 
             stations.forEach(function(station) {
-                $("#stations").append("<li><a href='station_details.php?station_id=" + station.id + "'>" + station.travel.name + " " + station.date + "</a></li>");
+                var availableData = "<div class='available_data'>";
+
+                if (station.has_images) {
+                    availableData += "<img class='image_anchor' src='img/img-icon.png'>";
+                }
+                if (station.has_songs) {
+                    availableData += "<img class='audio_anchor' src='img/audio-icon.png'>";
+                }
+                if (station.has_videos) {
+                    availableData += "<img class='video_anchor' src='img/video-icon.png'>";
+                }
+                availableData += "</div>";
+
+                var buttonElement = "<div class='station_element'>" + station.travel.name + " </br> " + utils.formatDate(station.date) + availableData + "</div>";
+
+                $("#stations").append("<li><a href='station_details.php?station_id=" + station.id + "'>" + buttonElement + "</a></li>");
             });
         },
 
@@ -190,74 +221,3 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
     };
     return Maps;
 });
-
-
-
-// setTravelPath();
-
-// function setTravelPath() {
-//   var locationLayer = L.layerGroup();
-//   var travelLayer = L.layerGroup();
-
-//   <% @travels.each do |travel| %>
-//   var locations = [];
-//   <% travel.locations.each do |location| %>
-//   locations.push([<%= location.latitude %>, <%= location.longitude %>]);
-//   new L.marker(locations[locations.length - 1], {icon: locationIcon}).addTo(locationLayer);
-//   <% end %>
-//   var poly = new L.Polyline(locations, {
-//     color: 'red',
-//     weight: 3,
-//     opacity: 0.5,
-//     smoothFactor: 1
-//   }).addTo(locationLayer);
-//   if (locations.length > 0) {
-//     createTravelMarker(poly).addTo(travelLayer);
-//   }
-//   <% end %>
-
-//   var root = 'https://nominatim.openstreetmap.org/search.php';
-
-//   var data = $.get(root, {
-//     country: "Afghanistan",
-//     city: "Kabul",
-//     format: "json"
-//   }, function () {
-//     console.log(data.responseJSON);
-//   }, "json")
-
-//   var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-//   var osm = new L.TileLayer('<%= MAPBOX_API %>',
-//   {
-//     minZoom: 3,
-//     maxZoom: 13,
-//     attribution: osmAttrib
-//   });
-
-//   var southWest = L.latLng(250, 250),
-//   northEast = L.latLng(-250, -250),
-//   bounds = L.latLngBounds(southWest, northEast);
-
-//   var map = L.map('map', {
-//     center: [28.635308, 77.22496],
-//     zoom: 8,
-//     layers: [osm, locationLayer],
-//     maxBounds: bounds
-//   });
-
-//   var baseLayers = {
-//     "Cities": locationLayer,
-//     "Travels": travelLayer
-//   };
-
-//   L.control.layers(baseLayers, null).addTo(map);
-//   //var p = L.polygon(locations);
-// }
-
-// function createTravelMarker(poly) {
-//   var marker = new L.marker(poly.getBounds().getCenter(), {icon: travelIcon}).bindPopup("Popup content");
-//   marker.on('mouseover', function (e) {
-//     this.openPopup();
-//   });
-//   return marker;
-// }
