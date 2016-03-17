@@ -29,19 +29,16 @@
                 </div>
                 <div id="tabs_container" class="trans">   
                     <ul>
-                        <li class="tabs selected"></li>
-                        <li class="tabs"></li>
-                        <li class="tabs"></li>
+                        <li id="map_tab" class="tabs selected"></li>
+                        <li id="pic_tab" class="tabs"></li>
+                        <li id="player_tab" class="tabs"></li>
                     </ul>                 
                     <div id="map_content" class="tab_content">
                     </div>
                     <div id="pic_content" class="tab_content">
-                        <h4>Secure Login</h4>
                     </div>
                     <div id="player_content" class="tab_content">
-                        <h4>Online Support</h4>
-                    </div>
-                    
+                    </div>                    
                 </div>
                 
 
