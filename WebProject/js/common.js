@@ -4,6 +4,7 @@ requirejs.config({
         'jquery': ['https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min',
             'vendor/jquery.min'
         ],
+        'jquery_ui': 'vendor/jquery-ui/jquery-ui',
         'bootstrap': 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min',
         'modernizr': 'vendor/modernizr.min',
         'underscore': 'vendor/underscore.min',
@@ -19,6 +20,9 @@ requirejs.config({
             deps: ['jquery']
         },
         'colorbox': {
+            deps: ['jquery']
+        },
+        'jquery-ui': {
             deps: ['jquery']
         }
     }

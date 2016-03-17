@@ -1,4 +1,4 @@
-define(['jquery', './db_connector', 'bootstrap'], function($, db_connector) {
+define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_connector) {
     db_connector.getAllJourneys(setupJourneyDropdown);
 
     $('#search-button').click(function() {
@@ -10,6 +10,10 @@ define(['jquery', './db_connector', 'bootstrap'], function($, db_connector) {
             event.preventDefault();
             buildSearchURL();
         }
+    });
+
+    $(function() {
+        $("#min_date_input").datepicker();
     });
 
     function setupJourneyDropdown(data) {
