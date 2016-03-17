@@ -13,7 +13,7 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
     });
 
     $(function() {
-        $("#min_date_input").datepicker();
+        $("#min_date_input").datepicker({});
     });
 
     function setupJourneyDropdown(data) {

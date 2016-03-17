@@ -16,7 +16,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
 
             connector.getLocationDetails(urlVars.station_id, function(data) {
                 $("#location").html(utils.buildLocationName(data));
-                $("#time").html(data.date);
+                $("#time").html(utils.formatDate(data.date));
                 $("#loader_container").fadeOut("fast");
                 $("#detail_content").fadeIn("slow", function() {
                     //map.scrollToMapPosition(data.latitude, data.longitude);
