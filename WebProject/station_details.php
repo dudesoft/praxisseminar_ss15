@@ -54,8 +54,8 @@
                     </div>
                 </div>
             </span>
-            </div>
             <label id="next_diary" class="nav nav_right">&#x203a;</label>
+        </div>
         <?php include 'footer.php';
         if (isset($_GET["station_id"])) {
             $station_id = $_GET["station_id"];
