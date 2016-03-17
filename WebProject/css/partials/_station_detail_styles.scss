@@ -78,7 +78,7 @@ h1 {
 
 #text_info {
     float: left;
-    width: 58%;
+    width: 50%;
     height: 45%;
     margin: 0.5% 0 0 0;
     overflow-y: scroll;
@@ -91,18 +91,10 @@ h1 {
     margin-right: 2%;
 }
 
-#mini_map {
-    margin-top: 0.5%;
-    width: 40%;
-    height: 45%;
-    float: right;
-    position: relative;
-}
-
 #galleries {
-    float:left;
-    width:100%;
-    height:50%;
+    float: left;
+    width: 100%;
+    height: 50%;
 }
 
 #mini_map img {
@@ -119,7 +111,7 @@ audio {
 
 //Sly Gallery for Multimedia
 button,
- button {
+button {
     background: transparent;
     border: 0;
     color: #fff;
@@ -127,17 +119,17 @@ button,
 }
 
 button:hover,
- button:hover {
+button:hover {
     opacity: 1;
 }
 
 button:disabled,
- button:disabled {
+button:disabled {
     opacity: .2;
 }
 
 .forward,
- .backward {
+.backward {
     float: left;
     width: 5%;
     height: 30%;
@@ -148,7 +140,6 @@ button:disabled,
 .forward {
     float: right;
 }
-
 
 .frame {
     width: 90%;
@@ -267,8 +258,6 @@ label:hover {
     right: 10px;
 }
 
-
-
 //Colorbox / Multimediapopup
 video {
     width: 320px;
@@ -278,4 +267,56 @@ video {
 #image_container {
     width: 1024px;
     height: auto;
+}
+
+//Tabs
+#tabs_container {
+    margin-top: 0.5%;
+    width: 49%;
+    height: 45%;
+    float: right;
+    position: relative;
+}
+
+#tabs_container > ul > li {
+    width: 100%;
+    height: 33%;
+    background-color: #fff !important;
+    list-style-type: none;
+    display: block;
+    text-align: center;
+    margin: auto;
+    border: 1px solid #fff;
+    position: relative;
+    border-left: none;
+    opacity: .3;
+}
+
+#tabs_container > ul > li.selected {
+    opacity: 1;
+    border: 1px solid #ddd;
+    border-left: none;
+    z-index: 10;
+    background-color: #fafafa !important;
+    position: relative;
+}
+
+#tabs_container > ul {
+    float: right;
+    width: 10%;
+    height: 100%;
+    text-align: right;
+    display: block;
+    padding: 0;
+    position: relative;
+}
+
+#tabs_container > div {
+    border: 1px solid #ddd;
+    height: 100%;
+    width:90%;
+    float:right;
+    position: relative;
+    z-index: 9;
+    -moz-border-radius: 20px;
 }
