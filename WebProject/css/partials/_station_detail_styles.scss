@@ -67,7 +67,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: grey;
+    background-color: $dark_gray_trans;
     outline: 1px solid slategrey;
 }
 
@@ -128,6 +128,7 @@ button,
 
 button:hover,
  button:hover {
+    
     opacity: 1;
     transition: opacity .2s;
 }
@@ -143,7 +144,7 @@ button:disabled,
     width: 4%;
     height: 30%;
     margin-top: 10px;
-    background-color: $gray;
+    background-color: $dark_gray_trans;
     border-style: solid;
     border-width: 1px;
     border-color: white;
@@ -201,7 +202,7 @@ button:disabled,
 }
 
 ul li.picture {
-    background: rgba(0, 0, 0, 0.6);
+    background: $dark_gray_trans;
 }
 
 ul li img {
@@ -210,6 +211,7 @@ ul li img {
 }
 
 ul li.audio {
+    background: $dark_gray_trans;
     background-image: url(../img/audio-icon2.png);
     background-position: center center;
     background-repeat: no-repeat;
