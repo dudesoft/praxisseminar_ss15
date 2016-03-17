@@ -33,7 +33,6 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
             minDate: new Date(data[0]),
             maxDate: new Date(data[data.length - 1]),
             beforeShowDay: function(date) {
-                console.log(date);
                 var highlight = datesObject[date];
                 if (highlight) {
                     return [true, 'existing-date', ''];
@@ -50,7 +49,6 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
             minDate: new Date(data[0]),
             maxDate: new Date(data[data.length - 1]),
             beforeShowDay: function(date) {
-                console.log(date);
                 var highlight = datesObject[date];
                 if (highlight) {
                     return [true, 'existing-date', ''];
