@@ -100,10 +100,6 @@ body {
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.95); }
 
-#stations {
-  list-style: none;
-  padding-left: 0; }
-
 .overlay_centered {
   position: absolute;
   z-index: 15;
@@ -111,6 +107,21 @@ body {
   left: 50%;
   text-align: center;
   transform: translateX(-50%) translateY(-50%); }
+
+.station_element {
+  padding: 5px;
+  border-width: 1px;
+  border-color: white;
+  border-style: dashed; }
+
+.station_element:focus,
+.station_element:hover {
+  border-width: 1px;
+  border-color: white;
+  border-style: solid; }
+
+.available_data {
+  margin-top: 5px; }
 
 /* Styles erweiterte Suche neu */
 .dropdown.dropdown-lg .dropdown-menu {
@@ -251,7 +262,6 @@ a {
 a:focus,
 a:hover {
   text-decoration: none;
-  font-weight: bold;
   color: #D1C192; }
 
 #link_container {
@@ -660,6 +670,19 @@ video {
   width: 25px;
   height: 25px; }
 
+#stations {
+  font-size: 14px;
+  margin-top: 30px;
+  list-style: none;
+  padding-left: 0; }
+
+#stations li {
+  display: inline-block;
+  margin-right: 10px; }
+
+#stations a {
+  color: white; }
+
 .audio_anchor {
   margin-bottom: 10px;
   margin-right: 5px;
@@ -670,6 +693,16 @@ video {
   margin-bottom: 10px;
   width: 25px;
   height: 25px; }
+
+#select_station {
+  font-size: 20px;
+  color: #D1C192; }
+
+#stations .image_anchor {
+  margin-right: 0px; }
+
+#stations .audio_anchor {
+  margin-right: 0px; }
 
 .centered_anchor {
   text-align: center;
