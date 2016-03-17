@@ -118,7 +118,6 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
                 }).addTo(locationLayer);
 
                 $("#to_travel_" + i).click(function(e) {
-                    console.log(e.target.id);
                     map.fitBounds(travelPaths[e.target.id].getBounds());
                 });
 
@@ -169,9 +168,6 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
         },
 
         scrollToMapPosition: function(latitude, longitude) {
-            //setTimeout(function() {
-            //    map.fitBounds(latLongCollection);
-            //}, 0);
             map.panTo(new leaflet.LatLng(latitude, longitude), { animate: true, duration: 1.0 });
         },
 
@@ -188,7 +184,22 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
             });
 
             stations.forEach(function(station) {
-                $("#stations").append("<li><a href='station_details.php?station_id=" + station.id + "'>" + station.travel.name + " " + utils.formatDate(station.date) + "</a></li>");
+                var availableData = "<div class='available_data'>";
+
+                if (station.has_images) {
+                    availableData += "<img class='image_anchor' src='img/img-icon.png'>";
+                }
+                if (station.has_songs) {
+                    availableData += "<img class='audio_anchor' src='img/audio-icon.png'>";
+                }
+                if (station.has_videos) {
+                    availableData += "<img class='video_anchor' src='img/video-icon.png'>";
+                }
+                availableData += "</div>";
+
+                var buttonElement = "<div class='station_element'>" + station.travel.name + " </br> " + utils.formatDate(station.date) + availableData + "</div>";
+
+                $("#stations").append("<li><a href='station_details.php?station_id=" + station.id + "'>" + buttonElement + "</a></li>");
             });
         },
 

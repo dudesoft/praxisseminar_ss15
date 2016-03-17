@@ -11,6 +11,22 @@
     height: 25px;
 }
 
+#stations {
+    font-size: 14px;
+    margin-top: 30px;
+    list-style: none;
+    padding-left: 0;
+}
+
+#stations li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+#stations a {
+    color: white;
+}
+
 .audio_anchor {
     margin-bottom: 10px;
     margin-right: 5px;
@@ -22,6 +38,19 @@
     margin-bottom: 10px;
     width: 25px;
     height: 25px;
+}
+
+#select_station {
+    font-size: 20px;
+    color: $standard_color;
+}
+
+#stations .image_anchor {
+    margin-right: 0px;
+}
+
+#stations .audio_anchor {
+    margin-right: 0px;
 }
 
 .centered_anchor {
