@@ -41,14 +41,14 @@
                             <div class="form-group">
                                 <p class="control-label col-sm-2" for="min_date">min:</p>
                                 <div class="col-sm-10">
-                                    <input type="date" class="form-control" id="min_date_input" >
+                                    <input class="form-control" id="min_date_input" >
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <p class="control-label col-sm-2" for="max_date">max:</p>
                                 <div class="col-sm-10">
-                                    <input type="date" class="form-control" id="max_date_input" >
+                                    <input class="form-control" id="max_date_input" >
                                 </div>
                             </div>
                         </div>
