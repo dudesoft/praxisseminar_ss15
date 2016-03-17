@@ -27,6 +27,7 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
         });
 
         $("#min_date_input").datepicker({
+            dateFormat: "yy-mm-dd",
             changeMonth: true,
             changeYear: true,
             minDate: new Date(data[0]),
@@ -35,7 +36,7 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
                 console.log(date);
                 var highlight = datesObject[date];
                 if (highlight) {
-                    return [true, "existing-date", 'tooltip text'];
+                    return [true, 'existing-date', ''];
                 } else {
                     return [true, '', ''];
                 }
@@ -43,8 +44,20 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
         });
 
         $("#max_date_input").datepicker({
+            dateFormat: "yy-mm-dd",
             changeMonth: true,
-            changeYear: true
+            changeYear: true,
+            minDate: new Date(data[0]),
+            maxDate: new Date(data[data.length - 1]),
+            beforeShowDay: function(date) {
+                console.log(date);
+                var highlight = datesObject[date];
+                if (highlight) {
+                    return [true, 'existing-date', ''];
+                } else {
+                    return [true, '', ''];
+                }
+            }
         });
     }
 
