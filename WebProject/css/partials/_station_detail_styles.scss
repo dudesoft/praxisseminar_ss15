@@ -220,6 +220,7 @@ ul li.audio {
 }
 
 ul li.video {
+    background: $dark_gray_trans;
     background-image: url(../img/video-icon2.png);
     background-position: center center;
     background-repeat: no-repeat;
