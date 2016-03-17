@@ -42,23 +42,23 @@ define(['jquery', './db_connector', './utils', './search_bar'], function($, dbCo
         if (object.table_name == "songs") {
             resultType = "result_type_audio";
             resultUrlAddition = urlResult_constant + "songs";
-            iconURL = "../../img/audio-icon2.png";
+            iconURL = "img/audio-icon2.png";
         }
         if (object.table_name == "images") {
             resultType = "result_type_image"
             resultUrlAddition = urlResult_constant + "images";
-            iconURL = "/Praxisseminar/WebProject/content/" + object.url;
+            iconURL = "/Praxisseminar/WebProject/content/images/" + object.url;
         }
         if (object.table_name == "videos") {
             resultType = "result_type_video"
             resultUrlAddition = urlResult_constant + "videos";
-            iconURL = "../../img/video-icon2.png";
+            iconURL = "img/video-icon2.png";
         }
         idUrlAddition = urlId_constant + object.id;
         if (object.table_name == "stations") {
             resultType = "result_type_station"
             idUrlAddition = "";
-            iconURL = "../../img/mapmarker2.png";
+            iconURL = "img/mapmarker2.png";
         }
 
         $listItem = $('<li class="result_element"> <div><img class="result_icon" src="' + iconURL + '"></img></div> <div class="result_name">' + object.name + ' || Datum:' + object.date + '</div> </li');
