@@ -147,13 +147,16 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             var $items = $('.tabs');
             $('#pic_content').hide();
             $('#player_content').hide();
-            $items.click(function() {
-                $items.removeClass('selected');
-                $(this).addClass('selected');
-
-                var index = $items.index($(this));
-                $('.tab_content').hide().eq(index).show();
+            $items.click(function(event) {
+                StationDetails.activateTab($(event.target));
             });
+        },
+        activateTab: function($clickedTab) {
+            var $items = $('.tabs');
+            $items.removeClass('selected');
+            $clickedTab.addClass('selected');
+            var index = $items.index($clickedTab);
+            $('.tab_content').hide().eq(index).show();
         },
         changeActiveElement: function($newActiveElement) {
             if (!$newActiveElement.is($activeElement) && $newActiveElement != null) {
@@ -170,15 +173,20 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
         },
         updatePreviewField: function(id, url, tableName) {
             connector.getMetaInformation(id, tableName, this.updateTextField);
-            $("#mini_map").empty();
             if (tableName == "images") {
-                $("#mini_map").append(factory.getPictureGallery(url));
+                $("#pic_content").empty();
+                $("#pic_content").append(factory.getPictureGallery(url));
+                this.activateTab($('#pic_tab'));
             }
             if (tableName == "songs") {
-                $("#mini_map").append(factory.getAudioPlayer(url));
+                $("#player_content").empty();
+                $("#player_content").append(factory.getAudioPlayer(url));
+                this.activateTab($('#player_tab'));
             }
             if (tableName == "videos") {
-                $("#mini_map").append(factory.getVideoPlayer(url));
+                $("#player_content").empty();
+                $("#$player_content").append(factory.getVideoPlayer(url));
+                this.activateTab($('#player_tab'));
             }
         },
         updateTextField: function(data) {

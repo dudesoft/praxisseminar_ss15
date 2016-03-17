@@ -97,18 +97,6 @@ h1 {
     height: 50%;
 }
 
-#mini_map img {
-    height: 100%;
-    width: auto;
-}
-
-#mini_map video,
-audio {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
 //Sly Gallery for Multimedia
 button,
 button {
@@ -334,4 +322,13 @@ video {
     position: relative;
     z-index: 9;
     -moz-border-radius: 20px;
+}
+
+#pic_content img {
+    height: 100%;
+    width: auto;
+}
+
+#player_content video audio {
+    width: 100%;
 }
