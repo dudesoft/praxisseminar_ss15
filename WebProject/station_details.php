@@ -17,24 +17,37 @@
 
 <body>
     <?php include 'header.php';?>
-        <div id="main_content_station">
-            <label id="prev_diary" class="nav nav_left">&#x2039;</label>
-            <div id="loader_container"></div>
-            <span id="detail_content">
+    <div id="main_content_station">
+        <label id="prev_diary" class="nav nav_left">&#x2039;</label>
+        <div id="loader_container"></div>
+        <span id="detail_content">
                 <div id="text_info" class="trans">
                     <div class="centered" id="location"></div>
                     <div class="centered" id="time"></div>
                     <ul id="attribute_list"class="attribute">
                     </ul>
                 </div>
-                <div id="mini_map" class="trans">
+                <div id="tabs_container" class="trans">   
+                    <ul>
+                        <li id="map_tab" class="tabs selected"></li>
+                        <li id="pic_tab" class="tabs"></li>
+                        <li id="player_tab" class="tabs"></li>
+                    </ul>                 
+                    <div id="map_content" class="tab_content">
+                    </div>
+                    <div id="pic_content" class="tab_content">
+                    </div>
+                    <div id="player_content" class="tab_content">
+                    </div>                    
                 </div>
+                
 
                 <div id="galleries">
                     <button id="backward_pic" class="backward"><label id="prev_gallery" class="nav_gallery nav_gall_left">&#x2039;</label></button>
                     <button id="forward_pic" class="forward"><label id="next_gallery" class="nav_gallery nav_gall_right">&#x203a;</label></button>
                     <div id="picture_gallery" class="frame trans">
                         <span id="image_not_available" class="not_available_label">Für diese Station sind leider (noch) keine Bilder vorhanden.</span>
+
                         <ul id="pic_gallery_content" class="slidee">
                         </ul>
                     </div>
@@ -60,8 +73,7 @@
         if (isset($_GET["station_id"])) {
             $station_id = $_GET["station_id"];
         }?>
-
-        <script data-main="js/station_details" src="js/vendor/require.js"></script>
+    <script data-main="js/station_details" src="js/vendor/require.js"></script>
 </body>
 
 </html>
