@@ -1,5 +1,6 @@
 define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_connector) {
     db_connector.getAllJourneys(setupJourneyDropdown);
+    db_connector.getAllDates(setupDatepicker);
 
     $('#search-button').click(function() {
         buildSearchURL();
@@ -12,9 +13,40 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
         }
     });
 
-    $(function() {
-        $("#min_date_input").datepicker({});
+    $(document).on('click', '.ui-datepicker-next, .ui-datepicker-prev, .ui-datepicker', function(e) {
+        e.stopPropagation();
     });
+
+    function setupDatepicker(data) {
+        var datesObject = {};
+        data.forEach(function(date) {
+            cDate = new Date(date);
+            cDate.setHours(0);
+            cDate.setMinutes(0);
+            datesObject[cDate] = cDate;
+        });
+
+        $("#min_date_input").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            minDate: new Date(data[0]),
+            maxDate: new Date(data[data.length - 1]),
+            beforeShowDay: function(date) {
+                console.log(date);
+                var highlight = datesObject[date];
+                if (highlight) {
+                    return [true, "existing-date", 'tooltip text'];
+                } else {
+                    return [true, '', ''];
+                }
+            }
+        });
+
+        $("#max_date_input").datepicker({
+            changeMonth: true,
+            changeYear: true
+        });
+    }
 
     function setupJourneyDropdown(data) {
         for (var i = 0; i < data.length; i++) {

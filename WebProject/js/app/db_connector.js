@@ -64,8 +64,8 @@ define([], function() {
                     'search_string': searchString,
                     'date_min': minDate,
                     'date_max': maxDate,
-                    'journey' : journey,
-                    'result_type' : resultType
+                    'journey': journey,
+                    'result_type': resultType
                 },
                 cache: 'true',
                 dataType: 'json',
@@ -90,6 +90,22 @@ define([], function() {
                 },
                 error: function(response) {
                     alert("Fehler beim Laden der Suchergebnisse");
+                    return null;
+                }
+            })
+        },
+
+        getAllDates: function(callback) {
+            $.ajax({
+                type: 'GET',
+                url: 'sql/get_all_dates.php',
+                cache: 'true',
+                dataType: 'json',
+                success: function(response) {
+                    callback(response);
+                },
+                error: function(response) {
+                    alert("Fehler beim Laden der Kalenderdaten");
                     return null;
                 }
             })
