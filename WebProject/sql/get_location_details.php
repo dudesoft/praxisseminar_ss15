@@ -1,8 +1,8 @@
 <?php
 $db = new PDO('mysql:host=localhost;dbname=hoerburger;charset=utf8mb4', 'hoerburger', 'hoerburger');
-$base_url_images = "http://localhost/Praxisseminar/WebProject/content/";
-$base_url_songs = "http://localhost/Praxisseminar/WebProject/content/";
-$base_url_videos = "http://localhost/Praxisseminar/WebProject/content/";
+$base_url_images = "/Praxisseminar/WebProject/content/images/";
+$base_url_songs = "/Praxisseminar/WebProject/content/songs/";
+$base_url_videos = "/Praxisseminar/WebProject/content/";
 
 if (isset($_GET['station_id'])) {
     $station_id = $_GET['station_id'];
@@ -15,19 +15,19 @@ $query -> execute();
 $station = $query->fetch();
 
 $image_ids = $station['images'];
-$query = $db -> prepare("SELECT url FROM images WHERE id IN (" . $image_ids . ") AND url is not null");
+$query = $db -> prepare("SELECT url, id FROM images WHERE id IN (" . $image_ids . ") AND url is not null");
 $query -> execute();
-$images = $query->fetchAll(PDO::FETCH_COLUMN, 0);
+$images = $query->fetchAll(PDO::FETCH_ASSOC);
 
 $song_ids = $station['songs'];
-$query = $db -> prepare("SELECT url FROM songs WHERE id IN (" . $song_ids . ") AND url is not null");
+$query = $db -> prepare("SELECT url, id FROM songs WHERE id IN (" . $song_ids . ") AND url is not null");
 $query -> execute();
-$songs = $query->fetchAll(PDO::FETCH_COLUMN, 0);
+$songs = $query->fetchAll(PDO::FETCH_ASSOC);
 
 $video_ids = $station['videos'];
-$query = $db -> prepare("SELECT url FROM videos WHERE id IN (" . $video_ids . ") AND url is not null");
+$query = $db -> prepare("SELECT url, id FROM videos WHERE id IN (" . $video_ids . ") AND url is not null");
 $query -> execute();
-$videos = $query->fetchAll(PDO::FETCH_COLUMN, 0);
+$videos = $query->fetchAll(PDO::FETCH_ASSOC);
 
 $location_id = $station['location_id'];
 $query = $db -> prepare("SELECT * FROM locations WHERE id = '$location_id'");
@@ -44,13 +44,27 @@ if (isset($names[1])) {
 }
 
 for ($i = 0; $i < count($images); $i++) {
-    $images[$i] = $base_url_images.$images[$i];
+    $images[$i]['thumb_url'] = $base_url_images."thumbnails/".$images[$i]['url'];
+    $images[$i]['url'] = $base_url_images.$images[$i]['url'];
+
+    if (!file_exists($_SERVER["DOCUMENT_ROOT"].$images[$i]['thumb_url'])) {
+        $images[$i]['thumb_url'] = $images[$i]['url'];
+    }
+}
+
+for ($i = 0; $i < count($songs); $i++) {
+    $songs[$i]['url'] = $base_url_songs.$songs[$i]['url'].".mp3";
+}
+
+for ($i = 0; $i < count($videos); $i++) {
+    $videos[$i]['url'] = $base_url_videos.$videos[$i]['url'];
 }
 
 $response = [
 	"id" => $station['id'],
     "name" => $name,
     "date" => $station['date'],
+    "travel" => $station['travel_id'],
     "altname" => $alt_name,	
     "latitude" => $location['latitude'],
     "longitude" => $location['longitude'],

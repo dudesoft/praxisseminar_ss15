@@ -1,35 +1,31 @@
-body {
-	
-}
+body {}
+
 
 /* Content */
 
-.result_element { 
-	text-align: left;
-	display: inline-block;
-	width: 80%;
-	padding: 1%;
-	margin:20px 10px auto;
-	margin-top: 10px;
-	background-image: url(../img/transparentBackground.png);
+.result_element {
+    text-align: left;
+    display: inline-block;
+    width: 80%;
+    padding: 1%;
+    margin: 20px 10px auto;
+    margin-top: 10px;
+    background-image: url(../img/transparentBackground.png);
     border-style: solid;
     border-width: 1px;
     border-color: white;
     border-radius: 2px;
-	
 }
 
-.result_icon{
-	height: 40px;
-	width: 40px;
-	background-size: 100%;
-	background-image: url(../img/audio-icon2.png);
+.result_icon {
+    height: 40px;
+    width: auto;
     float: left;
 }
 
-.result_name{
-	line-height: 40px;
-	padding-left: 50px;
+.result_name {
+    line-height: 40px;
+    padding-left: 50px;
 }
 
 .search_results li:hover {
@@ -38,31 +34,30 @@ body {
     transition: background-color .3s;
 }
 
-#result_list_content{
-	padding: 10px;
-	padding-right:0;
-	width: 92%;
-	font-family: Segoe UI;
-	bottom: 60px;
-	overflow: hidden;
-	height: 100%;
-
-	   
+#result_list_content {
+    padding: 10px;
+    padding-right: 0;
+    width: 92%;
+    font-family: Segoe UI;
+    bottom: 60px;
+    overflow: hidden;
+    height: 100%;
 }
-#resut_list{
-	padding-left: 0;
-	overflow-y: scroll;
+
+#resut_list {
+    padding-left: 0;
+    overflow-y: scroll;
     overflow-x: hidden;
     text-align: center;
     height: 80%;
     bottom: 60px;
 }
 
-h3{
-	position: static;
-	font-family: Papyrus, Segoe UI;
-	padding-left: 75px;
-	font-weight: bold;
-	margin-top: 20px;
-	margin-bottom: 20px;
+h3 {
+    position: static;
+    font-family: Papyrus, Segoe UI;
+    padding-left: 75px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }

@@ -11,14 +11,35 @@ define(['leaflet'], function(leaflet) {
             return name;
         },
 
-        generatePopup: function(location) {
-            var popupHtml = "<span class='centered_anchor'><img class='image_anchor' src='img/img-icon.png'><img class='audio_anchor' src='img/audio-icon.png'>" +
-                "<img class='video_anchor' src='img/video-icon.png'></span><span class='centered_anchor'>" + this.buildLocationName(location) + "</span>";
+        generatePopup: function(location, has_images, has_songs, has_videos) {
+            var image = "img-icon";
+            var audio = "audio-icon";
+            var video = "video-icon";
+            var date = "";
+
+            if (!has_images) {
+                image = "no-" + image;
+            }
+            if (!has_songs) {
+                audio = "no-" + audio;
+            }
+            if (!has_videos) {
+                video = "no-" + video;
+            }
+
+            if (location.stations.length > 1) {
+                date = "<div class='centered_anchor'>" + this.formatDate(location.stations[0].date) + " <i>u.a.</i></div>";
+            } else {
+                date = "<div class='centered_anchor'>" + this.formatDate(location.stations[0].date) + "</div>";
+            }
+
+            var popupHtml = "<span class='centered_anchor'><img class='image_anchor' src='img/" + image + ".png'><img class='audio_anchor' src='img/" + audio + ".png'>" +
+                "<img class='video_anchor' src='img/" + video + ".png'></span><span class='centered_anchor'>" + this.buildLocationName(location) + "</span>" + date;
             return popupHtml;
         },
 
         generateTravelPopup: function(travel) {
-            var popupHtml = "<span class='centered_anchor'>" + travel.name + "</span><span class='centered_anchor'>" + travel.begin + " - " + travel.end + "</span>";
+            var popupHtml = "<span class='centered_anchor'>" + travel.name + "</span><span class='centered_anchor'>" + this.formatDate(travel.begin) + " - " + this.formatDate(travel.end) + "</span>";
             return popupHtml;
         },
 
@@ -41,7 +62,7 @@ define(['leaflet'], function(leaflet) {
             for (var i = 0; i < hashes.length; i++) {
                 hash = hashes[i].split('=');
                 vars.push(hash[0]);
-                vars[hash[0]] = hash[1];
+                vars[hash[0]] = decodeURI(hash[1]);
             }
             return vars;
         },
@@ -57,6 +78,11 @@ define(['leaflet'], function(leaflet) {
             });
 
             return latLngList;
+        },
+
+        formatDate: function(date) {
+            var dateParts = date.split("-");
+            return dateParts[2] + "." + dateParts[1] + "." + dateParts[0];
         }
     };
     return Utils;

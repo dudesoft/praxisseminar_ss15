@@ -18,35 +18,44 @@
 <body>
     <?php include 'header.php';?>
         <div id="main_content_station">
-            <label for="prev_diary" class="nav nav_left">&#x2039;</label>
+            <label id="prev_diary" class="nav nav_left">&#x2039;</label>
             <div id="loader_container"></div>
             <span id="detail_content">
                 <div id="text_info" class="trans">
                     <div class="centered" id="location"></div>
                     <div class="centered" id="time"></div>
-                    <p class="attribute">Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans. Ein kleines Bächlein namens Duden fließt durch ihren Ort und versorgt sie mit den nötigen Regelialien. Es ist ein paradiesmatisches Land, in dem einem gebratene Satzteile in den Mund fliegen. Nicht einmal von der allmächtigen Interpunktion werden die Blindtexte beherrscht – ein geradezu unorthographisches Leben. Eines Tages aber beschloß eine kleine Zeile Blindtext, ihr Name war Lorem Ipsum, hinaus zu gehen in die weite Grammatik. Der große Oxmox riet ihr davon ab, da es dort wimmele von bösen Kommata, wilden Fragezeichen und hinterhältigen Semikoli, doch das Blindtextchen ließ sich nicht beirren.</p>
+                    <ul id="attribute_list"class="attribute">
+                    </ul>
                 </div>
                 <div id="mini_map" class="trans">
                 </div>
-                
-                <div id="picture_gallery" class="frame trans gallery">
-                <span id="image_not_available" class="not_available_label">Für diese Station sind leider (noch) keine Bilder vorhanden.</span>
-                    <ul id="pic_gallery_content" class="slidee">
-                    </ul>
-                </div>
-                <div id="audio_gallery" class="frame trans gallery">
-                <span id="audio_not_available" class="not_available_label">Für diese Station ist leider (noch) kein Tonmaterial vorhanden.</span>
-                    <ul id="audio_gallery_content" class="slidee">
-                    </ul>
-                </div>
-                <div id="video_gallery" class="frame trans gallery">
-                <span id="video_not_available" class="not_available_label">Für diese Station sind leider (noch) keine Videos vorhanden.</span>
-                    <ul id="vid_gallery_content" class="slidee">
-                    </ul>
+
+                <div id="galleries">
+                    <button id="backward_pic" class="backward"><label id="prev_gallery" class="nav_gallery nav_gall_left">&#x2039;</label></button>
+                    <button id="forward_pic" class="forward"><label id="next_gallery" class="nav_gallery nav_gall_right">&#x203a;</label></button>
+                    <div id="picture_gallery" class="frame trans">
+                        <span id="image_not_available" class="not_available_label">Für diese Station sind leider (noch) keine Bilder vorhanden.</span>
+                        <ul id="pic_gallery_content" class="slidee">
+                        </ul>
+                    </div>
+                    <button id="backward_pic" class="backward"><label id="prev_gallery" class="nav_gallery nav_gall_left">&#x2039;</label></button>
+                    <button id="forward_pic" class="forward"><label id="next_gallery" class="nav_gallery nav_gall_right">&#x203a;</label></button>
+                    <div id="audio_gallery" class="frame trans">
+                        <span id="audio_not_available" class="not_available_label">Für diese Station ist leider (noch) kein Tonmaterial vorhanden.</span>
+                        <ul id="audio_gallery_content" class="slidee">
+                        </ul>
+                    </div>
+                    <button id="backward_pic" class="backward"><label id="prev_gallery" class="nav_gallery nav_gall_left">&#x2039;</label></button>
+                    <button id="forward_pic" class="forward"><label id="next_gallery" class="nav_gallery nav_gall_right">&#x203a;</label></button>
+                    <div id="video_gallery" class="frame trans">
+                        <span id="video_not_available" class="not_available_label">Für diese Station sind leider (noch) keine Videos vorhanden.</span>
+                        <ul id="vid_gallery_content" class="slidee">
+                        </ul>
+                    </div>
                 </div>
             </span>
-            </div>
-            <label for="next_diary" class="nav nav_right">&#x203a;</label>
+            <label id="next_diary" class="nav nav_right">&#x203a;</label>
+        </div>
         <?php include 'footer.php';
         if (isset($_GET["station_id"])) {
             $station_id = $_GET["station_id"];

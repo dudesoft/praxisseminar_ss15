@@ -67,7 +67,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: grey;
+    background-color: $dark_gray_trans;
     outline: 1px solid slategrey;
 }
 
@@ -80,7 +80,7 @@ h1 {
     float: left;
     width: 58%;
     height: 45%;
-    margin: 0.5% 0 2% 0;
+    margin: 0.5% 0 0 0;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -89,7 +89,6 @@ h1 {
     text-align: left;
     margin-left: 5%;
     margin-right: 2%;
-    
 }
 
 #mini_map {
@@ -97,16 +96,74 @@ h1 {
     width: 40%;
     height: 45%;
     float: right;
+    position: relative;
+}
+
+#galleries {
+    float:left;
+    width:100%;
+    height:50%;
+}
+
+#mini_map img {
+    height: 100%;
+    width: auto;
+}
+
+#mini_map video,
+audio {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+//Sly Gallery for Multimedia
+button,
+ button {
+    background: transparent;
+    border: 0;
+    color: #fff;
+    opacity: .5;
+}
+
+button:hover,
+ button:hover {
+    
+    opacity: 1;
+    transition: opacity .2s;
+}
+
+button:disabled,
+ button:disabled {
+    opacity: .2;
+}
+
+.forward,
+ .backward {
+    float: left;
+    width: 4%;
+    height: 30%;
+    margin-top: 10px;
+    background-color: $dark_gray_trans;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 2px;
+}
+
+.forward {
+    float: right;
 }
 
 
-//Sly Gallery for Multimedia
-
 .frame {
-    width: 100%;
-    height: 15%;
+    width: 90%;
+    height: 30%;
     padding: 0;
     margin-top: 10px;
+    text-shadow: none;
+    margin-left: auto;
+    margin-right: auto
 }
 
 .slidee {
@@ -132,8 +189,9 @@ h1 {
     -webkit-transform: translateY(-30%);
     -ms-transform: translateY(-30%);
     transform: translateY(-30%);
+}
 
-.slidee li.active {
+.active_element {
     box-shadow: 0px 0px 0px 2px orange inset;
 }
 
@@ -144,11 +202,17 @@ h1 {
 }
 
 ul li.picture {
-    background: rgba(0, 0, 0, 0.6);
+    background: $dark_gray_trans;
+}
+
+ul li img {
+    height: 100%;
+    width: auto;
 }
 
 ul li.audio {
-    background-image: url(../img/audio-icon.png);
+    background: $dark_gray_trans;
+    background-image: url(../img/audio-icon2.png);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 40%;
@@ -156,7 +220,8 @@ ul li.audio {
 }
 
 ul li.video {
-    background-image: url(../img/video-icon.png);
+    background: $dark_gray_trans;
+    background-image: url(../img/video-icon2.png);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 40%;
@@ -168,9 +233,21 @@ ul li.video {
     height: 100%;
     padding-top: 2px;
     padding-bottom: 2px;
+    pointer-events: none;
 }
 
-label {
+.trans {
+    background-image: url(../img/transparentBackground.png);
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 2px;
+    text-align: center;
+}
+
+//Navigation Arrows Station
+
+label.nav {
     opacity: 0.3;
     cursor: pointer;
     color: #FFF;
@@ -186,28 +263,10 @@ label:hover {
     opacity: 1;
 }
 
-.trans {
-    background-image: url(../img/transparentBackground.png);
-    border-style: solid;
-    border-width: 1px;
-    border-color: white;
-    border-radius: 2px;
-    text-align: center;
-}
-
-
-//Navigation Arrows
 .nav {
     position: absolute;
-    top: 50%;
+    top: 48%;
     transform: translateY(-50%);
-}
-
-.navigation_element {
-    position: absolute;
-    top: 20px;
-    bottom: 20px;
-    width: 20%;
 }
 
 .nav_left {
@@ -219,8 +278,22 @@ label:hover {
 }
 
 
+//Navigation Arrows Gallery
+label.nav_gallery{
+     font-size: 30pt;
+     color: white;
+     font-family: 'Nunito', sans-serif;
+     vertical-align:middle;
+}
+
+
 //Colorbox / Multimediapopup
 video {
     width: 320px;
     height: 240px;
+}
+
+#image_container {
+    width: 1024px;
+    height: auto;
 }
