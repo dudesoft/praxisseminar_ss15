@@ -53,7 +53,6 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     $galleryElement.data(tableNameKey, "images");
                     $galleryElement.click(function(event) {
                         StationDetails.changeActiveElement($(event.target));
-                        picSly.toCenter(event.target);
                     });
                     $('#pic_gallery_content').append($galleryElement);
                 }
@@ -65,7 +64,6 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     $galleryElement.data(tableNameKey, "songs");
                     $galleryElement.click(function(event) {
                         StationDetails.changeActiveElement($(event.target));
-                        audioSly.toCenter(event.target);
                     });
                     $('#audio_gallery_content').append($galleryElement);
                 }
@@ -77,7 +75,6 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     $galleryElement.data(tableNameKey, "videos");
                     $galleryElement.click(function(event) {
                         StationDetails.changeActiveElement($(event.target));
-                        vidSly.toCenter(event.target);
                     });
                     $('#vid_gallery_content').append($galleryElement);
                 }
@@ -98,18 +95,13 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
 
                     var options = {
                         horizontal: 1,
-
                         itemNav: 'basic',
                         smart: 1,
                         activateOn: 'click',
-
                         scrollBy: 1,
-
                         mouseDragging: 1,
                         swingSpeed: 0.2,
-
                         dragHandle: 1,
-
                         speed: 600,
                         startAt: 0
                     };
@@ -128,11 +120,29 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     StationDetails.setFocusOnElement(urlVars.objectId, urlVars.resultType)
                 }
 
+                $('#backward_pic').click(function(event) {
+                    StationDetails.setFocusOnPrevNextElement("images", -1);
+                });
+                $('#backward_audio').click(function(event) {
+                    StationDetails.setFocusOnPrevNextElement("songs", -1);
+                });
+                $('#backward_vid').click(function(event) {
+                    StationDetails.setFocusOnPrevNextElement("videos", -1);
+                });
+                $('#forward_pic').click(function(event) {
+                    StationDetails.setFocusOnPrevNextElement("images", 1);
+                });
+                $('#forward_audio').click(function(event) {
+                    StationDetails.setFocusOnPrevNextElement("songs", 1);
+                });
+                $('#forward_vid').click(function(event) {
+                    StationDetails.setFocusOnPrevNextElement("videos", 1);
+                });
 
             });
         },
         changeActiveElement: function($newActiveElement) {
-            if (!$newActiveElement.is($activeElement)) {
+            if (!$newActiveElement.is($activeElement) && $newActiveElement != null) {
                 if ($activeElement != null) {
                     $activeElement.removeClass(activeElementClass);
                     $activeElement = $newActiveElement;
@@ -204,6 +214,73 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 }
             }
             this.changeActiveElement($element);
+        },
+        setFocusOnPrevNextElement: function(dataType, value) {
+            var galleryItems;
+
+            if (dataType == "images") {
+                galleryItems = $('#pic_gallery_content').children();
+                if(galleryItems.length == 0) {
+                    return;
+                }
+                if ($activeElement == null || $activeElement.data(tableNameKey) != "images") {
+                    this.changeActiveElement($(galleryItems[0]));
+                    picSly.toCenter($(galleryItems[0]));
+                    return;
+                }
+                for (var i = 0; i < galleryItems.length; i++) {
+                    if ($(galleryItems[i]).is($activeElement)) {
+                        if (i + value < 0 || i + value > galleryItems.length - 1) {
+                            return;
+                        }
+                        this.changeActiveElement($(galleryItems[i + value]));
+                        picSly.toCenter($(galleryItems[i + value]));
+                        return;
+                    }
+                }
+            }
+            if (dataType == "songs") {
+                galleryItems = $('#audio_gallery_content').children();
+                if(galleryItems.length == 0) {
+                    return;
+                }
+                if ($activeElement == null || $activeElement.data(tableNameKey) != "songs") {
+                    this.changeActiveElement($(galleryItems[0]));
+                    audioSly.toCenter($(galleryItems[0]));
+                    return;
+                }
+                for (var i = 0; i < galleryItems.length; i++) {
+                    if ($(galleryItems[i]).is($activeElement)) {
+                        if (i + value < 0 || i + value > galleryItems.length - 1) {
+                            return;
+                        }
+                        this.changeActiveElement($(galleryItems[i + value]));
+                        audioSly.toCenter($(galleryItems[i + value]));
+                        return;
+                    }
+                }
+            }
+            if (dataType == "videos") {
+                galleryItems = $('#vid_gallery_content').children();
+                if(galleryItems.length == 0) {
+                    return;
+                }
+                if ($activeElement == null || $activeElement.data(tableNameKey) != "videos") {
+                    this.changeActiveElement($(galleryItems[0]));
+                    videoSly.toCenter($(galleryItems[0]));
+                    return;
+                }
+                for (var i = 0; i < galleryItems.length; i++) {
+                    if ($(galleryItems[i]).is($activeElement)) {
+                        if (i + value < 0 || i + value > galleryItems.length - 1) {
+                            return;
+                        }
+                        this.changeActiveElement($(galleryItems[i + value]));
+                        vidSly.toCenter($$(galleryItems[i + value]));
+                        return;
+                    }
+                }
+            }
         }
     };
     return StationDetails;
