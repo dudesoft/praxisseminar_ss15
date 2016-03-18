@@ -327,6 +327,10 @@ video {
 #pic_content img {
     height: 100%;
     width: auto;
+    .picture img{
+    cursor: -moz-zoom-in; 
+    cursor: -webkit-zoom-in; 
+    cursor: zoom-in;
 }
 
 #player_content video audio {

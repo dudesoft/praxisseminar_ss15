@@ -20,16 +20,14 @@
 <body>
     <div id="wrapper">
         <?php include 'header.php';?>
-        
         <div id="link_content" class="trans_background">
-        <h2>Über Uns</h2>
-            <div id="text_content">Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text.
-            Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text 
+            <h2>Über Uns</h2>
+            <div id="text_content">Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text. Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
             </div>
         </div>
-
         <?php include 'footer.php';?>
     </div>
+    <script data-main="js/sub_page" src="js/vendor/require.js"></script>
 </body>
 
 </html>
