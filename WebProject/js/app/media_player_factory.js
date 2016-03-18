@@ -6,8 +6,8 @@ define(function() {
         getAudioPlayer: function(src) {
             return $("<div id='audio_container'><audio controls><source src='" + src + "' type='audio/mp3'>Your browser does not support the audio tag.</audio></div>");
         },
-        getPictureGallery: function(src) {
-            return $("<img id='image_container'src='" + src + "' ></img>");
+        getPicture: function(src) {
+            return $("<img id='preview_image'src='" + src + "' ></img>");
         }
     };
     return MediaPlayerFactory;

@@ -175,7 +175,11 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             connector.getMetaInformation(id, tableName, this.updateTextField);
             if (tableName == "images") {
                 $("#pic_content").empty();
-                $("#pic_content").append(factory.getPictureGallery(url));
+                $image = factory.getPicture(url);
+                $image.click(function(event) {
+                    StationDetails.openColorBoxImagePreview($(event.target));
+                });
+                $("#pic_content").append($image);
                 this.activateTab($('#pic_tab'));
             }
             if (tableName == "songs") {
@@ -303,6 +307,11 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     }
                 }
             }
+        },
+        openColorBoxImagePreview: function($image) {
+            $.colorbox({
+                html: "<div id='lightbox_content'><img src='" + $image.attr('src') + "' ></img></div>"
+            });
         }
     };
     return StationDetails;

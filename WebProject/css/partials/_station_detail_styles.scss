@@ -267,7 +267,7 @@ video {
     height: 240px;
 }
 
-#image_container {
+#lightbox_content > img{
     width: 1024px;
     height: auto;
 }
@@ -327,7 +327,6 @@ video {
 #pic_content img {
     height: 100%;
     width: auto;
-    .picture img{
     cursor: -moz-zoom-in; 
     cursor: -webkit-zoom-in; 
     cursor: zoom-in;
