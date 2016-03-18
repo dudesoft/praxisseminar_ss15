@@ -51,15 +51,15 @@
                         <ul id="pic_gallery_content" class="slidee">
                         </ul>
                     </div>
-                    <button id="backward_pic" class="backward"><label id="prev_gallery" class="nav_gallery nav_gall_left">&#x2039;</label></button>
-                    <button id="forward_pic" class="forward"><label id="next_gallery" class="nav_gallery nav_gall_right">&#x203a;</label></button>
+                    <button id="backward_audio" class="backward"><label id="prev_gallery" class="nav_gallery nav_gall_left">&#x2039;</label></button>
+                    <button id="forward_audio" class="forward"><label id="next_gallery" class="nav_gallery nav_gall_right">&#x203a;</label></button>
                     <div id="audio_gallery" class="frame trans">
                         <span id="audio_not_available" class="not_available_label">Für diese Station ist leider (noch) kein Tonmaterial vorhanden.</span>
                         <ul id="audio_gallery_content" class="slidee">
                         </ul>
                     </div>
-                    <button id="backward_pic" class="backward"><label id="prev_gallery" class="nav_gallery nav_gall_left">&#x2039;</label></button>
-                    <button id="forward_pic" class="forward"><label id="next_gallery" class="nav_gallery nav_gall_right">&#x203a;</label></button>
+                    <button id="backward_vid" class="backward"><label id="prev_gallery" class="nav_gallery nav_gall_left">&#x2039;</label></button>
+                    <button id="forward_vid" class="forward"><label id="next_gallery" class="nav_gallery nav_gall_right">&#x203a;</label></button>
                     <div id="video_gallery" class="frame trans">
                         <span id="video_not_available" class="not_available_label">Für diese Station sind leider (noch) keine Videos vorhanden.</span>
                         <ul id="vid_gallery_content" class="slidee">
