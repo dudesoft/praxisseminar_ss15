@@ -197,8 +197,8 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             $list = $("#attribute_list");
             $list.empty();
             Object.keys(data).forEach(function(key, index) {
-                if (data[key] != "") {
-                    $list.append($("<li>" + key + ": " + data[key] + "</li>"));
+                if (data[key] != "" && utils.translateColumnTitles(key) != null) {
+                    $list.append($("<li>" + utils.translateColumnTitles(key) + ": " + data[key] + "</li>"));
                 }
             });
         },
