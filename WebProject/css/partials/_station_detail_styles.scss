@@ -267,7 +267,7 @@ video {
     height: 240px;
 }
 
-#lightbox_content > img{
+#lightbox_content > img {
     width: 1024px;
     height: auto;
 }
@@ -327,8 +327,8 @@ video {
 #pic_content img {
     height: 100%;
     width: auto;
-    cursor: -moz-zoom-in; 
-    cursor: -webkit-zoom-in; 
+    cursor: -moz-zoom-in;
+    cursor: -webkit-zoom-in;
     cursor: zoom-in;
 }
 
@@ -336,9 +336,11 @@ video {
     position: relative;
 }
 
-#player_content video audio {
+#player_content video, #player_content audio {
     width: 100%;
+    position: absolute;
     bottom: 2px;
+    left: 0px;
 }
 
 #tabs_container > ul > li > img {
