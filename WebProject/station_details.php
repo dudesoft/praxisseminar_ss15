@@ -29,8 +29,8 @@
                 </div>
                 <div id="tabs_container" class="trans">   
                     <ul>
-                        <li id="map_tab" class="tabs selected"><img src="img/video-icon-black.png"/></li>
-                        <li id="pic_tab" class="tabs"><img src="img/video-icon-black.png"/></li>
+                        <li id="map_tab" class="tabs selected"><img src="img/map-icon-black.png"/></li>
+                        <li id="pic_tab" class="tabs"><img src="img/img-icon-black.png"/></li>
                         <li id="player_tab" class="tabs"><img src="img/video-icon-black.png"/></li>
                     </ul>                 
                     <div id="map_content" class="tab_content">
