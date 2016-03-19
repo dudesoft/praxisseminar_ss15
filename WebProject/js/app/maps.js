@@ -40,10 +40,10 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
             }
 
             var icon = leaflet.icon({
-                iconUrl: 'js/vendor/leaflet/images/marker-icon.png',
-                shadowUrl: 'js/vendor/leaflet/images/marker-shadow.png',
-                iconAnchor: [12, 40],
-                popupAnchor: [0, -42]
+                iconUrl: 'img/pin.svg',
+                //shadowUrl: 'js/vendor/leaflet/images/marker-shadow.png',
+                iconAnchor: [14, 38],
+                popupAnchor: [9, -40]
             });
 
             var travelIcon = leaflet.icon({

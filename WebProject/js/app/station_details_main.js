@@ -1,4 +1,4 @@
-define(['jquery', './media_player_factory', './maps', './db_connector', './utils', './search_bar', 'sly', 'colorbox'], function($, factory, map, connector, utils) {
+define(['jquery', './media_player_factory', './maps', './db_connector', './utils', './search_bar', 'jquery_ui', 'sly', 'colorbox', 'bootstrap'], function($, factory, map, connector, utils) {
     var activeElementClass = "active_element";
     var urlKey = "url";
     var tableNameKey = "table";
@@ -14,12 +14,14 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
         setupDetails: function() {
             var urlVars = utils.getUrlVars();
 
+            this.setupTabs();
+
             connector.getLocationDetails(urlVars.station_id, function(data) {
                 $("#location").html(utils.buildLocationName(data));
-                $("#time").html(data.date);
+                $("#time").html(utils.formatDate(data.date));
                 $("#loader_container").fadeOut("fast");
                 $("#detail_content").fadeIn("slow", function() {
-                    //map.scrollToMapPosition(data.latitude, data.longitude);
+                    map.scrollToMapPosition(data.latitude, data.longitude);
                 });
 
 
@@ -42,7 +44,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     }
                 });
 
-                //map.setupMap('mini_map');
+                map.setupMap('map_content');
 
 
 
@@ -141,6 +143,21 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
 
             });
         },
+        setupTabs: function() {
+            var $items = $('.tabs');
+            $('#pic_content').hide();
+            $('#player_content').hide();
+            $items.click(function(event) {
+                StationDetails.activateTab($(event.target));
+            });
+        },
+        activateTab: function($clickedTab) {
+            var $items = $('.tabs');
+            $items.removeClass('selected');
+            $clickedTab.addClass('selected');
+            var index = $items.index($clickedTab);
+            $('.tab_content').hide().eq(index).show();
+        },
         changeActiveElement: function($newActiveElement) {
             if (!$newActiveElement.is($activeElement) && $newActiveElement != null) {
                 if ($activeElement != null) {
@@ -156,23 +173,32 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
         },
         updatePreviewField: function(id, url, tableName) {
             connector.getMetaInformation(id, tableName, this.updateTextField);
-            $("#mini_map").empty();
             if (tableName == "images") {
-                $("#mini_map").append(factory.getPictureGallery(url));
+                $("#pic_content").empty();
+                $image = factory.getPicture(url);
+                $image.click(function(event) {
+                    StationDetails.openColorBoxImagePreview($(event.target));
+                });
+                $("#pic_content").append($image);
+                this.activateTab($('#pic_tab'));
             }
             if (tableName == "songs") {
-                $("#mini_map").append(factory.getAudioPlayer(url));
+                $("#player_content").empty();
+                $("#player_content").append(factory.getAudioPlayer(url));
+                this.activateTab($('#player_tab'));
             }
             if (tableName == "videos") {
-                $("#mini_map").append(factory.getVideoPlayer(url));
+                $("#player_content").empty();
+                $("#$player_content").append(factory.getVideoPlayer(url));
+                this.activateTab($('#player_tab'));
             }
         },
         updateTextField: function(data) {
             $list = $("#attribute_list");
             $list.empty();
             Object.keys(data).forEach(function(key, index) {
-                if (data[key] != "") {
-                    $list.append($("<li>" + key + ": " + data[key] + "</li>"));
+                if (data[key] != "" && utils.translateColumnTitles(key) != null) {
+                    $list.append($("<li>" + utils.translateColumnTitles(key) + ": " + data[key] + "</li>"));
                 }
             });
         },
@@ -220,7 +246,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
 
             if (dataType == "images") {
                 galleryItems = $('#pic_gallery_content').children();
-                if(galleryItems.length == 0) {
+                if (galleryItems.length == 0) {
                     return;
                 }
                 if ($activeElement == null || $activeElement.data(tableNameKey) != "images") {
@@ -241,7 +267,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             }
             if (dataType == "songs") {
                 galleryItems = $('#audio_gallery_content').children();
-                if(galleryItems.length == 0) {
+                if (galleryItems.length == 0) {
                     return;
                 }
                 if ($activeElement == null || $activeElement.data(tableNameKey) != "songs") {
@@ -262,7 +288,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             }
             if (dataType == "videos") {
                 galleryItems = $('#vid_gallery_content').children();
-                if(galleryItems.length == 0) {
+                if (galleryItems.length == 0) {
                     return;
                 }
                 if ($activeElement == null || $activeElement.data(tableNameKey) != "videos") {
@@ -281,6 +307,11 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     }
                 }
             }
+        },
+        openColorBoxImagePreview: function($image) {
+            $.colorbox({
+                html: "<div id='lightbox_content'><img src='" + $image.attr('src') + "' ></img></div>"
+            });
         }
     };
     return StationDetails;
