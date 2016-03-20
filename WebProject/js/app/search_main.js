@@ -1,4 +1,9 @@
 define(['jquery', './db_connector', './utils', './search_bar'], function($, dbConnector, utils) {
+    String.prototype.trunc =
+        function(n) {
+            return this.substr(0, n - 1) + (this.length > n ? '&hellip;' : '');
+        };
+
     var urlResult_constant = "&resultType=";
     var urlId_constant = "&objectId=";
 
@@ -25,6 +30,8 @@ define(['jquery', './db_connector', './utils', './search_bar'], function($, dbCo
     dbConnector.getSearchResult(urlVars.search, urlVars.minDate, urlVars.maxDate, urlVars.journey, urlVars.resultType, setupResultList);
 
     function setupResultList(data) {
+        $("#search_in_progress").hide();
+
         for (var i = 0; i < data.length; i++) {
             addListElement(data[i]);
         }
@@ -35,6 +42,7 @@ define(['jquery', './db_connector', './utils', './search_bar'], function($, dbCo
         var resultUrlAddition = "";
         var idUrlAddition = "";
         var iconURL = "";
+        var availableData = "";
 
         var resultType = "";
         if (object.table_name == "songs") {
@@ -54,17 +62,36 @@ define(['jquery', './db_connector', './utils', './search_bar'], function($, dbCo
         }
         idUrlAddition = urlId_constant + object.id;
         if (object.table_name == "stations") {
+            console.log(object);
             resultType = "result_type_station"
             idUrlAddition = "";
             iconURL = "img/mapmarker2.png";
+            availableData = getAvailableData(object);
         }
 
-        $listItem = $('<li class="result_element"> <div><img class="result_icon" src="' + iconURL + '"></img></div> <div class="result_name">' + object.name + ' || Datum: ' + utils.formatDate(object.date) + '</div> </li');
+        $listItem = $('<li class="result_element"> <div><img class="result_icon" src="' + iconURL + '"></img></div> <div class="result_name">' + object.name.trunc(30) + ' || ' + object.journey + ' || Datum: ' + utils.formatDate(object.date) + availableData + '</div> </li');
 
         $listItem.click(function() {
             window.open("station_details.php?station_id=" + object.station_id + resultUrlAddition + idUrlAddition, "_self");
         });
         $list.append($listItem);
+    }
+
+    function getAvailableData(station) {
+        var availableData = "<span class='available_data'> || ";
+
+        if (station.has_images == 1) {
+            availableData += "<img class='image_anchor no_botton_margin' src='img/img-icon-black.png'>";
+        }
+        if (station.has_songs == 1) {
+            availableData += "<img class='audio_anchor no_botton_margin' src='img/audio-icon-black.png'>";
+        }
+        if (station.has_videos == 1) {
+            availableData += "<img class='video_anchor no_botton_margin' src='img/video-icon-black.png'>";
+        }
+        availableData += "</span>";
+
+        return availableData;
     }
 
 });

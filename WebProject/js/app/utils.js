@@ -81,7 +81,7 @@ define(['leaflet'], function(leaflet) {
         },
 
         formatDate: function(date) {
-            if (date == "" || date == null) {
+            if (date == "" || date == null || date == "0000-00-00" || date == (new Date())) {
                 return "Datum unbekannt";
             }
             var dateParts = date.split("-");

@@ -665,7 +665,8 @@ video {
   width: 49%;
   height: 45%;
   float: right;
-  position: relative; }
+  position: relative;
+  cursor: pointer; }
 
 #tabs_container > ul > li {
   width: 100%;
@@ -712,13 +713,22 @@ video {
   cursor: zoom-in; }
 
 #player_content {
-  position: relative; }
+  position: relative;
+  background-image: url(../img/video-icon2.png);
+  background-size: auto 60%;
+  background-repeat: no-repeat;
+  background-position: center; }
 
-#player_content video, #player_content audio {
-  width: 100%;
+#player_content video,
+#player_content audio {
+  width: 95%;
   position: absolute;
   bottom: 2px;
-  left: 0px; }
+  left: 50%;
+  transform: translateX(-50%); }
+
+#player_content video {
+  height: 95%; }
 
 #tabs_container > ul > li > img {
   height: auto;
@@ -739,7 +749,8 @@ video {
   margin-bottom: 10px;
   margin-right: 5px;
   width: 25px;
-  height: 25px; }
+  height: 25px;
+  vertical-align: middle; }
 
 #stations {
   font-size: 14px;
@@ -758,12 +769,17 @@ video {
   margin-bottom: 10px;
   margin-right: 5px;
   width: 25px;
-  height: 25px; }
+  height: 25px;
+  vertical-align: middle; }
 
 .video_anchor {
   margin-bottom: 10px;
   width: 25px;
-  height: 25px; }
+  height: 25px;
+  vertical-align: middle; }
+
+.no_botton_margin {
+  margin-bottom: 0px; }
 
 #select_station {
   font-size: 20px;
