@@ -162,7 +162,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             if($clickedTab.attr('id') == "map_tab") {
                 connector.getMetaInformation(urlVars.station_id, "stations", this.updateTextField);
             }
-            if($clickedTab.attr('id') == "pic_tab" || $clickedTab.attr('id') == "player_tab") {
+            if(($clickedTab.attr('id') == "pic_tab" || $clickedTab.attr('id') == "player_tab") && $activeElement != null) {
                 connector.getMetaInformation($activeElement.data(idKey), $activeElement.data(tableNameKey), this.updateTextField);
             }
         },
