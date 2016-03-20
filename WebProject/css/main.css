@@ -739,7 +739,8 @@ video {
   margin-bottom: 10px;
   margin-right: 5px;
   width: 25px;
-  height: 25px; }
+  height: 25px;
+  vertical-align: middle; }
 
 #stations {
   font-size: 14px;
@@ -758,12 +759,17 @@ video {
   margin-bottom: 10px;
   margin-right: 5px;
   width: 25px;
-  height: 25px; }
+  height: 25px;
+  vertical-align: middle; }
 
 .video_anchor {
   margin-bottom: 10px;
   width: 25px;
-  height: 25px; }
+  height: 25px;
+  vertical-align: middle; }
+
+.no_botton_margin {
+  margin-bottom: 0px; }
 
 #select_station {
   font-size: 20px;
