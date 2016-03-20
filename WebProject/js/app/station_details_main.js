@@ -162,6 +162,9 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             if($clickedTab.attr('id') == "map_tab") {
                 connector.getMetaInformation(urlVars.station_id, "stations", this.updateTextField);
             }
+            if($clickedTab.attr('id') == "pic_tab" || $clickedTab.attr('id') == "player_tab") {
+                connector.getMetaInformation($activeElement.data(idKey), $activeElement.data(tableNameKey), this.updateTextField);
+            }
         },
         changeActiveElement: function($newActiveElement) {
             if (!$newActiveElement.is($activeElement) && $newActiveElement != null) {
@@ -202,11 +205,16 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
         updateTextField: function(data) {
             $list = $("#attribute_list");
             $list.empty();
+            var dataSet = false;
             Object.keys(data).forEach(function(key, index) {
                 if (data[key] != "" && utils.translateColumnTitles(key) != null) {
                     $list.append($("<li>" + utils.translateColumnTitles(key) + ": " + data[key] + "</li>"));
+                    dataSet = true;
                 }
             });
+            if(!dataSet) {
+                $list.html("Es sind keine Daten für dieses Element vorhanden");
+            }
         },
         setFocusOnElement: function(id, dataType) {
             var $element;
