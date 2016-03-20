@@ -253,7 +253,8 @@ p {
 
 .form-group {
   margin: 0px;
-  float: left; }
+  float: left;
+  width: 100%; }
 
 /* Footer */
 footer {
