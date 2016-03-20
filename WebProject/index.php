@@ -29,7 +29,7 @@
 
             <div id="list_hover">
                 <span class="centered_anchor">Alle Reisen:</span>
-                <ul id="layer_list"><li><hr></li></ul>
+                <ul id="layer_list" class="object_list"><li><hr></li></ul>
             </div>
         </div>
         <?php include 'footer.php';?>

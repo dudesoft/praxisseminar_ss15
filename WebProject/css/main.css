@@ -157,7 +157,8 @@ body {
   font-family: Segoe UI;
   width: 256px;
   padding-left: 18px;
-  padding-right: 18px; }
+  padding-right: 18px;
+  position: absolute; }
 
 #advanced-search-button {
   background-color: #190a05;
@@ -682,7 +683,6 @@ video {
   opacity: 1;
   border: 1px solid #ddd;
   border-left: none;
-  z-index: 10;
   background-color: #fafafa !important;
   position: relative; }
 
@@ -701,7 +701,6 @@ video {
   width: 90%;
   float: right;
   position: relative;
-  z-index: 9;
   -moz-border-radius: 20px; }
 
 #pic_content img {
@@ -784,7 +783,8 @@ video {
   font-size: 14px; }
 
 .travel_name {
-  color: #D1C192; }
+  color: #D1C192;
+  font-weight: none; }
 
 .travel_name:hover {
   text-decoration: none;
