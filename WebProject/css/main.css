@@ -98,7 +98,7 @@ body {
   height: 100%;
   width: 100%;
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.95); }
+  background-color: rgba(0, 0, 0, 0.85); }
 
 .overlay_centered {
   position: absolute;
@@ -151,7 +151,7 @@ body {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px; }
 
-#advancedSearchDropdownMenu {
+#advanced-search-dropdown-menu {
   background-image: url(../img/transBackgroundSearchBar.png);
   background-color: transparent;
   font-family: Segoe UI;
@@ -159,7 +159,7 @@ body {
   padding-left: 18px;
   padding-right: 18px; }
 
-#advancedSearchButton {
+#advanced-search-button {
   background-color: #190a05;
   color: #D1C192; }
 
@@ -767,7 +767,8 @@ video {
 
 #select_station {
   font-size: 20px;
-  color: #D1C192; }
+  color: #D1C192;
+  font-family: papyrus; }
 
 #stations .image_anchor {
   margin-right: 0px; }
