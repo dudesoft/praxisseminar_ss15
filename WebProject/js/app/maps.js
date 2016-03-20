@@ -41,10 +41,16 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
 
             var icon = leaflet.icon({
                 iconUrl: 'img/pin.svg',
-                //shadowUrl: 'js/vendor/leaflet/images/marker-shadow.png',
                 iconAnchor: [14, 38],
                 popupAnchor: [9, -40]
             });
+
+            var iconSelected = leaflet.icon({
+                iconUrl: 'img/pin-selected.svg',
+                iconAnchor: [14, 38],
+                popupAnchor: [9, -40]
+            });
+
 
             var travelIcon = leaflet.icon({
                 iconUrl: 'img/mapmarker2.png',
@@ -52,14 +58,24 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
                 popupAnchor: [0, -64]
             });
 
+            var cStationId = utils.getUrlVars()["station_id"];
+
             // Build locationMarker
             data.forEach(function(location) {
                 var has_images = false;
                 var has_songs = false;
                 var has_videos = false;
+                var cIcon = icon;
+
+                for (var i = 0; i < location.stations.length; i++) {
+                    if (location.stations[i].hasOwnProperty("id") && location.stations[i].id === cStationId) {
+                        cIcon = iconSelected;
+                        break;
+                    }
+                }
 
                 var marker = new leaflet.marker([location.latitude, location.longitude], {
-                    icon: icon
+                    icon: cIcon
                 });
                 marker.on('mouseover', function(e) {
                     this.openPopup();
@@ -108,7 +124,7 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
             for (key in travels) {
                 var i = Object.keys(travels).indexOf(key);
                 pointList = utils.getSortedPointList(travels[key].stationList, data);
-                $("#layer_list").append("<li><span class='travel_name centered_anchor' id='to_travel_" + i + "'>" + travels[key].name + "</span></li>");
+                $("#layer_list").append("<li><div class='travel_name centered_anchor' id='to_travel_" + i + "'>" + travels[key].name + "</div></li>");
 
                 travelPaths["to_travel_" + i] = new leaflet.Polyline(pointList, {
                     color: utils.provideColor(i),
@@ -209,6 +225,7 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
             map.doubleClickZoom.disable();
             map.scrollWheelZoom.disable();
             map.keyboard.disable();
+            $(".leaflet-control-zoom").stop(true, false).fadeOut("fast");
         },
 
         enableMapControls: function() {
@@ -217,6 +234,7 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
             map.doubleClickZoom.enable();
             map.scrollWheelZoom.enable();
             map.keyboard.enable();
+            $(".leaflet-control-zoom").stop(true, false).fadeIn("fast");
         }
     };
     return Maps;

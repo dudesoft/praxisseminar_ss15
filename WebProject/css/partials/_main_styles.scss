@@ -21,7 +21,7 @@ body {
     height: 100%;
     width: 100%;
     z-index: 10;
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: rgba(0, 0, 0, 0.85);
 }
 
 .overlay_centered {
@@ -88,24 +88,19 @@ body {
     border-bottom-left-radius: 4px;
 }
 
-#advancedSearchDropdownMenu {
+#advanced-search-dropdown-menu {
     background-image: url(../img/transBackgroundSearchBar.png);
     background-color: transparent;
     font-family: Segoe UI;
     width: 256px;
     padding-left: 18px;
     padding-right: 18px;
+    position: absolute;
 }
 
-#advancedSearchButton {
+#advanced-search-button {
     background-color: $search_bar_color;
     color: $standard_color;
-}
-
-#location_input,
-#interpret_input,
-#instrument_input {
-    width: 200px;
 }
 
 

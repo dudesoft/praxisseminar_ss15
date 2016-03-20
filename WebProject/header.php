@@ -1,7 +1,7 @@
 <header>
     <div id="logo">
         <a href="index.php" width="500px">
-            <img src="img/logo.svg" id="header_icon">
+            <img src="img/logo.png" id="header_icon">
             <p id="name-logo">Hoerburger Reisen</p>
         </a>
     </div>
@@ -11,10 +11,10 @@
 
         <div class="btn-group" role="group">
             <div class="dropdown dropdown-lg">
-                <button id="advancedSearchButton" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <button id="advanced-search-button" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <span class="caret"></span>
         </button>
-        <div class="dropdown-menu dropdown-menu-right" id="advancedSearchDropdownMenu" role="menu">
+        <div class="dropdown-menu dropdown-menu-right" id="advanced-search-dropdown-menu" role="menu">
             <form>
                 <div class="form-group">
                     <p><strong>Suche nach:</strong></p>
