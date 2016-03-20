@@ -713,21 +713,22 @@ video {
   cursor: zoom-in; }
 
 #player_content {
-  position: relative; }
+  position: relative;
+  background-image: url(../img/audio-icon2.png);
+  background-size: auto 60%;
+  background-repeat: no-repeat;
+  background-position: center; }
 
-#player_content video {
-  width: 100%;
+#player_content video,
+#player_content audio {
+  width: 95%;
   position: absolute;
   bottom: 2px;
-  left: 0px; }
-
-#player_content audio {
-  width: 90%;
-  position: absolute;
-  top: 50%;
   left: 50%;
-  text-align: center;
-  transform: translateX(-50%) translateY(-50%); }
+  transform: translateX(-50%); }
+
+#player_content video {
+  height: 95%; }
 
 #tabs_container > ul > li > img {
   height: auto;
