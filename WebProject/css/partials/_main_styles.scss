@@ -102,12 +102,6 @@ body {
     color: $standard_color;
 }
 
-#location_input,
-#interpret_input,
-#instrument_input {
-    width: 200px;
-}
-
 
 /* Header */
 
@@ -213,7 +207,7 @@ p {
 .form-group {
     margin: 0px;
     float: left;
-    width: 100%;
+    width: 200px;
 }
 
 

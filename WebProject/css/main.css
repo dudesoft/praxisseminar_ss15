@@ -163,11 +163,6 @@ body {
   background-color: #190a05;
   color: #D1C192; }
 
-#location_input,
-#interpret_input,
-#instrument_input {
-  width: 200px; }
-
 /* Header */
 header {
   position: relative;
@@ -254,7 +249,7 @@ p {
 .form-group {
   margin: 0px;
   float: left;
-  width: 100%; }
+  width: 200px; }
 
 /* Footer */
 footer {
