@@ -124,7 +124,7 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
             for (key in travels) {
                 var i = Object.keys(travels).indexOf(key);
                 pointList = utils.getSortedPointList(travels[key].stationList, data);
-                $("#layer_list").append("<li><span class='travel_name centered_anchor' id='to_travel_" + i + "'>" + travels[key].name + "</span></li>");
+                $("#layer_list").append("<li><div class='travel_name centered_anchor' id='to_travel_" + i + "'>" + travels[key].name + "</div></li>");
 
                 travelPaths["to_travel_" + i] = new leaflet.Polyline(pointList, {
                     color: utils.provideColor(i),
