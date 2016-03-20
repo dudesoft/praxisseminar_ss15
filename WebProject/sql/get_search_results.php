@@ -42,7 +42,7 @@ $conn->query("SET group_concat_max_len = 4096");
 if ($searchString != '') {
     $query = $conn -> prepare("SELECT * from (
     SELECT
-      'songs' as 'table_name', songs.id, title as 'name', station_id as 'station_id', songs.date as 'date', travels.name as 'journey', 'null' as 'url',
+      'songs' as 'table_name', songs.id, title as 'name', station_id as 'station_id', songs.date as 'date', travels.name as 'journey', 'null' as 'url', NULL as 'has_images', NULL as 'has_songs', NULL as 'has_videos', 
       MATCH(title, songs.location, genre, origin, cast, language, recording_situation, function, content, interprets, interpret_1, recorded_by) AGAINST ('$searchString' IN BOOLEAN MODE) as relevance
       from songs
       INNER JOIN stations ON songs.station_id = stations.id
@@ -50,15 +50,15 @@ if ($searchString != '') {
     UNION
     SELECT
       'stations' as 'table_name',
-      stations.id, location as name, stations.id as 'station_id', date as 'date', travels.name as 'journey', 'null' as 'url',
+      stations.id, location as name, stations.id as 'station_id', date as 'date', travels.name as 'journey', 'null' as 'url', stations.has_images, stations.has_songs, stations.has_videos,
       $stationRelevanceMultiplier * (MATCH(location, region) AGAINST ('$searchString' IN BOOLEAN MODE)) as relevance
       from stations
       INNER JOIN travels ON stations.travel_id = travels.id
     UNION
     SELECT
       'images' as 'table_name',
-      images.id, 'Bild' as name, stations.id as 'station_id', stations.date as 'date', travels.name as 'journey', images.url,
-      (MATCH(Aufnahme, images.location, Attribute, Aufnahmeposition, Situation, Musiker, Hoerburger_Notizen, Zuschauer, Bemerkungen) AGAINST ('$searchString' IN BOOLEAN MODE)) as relevance
+      images.id, 'Bild' as name, stations.id as 'station_id', stations.date as 'date', travels.name as 'journey', images.url, NULL as 'has_images', NULL as 'has_songs', NULL as 'has_videos',
+      (MATCH(take, images.location, attributes, take_position, situation, musician, hoerburger_notes, spectators, comments) AGAINST ('$searchString' IN BOOLEAN MODE)) as relevance
       from images
       INNER JOIN stations ON images.station_id = stations.id
       INNER JOIN travels ON stations.travel_id = travels.id
@@ -68,18 +68,21 @@ if ($searchString != '') {
 } else {
   $query = $conn -> prepare("SELECT * from (
     SELECT
-      'songs' as 'table_name', songs.id, title as 'name', station_id as 'station_id', songs.date as 'date', travels.name as 'journey', 'null' as 'url',1 as relevance
+      'songs' as 'table_name', songs.id, title as 'name', station_id as 'station_id', songs.date as 'date', travels.name as 'journey', 'null' as 'url', NULL as 'has_images', NULL as 'has_songs', NULL as 'has_videos',
+      1 as relevance
       from songs
       INNER JOIN stations ON songs.station_id = stations.id
       INNER JOIN travels ON stations.travel_id = travels.id
     UNION
     SELECT
-      'stations' as 'table_name', stations.id, location as name, stations.id as 'station_id', date as 'date', travels.name as 'journey', 'null' as 'url', $stationRelevanceMultiplier * 1 as relevance
+      'stations' as 'table_name', stations.id, location as name, stations.id as 'station_id', date as 'date', travels.name as 'journey', 'null' as 'url', stations.has_images, stations.has_songs, stations.has_videos,
+      $stationRelevanceMultiplier * 1 as relevance
       from stations
       INNER JOIN travels ON stations.travel_id = travels.id
     UNION
     SELECT
-      'images' as 'table_name', images.id, 'Bild' as name, stations.id as 'station_id', stations.date as 'date', travels.name as 'journey', images.url,1 as relevance
+      'images' as 'table_name', images.id, 'Bild' as name, stations.id as 'station_id', stations.date as 'date', travels.name as 'journey', images.url, NULL as 'has_images', NULL as 'has_songs', NULL as 'has_videos',
+      1 as relevance
       from images
       INNER JOIN stations ON images.station_id = stations.id
       INNER JOIN travels ON stations.travel_id = travels.id  
