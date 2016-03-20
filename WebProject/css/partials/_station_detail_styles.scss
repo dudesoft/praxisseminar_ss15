@@ -279,6 +279,7 @@ video {
     height: 45%;
     float: right;
     position: relative;
+    cursor: pointer;
 }
 
 #tabs_container > ul > li {
@@ -334,11 +335,20 @@ video {
     position: relative;
 }
 
-#player_content video, #player_content audio {
+#player_content video {
     width: 100%;
     position: absolute;
     bottom: 2px;
     left: 0px;
+}
+
+#player_content audio {
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%) translateY(-50%);
 }
 
 #tabs_container > ul > li > img {
