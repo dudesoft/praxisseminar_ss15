@@ -81,9 +81,13 @@ define(['leaflet'], function(leaflet) {
         },
 
         formatDate: function(date) {
+            if (date == "" || date == null) {
+                return "Datum unbekannt";
+            }
             var dateParts = date.split("-");
             return dateParts[2] + "." + dateParts[1] + "." + dateParts[0];
         },
+
         translateColumnTitles: function(columnTitle) {
             var kvArray = [
                 ["title", "Titel"],
