@@ -3,7 +3,7 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
     db_connector.getAllDates(setupDatepicker);
     db_connector.getAutocompleteData(setupAutocomplete);
 
-    $('#search-button').click(function() {
+    $('#search-button, #enter_search').click(function() {
         buildSearchURL();
     });
 
