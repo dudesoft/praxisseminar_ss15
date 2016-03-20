@@ -23,7 +23,8 @@
         <span id="detail_content">
                 <div id="text_info" class="trans">
                     <div class="centered" id="location"></div>
-                    <div class="centered" id="time"></div>
+                    <div class="centered" id="journey"></div>
+                    <div class="centered" id="time"></div>                    
                     <ul id="attribute_list"class="attribute">
                     </ul>
                 </div>

@@ -213,6 +213,13 @@ header {
   background-color: #190a05;
   color: #D1C192; }
 
+#enter_search {
+  color: white;
+  background-color: green;
+  border-radius: 10px;
+  margin-top: 5px;
+  float: right; }
+
 /* Pop-Over */
 #pop_over {
   position: absolute;
@@ -246,7 +253,8 @@ p {
 
 .form-group {
   margin: 0px;
-  float: left; }
+  float: left;
+  width: 100%; }
 
 /* Footer */
 footer {

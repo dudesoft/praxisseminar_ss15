@@ -162,6 +162,14 @@ header {
     color: $standard_color;
 }
 
+#enter_search {
+    color: white;
+    background-color: green;
+    border-radius: 10px;
+    margin-top: 5px;
+    float: right;
+}
+
 
 /* Pop-Over */
 
@@ -205,6 +213,7 @@ p {
 .form-group {
     margin: 0px;
     float: left;
+    width: 100%;
 }
 
 
