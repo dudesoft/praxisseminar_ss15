@@ -665,7 +665,8 @@ video {
   width: 49%;
   height: 45%;
   float: right;
-  position: relative; }
+  position: relative;
+  cursor: pointer; }
 
 #tabs_container > ul > li {
   width: 100%;
