@@ -15,8 +15,8 @@ catch(PDOException $e) {
 }
 
 
-$dateMax = date('Y-m-d');
-$dateMin = '0001-01-01';
+$dateMax = '';
+$dateMin = '';
 $journey = '';
 $resultType = '';
 $searchString = '';
@@ -24,12 +24,20 @@ if (isset($_GET['search_string'])) {
     $searchString = $_GET['search_string'];
 }
 
-if (isset($_GET['date_min'])) {
-    $dateMin = $_GET['date_min'];
-}
 if (isset($_GET['date_max'])) {
     $dateMax = $_GET['date_max'];
+    $dateMin = '0001-01-01';
 }
+if (isset($_GET['date_min'])) {
+    $dateMin = $_GET['date_min'];
+    $dateMax = date('Y-m-d');
+}
+
+if (isset($_GET['date_min']) && isset($_GET['date_max'])) {
+    $dateMin = $_GET['date_min'];
+    $dateMax = $_GET['date_max'];
+}
+
 if (isset($_GET['journey'])) {
     $journey = $_GET['journey'];
 }
@@ -87,7 +95,7 @@ if ($searchString != '') {
       INNER JOIN stations ON images.station_id = stations.id
       INNER JOIN travels ON stations.travel_id = travels.id  
     )
-    as sitewide WHERE (journey = '$journey' or '$journey' = '') AND (table_name = '$resultType' or '$resultType' = '') AND date BETWEEN '$dateMin' AND '$dateMax' ORDER BY relevance DESC");
+    as sitewide WHERE (journey = '$journey' or '$journey' = '') AND (table_name = '$resultType' or '$resultType' = '') AND (date BETWEEN '$dateMin' AND '$dateMax' or ('$dateMin' = '' AND '$dateMax' = '' )) ORDER BY relevance DESC");
   $query -> execute();
 }
 
