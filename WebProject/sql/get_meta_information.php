@@ -19,9 +19,11 @@ if (isset($_GET['id'])) {
 
 $conn->query("SET group_concat_max_len = 4096");
 
-$query = $conn -> prepare("SELECT * from $tableName WHERE id = $id");
+
 if ($tableName == 'stations') {
-    $query = $conn -> prepare("SELECT * from $tableName INNER JOIN travels on stations.travel_id WHERE id = $id");
+    $query = $conn -> prepare("SELECT stations.*, locations.latitude, locations.longitude from stations INNER JOIN locations on stations.location_id WHERE stations.id = $id");
+} else {
+    $query = $conn -> prepare("SELECT * from $tableName WHERE id = $id");
 }
 $query -> execute();
 $results = $query->fetch(PDO::FETCH_ASSOC);

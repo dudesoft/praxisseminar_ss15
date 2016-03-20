@@ -9,11 +9,10 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
     var vidSly;
 
     var $activeElement;
-    var activeData;
+    var urlVars;
     var StationDetails = {
         setupDetails: function() {
-            var urlVars = utils.getUrlVars();
-
+            urlVars = utils.getUrlVars();
             this.setupTabs();
 
             connector.getLocationDetails(urlVars.station_id, function(data) {
@@ -151,6 +150,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             $items.click(function(event) {
                 StationDetails.activateTab($(event.target));
             });
+            connector.getMetaInformation(urlVars.station_id, "stations", this.updateTextField);
         },
         activateTab: function($clickedTab) {
             var $items = $('.tabs');
@@ -158,6 +158,10 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             $clickedTab.addClass('selected');
             var index = $items.index($clickedTab);
             $('.tab_content').hide().eq(index).show();
+
+            if($clickedTab.attr('id') == "map_tab") {
+                connector.getMetaInformation(urlVars.station_id, "stations", this.updateTextField);
+            }
         },
         changeActiveElement: function($newActiveElement) {
             if (!$newActiveElement.is($activeElement) && $newActiveElement != null) {
@@ -169,8 +173,9 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     $activeElement = $newActiveElement;
                     $activeElement.addClass(activeElementClass);
                 }
-                this.updatePreviewField($activeElement.data(idKey), $activeElement.data(urlKey), $activeElement.data(tableNameKey));
             }
+            this.updatePreviewField($activeElement.data(idKey), $activeElement.data(urlKey), $activeElement.data(tableNameKey));
+
         },
         updatePreviewField: function(id, url, tableName) {
             connector.getMetaInformation(id, tableName, this.updateTextField);

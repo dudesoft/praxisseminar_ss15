@@ -100,7 +100,6 @@ define(['leaflet'], function(leaflet) {
                 ["interpret_3", "Interpret 3"],
                 ["recorded_by", "Aufgenommen von"],
                 ["take", "Aufnahme"],
-                ["location", "Ort"],
                 ["kalusch", "Kalusch"],
                 ["attributes", "Attribute"],
                 ["take_position", "Aufnahmeposition"],
@@ -110,7 +109,9 @@ define(['leaflet'], function(leaflet) {
                 ["spectators", "Zuschauer"],
                 ["comments", "Bemerkung"],
                 ["region", "Region"],
-                ["collection", "Kollektion"]
+                ["collection", "Kollektion"],
+                ["latitude", "Breitengrad"],
+                ["longitude", "Längengrad"]
             ];
             var translationMap = new Map(kvArray);
             return translationMap.get(columnTitle);
