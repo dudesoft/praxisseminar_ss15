@@ -211,10 +211,11 @@ header {
 
 #enter_search {
   color: white;
-  background-color: green;
+  background-color: #808080;
   border-radius: 10px;
   margin-top: 5px;
-  float: right; }
+  float: right;
+  padding: 8px 10px 8px 10px; }
 
 /* Pop-Over */
 #pop_over {
