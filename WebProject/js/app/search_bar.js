@@ -3,7 +3,7 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
     db_connector.getAllDates(setupDatepicker);
     db_connector.getAutocompleteData(setupAutocomplete);
 
-    $('#search-button').click(function() {
+    $('#search-button, #enter_search').click(function() {
         buildSearchURL();
     });
 
@@ -76,6 +76,11 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
                     return [true, '', ''];
                 }
             }
+        });
+
+        $(document).on('click', '#main_content', function(e) {
+            $("#min_date_input").datepicker("hide");
+            $("#max_date_input").datepicker("hide");
         });
     }
 

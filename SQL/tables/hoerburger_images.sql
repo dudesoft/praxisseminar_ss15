@@ -1,69 +1,344 @@
--- MySQL dump 10.13  Distrib 5.6.24, for Win64 (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
--- Host: localhost    Database: hoerburger
--- ------------------------------------------------------
--- Server version	5.6.27-log
+-- Host: 127.0.0.1
+-- Erstellungszeit: 20. Mrz 2016 um 16:09
+-- Server-Version: 10.1.9-MariaDB
+-- PHP-Version: 5.6.15
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Table structure for table `images`
+-- Datenbank: `hoerburger`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `images`
 --
 
 DROP TABLE IF EXISTS `images`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `images` (
   `id` int(11) NOT NULL,
   `url` varchar(53) DEFAULT NULL,
   `station_id` int(11) DEFAULT NULL,
-  `Lnr` varchar(1) DEFAULT NULL,
-  `FotoNr` varchar(2) DEFAULT NULL,
-  `TextulFonNr` varchar(1) DEFAULT NULL,
-  `Aufnahme` varchar(142) DEFAULT NULL,
+  `l_nr` varchar(1) DEFAULT NULL,
+  `pic_nr` varchar(2) DEFAULT NULL,
+  `textul_pic_nr` varchar(1) DEFAULT NULL,
+  `take` varchar(142) DEFAULT NULL,
   `location` varchar(20) DEFAULT NULL,
-  `Kalusch` varchar(31) DEFAULT NULL,
-  `Attribute` varchar(28) DEFAULT NULL,
-  `Aufnahmeposition` varchar(19) DEFAULT NULL,
-  `Situation` varchar(255) DEFAULT NULL,
-  `Musiker` varchar(45) DEFAULT NULL,
-  `Hoerburger_Notizen` varchar(255) DEFAULT NULL,
-  `Zuschauer` varchar(179) DEFAULT NULL,
-  `Bemerkungen` varchar(68) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_station_id` (`station_id`),
-  FULLTEXT KEY `Aufnahme` (`Aufnahme`,`location`,`Attribute`,`Aufnahmeposition`,`Situation`,`Musiker`,`Hoerburger_Notizen`,`Zuschauer`,`Bemerkungen`),
-  FULLTEXT KEY `Aufnahme_2` (`Aufnahme`,`location`,`Attribute`,`Aufnahmeposition`,`Situation`,`Musiker`,`Hoerburger_Notizen`,`Zuschauer`,`Bemerkungen`),
-  CONSTRAINT `fk_station_id` FOREIGN KEY (`station_id`) REFERENCES `stations` (`id`)
+  `kalusch` varchar(31) DEFAULT NULL,
+  `attributes` varchar(28) DEFAULT NULL,
+  `take_position` varchar(19) DEFAULT NULL,
+  `situation` varchar(255) DEFAULT NULL,
+  `musician` varchar(45) DEFAULT NULL,
+  `hoerburger_notes` varchar(255) DEFAULT NULL,
+  `spectators` varchar(179) DEFAULT NULL,
+  `comments` varchar(68) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `images`
+-- Daten für Tabelle `images`
 --
 
-LOCK TABLES `images` WRITE;
-/*!40000 ALTER TABLE `images` DISABLE KEYS */;
-INSERT INTO `images` VALUES (1,'Kosovo59/Arvati/Kosovo59_Arvati_1.jpg',17,'','','','','Arvati','','','','','','','',''),(2,'Kosovo59/Arvati/Kosovo59_Arvati_2.jpg',17,'','','','','Arvati','','','','','','','',''),(3,'Kosovo59/Arvati/Kosovo59_Arvati_3.jpg',17,'','','','','Arvati','','','','','','','',''),(4,'Kosovo59/Arvati/Kosovo59_Arvati_4.jpg',17,'','','','','Arvati','','','','','','','',''),(5,'Kosovo59/Arvati/Kosovo59_Arvati_5.jpg',17,'','','','','Arvati','','','','','','','',''),(6,'Kosovo59/Arvati/Kosovo59_Arvati_6.jpg',17,'','','','','Arvati','','','','','','','',''),(7,'Kosovo59/Arvati/Kosovo59_Arvati_7.jpg',17,'','','','','Arvati','','','','','','','',''),(8,'Kosovo59/Arvati/Kosovo59_Arvati_8.jpg',17,'','','','','Arvati','','','','','','','',''),(9,'Kosovo59/Arvati/Kosovo59_Arvati_9.jpg',17,'','','','','Arvati','','','','','','','',''),(10,'Kosovo59/Arvati/Kosovo59_Arvati_10.jpg',17,'','','','','Arvati','','','','','','','',''),(11,'Kosovo59/Arvati/Kosovo59_Arvati_11.jpg',17,'','','','','Arvati','','','','','','','',''),(12,'Kosovo59/Arvati/Kosovo59_Arvati_12.jpg',17,'','','','','Arvati','','','','','','','',''),(13,'Kosovo59/Arvati/Kosovo59_Arvati_13.jpg',17,'','','','','Arvati','','','','','','','',''),(14,'Kosovo59/Arvati/Kosovo59_Arvati_14.jpg',17,'','','','','Arvati','','','','','','','',''),(15,'Kosovo59/Arvati/Kosovo59_Arvati_15.jpg',17,'','','','','Arvati','','','','','','','',''),(16,'Kosovo59/Arvati/Kosovo59_Arvati_16.jpg',17,'','','','','Arvati','','','','','','','',''),(17,'Kosovo59/Arvati/Kosovo59_Arvati_17.jpg',17,'','','','','Arvati','','','','','','','',''),(18,'Kosovo59/Arvati/Kosovo59_Arvati_18.jpg',17,'','','','','Arvati','','','','','','','',''),(19,'Kosovo59/Arvati/Kosovo59_Arvati_19.jpg',17,'','','','','Arvati','','','','','','','',''),(20,'Kosovo59/Arvati/Kosovo59_Arvati_20.jpg',17,'','','','','Arvati','','','','','','','',''),(21,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_1.jpg',25,'','','','','Bidzovo','','','','','','','',''),(22,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_2.jpg',25,'','','','','Bidzovo','','','','','','','',''),(23,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_3.jpg',25,'','','','','Bidzovo','','','','','','','',''),(24,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_4.jpg',25,'','','','','Bidzovo','','','','','','','',''),(25,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_5.jpg',25,'','','','','Bidzovo','','','','','','','',''),(26,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_6.jpg',25,'','','','','Bidzovo','','','','','','','',''),(27,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_7.jpg',25,'','','','','Bidzovo','','','','','','','',''),(28,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_8.jpg',25,'','','','','Bidzovo','','','','','','','',''),(29,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_9.jpg',25,'','','','','Bidzovo','','','','','','','',''),(30,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_10.jpg',25,'','','','','Bidzovo','','','','','','','',''),(31,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_11.jpg',25,'','','','','Bidzovo','','','','','','','',''),(32,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_12.jpg',25,'','','','','Bidzovo','','','','','','','',''),(33,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_13.jpg',25,'','','','','Bidzovo','','','','','','','',''),(34,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_14.jpg',25,'','','','','Bidzovo','','','','','','','',''),(35,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_15.jpg',25,'','','','','Bidzovo','','','','','','','',''),(36,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_16.jpg',25,'','','','','Bidzovo','','','','','','','',''),(37,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_17.jpg',25,'','','','','Bidzovo','','','','','','','',''),(38,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_18.jpg',25,'','','','','Bidzovo','','','','','','','',''),(39,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_19.jpg',25,'','','','','Bidzovo','','','','','','','',''),(40,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_20.jpg',25,'','','','','Bidzovo','','','','','','','',''),(41,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_21.jpg',25,'','','','','Bidzovo','','','','','','','',''),(42,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_22.jpg',25,'','','','','Bidzovo','','','','','','','',''),(43,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_23.jpg',25,'','','','','Bidzovo','','','','','','','',''),(44,'Kosovo59/Bidzovo/Kosovo59_Bidzovo_24.jpg',25,'','','','','Bidzovo','','','','','','','',''),(45,'Kosovo59/Frengovo/Kosovo59_Frengovo_1.jpg',21,'','','','','Frangovo','','','','','','','',''),(46,'Kosovo59/Frengovo/Kosovo59_Frengovo_2.jpg',21,'','','','','Frangovo','','','','','','','',''),(47,'Kosovo59/Frengovo/Kosovo59_Frengovo_3.jpg',21,'','','','','Frangovo','','','','','','','',''),(48,'Kosovo59/Frengovo/Kosovo59_Frengovo_4.jpg',21,'','','','','Frangovo','','','','','','','',''),(49,'Kosovo59/Frengovo/Kosovo59_Frengovo_5.jpg',21,'','','','','Frangovo','','','','','','','',''),(50,'Kosovo59/Frengovo/Kosovo59_Frengovo_6.jpg',21,'','','','','Frangovo','','','','','','','',''),(51,'Kosovo59/Frengovo/Kosovo59_Frengovo_7.jpg',21,'','','','','Frangovo','','','','','','','',''),(52,'Kosovo59/Frengovo/Kosovo59_Frengovo_8.jpg',21,'','','','','Frangovo','','','','','','','',''),(53,'Kosovo59/Frengovo/Kosovo59_Frengovo_9.jpg',21,'','','','','Frangovo','','','','','','','',''),(54,'Kosovo59/Frengovo/Kosovo59_Frengovo_10.jpg',21,'','','','','Frangovo','','','','','','','',''),(55,'Kosovo59/Frengovo/Kosovo59_Frengovo_11.jpg',21,'','','','','Frangovo','','','','','','','',''),(56,'Kosovo59/Frengovo/Kosovo59_Frengovo_12.jpg',21,'','','','','Frangovo','','','','','','','',''),(57,'Kosovo59/Glogovac/Kosovo59_Glogovac_1.jpg',32,'','','','','Glogovac','','','','','','','',''),(58,'Kosovo59/Glogovac/Kosovo59_Glogovac_2.jpg',32,'','','','','Glogovac','','','','','','','',''),(59,'Kosovo59/Glogovac/Kosovo59_Glogovac_3.jpg',32,'','','','','Glogovac','','','','','','','',''),(60,'Kosovo59/Glogovac/Kosovo59_Glogovac_4.jpg',32,'','','','','Glogovac','','','','','','','',''),(61,'Kosovo59/Glogovac/Kosovo59_Glogovac_5.jpg',32,'','','','','Glogovac','','','','','','','',''),(62,'Kosovo59/Glogovac/Kosovo59_Glogovac_6.jpg',32,'','','','','Glogovac','','','','','','','',''),(63,'Kosovo59/Glogovac/Kosovo59_Glogovac_7.jpg',32,'','','','','Glogovac','','','','','','','',''),(64,'Kosovo59/Glogovac/Kosovo59_Glogovac_8.jpg',32,'','','','','Glogovac','','','','','','','',''),(65,'Kosovo59/Glogovac/Kosovo59_Glogovac_9.jpg',32,'','','','','Glogovac','','','','','','','',''),(66,'Kosovo59/Glogovac/Kosovo59_Glogovac_10.jpg',32,'','','','','Glogovac','','','','','','','',''),(67,'Kosovo59/Glogovac/Kosovo59_Glogovac_11.jpg',32,'','','','','Glogovac','','','','','','','',''),(68,'Kosovo59/Glogovac/Kosovo59_Glogovac_12.jpg',32,'','','','','Glogovac','','','','','','','',''),(69,'Kosovo59/Glogovac/Kosovo59_Glogovac_13.jpg',32,'','','','','Glogovac','','','','','','','',''),(70,'Kosovo59/Rugovo/Kosovo59_Rugovo_1.jpg',11,'','','','','Rugovo','','','','','','','',''),(71,'Kosovo59/Rugovo/Kosovo59_Rugovo_2.jpg',11,'','','','','Rugovo','','','','','','','',''),(72,'Kosovo59/Rugovo/Kosovo59_Rugovo_3.jpg',11,'','','','','Rugovo','','','','','','','',''),(73,'Kosovo59/Rugovo/Kosovo59_Rugovo_4.jpg',11,'','','','','Rugovo','','','','','','','',''),(74,'Kosovo59/Rugovo/Kosovo59_Rugovo_5.jpg',11,'','','','','Rugovo','','','','','','','',''),(75,'Kosovo59/Rugovo/Kosovo59_Rugovo_6.jpg',11,'','','','','Rugovo','','','','','','','',''),(76,'Kosovo59/Rugovo/Kosovo59_Rugovo_7.jpg',11,'','','','','Rugovo','','','','','','','',''),(77,'Kosovo59/Rugovo/Kosovo59_Rugovo_8.jpg',11,'','','','','Rugovo','','','','','','','',''),(78,'Kosovo59/Rugovo/Kosovo59_Rugovo_9.jpg',11,'','','','','Rugovo','','','','','','','',''),(79,'Kosovo59/Rugovo/Kosovo59_Rugovo_10.jpg',11,'','','','','Rugovo','','','','','','','',''),(80,'Kosovo59/Rugovo/Kosovo59_Rugovo_11.jpg',11,'','','','','Rugovo','','','','','','','',''),(81,'Kosovo59/Rugovo/Kosovo59_Rugovo_12.jpg',11,'','','','','Rugovo','','','','','','','',''),(82,'Kosovo59/Rugovo/Kosovo59_Rugovo_13.jpg',11,'','','','','Rugovo','','','','','','','',''),(83,'Kosovo59/Rugovo/Kosovo59_Rugovo_14.jpg',11,'','','','','Rugovo','','','','','','','',''),(84,'Kosovo59/Rugovo/Kosovo59_Rugovo_15.jpg',11,'','','','','Rugovo','','','','','','','',''),(85,'Kosovo59/Rugovo/Kosovo59_Rugovo_16.jpg',11,'','','','','Rugovo','','','','','','','',''),(86,'Kosovo59/Rugovo/Kosovo59_Rugovo_17.jpg',11,'','','','','Rugovo','','','','','','','',''),(87,'Kosovo59/Rugovo/Kosovo59_Rugovo_18.jpg',11,'','','','','Rugovo','','','','','','','',''),(88,'Kosovo59/Rugovo/Kosovo59_Rugovo_19.jpg',11,'','','','','Rugovo','','','','','','','',''),(89,'Kosovo59/Rugovo/Kosovo59_Rugovo_20.jpg',11,'','','','','Rugovo','','','','','','','',''),(90,'Kosovo59/Rugovo/Kosovo59_Rugovo_21.jpg',11,'','','','','Rugovo','','','','','','','',''),(91,'Kosovo59/Rugovo/Kosovo59_Rugovo_22.jpg',11,'','','','','Rugovo','','','','','','','',''),(92,'Kosovo59/Rugovo/Kosovo59_Rugovo_23.jpg',11,'','','','','Rugovo','','','','','','','',''),(93,'Kosovo59/Rugovo/Kosovo59_Rugovo_24.jpg',11,'','','','','Rugovo','','','','','','','',''),(94,'Kosovo59/Rugovo/Kosovo59_Rugovo_25.jpg',11,'','','','','Rugovo','','','','','','','',''),(95,'Kosovo59/Rugovo/Kosovo59_Rugovo_26.jpg',11,'','','','','Rugovo','','','','','','','',''),(96,'Kosovo59/Rugovo/Kosovo59_Rugovo_27.jpg',11,'','','','','Rugovo','','','','','','','',''),(97,'Kosovo59/Rugovo/Kosovo59_Rugovo_28.jpg',11,'','','','','Rugovo','','','','','','','',''),(98,'Kosovo59/Rugovo/Kosovo59_Rugovo_29.jpg',11,'','','','','Rugovo','','','','','','','',''),(99,'Kosovo59/Rugovo/Kosovo59_Rugovo_30.jpg',11,'','','','','Rugovo','','','','','','','',''),(100,'Kosovo59/Rugovo/Kosovo59_Rugovo_31.jpg',11,'','','','','Rugovo','','','','','','','',''),(101,'Kosovo59/Rugovo/Kosovo59_Rugovo_32.jpg',11,'','','','','Rugovo','','','','','','','',''),(102,'Kosovo59/Rugovo/Kosovo59_Rugovo_33.jpg',11,'','','','','Rugovo','','','','','','','',''),(103,'Kosovo59/Rugovo/Kosovo59_Rugovo_34.jpg',11,'','','','','Rugovo','','','','','','','',''),(104,'Kosovo59/Rugovo/Kosovo59_Rugovo_35.jpg',11,'','','','','Rugovo','','','','','','','',''),(105,'Kosovo59/Rugovo/Kosovo59_Rugovo_36.jpg',11,'','','','','Rugovo','','','','','','','',''),(106,'Kosovo59/Rugovo/Kosovo59_Rugovo_37.jpg',11,'','','','','Rugovo','','','','','','','',''),(107,'Kosovo59/Rugovo/Kosovo59_Rugovo_38.jpg',11,'','','','','Rugovo','','','','','','','',''),(108,'Kosovo59/Rugovo/Kosovo59_Rugovo_39.jpg',11,'','','','','Rugovo','','','','','','','',''),(109,'Kosovo59/Rugovo/Kosovo59_Rugovo_40.jpg',11,'','','','','Rugovo','','','','','','','',''),(110,'Kosovo59/Rugovo/Kosovo59_Rugovo_41.jpg',11,'','','','','Rugovo','','','','','','','',''),(111,'Kosovo59/Rugovo/Kosovo59_Rugovo_42.jpg',11,'','','','','Rugovo','','','','','','','',''),(112,'Kosovo59/Rugovo/Kosovo59_Rugovo_43.jpg',11,'','','','','Rugovo','','','','','','','',''),(113,'Kosovo59/Rugovo/Kosovo59_Rugovo_44.jpg',11,'','','','','Rugovo','','','','','','','',''),(114,'Kosovo59/Rugovo/Kosovo59_Rugovo_45.jpg',11,'','','','','Rugovo','','','','','','','',''),(115,'Kosovo59/Rugovo/Kosovo59_Rugovo_46.jpg',11,'','','','','Rugovo','','','','','','','',''),(116,'Kosovo59/Rugovo/Kosovo59_Rugovo_47.jpg',11,'','','','','Rugovo','','','','','','','',''),(117,'Kosovo59/Rugovo/Kosovo59_Rugovo_48.jpg',11,'','','','','Rugovo','','','','','','','',''),(118,'Kosovo59/Rugovo/Kosovo59_Rugovo_49.jpg',11,'','','','','Rugovo','','','','','','','',''),(119,'Kosovo59/Rugovo/Kosovo59_Rugovo_50.jpg',11,'','','','','Rugovo','','','','','','','',''),(120,'Kosovo59/Rugovo/Kosovo59_Rugovo_51.jpg',11,'','','','','Rugovo','','','','','','','',''),(121,'Kosovo59/Rugovo/Kosovo59_Rugovo_52.jpg',11,'','','','','Rugovo','','','','','','','',''),(122,'Kosovo59/Rugovo/Kosovo59_Rugovo_53.jpg',11,'','','','','Rugovo','','','','','','','',''),(123,'Kosovo59/Rugovo/Kosovo59_Rugovo_54.jpg',11,'','','','','Rugovo','','','','','','','',''),(124,'Kosovo59/Rugovo/Kosovo59_Rugovo_55.jpg',11,'','','','','Rugovo','','','','','','','',''),(125,'Kosovo59/Rugovo/Kosovo59_Rugovo_56.jpg',11,'','','','','Rugovo','','','','','','','',''),(126,'Kosovo59/Rugovo/Kosovo59_Rugovo_57.jpg',11,'','','','','Rugovo','','','','','','','',''),(127,'Kosovo59/Rugovo/Kosovo59_Rugovo_58.jpg',11,'','','','','Rugovo','','','','','','','',''),(128,'Kosovo59/Rugovo/Kosovo59_Rugovo_59.jpg',11,'','','','','Rugovo','','','','','','','',''),(129,'Kosovo59/Rugovo/Kosovo59_Rugovo_60.jpg',11,'','','','','Rugovo','','','','','','','',''),(130,'Kosovo59/Rugovo/Kosovo59_Rugovo_61.jpg',11,'','','','','Rugovo','','','','','','','',''),(131,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_1.jpg',4,'','','','','','','','','','','','',''),(132,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_2.jpg',4,'','','','','','','','','','','','',''),(133,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_3.jpg',4,'','','','','','','','','','','','',''),(134,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_4.jpg',4,'','','','','','','','','','','','',''),(135,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_5.jpg',4,'','','','','','','','','','','','',''),(136,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_6.jpg',4,'','','','','','','','','','','','',''),(137,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_7.jpg',4,'','','','','','','','','','','','',''),(138,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_8.jpg',4,'','','','','','','','','','','','',''),(139,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_9.jpg',4,'','','','','','','','','','','','',''),(140,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_10.jpg',4,'','','','','','','','','','','','',''),(141,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_11.jpg',4,'','','','','','','','','','','','',''),(142,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_12.jpg',4,'','','','','','','','','','','','',''),(143,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_13.jpg',4,'','','','','','','','','','','','',''),(144,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_14.jpg',4,'','','','','','','','','','','','',''),(145,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_15.jpg',4,'','','','','','','','','','','','',''),(146,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_16.jpg',4,'','','','','','','','','','','','',''),(147,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_17.jpg',4,'','','','','','','','','','','','',''),(148,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_18.jpg',4,'','','','','','','','','','','','',''),(149,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_19.jpg',4,'','','','','','','','','','','','',''),(150,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_20.jpg',4,'','','','','','','','','','','','',''),(151,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_21.jpg',4,'','','','','','','','','','','','',''),(152,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_22.jpg',4,'','','','','','','','','','','','',''),(153,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_23.jpg',4,'','','','','','','','','','','','',''),(154,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_24.jpg',4,'','','','','','','','','','','','',''),(155,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_25.jpg',4,'','','','','','','','','','','','',''),(156,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_26.jpg',4,'','','','','','','','','','','','',''),(157,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_27.jpg',4,'','','','','','','','','','','','',''),(158,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_28.jpg',4,'','','','','','','','','','','','',''),(159,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_29.jpg',4,'','','','','','','','','','','','',''),(160,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_30.jpg',4,'','','','','','','','','','','','',''),(161,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_31.jpg',4,'','','','','','','','','','','','',''),(162,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_32.jpg',4,'','','','','','','','','','','','',''),(163,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_33.jpg',4,'','','','','','','','','','','','',''),(164,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_34.jpg',4,'','','','','','','','','','','','',''),(165,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_35.jpg',4,'','','','','','','','','','','','',''),(166,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_36.jpg',4,'','','','','','','','','','','','',''),(167,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_37.jpg',4,'','','','','','','','','','','','',''),(168,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_38.jpg',4,'','','','','','','','','','','','',''),(169,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_39.jpg',4,'','','','','','','','','','','','',''),(170,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_40.jpg',4,'','','','','','','','','','','','',''),(171,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_41.jpg',4,'','','','','','','','','','','','',''),(172,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_42.jpg',4,'','','','','','','','','','','','',''),(173,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_43.jpg',4,'','','','','','','','','','','','',''),(174,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_44.jpg',4,'','','','','','','','','','','','',''),(175,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_45.jpg',4,'','','','','','','','','','','','',''),(176,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_46.jpg',4,'','','','','','','','','','','','',''),(177,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_47.jpg',4,'','','','','','','','','','','','',''),(178,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_48.jpg',4,'','','','','','','','','','','','',''),(179,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_49.jpg',4,'','','','','','','','','','','','',''),(180,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_50.jpg',4,'','','','','','','','','','','','',''),(181,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_51.jpg',4,'','','','','','','','','','','','',''),(182,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_52.jpg',4,'','','','','','','','','','','','',''),(183,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_53.jpg',4,'','','','','','','','','','','','',''),(184,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_54.jpg',4,'','','','','','','','','','','','',''),(185,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_55.jpg',4,'','','','','','','','','','','','',''),(186,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_56.jpg',4,'','','','','','','','','','','','',''),(187,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_57.jpg',4,'','','','','','','','','','','','',''),(188,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_58.jpg',4,'','','','','','','','','','','','',''),(189,'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_59.jpg',4,'','','','','','','','','','','','',''),(190,'Kosovo59/Vranishte/Kosovo59_Vranishte_1.jpg',6,'','','','','Vranishte','','','','','','','',''),(191,'Kosovo59/Vranishte/Kosovo59_Vranishte_2.jpg',6,'','','','','Vranishte','','','','','','','',''),(192,'Kosovo59/Vranishte/Kosovo59_Vranishte_3.jpg',6,'','','','','Vranishte','','','','','','','',''),(193,'Kosovo59/Vranishte/Kosovo59_Vranishte_4.jpg',6,'','','','','Vranishte','','','','','','','',''),(194,'Kosovo59/Vranishte/Kosovo59_Vranishte_5.jpg',6,'','','','','Vranishte','','','','','','','',''),(195,'Kosovo59/Vranishte/Kosovo59_Vranishte_6.jpg',6,'','','','','Vranishte','','','','','','','',''),(196,'Kosovo59/Vranishte/Kosovo59_Vranishte_7.jpg',6,'','','','','Vranishte','','','','','','','',''),(197,'Kosovo59/Vranishte/Kosovo59_Vranishte_8.jpg',6,'','','','','Vranishte','','','','','','','',''),(198,'Kosovo59/Vranishte/Kosovo59_Vranishte_9.jpg',6,'','','','','Vranishte','','','','','','','',''),(199,'Kosovo59/Vranishte/Kosovo59_Vranishte_10.jpg',6,'','','','','Vranishte','','','','','','','',''),(200,'Kosovo59/Vranishte/Kosovo59_Vranishte_11.jpg',6,'','','','','Vranishte','','','','','','','',''),(201,'Kosovo59/Vranishte/Kosovo59_Vranishte_12.jpg',6,'','','','','Vranishte','','','','','','','',''),(202,'Kosovo59/Vranishte/Kosovo59_Vranishte_13.jpg',6,'','','','','Vranishte','','','','','','','',''),(203,'Kosovo59/Vranishte/Kosovo59_Vranishte_14.jpg',6,'','','','','Vranishte','','','','','','','',''),(204,'Kosovo59/Vranishte/Kosovo59_Vranishte_15.jpg',6,'','','','','Vranishte','','','','','','','',''),(205,'Kosovo59/Vranishte/Kosovo59_Vranishte_16.jpg',6,'','','','','Vranishte','','','','','','','',''),(206,'Kosovo59/Vranishte/Kosovo59_Vranishte_17.jpg',6,'','','','','Vranishte','','','','','','','',''),(207,'Kosovo59/Vranishte/Kosovo59_Vranishte_18.jpg',6,'','','','','Vranishte','','','','','','','',''),(208,'Kosovo59/Vranishte/Kosovo59_Vranishte_19.jpg',6,'','','','','Vranishte','','','','','','','',''),(209,'Kosovo59/Vranishte/Kosovo59_Vranishte_20.jpg',6,'','','','','Vranishte','','','','','','','',''),(210,'Kosovo59/Vranishte/Kosovo59_Vranishte_21.jpg',6,'','','','','Vranishte','','','','','','','',''),(211,'Kosovo59/Vranishte/Kosovo59_Vranishte_22.jpg',6,'','','','','Vranishte','','','','','','','',''),(212,'Kosovo59/Vranishte/Kosovo59_Vranishte_23.jpg',6,'','','','','Vranishte','','','','','','','',''),(213,'Kosovo59/Vranishte/Kosovo59_Vranishte_24.jpg',6,'','','','','Vranishte','','','','','','','',''),(214,'Kosovo59/Vranishte/Kosovo59_Vranishte_25.jpg',6,'','','','','Vranishte','','','','','','','',''),(215,'Kosovo59/Vranishte/Kosovo59_Vranishte_26.jpg',6,'','','','','Vranishte','','','','','','','',''),(216,'Kosovo59/Vranishte/Kosovo59_Vranishte_27.jpg',6,'','','','','Vranishte','','','','','','','',''),(217,'Kosovo59/Vranishte/Kosovo59_Vranishte_28.jpg',6,'','','','','Vranishte','','','','','','','',''),(218,'Kosovo59/Vranishte/Kosovo59_Vranishte_29.jpg',6,'','','','','Vranishte','','','','','','','',''),(219,'Kosovo59/Vranishte/Kosovo59_Vranishte_30.jpg',6,'','','','','Vranishte','','','','','','','',''),(220,'Kosovo59/Vranishte/Kosovo59_Vranishte_31.jpg',6,'','','','','Vranishte','','','','','','','',''),(221,'Kosovo59/Vranishte/Kosovo59_Vranishte_32.jpg',6,'','','','','Vranishte','','','','','','','',''),(222,'Kosovo59/Vranishte/Kosovo59_Vranishte_33.jpg',6,'','','','','Vranishte','','','','','','','',''),(223,'Kosovo59/Vranishte/Kosovo59_Vranishte_34.jpg',6,'','','','','Vranishte','','','','','','','',''),(224,'Rumänien58/Giurgita/Rumänien58_Giurgita_1.jpg',36,'1','40','3','Wahrscheinlich prima plimbarea (s. Rituelle Männertänze in der Walachei, unveröffentlicht. Skript). Ev. Aufnahme 54 (4,1), ABER s. Bemerkungen','Giurgita','6','Krücken','Halbkreis, zu zweit','Reigentanz - Vataf hat einen Krücken, der zweite Tänzer stützt ihn, alle tragen Fez, stützen sich auf Stöcken und mit linker Hand halten sich in Paaren','2: Geiger und Gitarrist mit dunklen Hüten (3)','Hase in der Mitte des Kreises. Tanz wird immer schneller und bekommt den/einen [ekstatischen] Charakter es (?) Ekstatischen.\nVătaf  hat Krücken, mit denen er sich zuweilen stützt und so den Eindruck eines Krüppels macht. Mit der linken Hand wird er dabei ','keine','Das Datum der Aufnahme stimmt nicht mit dem Datum der Notiz überein!'),(225,'Rumänien58/Giurgita/Rumänien58_Giurgita_2.jpg',36,'','42','','','Giurgita','5','','Boden','Kaluscharen sind auf dem Boden, mit dem Gesicht nach oben, Hände und Beine auf dem Boden, Becken wird vermutlich nach oben geschoben, tanzen so?','2: Geiger und Gitarrist mit dunklen Hüten (3)','','',''),(226,'Rumänien58/Giurgita/Rumänien58_Giurgita_3.jpg',36,'','44','','','Giurgita','2','Kinder, Blume bzw. Knoblauch','Kreis?','2 Kaluscharen tanzen mit den Dorfbewohnern, beide haben ein Kind auf dem Arm, die Kinder tragen den Faz der Kaluscharen auf dem Kopf. Der ältere Kal. (Mutul oder Vataf?) hat eine Blume oÄ hinter einem Ohr','1 Geiger mit  weissem Hut (3)','','',''),(227,'Rumänien58/Giurgita/Rumänien58_Giurgita_4.jpg',36,'','46','','63 (4,10)','Giurgita','7','Stöcke','Bastonade','Bastonade! Auf einem Platz, 5 Kaluscharen tragen einen Tänzer, sie haben seine Füße zwischen die Stöcke genommen, einer schlägt mit dem Stock ','0 (3)','','ein Mann mit einer Fotokamera um den Hals, notiert  ',''),(228,'Rumänien58/Giurgita/Rumänien58_Giurgita_5.jpg',36,'','49','','','Giurgita','5','Stöcke','frei','Tanz mit den Stöcken, im Hintergrund Werbung von Telefoane am Strommast. ','1 Geiger mit weissem Hut (3)','','Eine Frau rechts im Bild zeigt einer anderen Frau etwas, sagt etwas, in der zeigenden Hand hält sich ein gefaltetes Heft/Notizbuch',''),(229,'Rumänien58/Giurgita/Rumänien58_Giurgita_6.jpg',36,'','52','','','Giurgita','3-4 (einer als Frau verkleidet)','Frau','frei','Ein Tänzer tanzt mit einer Frau (Mann verkleidet als Frau). Ein zweiter Tänzer hockt neben den Tänzenden, hält etwas kleines und rundes in der Hand','1 Geiger mit weissem Hut (3)','','zwei Bildnegative haben sich hier überlappt, was man rechts im Bild erkennen kann: der Zuschauer, der links im Bild in die Kamera schaut, ist in ähnlicher Stellung rechts zu sehen',''),(230,'Rumänien58/Giurgita/Rumänien58_Giurgita_7.jpg',36,'','70','','','Giurgita','6','Stöcke, Stein?','Halbkreis','Die Kaluscharen halten die Stöcke mit beiden Händen waagerecht hinter sich, offenbar springen sie darüber. Halbkreis. In der Mitte liegt etwas (Stein?)','0 (3)','','',''),(231,'Rumänien58/Giurgita/Rumänien58_Giurgita_8.jpg',36,'','71','','','Giurgita','5','Stöcke, Hase, Becher','Kreis, frei','Die Kaluscharen springen mit den senkrecht hochgehaltenen Stöcken im Kreis oder Halbkreis, der eine hält den Hasen, beugt sich über einem Becher, der auf einem Hocker steht, und spuckt (?) hinein. ','0 (3)','Mutul hat einen ausgestopften Hasen, der nach Beendigung der Festlichkeiten vergraben wird.Vătaf  wird ... und hat den Hasen unter dem Arm (dies hat keine besondere Bedeutung).','',''),(232,'Rumänien58/Giurgita/Rumänien58_Giurgita_9.jpg',36,'','72','','','Giurgita','2','Hase, Kinder','Kreis?','2 Kaluscharen mit Hasen und jeweils einem Kind auf dem Arm. Im Vordergrund der ausgestopfte Hase.','0 (3)','Mutul hat einen ausgestopften Hasen, der nach Beendigung der Festlichkeiten vergraben wird.','',''),(233,'Rumänien58/Giurgita/Rumänien58_Giurgita_10.jpg',36,'','74','','63 (4,10)','Giurgita','6','Stöcke','Bastonade','Dieselbe Situation wie auf dem Foto 46, aber von vorne fotografiert (wahrscheinlich von dem Mann, der auf dem Foto 46 mit einer Kamera um den Hals in einem Notizblock schreibt). Die Beine eines Tänzers sind zwischen zwei Stöcke geklemmt, gehoben und von d','0 (3)','','',''),(234,'Rumänien58/Giurgita/Rumänien58_Giurgita_11.jpg',36,'','75','','','Giurgita','5 oder 6','3 Männer, Stöcke, Hase','Kreis','Die Kaluscharen im Kreis mit 3 nicht-Kaluscharen, halten sich an Händen oder Stöcken. Der Mutul oder Vataf hebt den Hasen in die Luft. Vgl. Foto 57','0 (3)','Mutul hat einen ausgestopften Hasen, der nach Beendigung der Festlichkeiten vergraben wird.','',''),(235,'Rumänien58/Giurgita/Rumänien58_Giurgita_12.jpg',36,'','77','',' 61(4,8) und 62(4,9) und 65(5,2)','Giurgita','1','Wasser, Boden','','Ein Tänzer kniet auf dem Boden, stützt sich auf den Händen, beugt sich zu einem Loch mit Wasser und trinkt daraus. Der Hut liegt neben ihm auf dem Boden. Die anderen tanzen (man sieht nur die Füße).','0 (3)','\"Rituelle Männertänze…\": Rata (mak-mak). Ein Kal. muss aus einem Wasserloch mit dem Mund Wasser heraussaugen und in alle Himmelsrichtungen verspritzen, während der Vataf unanständige Bewegungen macht. ','',''),(236,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_1.jpg',37,'','','','','','','','','','','','',''),(237,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_2.jpg',37,'','','','','','','','','','','','',''),(238,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_3.jpg',37,'','','','','','','','','','','','',''),(239,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_4.jpg',37,'','','','','','','','','','','','',''),(240,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_5.jpg',37,'','','','','','','','','','','','',''),(241,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_6.jpg',37,'','','','','','','','','','','','',''),(242,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_7.jpg',37,'','','','','','','','','','','','',''),(243,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_8.jpg',37,'','','','','','','','','','','','',''),(244,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_9.jpg',37,'','','','','','','','','','','','',''),(245,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_10.jpg',37,'','','','','','','','','','','','',''),(246,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_11.jpg',37,'','','','','','','','','','','','',''),(247,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_12.jpg',37,'','','','','','','','','','','','',''),(248,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_13.jpg',37,'','','','','','','','','','','','',''),(249,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_14.jpg',37,'','','','','','','','','','','','',''),(250,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_15.jpg',37,'','','','','','','','','','','','',''),(251,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_16.jpg',37,'','','','','','','','','','','','',''),(252,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_17.jpg',37,'','','','','','','','','','','','',''),(253,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_18.jpg',37,'','','','','','','','','','','','',''),(254,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_19.jpg',37,'','','','','','','','','','','','',''),(255,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_20.jpg',37,'','','','','','','','','','','','',''),(256,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_21.jpg',37,'','','','','','','','','','','','',''),(257,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_22.jpg',37,'','','','','','','','','','','','',''),(258,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_23.jpg',37,'','','','','','','','','','','','',''),(259,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_24.jpg',37,'','','','','','','','','','','','',''),(260,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_25.jpg',37,'','','','','','','','','','','','',''),(261,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_26.jpg',37,'','','','','','','','','','','','',''),(262,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_27.jpg',37,'','','','','','','','','','','','',''),(263,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_28.jpg',37,'','','','','','','','','','','','',''),(264,'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_29.jpg',37,'','','','','','','','','','','','','');
-/*!40000 ALTER TABLE `images` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `images` (`id`, `url`, `station_id`, `l_nr`, `pic_nr`, `textul_pic_nr`, `take`, `location`, `kalusch`, `attributes`, `take_position`, `situation`, `musician`, `hoerburger_notes`, `spectators`, `comments`) VALUES
+(1, 'Kosovo59/Arvati/Kosovo59_Arvati_1.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(2, 'Kosovo59/Arvati/Kosovo59_Arvati_2.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(3, 'Kosovo59/Arvati/Kosovo59_Arvati_3.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(4, 'Kosovo59/Arvati/Kosovo59_Arvati_4.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(5, 'Kosovo59/Arvati/Kosovo59_Arvati_5.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(6, 'Kosovo59/Arvati/Kosovo59_Arvati_6.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(7, 'Kosovo59/Arvati/Kosovo59_Arvati_7.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(8, 'Kosovo59/Arvati/Kosovo59_Arvati_8.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(9, 'Kosovo59/Arvati/Kosovo59_Arvati_9.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(10, 'Kosovo59/Arvati/Kosovo59_Arvati_10.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(11, 'Kosovo59/Arvati/Kosovo59_Arvati_11.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(12, 'Kosovo59/Arvati/Kosovo59_Arvati_12.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(13, 'Kosovo59/Arvati/Kosovo59_Arvati_13.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(14, 'Kosovo59/Arvati/Kosovo59_Arvati_14.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(15, 'Kosovo59/Arvati/Kosovo59_Arvati_15.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(16, 'Kosovo59/Arvati/Kosovo59_Arvati_16.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(17, 'Kosovo59/Arvati/Kosovo59_Arvati_17.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(18, 'Kosovo59/Arvati/Kosovo59_Arvati_18.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(19, 'Kosovo59/Arvati/Kosovo59_Arvati_19.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(20, 'Kosovo59/Arvati/Kosovo59_Arvati_20.jpg', 17, '', '', '', '', 'Arvati', '', '', '', '', '', '', '', ''),
+(21, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_1.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(22, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_2.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(23, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_3.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(24, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_4.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(25, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_5.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(26, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_6.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(27, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_7.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(28, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_8.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(29, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_9.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(30, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_10.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(31, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_11.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(32, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_12.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(33, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_13.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(34, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_14.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(35, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_15.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(36, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_16.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(37, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_17.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(38, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_18.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(39, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_19.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(40, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_20.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(41, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_21.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(42, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_22.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(43, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_23.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(44, 'Kosovo59/Bidzovo/Kosovo59_Bidzovo_24.jpg', 25, '', '', '', '', 'Bidzovo', '', '', '', '', '', '', '', ''),
+(45, 'Kosovo59/Frengovo/Kosovo59_Frengovo_1.jpg', 21, '', '', '', '', 'Frangovo', '', '', '', '', '', '', '', ''),
+(46, 'Kosovo59/Frengovo/Kosovo59_Frengovo_2.jpg', 21, '', '', '', '', 'Frangovo', '', '', '', '', '', '', '', ''),
+(47, 'Kosovo59/Frengovo/Kosovo59_Frengovo_3.jpg', 21, '', '', '', '', 'Frangovo', '', '', '', '', '', '', '', ''),
+(48, 'Kosovo59/Frengovo/Kosovo59_Frengovo_4.jpg', 21, '', '', '', '', 'Frangovo', '', '', '', '', '', '', '', ''),
+(49, 'Kosovo59/Frengovo/Kosovo59_Frengovo_5.jpg', 21, '', '', '', '', 'Frangovo', '', '', '', '', '', '', '', ''),
+(50, 'Kosovo59/Frengovo/Kosovo59_Frengovo_6.jpg', 21, '', '', '', '', 'Frangovo', '', '', '', '', '', '', '', ''),
+(51, 'Kosovo59/Frengovo/Kosovo59_Frengovo_7.jpg', 21, '', '', '', '', 'Frangovo', '', '', '', '', '', '', '', ''),
+(52, 'Kosovo59/Frengovo/Kosovo59_Frengovo_8.jpg', 21, '', '', '', '', 'Frangovo', '', '', '', '', '', '', '', ''),
+(53, 'Kosovo59/Frengovo/Kosovo59_Frengovo_9.jpg', 21, '', '', '', '', 'Frangovo', '', '', '', '', '', '', '', ''),
+(54, 'Kosovo59/Frengovo/Kosovo59_Frengovo_10.jpg', 21, '', '', '', '', 'Frangovo', '', '', '', '', '', '', '', ''),
+(55, 'Kosovo59/Frengovo/Kosovo59_Frengovo_11.jpg', 21, '', '', '', '', 'Frangovo', '', '', '', '', '', '', '', ''),
+(56, 'Kosovo59/Frengovo/Kosovo59_Frengovo_12.jpg', 21, '', '', '', '', 'Frangovo', '', '', '', '', '', '', '', ''),
+(57, 'Kosovo59/Glogovac/Kosovo59_Glogovac_1.jpg', 32, '', '', '', '', 'Glogovac', '', '', '', '', '', '', '', ''),
+(58, 'Kosovo59/Glogovac/Kosovo59_Glogovac_2.jpg', 32, '', '', '', '', 'Glogovac', '', '', '', '', '', '', '', ''),
+(59, 'Kosovo59/Glogovac/Kosovo59_Glogovac_3.jpg', 32, '', '', '', '', 'Glogovac', '', '', '', '', '', '', '', ''),
+(60, 'Kosovo59/Glogovac/Kosovo59_Glogovac_4.jpg', 32, '', '', '', '', 'Glogovac', '', '', '', '', '', '', '', ''),
+(61, 'Kosovo59/Glogovac/Kosovo59_Glogovac_5.jpg', 32, '', '', '', '', 'Glogovac', '', '', '', '', '', '', '', ''),
+(62, 'Kosovo59/Glogovac/Kosovo59_Glogovac_6.jpg', 32, '', '', '', '', 'Glogovac', '', '', '', '', '', '', '', ''),
+(63, 'Kosovo59/Glogovac/Kosovo59_Glogovac_7.jpg', 32, '', '', '', '', 'Glogovac', '', '', '', '', '', '', '', ''),
+(64, 'Kosovo59/Glogovac/Kosovo59_Glogovac_8.jpg', 32, '', '', '', '', 'Glogovac', '', '', '', '', '', '', '', ''),
+(65, 'Kosovo59/Glogovac/Kosovo59_Glogovac_9.jpg', 32, '', '', '', '', 'Glogovac', '', '', '', '', '', '', '', ''),
+(66, 'Kosovo59/Glogovac/Kosovo59_Glogovac_10.jpg', 32, '', '', '', '', 'Glogovac', '', '', '', '', '', '', '', ''),
+(67, 'Kosovo59/Glogovac/Kosovo59_Glogovac_11.jpg', 32, '', '', '', '', 'Glogovac', '', '', '', '', '', '', '', ''),
+(68, 'Kosovo59/Glogovac/Kosovo59_Glogovac_12.jpg', 32, '', '', '', '', 'Glogovac', '', '', '', '', '', '', '', ''),
+(69, 'Kosovo59/Glogovac/Kosovo59_Glogovac_13.jpg', 32, '', '', '', '', 'Glogovac', '', '', '', '', '', '', '', ''),
+(70, 'Kosovo59/Rugovo/Kosovo59_Rugovo_1.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(71, 'Kosovo59/Rugovo/Kosovo59_Rugovo_2.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(72, 'Kosovo59/Rugovo/Kosovo59_Rugovo_3.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(73, 'Kosovo59/Rugovo/Kosovo59_Rugovo_4.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(74, 'Kosovo59/Rugovo/Kosovo59_Rugovo_5.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(75, 'Kosovo59/Rugovo/Kosovo59_Rugovo_6.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(76, 'Kosovo59/Rugovo/Kosovo59_Rugovo_7.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(77, 'Kosovo59/Rugovo/Kosovo59_Rugovo_8.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(78, 'Kosovo59/Rugovo/Kosovo59_Rugovo_9.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(79, 'Kosovo59/Rugovo/Kosovo59_Rugovo_10.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(80, 'Kosovo59/Rugovo/Kosovo59_Rugovo_11.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(81, 'Kosovo59/Rugovo/Kosovo59_Rugovo_12.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(82, 'Kosovo59/Rugovo/Kosovo59_Rugovo_13.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(83, 'Kosovo59/Rugovo/Kosovo59_Rugovo_14.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(84, 'Kosovo59/Rugovo/Kosovo59_Rugovo_15.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(85, 'Kosovo59/Rugovo/Kosovo59_Rugovo_16.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(86, 'Kosovo59/Rugovo/Kosovo59_Rugovo_17.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(87, 'Kosovo59/Rugovo/Kosovo59_Rugovo_18.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(88, 'Kosovo59/Rugovo/Kosovo59_Rugovo_19.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(89, 'Kosovo59/Rugovo/Kosovo59_Rugovo_20.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(90, 'Kosovo59/Rugovo/Kosovo59_Rugovo_21.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(91, 'Kosovo59/Rugovo/Kosovo59_Rugovo_22.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(92, 'Kosovo59/Rugovo/Kosovo59_Rugovo_23.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(93, 'Kosovo59/Rugovo/Kosovo59_Rugovo_24.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(94, 'Kosovo59/Rugovo/Kosovo59_Rugovo_25.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(95, 'Kosovo59/Rugovo/Kosovo59_Rugovo_26.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(96, 'Kosovo59/Rugovo/Kosovo59_Rugovo_27.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(97, 'Kosovo59/Rugovo/Kosovo59_Rugovo_28.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(98, 'Kosovo59/Rugovo/Kosovo59_Rugovo_29.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(99, 'Kosovo59/Rugovo/Kosovo59_Rugovo_30.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(100, 'Kosovo59/Rugovo/Kosovo59_Rugovo_31.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(101, 'Kosovo59/Rugovo/Kosovo59_Rugovo_32.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(102, 'Kosovo59/Rugovo/Kosovo59_Rugovo_33.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(103, 'Kosovo59/Rugovo/Kosovo59_Rugovo_34.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(104, 'Kosovo59/Rugovo/Kosovo59_Rugovo_35.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(105, 'Kosovo59/Rugovo/Kosovo59_Rugovo_36.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(106, 'Kosovo59/Rugovo/Kosovo59_Rugovo_37.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(107, 'Kosovo59/Rugovo/Kosovo59_Rugovo_38.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(108, 'Kosovo59/Rugovo/Kosovo59_Rugovo_39.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(109, 'Kosovo59/Rugovo/Kosovo59_Rugovo_40.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(110, 'Kosovo59/Rugovo/Kosovo59_Rugovo_41.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(111, 'Kosovo59/Rugovo/Kosovo59_Rugovo_42.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(112, 'Kosovo59/Rugovo/Kosovo59_Rugovo_43.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(113, 'Kosovo59/Rugovo/Kosovo59_Rugovo_44.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(114, 'Kosovo59/Rugovo/Kosovo59_Rugovo_45.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(115, 'Kosovo59/Rugovo/Kosovo59_Rugovo_46.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(116, 'Kosovo59/Rugovo/Kosovo59_Rugovo_47.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(117, 'Kosovo59/Rugovo/Kosovo59_Rugovo_48.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(118, 'Kosovo59/Rugovo/Kosovo59_Rugovo_49.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(119, 'Kosovo59/Rugovo/Kosovo59_Rugovo_50.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(120, 'Kosovo59/Rugovo/Kosovo59_Rugovo_51.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(121, 'Kosovo59/Rugovo/Kosovo59_Rugovo_52.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(122, 'Kosovo59/Rugovo/Kosovo59_Rugovo_53.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(123, 'Kosovo59/Rugovo/Kosovo59_Rugovo_54.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(124, 'Kosovo59/Rugovo/Kosovo59_Rugovo_55.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(125, 'Kosovo59/Rugovo/Kosovo59_Rugovo_56.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(126, 'Kosovo59/Rugovo/Kosovo59_Rugovo_57.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(127, 'Kosovo59/Rugovo/Kosovo59_Rugovo_58.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(128, 'Kosovo59/Rugovo/Kosovo59_Rugovo_59.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(129, 'Kosovo59/Rugovo/Kosovo59_Rugovo_60.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(130, 'Kosovo59/Rugovo/Kosovo59_Rugovo_61.jpg', 11, '', '', '', '', 'Rugovo', '', '', '', '', '', '', '', ''),
+(131, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_1.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(132, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_2.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(133, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_3.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(134, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_4.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(135, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_5.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(136, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_6.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(137, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_7.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(138, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_8.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(139, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_9.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(140, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_10.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(141, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_11.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(142, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_12.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(143, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_13.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(144, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_14.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(145, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_15.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(146, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_16.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(147, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_17.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(148, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_18.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(149, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_19.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(150, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_20.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(151, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_21.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(152, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_22.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(153, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_23.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(154, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_24.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(155, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_25.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(156, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_26.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(157, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_27.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(158, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_28.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(159, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_29.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(160, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_30.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(161, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_31.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(162, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_32.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(163, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_33.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(164, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_34.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(165, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_35.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(166, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_36.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(167, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_37.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(168, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_38.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(169, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_39.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(170, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_40.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(171, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_41.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(172, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_42.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(173, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_43.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(174, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_44.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(175, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_45.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(176, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_46.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(177, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_47.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(178, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_48.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(179, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_49.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(180, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_50.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(181, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_51.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(182, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_52.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(183, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_53.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(184, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_54.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(185, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_55.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(186, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_56.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(187, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_57.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(188, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_58.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(189, 'Kosovo59/UNKNOWN/Kosovo59_UNKNOWN_59.jpg', 4, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(190, 'Kosovo59/Vranishte/Kosovo59_Vranishte_1.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(191, 'Kosovo59/Vranishte/Kosovo59_Vranishte_2.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(192, 'Kosovo59/Vranishte/Kosovo59_Vranishte_3.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(193, 'Kosovo59/Vranishte/Kosovo59_Vranishte_4.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(194, 'Kosovo59/Vranishte/Kosovo59_Vranishte_5.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(195, 'Kosovo59/Vranishte/Kosovo59_Vranishte_6.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(196, 'Kosovo59/Vranishte/Kosovo59_Vranishte_7.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(197, 'Kosovo59/Vranishte/Kosovo59_Vranishte_8.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(198, 'Kosovo59/Vranishte/Kosovo59_Vranishte_9.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(199, 'Kosovo59/Vranishte/Kosovo59_Vranishte_10.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(200, 'Kosovo59/Vranishte/Kosovo59_Vranishte_11.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(201, 'Kosovo59/Vranishte/Kosovo59_Vranishte_12.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(202, 'Kosovo59/Vranishte/Kosovo59_Vranishte_13.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(203, 'Kosovo59/Vranishte/Kosovo59_Vranishte_14.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(204, 'Kosovo59/Vranishte/Kosovo59_Vranishte_15.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(205, 'Kosovo59/Vranishte/Kosovo59_Vranishte_16.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(206, 'Kosovo59/Vranishte/Kosovo59_Vranishte_17.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(207, 'Kosovo59/Vranishte/Kosovo59_Vranishte_18.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(208, 'Kosovo59/Vranishte/Kosovo59_Vranishte_19.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(209, 'Kosovo59/Vranishte/Kosovo59_Vranishte_20.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(210, 'Kosovo59/Vranishte/Kosovo59_Vranishte_21.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(211, 'Kosovo59/Vranishte/Kosovo59_Vranishte_22.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(212, 'Kosovo59/Vranishte/Kosovo59_Vranishte_23.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(213, 'Kosovo59/Vranishte/Kosovo59_Vranishte_24.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(214, 'Kosovo59/Vranishte/Kosovo59_Vranishte_25.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(215, 'Kosovo59/Vranishte/Kosovo59_Vranishte_26.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(216, 'Kosovo59/Vranishte/Kosovo59_Vranishte_27.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(217, 'Kosovo59/Vranishte/Kosovo59_Vranishte_28.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(218, 'Kosovo59/Vranishte/Kosovo59_Vranishte_29.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(219, 'Kosovo59/Vranishte/Kosovo59_Vranishte_30.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(220, 'Kosovo59/Vranishte/Kosovo59_Vranishte_31.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(221, 'Kosovo59/Vranishte/Kosovo59_Vranishte_32.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(222, 'Kosovo59/Vranishte/Kosovo59_Vranishte_33.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(223, 'Kosovo59/Vranishte/Kosovo59_Vranishte_34.jpg', 6, '', '', '', '', 'Vranishte', '', '', '', '', '', '', '', ''),
+(224, 'Rumänien58/Giurgita/Rumänien58_Giurgita_1.jpg', 36, '1', '40', '3', 'Wahrscheinlich prima plimbarea (s. Rituelle Männertänze in der Walachei, unveröffentlicht. Skript). Ev. Aufnahme 54 (4,1), ABER s. Bemerkungen', 'Giurgita', '6', 'Krücken', 'Halbkreis, zu zweit', 'Reigentanz - Vataf hat einen Krücken, der zweite Tänzer stützt ihn, alle tragen Fez, stützen sich auf Stöcken und mit linker Hand halten sich in Paaren', '2: Geiger und Gitarrist mit dunklen Hüten (3)', 'Hase in der Mitte des Kreises. Tanz wird immer schneller und bekommt den/einen [ekstatischen] Charakter es (?) Ekstatischen.\nVătaf  hat Krücken, mit denen er sich zuweilen stützt und so den Eindruck eines Krüppels macht. Mit der linken Hand wird er dabei ', 'keine', 'Das Datum der Aufnahme stimmt nicht mit dem Datum der Notiz überein!'),
+(225, 'Rumänien58/Giurgita/Rumänien58_Giurgita_2.jpg', 36, '', '42', '', '', 'Giurgita', '5', '', 'Boden', 'Kaluscharen sind auf dem Boden, mit dem Gesicht nach oben, Hände und Beine auf dem Boden, Becken wird vermutlich nach oben geschoben, tanzen so?', '2: Geiger und Gitarrist mit dunklen Hüten (3)', '', '', ''),
+(226, 'Rumänien58/Giurgita/Rumänien58_Giurgita_3.jpg', 36, '', '44', '', '', 'Giurgita', '2', 'Kinder, Blume bzw. Knoblauch', 'Kreis?', '2 Kaluscharen tanzen mit den Dorfbewohnern, beide haben ein Kind auf dem Arm, die Kinder tragen den Faz der Kaluscharen auf dem Kopf. Der ältere Kal. (Mutul oder Vataf?) hat eine Blume oÄ hinter einem Ohr', '1 Geiger mit  weissem Hut (3)', '', '', ''),
+(227, 'Rumänien58/Giurgita/Rumänien58_Giurgita_4.jpg', 36, '', '46', '', '63 (4,10)', 'Giurgita', '7', 'Stöcke', 'Bastonade', 'Bastonade! Auf einem Platz, 5 Kaluscharen tragen einen Tänzer, sie haben seine Füße zwischen die Stöcke genommen, einer schlägt mit dem Stock ', '0 (3)', '', 'ein Mann mit einer Fotokamera um den Hals, notiert  ', ''),
+(228, 'Rumänien58/Giurgita/Rumänien58_Giurgita_5.jpg', 36, '', '49', '', '', 'Giurgita', '5', 'Stöcke', 'frei', 'Tanz mit den Stöcken, im Hintergrund Werbung von Telefoane am Strommast. ', '1 Geiger mit weissem Hut (3)', '', 'Eine Frau rechts im Bild zeigt einer anderen Frau etwas, sagt etwas, in der zeigenden Hand hält sich ein gefaltetes Heft/Notizbuch', ''),
+(229, 'Rumänien58/Giurgita/Rumänien58_Giurgita_6.jpg', 36, '', '52', '', '', 'Giurgita', '3-4 (einer als Frau verkleidet)', 'Frau', 'frei', 'Ein Tänzer tanzt mit einer Frau (Mann verkleidet als Frau). Ein zweiter Tänzer hockt neben den Tänzenden, hält etwas kleines und rundes in der Hand', '1 Geiger mit weissem Hut (3)', '', 'zwei Bildnegative haben sich hier überlappt, was man rechts im Bild erkennen kann: der Zuschauer, der links im Bild in die Kamera schaut, ist in ähnlicher Stellung rechts zu sehen', ''),
+(230, 'Rumänien58/Giurgita/Rumänien58_Giurgita_7.jpg', 36, '', '70', '', '', 'Giurgita', '6', 'Stöcke, Stein?', 'Halbkreis', 'Die Kaluscharen halten die Stöcke mit beiden Händen waagerecht hinter sich, offenbar springen sie darüber. Halbkreis. In der Mitte liegt etwas (Stein?)', '0 (3)', '', '', ''),
+(231, 'Rumänien58/Giurgita/Rumänien58_Giurgita_8.jpg', 36, '', '71', '', '', 'Giurgita', '5', 'Stöcke, Hase, Becher', 'Kreis, frei', 'Die Kaluscharen springen mit den senkrecht hochgehaltenen Stöcken im Kreis oder Halbkreis, der eine hält den Hasen, beugt sich über einem Becher, der auf einem Hocker steht, und spuckt (?) hinein. ', '0 (3)', 'Mutul hat einen ausgestopften Hasen, der nach Beendigung der Festlichkeiten vergraben wird.Vătaf  wird ... und hat den Hasen unter dem Arm (dies hat keine besondere Bedeutung).', '', ''),
+(232, 'Rumänien58/Giurgita/Rumänien58_Giurgita_9.jpg', 36, '', '72', '', '', 'Giurgita', '2', 'Hase, Kinder', 'Kreis?', '2 Kaluscharen mit Hasen und jeweils einem Kind auf dem Arm. Im Vordergrund der ausgestopfte Hase.', '0 (3)', 'Mutul hat einen ausgestopften Hasen, der nach Beendigung der Festlichkeiten vergraben wird.', '', ''),
+(233, 'Rumänien58/Giurgita/Rumänien58_Giurgita_10.jpg', 36, '', '74', '', '63 (4,10)', 'Giurgita', '6', 'Stöcke', 'Bastonade', 'Dieselbe Situation wie auf dem Foto 46, aber von vorne fotografiert (wahrscheinlich von dem Mann, der auf dem Foto 46 mit einer Kamera um den Hals in einem Notizblock schreibt). Die Beine eines Tänzers sind zwischen zwei Stöcke geklemmt, gehoben und von d', '0 (3)', '', '', ''),
+(234, 'Rumänien58/Giurgita/Rumänien58_Giurgita_11.jpg', 36, '', '75', '', '', 'Giurgita', '5 oder 6', '3 Männer, Stöcke, Hase', 'Kreis', 'Die Kaluscharen im Kreis mit 3 nicht-Kaluscharen, halten sich an Händen oder Stöcken. Der Mutul oder Vataf hebt den Hasen in die Luft. Vgl. Foto 57', '0 (3)', 'Mutul hat einen ausgestopften Hasen, der nach Beendigung der Festlichkeiten vergraben wird.', '', ''),
+(235, 'Rumänien58/Giurgita/Rumänien58_Giurgita_12.jpg', 36, '', '77', '', ' 61(4,8) und 62(4,9) und 65(5,2)', 'Giurgita', '1', 'Wasser, Boden', '', 'Ein Tänzer kniet auf dem Boden, stützt sich auf den Händen, beugt sich zu einem Loch mit Wasser und trinkt daraus. Der Hut liegt neben ihm auf dem Boden. Die anderen tanzen (man sieht nur die Füße).', '0 (3)', '"Rituelle Männertänze…": Rata (mak-mak). Ein Kal. muss aus einem Wasserloch mit dem Mund Wasser heraussaugen und in alle Himmelsrichtungen verspritzen, während der Vataf unanständige Bewegungen macht. ', '', ''),
+(236, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_1.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(237, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_2.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(238, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_3.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(239, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_4.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(240, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_5.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(241, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_6.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(242, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_7.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(243, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_8.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(244, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_9.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(245, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_10.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(246, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_11.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(247, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_12.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(248, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_13.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(249, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_14.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(250, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_15.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(251, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_16.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(252, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_17.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(253, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_18.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(254, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_19.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(255, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_20.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(256, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_21.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(257, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_22.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(258, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_23.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(259, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_24.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(260, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_25.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(261, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_26.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(262, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_27.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(263, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_28.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', ''),
+(264, 'Rumänien58/UNKNOWN/Rumänien58_UNKNOWN_29.jpg', 37, '', '', '', '', 'UNKNOWN', '', '', '', '', '', '', '', '');
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Indizes der exportierten Tabellen
+--
+
+--
+-- Indizes für die Tabelle `images`
+--
+ALTER TABLE `images`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_station_id` (`station_id`);
+ALTER TABLE `images` ADD FULLTEXT KEY `Aufnahme` (`take`,`location`,`attributes`,`take_position`,`situation`,`musician`,`hoerburger_notes`,`spectators`,`comments`);
+ALTER TABLE `images` ADD FULLTEXT KEY `Aufnahme_2` (`take`,`location`,`attributes`,`take_position`,`situation`,`musician`,`hoerburger_notes`,`spectators`,`comments`);
+
+--
+-- Constraints der exportierten Tabellen
+--
+
+--
+-- Constraints der Tabelle `images`
+--
+ALTER TABLE `images`
+  ADD CONSTRAINT `fk_station_id` FOREIGN KEY (`station_id`) REFERENCES `stations` (`id`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2016-03-16 17:16:03

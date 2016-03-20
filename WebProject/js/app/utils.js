@@ -81,8 +81,11 @@ define(['leaflet'], function(leaflet) {
         },
 
         formatDate: function(date) {
-            var dateParts = date.split("-");
-            return dateParts[2] + "." + dateParts[1] + "." + dateParts[0];
+            if (date != null) {
+                var dateParts = date.split("-");
+                return dateParts[2] + "." + dateParts[1] + "." + dateParts[0];
+            }
+            return '';
         },
         translateColumnTitles: function(columnTitle) {
             var kvArray = [
@@ -100,7 +103,6 @@ define(['leaflet'], function(leaflet) {
                 ["interpret_3", "Interpret 3"],
                 ["recorded_by", "Aufgenommen von"],
                 ["take", "Aufnahme"],
-                ["location", "Ort"],
                 ["kalusch", "Kalusch"],
                 ["attributes", "Attribute"],
                 ["take_position", "Aufnahmeposition"],
@@ -110,7 +112,9 @@ define(['leaflet'], function(leaflet) {
                 ["spectators", "Zuschauer"],
                 ["comments", "Bemerkung"],
                 ["region", "Region"],
-                ["collection", "Kollektion"]
+                ["collection", "Kollektion"],
+                ["latitude", "Breitengrad"],
+                ["longitude", "Längengrad"]
             ];
             var translationMap = new Map(kvArray);
             return translationMap.get(columnTitle);
