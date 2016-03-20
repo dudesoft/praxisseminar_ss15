@@ -33,25 +33,28 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <p><strong>Datum:</strong></p>
                     <div class="form-group">
-                        <p class="control-label col-sm-2" for="min_date">min:</p>
-                        <div class="col-sm-10">
-                            <input type="date" class="form-control" id="min_date_input">
+                        <p><strong>Datum:</strong></p>
+                        <div class="form-group">
+                            <p class="control-label col-sm-2" for="min_date">min:</p>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="min_date_input">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <p class="control-label col-sm-2" for="max_date">max:</p>
-                        <div class="col-sm-10">
-                            <input type="date" class="form-control" id="max_date_input">
+                        <div class="form-group">
+                            <p class="control-label col-sm-2" for="max_date">max:</p>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="max_date_input">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <button id="enter_search" type="button">
-                    <i class="glyphicon glyphicon-ok"></i>
-                </button>
-            </form>
         </div>
+        <button id="enter_search" type="button">
+            <i class="glyphicon glyphicon-ok"></i>
+        </button>
+        </form>
+    </div>
     </div>
     <button id="search-button" class="btn btn-default" type="button">
         <i class="glyphicon glyphicon-search"></i>

@@ -83,6 +83,37 @@ define(['leaflet'], function(leaflet) {
         formatDate: function(date) {
             var dateParts = date.split("-");
             return dateParts[2] + "." + dateParts[1] + "." + dateParts[0];
+        },
+        translateColumnTitles: function(columnTitle) {
+            var kvArray = [
+                ["title", "Titel"],
+                ["genre", "Genre"],
+                ["origin", "Ursprung"],
+                ["cast", "Besetzung"],
+                ["language", "Sprache"],
+                ["recording_situation", "Aufnahmesituation"],
+                ["function", "Funktion"],
+                ["content", "Inhalt"],
+                ["interprets", "Interpreten"],
+                ["interpret_1", "Interpret 1"],
+                ["interpret_2", "Interpret 2"],
+                ["interpret_3", "Interpret 3"],
+                ["recorded_by", "Aufgenommen von"],
+                ["take", "Aufnahme"],
+                ["location", "Ort"],
+                ["kalusch", "Kalusch"],
+                ["attributes", "Attribute"],
+                ["take_position", "Aufnahmeposition"],
+                ["situation", "Situation"],
+                ["musician", "Musiker"],
+                ["hoerburger_notes", "Hoerburger Notizen"],
+                ["spectators", "Zuschauer"],
+                ["comments", "Bemerkung"],
+                ["region", "Region"],
+                ["collection", "Kollektion"]
+            ];
+            var translationMap = new Map(kvArray);
+            return translationMap.get(columnTitle);
         }
     };
     return Utils;

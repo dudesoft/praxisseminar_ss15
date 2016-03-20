@@ -77,6 +77,11 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
                 }
             }
         });
+
+        $(document).on('click', '#main_content', function(e) {
+            $("#min_date_input").datepicker("hide");
+            $("#max_date_input").datepicker("hide");
+        });
     }
 
     function setupJourneyDropdown(data) {

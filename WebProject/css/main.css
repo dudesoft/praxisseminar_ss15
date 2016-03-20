@@ -716,8 +716,14 @@ video {
   cursor: -webkit-zoom-in;
   cursor: zoom-in; }
 
-#player_content video audio {
-  width: 100%; }
+#player_content {
+  position: relative; }
+
+#player_content video, #player_content audio {
+  width: 100%;
+  position: absolute;
+  bottom: 2px;
+  left: 0px; }
 
 #tabs_container > ul > li > img {
   height: auto;
