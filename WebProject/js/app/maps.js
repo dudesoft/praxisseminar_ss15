@@ -225,6 +225,7 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
             map.doubleClickZoom.disable();
             map.scrollWheelZoom.disable();
             map.keyboard.disable();
+            $(".leaflet-control-zoom").stop(true, false).fadeOut("fast");
         },
 
         enableMapControls: function() {
@@ -233,6 +234,7 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
             map.doubleClickZoom.enable();
             map.scrollWheelZoom.enable();
             map.keyboard.enable();
+            $(".leaflet-control-zoom").stop(true, false).fadeIn("fast");
         }
     };
     return Maps;
