@@ -16,9 +16,8 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             this.setupTabs();
 
             connector.getLocationDetails(urlVars.station_id, function(data) {
-                $("#location").html(utils.buildLocationName(data));
+                $("#location").html(utils.buildLocationName(data)  + " - " + data.travelname);
                 $("#time").html(utils.formatDate(data.date));
-                $("#journey").html("Reise: " + data.travelname);
                 $("#loader_container").fadeOut("fast");
                 $("#detail_content").fadeIn("slow", function() {
                     map.scrollToMapPosition(data.latitude, data.longitude);

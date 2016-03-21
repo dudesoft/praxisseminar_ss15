@@ -119,6 +119,16 @@ define(['leaflet'], function(leaflet) {
             ];
             var translationMap = new Map(kvArray);
             return translationMap.get(columnTitle);
+        },
+        translate: function(input) {
+            var kvArray = [
+                ["stations", "Stationen"],
+                ["songs", "Audio"],
+                ["images", "Bilder"],
+                ["videos", "Videos"]
+            ];
+            var translationMap = new Map(kvArray);
+            return translationMap.get(input);
         }
     };
     return Utils;

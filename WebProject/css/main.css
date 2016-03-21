@@ -214,6 +214,7 @@ header {
   background-color: #808080;
   border-radius: 10px;
   margin-top: 5px;
+  margin-bottom: 10px;
   float: right;
   padding: 8px 10px 8px 10px; }
 
@@ -480,7 +481,8 @@ textarea {
 
 #time {
   font-style: italic;
-  font-size: 16px; }
+  font-size: 16px;
+  margin-top: 10px; }
 
 ::-webkit-scrollbar {
   width: 1em; }
@@ -843,6 +845,10 @@ video {
   -moz-box-sizing: content-box; }
 
 /* Content */
+#title {
+  font-size: 20px;
+  font-family: 'Nunito'; }
+
 .result_element {
   text-align: left;
   display: inline-block;

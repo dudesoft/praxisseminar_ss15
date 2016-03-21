@@ -15,16 +15,16 @@ define(['jquery', './db_connector', './utils', './search_bar'], function($, dbCo
     var journeyString = "";
     var resultTypeString = "";
     if (urlVars.minDate) {
-        minDateString = ", min. Datum: " + urlVars.minDate;
+        minDateString = ", min. Datum: " + utils.formatDate(urlVars.minDate);
     }
     if (urlVars.maxDate) {
-        maxDateString = ", max. Datum: " + urlVars.maxDate;
+        maxDateString = ", max. Datum: " + utils.formatDate(urlVars.maxDate);
     }
     if (urlVars.journey) {
         journeyString = ", in Reise: " + urlVars.journey;
     }
     if (urlVars.resultType) {
-        resultTypeString = ", suche nach: " + urlVars.resultType;
+        resultTypeString = ", suche nach: " + utils.translate(urlVars.resultType);
     }
 
     dbConnector.getSearchResult(urlVars.search, urlVars.minDate, urlVars.maxDate, urlVars.journey, urlVars.resultType, setupResultList);
