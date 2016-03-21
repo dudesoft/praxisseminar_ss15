@@ -10,7 +10,7 @@ if (isset($_GET['station_id'])) {
 
 $db->query("SET group_concat_max_len = 4096");
 
-$query = $db -> prepare("SELECT stations.*, GROUP_CONCAT(DISTINCT images.id) AS images, GROUP_CONCAT(DISTINCT songs.id) AS songs, GROUP_CONCAT(DISTINCT videos.id) AS videos, travels.name as travel FROM stations LEFT JOIN images ON images.station_id = stations.id LEFT JOIN songs ON songs.station_id = stations.id LEFT JOIN videos ON videos.station_id = stations.id INNER JOIN travels on stations.travel_id WHERE stations.id = '$station_id'");
+$query = $db -> prepare("SELECT stations.*, GROUP_CONCAT(DISTINCT images.id) AS images, GROUP_CONCAT(DISTINCT songs.id) AS songs, GROUP_CONCAT(DISTINCT videos.id) AS videos, travels.name as travel FROM stations LEFT JOIN images ON images.station_id = stations.id LEFT JOIN songs ON songs.station_id = stations.id LEFT JOIN videos ON videos.station_id = stations.id INNER JOIN travels on stations.travel_id = travels.id WHERE stations.id = '$station_id'");
 $query -> execute();
 $station = $query->fetch();
 
