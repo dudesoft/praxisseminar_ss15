@@ -20,7 +20,7 @@ $query -> execute();
 $images = $query->fetchAll(PDO::FETCH_ASSOC);
 
 $song_ids = $station['songs'];
-$query = $db -> prepare("SELECT url, id FROM songs WHERE id IN (" . $song_ids . ") AND url is not null");
+$query = $db -> prepare("SELECT url, id, title FROM songs WHERE id IN (" . $song_ids . ") AND url is not null");
 $query -> execute();
 $songs = $query->fetchAll(PDO::FETCH_ASSOC);
 

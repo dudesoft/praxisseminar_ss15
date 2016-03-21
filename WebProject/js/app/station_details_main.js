@@ -66,6 +66,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     $galleryElement.click(function(event) {
                         StationDetails.changeActiveElement($(event.target));
                     });
+                    $galleryElement.attr('title', data.songs[i].title);
                     $('#audio_gallery_content').append($galleryElement);
                 }
 
