@@ -16,7 +16,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             this.setupTabs();
 
             connector.getLocationDetails(urlVars.station_id, function(data) {
-                $("#location").html(utils.buildLocationName(data)  + " - " + data.travelname);
+                $("#location").html(utils.buildLocationName(data) + " - " + data.travelname);
                 $("#time").html(utils.formatDate(data.date));
                 $("#loader_container").fadeOut("fast");
                 $("#detail_content").fadeIn("slow", function() {
@@ -158,10 +158,10 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             var index = $items.index($clickedTab);
             $('.tab_content').hide().eq(index).show();
 
-            if($clickedTab.attr('id') == "map_tab") {
+            if ($clickedTab.attr('id') == "map_tab") {
                 connector.getMetaInformation(urlVars.station_id, "stations", this.updateTextField);
             }
-            if(($clickedTab.attr('id') == "pic_tab" || $clickedTab.attr('id') == "player_tab") && $activeElement != null) {
+            if (($clickedTab.attr('id') == "pic_tab" || $clickedTab.attr('id') == "player_tab") && $activeElement != null) {
                 connector.getMetaInformation($activeElement.data(idKey), $activeElement.data(tableNameKey), this.updateTextField);
             }
         },
@@ -203,18 +203,20 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
         },
         updateTextField: function(data) {
             $list = $("#attribute_list");
-            $list.empty();
-            var dataSet = false;
-            Object.keys(data).forEach(function(key, index) {
-                if (data[key] != "" && utils.translateColumnTitles(key) != null && data[key] != null) {
-                    console.log(data[key]);
-                    $list.append($("<tr><td class='first_column'>" + utils.translateColumnTitles(key) + "</td><td class='second_column'> " + data[key] + "</td></tr>"));
-                    dataSet = true;
+            $list.fadeOut("fast", function() {
+                $list.empty();
+                var dataSet = false;
+                Object.keys(data).forEach(function(key, index) {
+                    if (data[key] != "" && utils.translateColumnTitles(key) != null && data[key] != null) {
+                        $list.append($("<tr><td class='first_column'>" + utils.translateColumnTitles(key) + "</td><td class='second_column'> " + data[key] + "</td></tr>"));
+                        dataSet = true;
+                    }
+                });
+                if (!dataSet) {
+                    $list.html("Es sind keine Daten für dieses Element vorhanden");
                 }
+                $list.fadeIn("fast");
             });
-            if(!dataSet) {
-                $list.html("Es sind keine Daten für dieses Element vorhanden");
-            }
         },
         setFocusOnElement: function(id, dataType) {
             var $element;
