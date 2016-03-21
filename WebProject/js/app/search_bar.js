@@ -14,6 +14,10 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
         }
     });
 
+    $('#advanced-search-button').on('click', function (event) {
+        $(this).parent().toggleClass('open');
+    });
+
     $(document).on('click', '.ui-datepicker-next, .ui-datepicker-prev, .ui-datepicker', function(e) {
         e.stopPropagation();
     });
