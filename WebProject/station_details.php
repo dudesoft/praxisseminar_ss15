@@ -25,8 +25,8 @@
                     <div class="centered" id="location"></div>
                     <div class="centered" id="journey"></div>
                     <div class="centered" id="time"></div>                    
-                    <ul id="attribute_list"class="attribute">
-                    </ul>
+                    <table id="attribute_list"class="attribute_table">
+                    </table>
                 </div>
                 <div id="tabs_container" class="trans">   
                     <ul>

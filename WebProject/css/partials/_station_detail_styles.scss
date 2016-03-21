@@ -85,10 +85,29 @@ h1 {
     overflow-x: hidden;
 }
 
-.attribute {
-    text-align: left;
+.attribute_table {
     margin-left: 5%;
-    margin-right: 2%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 90%;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.first_column {
+    width: 30%;
+    font-weight: 700;
+}
+
+.second_column {
+    width: 70%;
+}
+
+.attribute_table td,
+th {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
 }
 
 #galleries {

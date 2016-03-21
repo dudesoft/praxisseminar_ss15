@@ -209,7 +209,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             Object.keys(data).forEach(function(key, index) {
                 if (data[key] != "" && utils.translateColumnTitles(key) != null && data[key] != null) {
                     console.log(data[key]);
-                    $list.append($("<li>" + utils.translateColumnTitles(key) + ": " + data[key] + "</li>"));
+                    $list.append($("<tr><td class='first_column'>" + utils.translateColumnTitles(key) + "</td><td class='second_column'> " + data[key] + "</td></tr>"));
                     dataSet = true;
                 }
             });
