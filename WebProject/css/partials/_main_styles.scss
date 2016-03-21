@@ -95,6 +95,7 @@ body {
     width: 256px;
     padding-left: 18px;
     padding-right: 18px;
+    position: absolute;
 }
 
 #advanced-search-button {
@@ -158,10 +159,11 @@ header {
 
 #enter_search {
     color: white;
-    background-color: green;
+    background-color: $gray;
     border-radius: 10px;
     margin-top: 5px;
     float: right;
+    padding: 8px 10px 8px 10px;
 }
 
 

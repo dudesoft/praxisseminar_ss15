@@ -49,12 +49,11 @@
                         </div>
                     </div>
                 </div>
+                <button id="enter_search" type="button">
+                    <i class="glyphicon glyphicon-search"></i>  Suchen
+                </button>
+            </form>
         </div>
-        <button id="enter_search" type="button">
-            <i class="glyphicon glyphicon-ok"></i>
-        </button>
-        </form>
-    </div>
     </div>
     <button id="search-button" class="btn btn-default" type="button">
         <i class="glyphicon glyphicon-search"></i>

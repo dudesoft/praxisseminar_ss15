@@ -198,7 +198,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             }
             if (tableName == "videos") {
                 $("#player_content").empty();
-                $("#$player_content").append(factory.getVideoPlayer(url));
+                $("#player_content").append(factory.getVideoPlayer(url));
                 this.activateTab($('#player_tab'));
             }
         },
@@ -207,7 +207,8 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             $list.empty();
             var dataSet = false;
             Object.keys(data).forEach(function(key, index) {
-                if (data[key] != "" && utils.translateColumnTitles(key) != null) {
+                if (data[key] != "" && utils.translateColumnTitles(key) != null && data[key] != null) {
+                    console.log(data[key]);
                     $list.append($("<li>" + utils.translateColumnTitles(key) + ": " + data[key] + "</li>"));
                     dataSet = true;
                 }
