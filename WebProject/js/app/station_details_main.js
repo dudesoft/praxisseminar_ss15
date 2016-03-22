@@ -16,9 +16,8 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             this.setupTabs();
 
             connector.getLocationDetails(urlVars.station_id, function(data) {
-                $("#location").html(utils.buildLocationName(data));
+                $("#location").html(utils.buildLocationName(data) + " - " + data.travelname);
                 $("#time").html(utils.formatDate(data.date));
-                $("#journey").html("Reise: " + data.travelname);
                 $("#loader_container").fadeOut("fast");
                 $("#detail_content").fadeIn("slow", function() {
                     map.scrollToMapPosition(data.latitude, data.longitude);
@@ -67,6 +66,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     $galleryElement.click(function(event) {
                         StationDetails.changeActiveElement($(event.target));
                     });
+                    $galleryElement.attr('title', data.songs[i].title);
                     $('#audio_gallery_content').append($galleryElement);
                 }
 
@@ -159,10 +159,10 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             var index = $items.index($clickedTab);
             $('.tab_content').hide().eq(index).show();
 
-            if($clickedTab.attr('id') == "map_tab") {
+            if ($clickedTab.attr('id') == "map_tab") {
                 connector.getMetaInformation(urlVars.station_id, "stations", this.updateTextField);
             }
-            if($clickedTab.attr('id') == "pic_tab" || $clickedTab.attr('id') == "player_tab") {
+            if (($clickedTab.attr('id') == "pic_tab" || $clickedTab.attr('id') == "player_tab") && $activeElement != null) {
                 connector.getMetaInformation($activeElement.data(idKey), $activeElement.data(tableNameKey), this.updateTextField);
             }
         },
@@ -198,23 +198,26 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             }
             if (tableName == "videos") {
                 $("#player_content").empty();
-                $("#$player_content").append(factory.getVideoPlayer(url));
+                $("#player_content").append(factory.getVideoPlayer(url));
                 this.activateTab($('#player_tab'));
             }
         },
         updateTextField: function(data) {
             $list = $("#attribute_list");
-            $list.empty();
-            var dataSet = false;
-            Object.keys(data).forEach(function(key, index) {
-                if (data[key] != "" && utils.translateColumnTitles(key) != null) {
-                    $list.append($("<li>" + utils.translateColumnTitles(key) + ": " + data[key] + "</li>"));
-                    dataSet = true;
+            $list.fadeOut("fast", function() {
+                $list.empty();
+                var dataSet = false;
+                Object.keys(data).forEach(function(key, index) {
+                    if (data[key] != "" && utils.translateColumnTitles(key) != null && data[key] != null) {
+                        $list.append($("<tr><td class='first_column'>" + utils.translateColumnTitles(key) + "</td><td class='second_column'> " + data[key] + "</td></tr>"));
+                        dataSet = true;
+                    }
+                });
+                if (!dataSet) {
+                    $list.html("Es sind keine Daten für dieses Element vorhanden");
                 }
+                $list.fadeIn("fast");
             });
-            if(!dataSet) {
-                $list.html("Es sind keine Daten für dieses Element vorhanden");
-            }
         },
         setFocusOnElement: function(id, dataType) {
             var $element;

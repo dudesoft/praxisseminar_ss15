@@ -71,7 +71,7 @@ if ($searchString != '') {
       INNER JOIN stations ON images.station_id = stations.id
       INNER JOIN travels ON stations.travel_id = travels.id
     )
-    as sitewide WHERE relevance > 0 AND (journey = '$journey' or '$journey' = '') AND (table_name = '$resultType' or '$resultType' = '') AND date BETWEEN '$dateMin' AND '$dateMax' ORDER BY relevance DESC");
+    as sitewide WHERE relevance > 0 AND (journey = '$journey' or '$journey' = '') AND (table_name = '$resultType' or '$resultType' = '') AND (date BETWEEN '$dateMin' AND '$dateMax' or ('$dateMin' = '' AND '$dateMax' = '' )) ORDER BY relevance DESC");
   $query -> execute();
 } else {
   $query = $conn -> prepare("SELECT * from (

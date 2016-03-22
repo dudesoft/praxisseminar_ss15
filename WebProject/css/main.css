@@ -214,6 +214,7 @@ header {
   background-color: #808080;
   border-radius: 10px;
   margin-top: 5px;
+  margin-bottom: 10px;
   float: right;
   padding: 8px 10px 8px 10px; }
 
@@ -289,6 +290,9 @@ a:hover {
   top: 100px;
   bottom: 60px;
   background: rgba(255, 255, 255, 0.3); }
+
+#list_hover {
+  cursor: default; }
 
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
 html {
@@ -480,7 +484,8 @@ textarea {
 
 #time {
   font-style: italic;
-  font-size: 16px; }
+  font-size: 16px;
+  margin-top: 10px; }
 
 ::-webkit-scrollbar {
   width: 1em; }
@@ -504,10 +509,26 @@ h1 {
   overflow-y: scroll;
   overflow-x: hidden; }
 
-.attribute {
-  text-align: left;
+.attribute_table {
   margin-left: 5%;
-  margin-right: 2%; }
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 90%;
+  border: 1px solid black;
+  border-collapse: collapse; }
+
+.first_column {
+  width: 30%;
+  font-weight: 700; }
+
+.second_column {
+  width: 70%; }
+
+.attribute_table td,
+th {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px; }
 
 #galleries {
   float: left;
@@ -576,7 +597,7 @@ button:disabled {
   transform: translateY(-30%); }
 
 .active_element {
-  box-shadow: 0px 0px 0px 2px orange inset; }
+  box-shadow: 0px 0px 0px 4px #2ce1ff inset; }
 
 .slidee li:hover {
   cursor: pointer;
@@ -713,13 +734,22 @@ video {
   cursor: zoom-in; }
 
 #player_content {
-  position: relative; }
+  position: relative;
+  background-image: url(../img/video-icon2.png);
+  background-size: auto 60%;
+  background-repeat: no-repeat;
+  background-position: center; }
 
-#player_content video, #player_content audio {
-  width: 100%;
+#player_content video,
+#player_content audio {
+  width: 95%;
   position: absolute;
   bottom: 2px;
-  left: 0px; }
+  left: 50%;
+  transform: translateX(-50%); }
+
+#player_content video {
+  height: 95%; }
 
 #tabs_container > ul > li > img {
   height: auto;
@@ -740,7 +770,8 @@ video {
   margin-bottom: 10px;
   margin-right: 5px;
   width: 25px;
-  height: 25px; }
+  height: 25px;
+  vertical-align: middle; }
 
 #stations {
   font-size: 14px;
@@ -759,12 +790,17 @@ video {
   margin-bottom: 10px;
   margin-right: 5px;
   width: 25px;
-  height: 25px; }
+  height: 25px;
+  vertical-align: middle; }
 
 .video_anchor {
   margin-bottom: 10px;
   width: 25px;
-  height: 25px; }
+  height: 25px;
+  vertical-align: middle; }
+
+.no_botton_margin {
+  margin-bottom: 0px; }
 
 #select_station {
   font-size: 20px;
@@ -812,6 +848,10 @@ video {
   -moz-box-sizing: content-box; }
 
 /* Content */
+#title {
+  font-size: 20px;
+  font-family: 'Nunito'; }
+
 .result_element {
   text-align: left;
   display: inline-block;

@@ -81,7 +81,7 @@ define(['leaflet'], function(leaflet) {
         },
 
         formatDate: function(date) {
-            if (date == "" || date == null) {
+            if (date == "" || date == null || date == "0000-00-00" || date == (new Date())) {
                 return "Datum unbekannt";
             }
             var dateParts = date.split("-");
@@ -119,6 +119,16 @@ define(['leaflet'], function(leaflet) {
             ];
             var translationMap = new Map(kvArray);
             return translationMap.get(columnTitle);
+        },
+        translate: function(input) {
+            var kvArray = [
+                ["stations", "Stationen"],
+                ["songs", "Audio"],
+                ["images", "Bilder"],
+                ["videos", "Videos"]
+            ];
+            var translationMap = new Map(kvArray);
+            return translationMap.get(input);
         }
     };
     return Utils;

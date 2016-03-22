@@ -23,6 +23,7 @@
                 <ul id="resut_list" class="search_results" style="list-style-type:none">
 
                 </ul>
+                <div id="search_in_progress" class="overlay_centered">Suchergebnisse werden abgerufen...</div>
             </div>
         </div>
 
