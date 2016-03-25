@@ -514,8 +514,11 @@ h1 {
   margin-top: 20px;
   margin-bottom: 20px;
   width: 90%;
-  border: 1px solid black;
-  border-collapse: collapse; }
+  border-collapse: collapse;
+  border-style: hidden; }
+
+.attribute_table td, .attribute_table th {
+  border: 1px solid black; }
 
 .first_column {
   width: 33%;
