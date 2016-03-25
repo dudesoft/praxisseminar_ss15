@@ -142,6 +142,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     });
                 });
 
+                StationDetails.setSubActiveElements();
                 $activeTab = $('#map_tab');
                 if (urlVars.resultType && urlVars.objectId) {
                     StationDetails.setFocusOnElement(urlVars.objectId, urlVars.resultType)
@@ -165,9 +166,6 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 $('#forward_vid').click(function(event) {
                     StationDetails.setFocusOnPrevNextElement("videos", 1);
                 });
-
-
-                StationDetails.setSubActiveElements();
             });
         },
         setupTabs: function() {
@@ -181,6 +179,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
         },
         activateTab: function($tab, clickedTab) {
             if (!$activeTab.is($tab)) {
+                console.log("im here");
                 $activeTab = $tab;
                 var $items = $('.tabs');
                 $items.removeClass('selected');
@@ -267,6 +266,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             if (tableName == "songs") {
                 $("#player_content").empty();
                 $("#player_content").append(factory.getAudioPlayer(url));
+                console.log("activate player tab");
                 this.activateTab($('#player_tab'), false);
             }
             if (tableName == "videos") {
@@ -306,7 +306,6 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                         }
                     }
                 }
-                $activeTab = $('#pic_tab');
             }
             if (dataType == "songs") {
                 galleryItems = $('#audio_gallery_content').children();
@@ -318,7 +317,6 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                         }
                     }
                 }
-                $activeTab = $('#player_tab');
             }
             if (dataType == "videos") {
                 galleryItems = $('#vid_gallery_content').children();
@@ -330,7 +328,6 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                         }
                     }
                 }
-                $activeTab = $('#player_tab');
             }
             this.changeActiveElement($element);
         },
