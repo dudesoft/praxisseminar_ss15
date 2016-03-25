@@ -24,7 +24,7 @@ define(['jquery', './db_connector', './utils', './search_bar'], function($, dbCo
         journeyString = ", in Reise: " + urlVars.journey;
     }
     if (urlVars.resultType) {
-        resultTypeString = ", suche nach: " + utils.translate(urlVars.resultType);
+        resultTypeString = ", Suche nach: " + utils.translate(urlVars.resultType);
     }
 
     dbConnector.getSearchResult(urlVars.search, urlVars.minDate, urlVars.maxDate, urlVars.journey, urlVars.resultType, setupResultList);
