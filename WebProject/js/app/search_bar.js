@@ -14,7 +14,7 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
         }
     });
 
-    $('#advanced-search-button').on('click', function (event) {
+    $('#advanced-search-button').on('click', function(event) {
         $(this).parent().toggleClass('open');
     });
 
@@ -51,7 +51,21 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
         });
 
         $("#min_date_input").datepicker({
-            dateFormat: "yy-mm-dd",
+            prevText: 'Zurück',
+            nextText: 'Vor',
+            todayText: 'heute',
+            closeText: 'schließen',
+            monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+                'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
+            ],
+            monthNamesShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun',
+                'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'
+            ],
+            dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+            dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+            dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+            showMonthAfterYear: false,
+            dateFormat: 'dd.mm.yy',
             changeMonth: true,
             changeYear: true,
             minDate: new Date(data[0]),
@@ -67,7 +81,21 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
         });
 
         $("#max_date_input").datepicker({
-            dateFormat: "yy-mm-dd",
+            prevText: 'Zurück',
+            nextText: 'Vor',
+            todayText: 'heute',
+            closeText: 'schließen',
+            monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+                'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
+            ],
+            monthNamesShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun',
+                'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'
+            ],
+            dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+            dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+            dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+            showMonthAfterYear: false,
+            dateFormat: 'dd.mm.yy',
             changeMonth: true,
             changeYear: true,
             minDate: new Date(data[0]),
