@@ -599,6 +599,9 @@ button:disabled {
 .active_element {
   box-shadow: 0px 0px 0px 4px #2ce1ff inset; }
 
+.sub_active_element {
+  box-shadow: 0px 0px 0px 4px orange inset; }
+
 .slidee li:hover {
   cursor: pointer;
   opacity: 0.3;
