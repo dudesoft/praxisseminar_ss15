@@ -107,14 +107,21 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
 
                 if (data.images.length != 0) {
                     $("#image_not_available").remove();
+                    $("#img_tab_not_available").remove();
+                } else {
+                    $("#pic_tab").unbind();
                 }
 
                 if (data.songs.length != 0) {
                     $("#audio_not_available").remove();
+                    $("#player_tab_not_available").remove();                    
                 }
-
                 if (data.videos.length != 0) {
                     $("#video_not_available").remove();
+                    $("#player_tab_not_available").remove();
+                }
+                if (data.videos.length == 0 && data.songs.length == 0) {
+                    $("#player_tab").unbind();
                 }
 
                 $(document).ready(function() {
