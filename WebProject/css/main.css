@@ -292,7 +292,7 @@ a:hover {
   background: rgba(255, 255, 255, 0.3); }
 
 #list_hover {
-  cursor: default; }
+  cursor: pointer; }
 
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
 html {
