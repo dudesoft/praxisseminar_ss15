@@ -186,7 +186,6 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
         },
         activateTab: function($tab, clickedTab) {
             if (!$activeTab.is($tab)) {
-                console.log("im here");
                 $activeTab = $tab;
                 var $items = $('.tabs');
                 $items.removeClass('selected');
@@ -194,7 +193,6 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 var index = $items.index($tab);
                 $('.tab_content').hide().eq(index).show();
 
-                console.log(subActiveElements);
                 if (clickedTab) {
                     this.clickedOnTab($tab);
                 }
@@ -273,7 +271,6 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             if (tableName == "songs") {
                 $("#player_content").empty();
                 $("#player_content").append(factory.getAudioPlayer(url));
-                console.log("activate player tab");
                 this.activateTab($('#player_tab'), false);
             }
             if (tableName == "videos") {
