@@ -19,6 +19,41 @@
     padding-left: 0;
 }
 
+#map_overlay {
+    color: #ffffff;
+    display: none;
+    text-align: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.85);
+    cursor: default;
+}
+
+.overlay_centered {
+    position: absolute;
+    z-index: 15;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.station_element {
+    padding: 5px;
+    border-width: 1px;
+    border-color: white;
+    border-style: dashed;
+}
+
+.station_element:focus,
+.station_element:hover {
+    border-width: 1px;
+    border-color: white;
+    border-style: solid;
+}
+
 #stations li {
     display: inline-block;
     margin-right: 10px;
@@ -26,6 +61,7 @@
 
 #stations a {
     color: white;
+    cursor: pointer;
 }
 
 .audio_anchor {
@@ -78,6 +114,7 @@
     text-decoration: none;
     font-weight: bold;
     color: $standard_color;
+    cursor: pointer;
 }
 
 #list_hover {
