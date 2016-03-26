@@ -129,10 +129,10 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
         var resultType = "";
 
         if ($('#min_date_input').val() != "") {
-            minDate = "&minDate=" + $('#min_date_input').val();
+            minDate = "&minDate=" + convertDateFormat($('#min_date_input').val());
         }
         if ($('#max_date_input').val() != "") {
-            maxDate = "&maxDate=" + $('#max_date_input').val();
+            maxDate = "&maxDate=" + convertDateFormat($('#max_date_input').val());
         }
         if ($('#journey_dropdown').find('option:selected').val() != "default") {
             journey = "&journey=" + $('#journey_dropdown').val();
@@ -142,5 +142,22 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
         }
 
         window.open("search_result.php?search=" + encodeURI($('#search-input').val()) + minDate + maxDate + journey + resultType, "_self");
+    }
+
+    function convertDateFormat(date) {
+        var parts = date.split(".");
+        if (parts.length < 3) {
+            return null;
+        }
+        if (parts[1].length == 1) {
+            parts[1] = "0" + parts[1];
+        }
+        if (parts[0].length == 1) {
+            parts[0] = "0" + parts[0];
+        }
+        var newDate = parts[2] + "-" + parts[1] + "-" + parts[0];
+        console.log(newDate);
+
+        return newDate;
     }
 });
