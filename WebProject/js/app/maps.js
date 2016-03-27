@@ -120,11 +120,21 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
                 marker.addTo(locationLayer);
             });
 
+            var travelsArray = [];
+
             // Build travelMarker
             for (key in travels) {
                 var i = Object.keys(travels).indexOf(key);
-                pointList = utils.getSortedPointList(travels[key].stationList, data);
-                $("#layer_list").append("<li><div class='travel_name centered_anchor' id='to_travel_" + i + "'>" + travels[key].name + "</div></li>");
+                travelsArray.push(travels[key]);
+            }
+
+            travelsArray.sort(function(a, b) {
+                return (a.begin > b.begin) ? 1 : ((b.begin > a.begin) ? -1 : 0);
+            });
+
+            for (var i = 0; i < travelsArray.length; i++) {
+                $("#layer_list").append("<li><div class='travel_name centered_anchor' id='to_travel_" + i + "'>" + travelsArray[i].name + "</div></li>");
+                pointList = utils.getSortedPointList(travelsArray[i].stationList, data);
 
                 travelPaths["to_travel_" + i] = new leaflet.Polyline(pointList, {
                     color: utils.provideColor(i),
@@ -133,14 +143,10 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
                     smoothFactor: 1
                 }).addTo(locationLayer);
 
-                $("#to_travel_" + i).click(function(e) {
-                    map.fitBounds(travelPaths[e.target.id].getBounds());
-                });
-
                 var marker = new leaflet.marker(travelPaths["to_travel_" + i].getBounds().getCenter(), {
                     icon: travelIcon,
                     travel_id: "to_travel_" + i
-                }).bindPopup(utils.generateTravelPopup(travels[key]), customOptions);
+                }).bindPopup(utils.generateTravelPopup(travelsArray[i]), customOptions);
 
                 marker.on('mouseover', function(e) {
                     this.openPopup();
@@ -152,7 +158,12 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
                     map.fitBounds(travelPaths[e.target.options.travel_id].getBounds());
                 });
                 marker.addTo(travelLayer);
-            }
+
+                $("#to_travel_" + i).click(function(e) {
+                    map.fitBounds(travelPaths[e.target.id].getBounds());
+                });
+            };
+
             locationLayer.addTo(map);
 
             // Hide or show location or travelMarkers depending on zoomLevel
