@@ -187,7 +187,7 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
                 if (location.stations.length == 1) {
                     window.open("station_details.php?station_id=" + location.stations[0].id, "_self");
                 } else {
-                    this.showStationList(location.stations);
+                    this.showStationList(location.stations, location.name);
                     this.disableMapControls();
                     $("#map_overlay").fadeIn("fast");
                 }
@@ -198,7 +198,7 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
             map.panTo(new leaflet.LatLng(latitude, longitude), { animate: true, duration: 1.0 });
         },
 
-        showStationList: function(stations) {
+        showStationList: function(stations, name) {
             $("#stations").empty();
 
             $(".overlay_centered").click(function(evt) {
@@ -223,8 +223,9 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
                     availableData += "<img class='video_anchor' src='img/video-icon.png'>";
                 }
                 availableData += "</div>";
+                console.log(station);
 
-                var buttonElement = "<div class='station_element'>" + station.travel.name + " </br> " + utils.formatDate(station.date) + availableData + "</div>";
+                var buttonElement = "<div class='station_element'>" + name + " </br> " + station.travel.name + " </br> " + utils.formatDate(station.date) + availableData + "</div>";
 
                 $("#stations").append("<li><a href='station_details.php?station_id=" + station.id + "'>" + buttonElement + "</a></li>");
             });
