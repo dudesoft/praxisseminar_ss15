@@ -119,7 +119,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 }
                 if (data.videos.length == 0 && data.songs.length == 0) {
                     $("#player_tab").unbind();
-                    $("#pic_tab").attr("title", "nicht verfügbar");
+                    $("#player_tab").attr("title", "nicht verfügbar");
                 }
 
                 $(document).ready(function() {
