@@ -34,8 +34,6 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     map.scrollToMapPosition(data.latitude, data.longitude);
                 });
 
-
-
                 connector.getNextPrevStation(data.travel, data.date, function(stations) {
                     if (!stations.next) {
                         $("#next_diary").hide();
@@ -55,8 +53,6 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 });
 
                 map.setupMap('map_content');
-
-
 
                 for (var i = 0; i < data.images.length; i++) {
                     $galleryElement = $("<li class='picture'> <img src='" + data.images[i].thumb_url + "' class='gallery-picture'> </li>");
@@ -110,11 +106,12 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     $("#img_tab_not_available").remove();
                 } else {
                     $("#pic_tab").unbind();
+                    $("#pic_tab").attr("title", "nicht verfügbar");
                 }
 
                 if (data.songs.length != 0) {
                     $("#audio_not_available").remove();
-                    $("#player_tab_not_available").remove();                    
+                    $("#player_tab_not_available").remove();
                 }
                 if (data.videos.length != 0) {
                     $("#video_not_available").remove();
@@ -122,6 +119,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 }
                 if (data.videos.length == 0 && data.songs.length == 0) {
                     $("#player_tab").unbind();
+                    $("#pic_tab").attr("title", "nicht verfügbar");
                 }
 
                 $(document).ready(function() {

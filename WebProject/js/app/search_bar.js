@@ -156,7 +156,6 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
             parts[0] = "0" + parts[0];
         }
         var newDate = parts[2] + "-" + parts[1] + "-" + parts[0];
-        console.log(newDate);
 
         return newDate;
     }

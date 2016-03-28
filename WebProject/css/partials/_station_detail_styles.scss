@@ -95,7 +95,8 @@ h1 {
     border-style: hidden;
 }
 
-.attribute_table td, .attribute_table th {
+.attribute_table td,
+.attribute_table th {
     border: 1px solid black;
 }
 
@@ -194,11 +195,11 @@ button:disabled {
 }
 
 .active_element {
-    box-shadow: 0px 0px 2px 4px orange inset;
+    box-shadow: 0px 0px 0px 4px #2ce1ff inset;
 }
 
 .sub_active_element {
-    box-shadow: 0px 0px 2px 4px rgb(70,180,200) inset;
+    box-shadow: 0px 0px 0px 4px orange inset;
 }
 
 .slidee li:hover {
@@ -212,7 +213,7 @@ ul li.picture {
 }
 
 ul li img {
-    height: 90%;
+    height: 100%;
     width: auto;
 }
 
@@ -237,8 +238,8 @@ ul li.video {
 .gallery-picture {
     width: auto;
     height: 100%;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
     pointer-events: none;
 }
 
@@ -399,6 +400,7 @@ video {
     background-color: #808080;
     cursor: default;
 }
-#tabs_container > ul > li:hover{
+
+#tabs_container > ul > li:hover {
     cursor: pointer;
 }
