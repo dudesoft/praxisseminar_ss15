@@ -107,15 +107,23 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 } else {
                     $("#pic_tab").unbind();
                     $("#pic_tab").attr("title", "nicht verfügbar");
+                    $("#backward_pic").removeClass('hover')
+                    $("#forward_pic").removeClass('hover')
                 }
 
                 if (data.songs.length != 0) {
                     $("#audio_not_available").remove();
                     $("#player_tab_not_available").remove();
+                } else {
+                    $("#backward_audio").removeClass('hover')
+                    $("#forward_audio").removeClass('hover')
                 }
                 if (data.videos.length != 0) {
                     $("#video_not_available").remove();
                     $("#player_tab_not_available").remove();
+                } else {
+                    $("#backward_vid").removeClass('hover')
+                    $("#forward_vid").removeClass('hover')
                 }
                 if (data.videos.length == 0 && data.songs.length == 0) {
                     $("#player_tab").unbind();
@@ -215,7 +223,13 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
         },
 
         changeActiveElement: function($newActiveElement) {
+            var reloadTabContentFlag = true;
             if ($newActiveElement != null && !$newActiveElement.is($activeElement)) {
+                $.each(subActiveElements, function(key, value) {
+                    if (value != null && value.is($newActiveElement)) {
+                        reloadTabContentFlag = false;
+                    }
+                });
                 if ($activeElement != null) {
                     $activeElement.removeClass(activeElementClass);
                     if ($newActiveElement.data(tableNameKey) != $activeElement.data(tableNameKey)) {
@@ -238,8 +252,9 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     });
                     $activeElement.addClass(activeElementClass);
                 }
+
             }
-            this.updatePreviewField($activeElement.data(idKey), $activeElement.data(urlKey), $activeElement.data(tableNameKey));
+            this.updatePreviewField($activeElement.data(idKey), $activeElement.data(urlKey), $activeElement.data(tableNameKey), reloadTabContentFlag);
         },
 
         setSubActiveElements: function() {
@@ -262,7 +277,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             });
         },
 
-        updatePreviewField: function(id, url, tableName) {
+        updatePreviewField: function(id, url, tableName, reloadFlag) {
             connector.getMetaInformation(id, tableName, this.updateTextField);
             if (tableName == "images") {
                 $("#pic_content").empty();
@@ -274,13 +289,17 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 this.activateTab($('#pic_tab'), false);
             }
             if (tableName == "songs") {
-                $("#player_content").empty();
-                $("#player_content").append(factory.getAudioPlayer(url));
+                if (reloadFlag || $("#player_content").children().length == 0) {
+                    $("#player_content").empty();
+                    $("#player_content").append(factory.getAudioPlayer(url));
+                }
                 this.activateTab($('#player_tab'), false);
             }
             if (tableName == "videos") {
-                $("#player_content").empty();
-                $("#player_content").append(factory.getVideoPlayer(url));
+                if (reloadFlag || $("#player_content").children().length == 0) {
+                    $("#player_content").empty();
+                    $("#player_content").append(factory.getVideoPlayer(url));
+                }
                 this.activateTab($('#player_tab'), false);
             }
         },

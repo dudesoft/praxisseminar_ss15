@@ -514,7 +514,7 @@ button {
   color: #fff;
   opacity: .5; }
 
-button:hover {
+.hover:hover {
   opacity: 1;
   transition: opacity .2s; }
 
