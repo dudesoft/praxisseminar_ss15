@@ -741,7 +741,7 @@ video {
   width: 100%;
   height: 100%;
   background-color: #808080;
-  cursor: default; }
+  cursor: not-allowed; }
 
 #tabs_container > ul > li:hover {
   cursor: pointer; }
