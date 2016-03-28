@@ -156,11 +156,23 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
                 });
                 marker.on('click', function(e) {
                     map.fitBounds(travelPaths[e.target.options.travel_id].getBounds());
+                    map.on('load moveend', function moveToTravelCallback() {
+                        if (map.getZoom() < 7) {
+                            map.setZoom(7);
+                        }
+                        map.off('load viewreset moveend', moveToTravelCallback);
+                    });
                 });
                 marker.addTo(travelLayer);
 
                 $("#to_travel_" + i).click(function(e) {
                     map.fitBounds(travelPaths[e.target.id].getBounds());
+                    map.on('load moveend', function moveToTravelCallback() {
+                        if (map.getZoom() < 7) {
+                            map.setZoom(7);
+                        }
+                        map.off('load viewreset moveend', moveToTravelCallback);
+                    });
                 });
             };
 
