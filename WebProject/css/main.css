@@ -663,8 +663,7 @@ video {
   width: 49%;
   height: 45%;
   float: right;
-  position: relative;
-  cursor: pointer; }
+  position: relative; }
 
 #tabs_container > ul > li {
   width: 100%;
@@ -712,8 +711,8 @@ video {
 
 #player_content {
   position: relative;
-  background-image: url(../img/video-icon2.png);
-  background-size: auto 60%;
+  background-image: url(../img/video-icon.png);
+  background-size: auto 50%;
   background-repeat: no-repeat;
   background-position: center; }
 
@@ -745,6 +744,9 @@ video {
   height: 100%;
   background-color: #808080;
   cursor: default; }
+
+#tabs_container > ul > li:hover {
+  cursor: pointer; }
 
 .custom-popup .leaflet-popup-tip,
 .custom-popup .leaflet-popup-content-wrapper {
