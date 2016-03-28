@@ -569,10 +569,10 @@ button:disabled {
   transform: translateY(-30%); }
 
 .active_element {
-  box-shadow: 0px 0px 0px 4px #2ce1ff inset; }
+  box-shadow: 0px 0px 2px 4px orange inset; }
 
 .sub_active_element {
-  box-shadow: 0px 0px 0px 4px orange inset; }
+  box-shadow: 0px 0px 2px 4px #46b4c8 inset; }
 
 .slidee li:hover {
   cursor: pointer;
@@ -605,9 +605,9 @@ ul li.video {
 .gallery-picture {
   width: auto;
   height: 100%;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  pointer-events: none; }
+  pointer-events: none;
+  padding-top: 4px;
+  padding-bottom: 4px; }
 
 .trans {
   background-image: url(../img/transparentBackground.png);
