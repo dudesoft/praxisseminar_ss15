@@ -571,10 +571,10 @@ button:disabled {
   transform: translateY(-30%); }
 
 .active_element {
-  box-shadow: 0px 0px 0px 4px #2ce1ff inset; }
+  box-shadow: 0px 0px 2px 4px orange inset; }
 
 .sub_active_element {
-  box-shadow: 0px 0px 0px 4px orange inset; }
+  box-shadow: 0px 0px 2px 4px #46b4c8 inset; }
 
 .slidee li:hover {
   cursor: pointer;
@@ -585,7 +585,7 @@ ul li.picture {
   background: rgba(0, 0, 0, 0.6); }
 
 ul li img {
-  height: 100%;
+  height: 90%;
   width: auto; }
 
 ul li.audio {
@@ -607,8 +607,8 @@ ul li.video {
 .gallery-picture {
   width: auto;
   height: 100%;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   pointer-events: none; }
 
 .trans {
