@@ -1,5 +1,6 @@
 define(['jquery', './media_player_factory', './maps', './db_connector', './utils', './search_bar', 'jquery_ui', 'sly', 'colorbox', 'bootstrap'], function($, factory, map, connector, utils) {
     var activeElementClass = "active_element";
+    var subActiveElementClass = "sub_active_element";
     var urlKey = "url";
     var tableNameKey = "table";
     var idKey = "id";
@@ -9,6 +10,16 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
     var vidSly;
 
     var $activeElement;
+    var $activePlayerElement;
+    var $activeTab;
+
+
+    var subActiveElements = {
+        $activeImage: null,
+        $activeSong: null,
+        $activeVideo: null
+    }
+
     var urlVars;
     var StationDetails = {
         setupDetails: function() {
@@ -16,9 +27,8 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             this.setupTabs();
 
             connector.getLocationDetails(urlVars.station_id, function(data) {
-                $("#location").html(utils.buildLocationName(data));
+                $("#location").html(utils.buildLocationName(data) + " - " + data.travelname);
                 $("#time").html(utils.formatDate(data.date));
-                $("#journey").html("Reise: " + data.travelname);
                 $("#loader_container").fadeOut("fast");
                 $("#detail_content").fadeIn("slow", function() {
                     map.scrollToMapPosition(data.latitude, data.longitude);
@@ -53,6 +63,9 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     $galleryElement.data(urlKey, data.images[i].url);
                     $galleryElement.data(idKey, data.images[i].id);
                     $galleryElement.data(tableNameKey, "images");
+                    if (i == 0) {
+                        subActiveElements.$activeImage = $galleryElement;
+                    }
                     $galleryElement.click(function(event) {
                         StationDetails.changeActiveElement($(event.target));
                     });
@@ -64,9 +77,15 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     $galleryElement.data(urlKey, data.songs[i].url);
                     $galleryElement.data(idKey, data.songs[i].id);
                     $galleryElement.data(tableNameKey, "songs");
+                    if (i == 0) {
+                        subActiveElements.$activeSong = $galleryElement;
+                        $activePlayerElement = $galleryElement;
+                    }
                     $galleryElement.click(function(event) {
+                        activePlayerElement = $(event.target);
                         StationDetails.changeActiveElement($(event.target));
                     });
+                    $galleryElement.attr('title', data.songs[i].title);
                     $('#audio_gallery_content').append($galleryElement);
                 }
 
@@ -75,7 +94,12 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     $galleryElement.data(urlKey, data.videos[i].url);
                     $galleryElement.data(idKey, data.videos[i].id);
                     $galleryElement.data(tableNameKey, "videos");
+                    if (i == 0) {
+                        subActiveElements.$activeVideo = $galleryElement;
+                        $activePlayerElement = $galleryElement;
+                    }
                     $galleryElement.click(function(event) {
+                        activePlayerElement = $(event.target);
                         StationDetails.changeActiveElement($(event.target));
                     });
                     $('#vid_gallery_content').append($galleryElement);
@@ -83,14 +107,21 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
 
                 if (data.images.length != 0) {
                     $("#image_not_available").remove();
+                    $("#img_tab_not_available").remove();
+                } else {
+                    $("#pic_tab").unbind();
                 }
 
                 if (data.songs.length != 0) {
                     $("#audio_not_available").remove();
+                    $("#player_tab_not_available").remove();                    
                 }
-
                 if (data.videos.length != 0) {
                     $("#video_not_available").remove();
+                    $("#player_tab_not_available").remove();
+                }
+                if (data.videos.length == 0 && data.songs.length == 0) {
+                    $("#player_tab").unbind();
                 }
 
                 $(document).ready(function() {
@@ -118,6 +149,8 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     });
                 });
 
+                StationDetails.setSubActiveElements();
+                $activeTab = $('#map_tab');
                 if (urlVars.resultType && urlVars.objectId) {
                     StationDetails.setFocusOnElement(urlVars.objectId, urlVars.resultType)
                 }
@@ -140,7 +173,6 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 $('#forward_vid').click(function(event) {
                     StationDetails.setFocusOnPrevNextElement("videos", 1);
                 });
-
             });
         },
         setupTabs: function() {
@@ -148,37 +180,82 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             $('#pic_content').hide();
             $('#player_content').hide();
             $items.click(function(event) {
-                StationDetails.activateTab($(event.target));
+                StationDetails.activateTab($(event.target), true);
             });
             connector.getMetaInformation(urlVars.station_id, "stations", this.updateTextField);
         },
-        activateTab: function($clickedTab) {
-            var $items = $('.tabs');
-            $items.removeClass('selected');
-            $clickedTab.addClass('selected');
-            var index = $items.index($clickedTab);
-            $('.tab_content').hide().eq(index).show();
+        activateTab: function($tab, clickedTab) {
+            if (!$activeTab.is($tab)) {
+                $activeTab = $tab;
+                var $items = $('.tabs');
+                $items.removeClass('selected');
+                $tab.addClass('selected');
+                var index = $items.index($tab);
+                $('.tab_content').hide().eq(index).show();
 
-            if($clickedTab.attr('id') == "map_tab") {
-                connector.getMetaInformation(urlVars.station_id, "stations", this.updateTextField);
+                if (clickedTab) {
+                    this.clickedOnTab($tab);
+                }
             }
-            if($clickedTab.attr('id') == "pic_tab" || $clickedTab.attr('id') == "player_tab") {
-                connector.getMetaInformation($activeElement.data(idKey), $activeElement.data(tableNameKey), this.updateTextField);
+        },
+        clickedOnTab: function($tab) {
+            if ($tab.attr('id') == "map_tab") {
+                connector.getMetaInformation(urlVars.station_id, "stations", this.updateTextField);
+                $activeElement.removeClass(activeElementClass);
+                StationDetails.changeSubActiveElement($activeElement);
+                $activeElement = null;
+            }
+            if ($tab.attr('id') == "pic_tab") {
+                StationDetails.changeActiveElement(subActiveElements.$activeImage);
+            }
+            if ($tab.attr('id') == "player_tab") {
+                StationDetails.changeActiveElement($activePlayerElement);
             }
         },
         changeActiveElement: function($newActiveElement) {
-            if (!$newActiveElement.is($activeElement) && $newActiveElement != null) {
+            if ($newActiveElement != null && !$newActiveElement.is($activeElement)) {
                 if ($activeElement != null) {
                     $activeElement.removeClass(activeElementClass);
+                    if ($newActiveElement.data(tableNameKey) != $activeElement.data(tableNameKey)) {
+                        this.changeSubActiveElement($activeElement);
+                    }
                     $activeElement = $newActiveElement;
+                    $.each(subActiveElements, function(key, value) {
+                        if (value != null && value.data(tableNameKey) == $activeElement.data(tableNameKey)) {
+                            value.removeClass(subActiveElementClass);
+                        }
+                    });
+                    $activeElement.removeClass(subActiveElementClass);
                     $activeElement.addClass(activeElementClass);
                 } else {
                     $activeElement = $newActiveElement;
+                    $.each(subActiveElements, function(key, value) {
+                        if (value != null && value.data(tableNameKey) == $activeElement.data(tableNameKey)) {
+                            value.removeClass(subActiveElementClass);
+                        }
+                    });
                     $activeElement.addClass(activeElementClass);
                 }
             }
             this.updatePreviewField($activeElement.data(idKey), $activeElement.data(urlKey), $activeElement.data(tableNameKey));
-
+        },
+        setSubActiveElements: function() {
+            $.each(subActiveElements, function(key, value) {
+                if (value != null) {
+                    value.addClass(subActiveElementClass);
+                }
+            });
+        },
+        changeSubActiveElement: function($element) {
+            $element.addClass(subActiveElementClass);
+            $.each(subActiveElements, function(key, value) {
+                if (value != null && value.data(tableNameKey) == $element.data(tableNameKey)) {
+                    subActiveElements[key] = $element;
+                    if ($element.data(tableNameKey) == "songs" || $element.data(tableNameKey) == "videos") {
+                        $activePlayerElement = $element;
+                    }
+                }
+            });
         },
         updatePreviewField: function(id, url, tableName) {
             connector.getMetaInformation(id, tableName, this.updateTextField);
@@ -189,32 +266,35 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     StationDetails.openColorBoxImagePreview($(event.target));
                 });
                 $("#pic_content").append($image);
-                this.activateTab($('#pic_tab'));
+                this.activateTab($('#pic_tab'), false);
             }
             if (tableName == "songs") {
                 $("#player_content").empty();
                 $("#player_content").append(factory.getAudioPlayer(url));
-                this.activateTab($('#player_tab'));
+                this.activateTab($('#player_tab'), false);
             }
             if (tableName == "videos") {
                 $("#player_content").empty();
-                $("#$player_content").append(factory.getVideoPlayer(url));
-                this.activateTab($('#player_tab'));
+                $("#player_content").append(factory.getVideoPlayer(url));
+                this.activateTab($('#player_tab'), false);
             }
         },
         updateTextField: function(data) {
             $list = $("#attribute_list");
-            $list.empty();
-            var dataSet = false;
-            Object.keys(data).forEach(function(key, index) {
-                if (data[key] != "" && utils.translateColumnTitles(key) != null) {
-                    $list.append($("<li>" + utils.translateColumnTitles(key) + ": " + data[key] + "</li>"));
-                    dataSet = true;
+            $list.fadeOut("fast", function() {
+                $list.empty();
+                var dataSet = false;
+                Object.keys(data).forEach(function(key, index) {
+                    if (data[key] != "" && utils.translateColumnTitles(key) != null && data[key] != null) {
+                        $list.append($("<tr><td class='first_column'>" + utils.translateColumnTitles(key) + "</td><td class='second_column'> " + data[key] + "</td></tr>"));
+                        dataSet = true;
+                    }
+                });
+                if (!dataSet) {
+                    $list.html("Es sind keine Daten für dieses Element vorhanden");
                 }
+                $list.fadeIn("fast");
             });
-            if(!dataSet) {
-                $list.html("Es sind keine Daten für dieses Element vorhanden");
-            }
         },
         setFocusOnElement: function(id, dataType) {
             var $element;
@@ -263,13 +343,25 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 if (galleryItems.length == 0) {
                     return;
                 }
-                if ($activeElement == null || $activeElement.data(tableNameKey) != "images") {
+                if (subActiveElements.$activeImage == null) {
                     this.changeActiveElement($(galleryItems[0]));
                     picSly.toCenter($(galleryItems[0]));
                     return;
                 }
+                if ($activeElement != null && $activeElement.data(tableNameKey) == "images") {
+                    for (var i = 0; i < galleryItems.length; i++) {
+                        if ($(galleryItems[i]).is($activeElement)) {
+                            if (i + value < 0 || i + value > galleryItems.length - 1) {
+                                return;
+                            }
+                            this.changeActiveElement($(galleryItems[i + value]));
+                            picSly.toCenter($(galleryItems[i + value]));
+                            return;
+                        }
+                    }
+                }
                 for (var i = 0; i < galleryItems.length; i++) {
-                    if ($(galleryItems[i]).is($activeElement)) {
+                    if ($(galleryItems[i]).is(subActiveElements.$activeImage)) {
                         if (i + value < 0 || i + value > galleryItems.length - 1) {
                             return;
                         }
@@ -284,13 +376,25 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 if (galleryItems.length == 0) {
                     return;
                 }
-                if ($activeElement == null || $activeElement.data(tableNameKey) != "songs") {
+                if (subActiveElements.$activeSong == null) {
                     this.changeActiveElement($(galleryItems[0]));
                     audioSly.toCenter($(galleryItems[0]));
                     return;
                 }
+                if ($activeElement != null && $activeElement.data(tableNameKey) == "songs") {
+                    for (var i = 0; i < galleryItems.length; i++) {
+                        if ($(galleryItems[i]).is($activeElement)) {
+                            if (i + value < 0 || i + value > galleryItems.length - 1) {
+                                return;
+                            }
+                            this.changeActiveElement($(galleryItems[i + value]));
+                            audioSly.toCenter($(galleryItems[i + value]));
+                            return;
+                        }
+                    }
+                }
                 for (var i = 0; i < galleryItems.length; i++) {
-                    if ($(galleryItems[i]).is($activeElement)) {
+                    if ($(galleryItems[i]).is(subActiveElements.$activeSong)) {
                         if (i + value < 0 || i + value > galleryItems.length - 1) {
                             return;
                         }
@@ -305,18 +409,30 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 if (galleryItems.length == 0) {
                     return;
                 }
-                if ($activeElement == null || $activeElement.data(tableNameKey) != "videos") {
+                if (subActiveElements.$activeVideo == null) {
                     this.changeActiveElement($(galleryItems[0]));
                     videoSly.toCenter($(galleryItems[0]));
                     return;
                 }
+                if ($activeElement != null && $activeElement.data(tableNameKey) == "videos") {
+                    for (var i = 0; i < galleryItems.length; i++) {
+                        if ($(galleryItems[i]).is($activeElement)) {
+                            if (i + value < 0 || i + value > galleryItems.length - 1) {
+                                return;
+                            }
+                            this.changeActiveElement($(galleryItems[i + value]));
+                            videoSly.toCenter($(galleryItems[i + value]));
+                            return;
+                        }
+                    }
+                }
                 for (var i = 0; i < galleryItems.length; i++) {
-                    if ($(galleryItems[i]).is($activeElement)) {
+                    if ($(galleryItems[i]).is(subActiveElements.$activeVideo)) {
                         if (i + value < 0 || i + value > galleryItems.length - 1) {
                             return;
                         }
                         this.changeActiveElement($(galleryItems[i + value]));
-                        vidSly.toCenter($$(galleryItems[i + value]));
+                        videoSly.toCenter($$(galleryItems[i + value]));
                         return;
                     }
                 }

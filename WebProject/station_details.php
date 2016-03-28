@@ -18,15 +18,14 @@
 <body>
     <?php include 'header.php';?>
     <div id="main_content_station">
-        <label id="prev_diary" class="nav nav_left">&#x2039;</label>
+        <label id="prev_diary" title="voherige Station" class="nav nav_left">&#x2039;</label>
         <div id="loader_container"></div>
         <span id="detail_content">
                 <div id="text_info" class="trans">
+                    <div class="centered" id="time"></div>
                     <div class="centered" id="location"></div>
-                    <div class="centered" id="journey"></div>
-                    <div class="centered" id="time"></div>                    
-                    <ul id="attribute_list"class="attribute">
-                    </ul>
+                    <table id="attribute_list"class="attribute_table">
+                    </table>
                 </div>
                 <div id="tabs_container" class="trans">   
                     <ul>
@@ -68,7 +67,7 @@
                     </div>
                 </div>
             </span>
-            <label id="next_diary" class="nav nav_right">&#x203a;</label>
+            <label id="next_diary" title="nächste Station" class="nav nav_right">&#x203a;</label>
         </div>
         <?php include 'footer.php';
         if (isset($_GET["station_id"])) {

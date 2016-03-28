@@ -90,36 +90,6 @@ body {
   min-height: 100%;
   position: relative; }
 
-#map_overlay {
-  color: #ffffff;
-  display: none;
-  text-align: center;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  z-index: 10;
-  background-color: rgba(0, 0, 0, 0.85); }
-
-.overlay_centered {
-  position: absolute;
-  z-index: 15;
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  transform: translateX(-50%) translateY(-50%); }
-
-.station_element {
-  padding: 5px;
-  border-width: 1px;
-  border-color: white;
-  border-style: dashed; }
-
-.station_element:focus,
-.station_element:hover {
-  border-width: 1px;
-  border-color: white;
-  border-style: solid; }
-
 .available_data {
   margin-top: 5px; }
 
@@ -157,7 +127,8 @@ body {
   font-family: Segoe UI;
   width: 256px;
   padding-left: 18px;
-  padding-right: 18px; }
+  padding-right: 18px;
+  position: absolute; }
 
 #advanced-search-button {
   background-color: #190a05;
@@ -210,10 +181,12 @@ header {
 
 #enter_search {
   color: white;
-  background-color: green;
+  background-color: #808080;
   border-radius: 10px;
   margin-top: 5px;
-  float: right; }
+  margin-bottom: 10px;
+  float: right;
+  padding: 8px 10px 8px 10px; }
 
 /* Pop-Over */
 #pop_over {
@@ -287,6 +260,9 @@ a:hover {
   top: 100px;
   bottom: 60px;
   background: rgba(255, 255, 255, 0.3); }
+
+#list_hover {
+  cursor: pointer; }
 
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
 html {
@@ -478,7 +454,8 @@ textarea {
 
 #time {
   font-style: italic;
-  font-size: 16px; }
+  font-size: 16px;
+  margin-top: 10px; }
 
 ::-webkit-scrollbar {
   width: 1em; }
@@ -502,10 +479,30 @@ h1 {
   overflow-y: scroll;
   overflow-x: hidden; }
 
-.attribute {
-  text-align: left;
+.attribute_table {
   margin-left: 5%;
-  margin-right: 2%; }
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 90%;
+  border-collapse: collapse;
+  border-style: hidden; }
+
+.attribute_table td, .attribute_table th {
+  border: 1px solid black; }
+
+.first_column {
+  width: 33%;
+  font-weight: 700; }
+
+.second_column {
+  width: 67%;
+  text-align: left; }
+
+.attribute_table td,
+th {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px; }
 
 #galleries {
   float: left;
@@ -574,7 +571,10 @@ button:disabled {
   transform: translateY(-30%); }
 
 .active_element {
-  box-shadow: 0px 0px 0px 2px orange inset; }
+  box-shadow: 0px 0px 0px 4px #2ce1ff inset; }
+
+.sub_active_element {
+  box-shadow: 0px 0px 0px 4px orange inset; }
 
 .slidee li:hover {
   cursor: pointer;
@@ -663,7 +663,8 @@ video {
   width: 49%;
   height: 45%;
   float: right;
-  position: relative; }
+  position: relative;
+  cursor: pointer; }
 
 #tabs_container > ul > li {
   width: 100%;
@@ -682,7 +683,6 @@ video {
   opacity: 1;
   border: 1px solid #ddd;
   border-left: none;
-  z-index: 10;
   background-color: #fafafa !important;
   position: relative; }
 
@@ -701,7 +701,6 @@ video {
   width: 90%;
   float: right;
   position: relative;
-  z-index: 9;
   -moz-border-radius: 20px; }
 
 #pic_content img {
@@ -712,23 +711,40 @@ video {
   cursor: zoom-in; }
 
 #player_content {
-  position: relative; }
+  position: relative;
+  background-image: url(../img/video-icon2.png);
+  background-size: auto 60%;
+  background-repeat: no-repeat;
+  background-position: center; }
 
-#player_content video, #player_content audio {
-  width: 100%;
+#player_content video,
+#player_content audio {
+  width: 95%;
   position: absolute;
   bottom: 2px;
-  left: 0px; }
+  left: 50%;
+  transform: translateX(-50%); }
+
+#player_content video {
+  height: 95%; }
 
 #tabs_container > ul > li > img {
   height: auto;
   width: 80%;
   pointer-events: none;
   position: absolute;
-  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); }
+
+.not_available_tab {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #808080;
+  cursor: default; }
 
 .custom-popup .leaflet-popup-tip,
 .custom-popup .leaflet-popup-content-wrapper {
@@ -739,7 +755,8 @@ video {
   margin-bottom: 10px;
   margin-right: 5px;
   width: 25px;
-  height: 25px; }
+  height: 25px;
+  vertical-align: middle; }
 
 #stations {
   font-size: 14px;
@@ -747,23 +764,60 @@ video {
   list-style: none;
   padding-left: 0; }
 
+#map_overlay {
+  color: #ffffff;
+  display: none;
+  text-align: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.85);
+  cursor: default; }
+
+.overlay_centered {
+  position: absolute;
+  z-index: 15;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translateX(-50%) translateY(-50%); }
+
+.station_element {
+  padding: 5px;
+  border-width: 1px;
+  border-color: white;
+  border-style: dashed; }
+
+.station_element:focus,
+.station_element:hover {
+  border-width: 1px;
+  border-color: white;
+  border-style: solid; }
+
 #stations li {
   display: inline-block;
   margin-right: 10px; }
 
 #stations a {
-  color: white; }
+  color: white;
+  cursor: pointer; }
 
 .audio_anchor {
   margin-bottom: 10px;
   margin-right: 5px;
   width: 25px;
-  height: 25px; }
+  height: 25px;
+  vertical-align: middle; }
 
 .video_anchor {
   margin-bottom: 10px;
   width: 25px;
-  height: 25px; }
+  height: 25px;
+  vertical-align: middle; }
+
+.no_botton_margin {
+  margin-bottom: 0px; }
 
 #select_station {
   font-size: 20px;
@@ -784,12 +838,14 @@ video {
   font-size: 14px; }
 
 .travel_name {
-  color: #D1C192; }
+  color: #D1C192;
+  font-weight: none; }
 
 .travel_name:hover {
   text-decoration: none;
   font-weight: bold;
-  color: #D1C192; }
+  color: #D1C192;
+  cursor: pointer; }
 
 #list_hover {
   right: 20px;
@@ -810,6 +866,10 @@ video {
   -moz-box-sizing: content-box; }
 
 /* Content */
+#title {
+  font-size: 20px;
+  font-family: 'Nunito'; }
+
 .result_element {
   text-align: left;
   display: inline-block;
