@@ -173,6 +173,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 });
             });
         },
+
         setupTabs: function() {
             var $items = $('.tabs');
             $('#pic_content').hide();
@@ -182,6 +183,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             });
             connector.getMetaInformation(urlVars.station_id, "stations", this.updateTextField);
         },
+
         activateTab: function($tab, clickedTab) {
             if (!$activeTab.is($tab)) {
                 $activeTab = $tab;
@@ -196,6 +198,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 }
             }
         },
+
         clickedOnTab: function($tab) {
             if ($tab.attr('id') == "map_tab") {
                 connector.getMetaInformation(urlVars.station_id, "stations", this.updateTextField);
@@ -210,6 +213,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 StationDetails.changeActiveElement($activePlayerElement);
             }
         },
+
         changeActiveElement: function($newActiveElement) {
             if ($newActiveElement != null && !$newActiveElement.is($activeElement)) {
                 if ($activeElement != null) {
@@ -237,6 +241,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             }
             this.updatePreviewField($activeElement.data(idKey), $activeElement.data(urlKey), $activeElement.data(tableNameKey));
         },
+
         setSubActiveElements: function() {
             $.each(subActiveElements, function(key, value) {
                 if (value != null) {
@@ -244,6 +249,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 }
             });
         },
+
         changeSubActiveElement: function($element) {
             $element.addClass(subActiveElementClass);
             $.each(subActiveElements, function(key, value) {
@@ -255,6 +261,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 }
             });
         },
+
         updatePreviewField: function(id, url, tableName) {
             connector.getMetaInformation(id, tableName, this.updateTextField);
             if (tableName == "images") {
@@ -277,6 +284,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 this.activateTab($('#player_tab'), false);
             }
         },
+
         updateTextField: function(data) {
             $list = $("#attribute_list");
             $list.fadeOut("fast", function() {
@@ -294,6 +302,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 $list.fadeIn("fast");
             });
         },
+
         setFocusOnElement: function(id, dataType) {
             var $element;
             var galleryItems;
@@ -436,6 +445,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 }
             }
         },
+
         openColorBoxImagePreview: function($image) {
             $.colorbox({
                 html: "<div id='lightbox_content'><img src='" + $image.attr('src') + "' ></img></div>"
