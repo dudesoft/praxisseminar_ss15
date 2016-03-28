@@ -43,23 +43,22 @@
                 
 
                 <div id="galleries">
-                    <button title="Letztes Bild" id="backward_pic" class="backward"><label id="prev_gallery" class="nav_gallery nav_gall_left">&#x2039;</label></button>
-                    <button title="Nächstes Bild" id="forward_pic" class="forward"><label id="next_gallery" class="nav_gallery nav_gall_right">&#x203a;</label></button>
+                    <button title="Letztes Bild" id="backward_pic" class="backward hover"><label id="prev_gallery" class="nav_gallery nav_gall_left">&#x2039;</label></button>
+                    <button title="Nächstes Bild" id="forward_pic" class="forward hover"><label id="next_gallery" class="nav_gallery nav_gall_right">&#x203a;</label></button>
                     <div id="picture_gallery" class="frame trans">
                         <span id="image_not_available" class="not_available_label">Für diese Station sind leider (noch) keine Bilder vorhanden.</span>
-
                         <ul id="pic_gallery_content" class="slidee">
                         </ul>
                     </div>
-                    <button title="Letztes Lied" id="backward_audio" class="backward"><label id="prev_gallery" class="nav_gallery nav_gall_left">&#x2039;</label></button>
-                    <button title="Nächstes Lied" id="forward_audio" class="forward"><label id="next_gallery" class="nav_gallery nav_gall_right">&#x203a;</label></button>
+                    <button title="Letztes Lied" id="backward_audio" class="backward hover"><label id="prev_gallery" class="nav_gallery nav_gall_left">&#x2039;</label></button>
+                    <button title="Nächstes Lied" id="forward_audio" class="forward hover"><label id="next_gallery" class="nav_gallery nav_gall_right">&#x203a;</label></button>
                     <div id="audio_gallery" class="frame trans">
                         <span id="audio_not_available" class="not_available_label">Für diese Station ist leider (noch) kein Tonmaterial vorhanden.</span>
                         <ul id="audio_gallery_content" class="slidee">
                         </ul>
                     </div>
-                    <button title="Letztes Video" id="backward_vid" class="backward"><label id="prev_gallery" class="nav_gallery nav_gall_left">&#x2039;</label></button>
-                    <button title="Nächstes Video" id="forward_vid" class="forward"><label id="next_gallery" class="nav_gallery nav_gall_right">&#x203a;</label></button>
+                    <button title="Letztes Video" id="backward_vid" class="backward hover"><label id="prev_gallery" class="nav_gallery nav_gall_left">&#x2039;</label></button>
+                    <button title="Nächstes Video" id="forward_vid" class="forward hover"><label id="next_gallery" class="nav_gallery nav_gall_right">&#x203a;</label></button>
                     <div id="video_gallery" class="frame trans">
                         <span id="video_not_available" class="not_available_label">Für diese Station sind leider (noch) keine Videos vorhanden.</span>
                         <ul id="vid_gallery_content" class="slidee">

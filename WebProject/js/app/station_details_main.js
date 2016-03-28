@@ -107,15 +107,23 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 } else {
                     $("#pic_tab").unbind();
                     $("#pic_tab").attr("title", "nicht verfügbar");
+                    $("#backward_pic").removeClass('hover')
+                    $("#forward_pic").removeClass('hover')
                 }
 
                 if (data.songs.length != 0) {
                     $("#audio_not_available").remove();
                     $("#player_tab_not_available").remove();
+                } else {
+                    $("#backward_audio").removeClass('hover')
+                    $("#forward_audio").removeClass('hover')
                 }
                 if (data.videos.length != 0) {
                     $("#video_not_available").remove();
                     $("#player_tab_not_available").remove();
+                } else {
+                    $("#backward_vid").removeClass('hover')
+                    $("#forward_vid").removeClass('hover')
                 }
                 if (data.videos.length == 0 && data.songs.length == 0) {
                     $("#player_tab").unbind();
