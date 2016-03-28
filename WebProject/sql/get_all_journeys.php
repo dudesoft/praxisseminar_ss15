@@ -12,7 +12,7 @@ catch(PDOException $e) {
 
 $conn->query("SET group_concat_max_len = 4096");
 
-$query = $conn -> prepare("SELECT * from travels");
+$query = $conn -> prepare("SELECT * from travels ORDER BY date_begin");
 $query -> execute();
 $results = $query->fetchAll(PDO::FETCH_ASSOC);
 $query->closeCursor();

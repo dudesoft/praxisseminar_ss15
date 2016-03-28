@@ -223,7 +223,6 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
                     availableData += "<img class='video_anchor' src='img/video-icon.png'>";
                 }
                 availableData += "</div>";
-                console.log(station);
 
                 var buttonElement = "<div class='station_element'>" + name + " </br> " + station.travel.name + " </br> " + utils.formatDate(station.date) + availableData + "</div>";
 
