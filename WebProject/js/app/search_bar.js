@@ -14,6 +14,10 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
         }
     });
 
+    $('#advanced-search-button').on('click', function(event) {
+        $(this).parent().toggleClass('open');
+    });
+
     $(document).on('click', '.ui-datepicker-next, .ui-datepicker-prev, .ui-datepicker', function(e) {
         e.stopPropagation();
     });
@@ -47,7 +51,21 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
         });
 
         $("#min_date_input").datepicker({
-            dateFormat: "yy-mm-dd",
+            prevText: 'Zurück',
+            nextText: 'Vor',
+            todayText: 'heute',
+            closeText: 'schließen',
+            monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+                'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
+            ],
+            monthNamesShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun',
+                'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'
+            ],
+            dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+            dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+            dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+            showMonthAfterYear: false,
+            dateFormat: 'dd.mm.yy',
             changeMonth: true,
             changeYear: true,
             minDate: new Date(data[0]),
@@ -63,7 +81,21 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
         });
 
         $("#max_date_input").datepicker({
-            dateFormat: "yy-mm-dd",
+            prevText: 'Zurück',
+            nextText: 'Vor',
+            todayText: 'heute',
+            closeText: 'schließen',
+            monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+                'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
+            ],
+            monthNamesShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun',
+                'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'
+            ],
+            dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+            dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+            dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+            showMonthAfterYear: false,
+            dateFormat: 'dd.mm.yy',
             changeMonth: true,
             changeYear: true,
             minDate: new Date(data[0]),
@@ -97,10 +129,10 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
         var resultType = "";
 
         if ($('#min_date_input').val() != "") {
-            minDate = "&minDate=" + $('#min_date_input').val();
+            minDate = "&minDate=" + convertDateFormat($('#min_date_input').val());
         }
         if ($('#max_date_input').val() != "") {
-            maxDate = "&maxDate=" + $('#max_date_input').val();
+            maxDate = "&maxDate=" + convertDateFormat($('#max_date_input').val());
         }
         if ($('#journey_dropdown').find('option:selected').val() != "default") {
             journey = "&journey=" + $('#journey_dropdown').val();
@@ -110,5 +142,21 @@ define(['jquery', './db_connector', 'bootstrap', 'jquery_ui'], function($, db_co
         }
 
         window.open("search_result.php?search=" + encodeURI($('#search-input').val()) + minDate + maxDate + journey + resultType, "_self");
+    }
+
+    function convertDateFormat(date) {
+        var parts = date.split(".");
+        if (parts.length < 3) {
+            return null;
+        }
+        if (parts[1].length == 1) {
+            parts[1] = "0" + parts[1];
+        }
+        if (parts[0].length == 1) {
+            parts[0] = "0" + parts[0];
+        }
+        var newDate = parts[2] + "-" + parts[1] + "-" + parts[0];
+
+        return newDate;
     }
 });

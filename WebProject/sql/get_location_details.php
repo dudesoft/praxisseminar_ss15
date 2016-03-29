@@ -2,7 +2,7 @@
 $db = new PDO('mysql:host=localhost;dbname=hoerburger;charset=utf8mb4', 'hoerburger', 'hoerburger');
 $base_url_images = "/Praxisseminar/WebProject/content/images/";
 $base_url_songs = "/Praxisseminar/WebProject/content/songs/";
-$base_url_videos = "/Praxisseminar/WebProject/content/";
+$base_url_videos = "/Praxisseminar/WebProject/content/videos/";
 
 if (isset($_GET['station_id'])) {
     $station_id = $_GET['station_id'];
@@ -10,7 +10,7 @@ if (isset($_GET['station_id'])) {
 
 $db->query("SET group_concat_max_len = 4096");
 
-$query = $db -> prepare("SELECT stations.*, GROUP_CONCAT(DISTINCT images.id) AS images, GROUP_CONCAT(DISTINCT songs.id) AS songs, GROUP_CONCAT(DISTINCT videos.id) AS videos, travels.name as travel FROM stations LEFT JOIN images ON images.station_id = stations.id LEFT JOIN songs ON songs.station_id = stations.id LEFT JOIN videos ON videos.station_id = stations.id INNER JOIN travels on stations.travel_id WHERE stations.id = '$station_id'");
+$query = $db -> prepare("SELECT stations.*, GROUP_CONCAT(DISTINCT images.id) AS images, GROUP_CONCAT(DISTINCT songs.id) AS songs, GROUP_CONCAT(DISTINCT videos.id) AS videos, travels.name as travel FROM stations LEFT JOIN images ON images.station_id = stations.id LEFT JOIN songs ON songs.station_id = stations.id LEFT JOIN videos ON videos.station_id = stations.id INNER JOIN travels on stations.travel_id = travels.id WHERE stations.id = '$station_id'");
 $query -> execute();
 $station = $query->fetch();
 
@@ -20,7 +20,7 @@ $query -> execute();
 $images = $query->fetchAll(PDO::FETCH_ASSOC);
 
 $song_ids = $station['songs'];
-$query = $db -> prepare("SELECT url, id FROM songs WHERE id IN (" . $song_ids . ") AND url is not null");
+$query = $db -> prepare("SELECT url, id, title FROM songs WHERE id IN (" . $song_ids . ") AND url is not null");
 $query -> execute();
 $songs = $query->fetchAll(PDO::FETCH_ASSOC);
 

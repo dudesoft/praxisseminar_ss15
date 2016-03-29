@@ -120,11 +120,21 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
                 marker.addTo(locationLayer);
             });
 
+            var travelsArray = [];
+
             // Build travelMarker
             for (key in travels) {
                 var i = Object.keys(travels).indexOf(key);
-                pointList = utils.getSortedPointList(travels[key].stationList, data);
-                $("#layer_list").append("<li><div class='travel_name centered_anchor' id='to_travel_" + i + "'>" + travels[key].name + "</div></li>");
+                travelsArray.push(travels[key]);
+            }
+
+            travelsArray.sort(function(a, b) {
+                return (a.begin > b.begin) ? 1 : ((b.begin > a.begin) ? -1 : 0);
+            });
+
+            for (var i = 0; i < travelsArray.length; i++) {
+                $("#layer_list").append("<li><div class='travel_name centered_anchor' id='to_travel_" + i + "'>" + travelsArray[i].name + "</div></li>");
+                pointList = utils.getSortedPointList(travelsArray[i].stationList, data);
 
                 travelPaths["to_travel_" + i] = new leaflet.Polyline(pointList, {
                     color: utils.provideColor(i),
@@ -133,14 +143,10 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
                     smoothFactor: 1
                 }).addTo(locationLayer);
 
-                $("#to_travel_" + i).click(function(e) {
-                    map.fitBounds(travelPaths[e.target.id].getBounds());
-                });
-
                 var marker = new leaflet.marker(travelPaths["to_travel_" + i].getBounds().getCenter(), {
                     icon: travelIcon,
                     travel_id: "to_travel_" + i
-                }).bindPopup(utils.generateTravelPopup(travels[key]), customOptions);
+                }).bindPopup(utils.generateTravelPopup(travelsArray[i]), customOptions);
 
                 marker.on('mouseover', function(e) {
                     this.openPopup();
@@ -150,9 +156,26 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
                 });
                 marker.on('click', function(e) {
                     map.fitBounds(travelPaths[e.target.options.travel_id].getBounds());
+                    map.on('load moveend', function moveToTravelCallback() {
+                        if (map.getZoom() < 7) {
+                            map.setZoom(7);
+                        }
+                        map.off('load viewreset moveend', moveToTravelCallback);
+                    });
                 });
                 marker.addTo(travelLayer);
-            }
+
+                $("#to_travel_" + i).click(function(e) {
+                    map.fitBounds(travelPaths[e.target.id].getBounds());
+                    map.on('load moveend', function moveToTravelCallback() {
+                        if (map.getZoom() < 7) {
+                            map.setZoom(7);
+                        }
+                        map.off('load viewreset moveend', moveToTravelCallback);
+                    });
+                });
+            };
+
             locationLayer.addTo(map);
 
             // Hide or show location or travelMarkers depending on zoomLevel
@@ -176,7 +199,7 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
                 if (location.stations.length == 1) {
                     window.open("station_details.php?station_id=" + location.stations[0].id, "_self");
                 } else {
-                    this.showStationList(location.stations);
+                    this.showStationList(location.stations, location.name);
                     this.disableMapControls();
                     $("#map_overlay").fadeIn("fast");
                 }
@@ -187,7 +210,7 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
             map.panTo(new leaflet.LatLng(latitude, longitude), { animate: true, duration: 1.0 });
         },
 
-        showStationList: function(stations) {
+        showStationList: function(stations, name) {
             $("#stations").empty();
 
             $(".overlay_centered").click(function(evt) {
@@ -213,7 +236,7 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
                 }
                 availableData += "</div>";
 
-                var buttonElement = "<div class='station_element'>" + station.travel.name + " </br> " + utils.formatDate(station.date) + availableData + "</div>";
+                var buttonElement = "<div class='station_element'>" + name + " </br> " + station.travel.name + " </br> " + utils.formatDate(station.date) + availableData + "</div>";
 
                 $("#stations").append("<li><a href='station_details.php?station_id=" + station.id + "'>" + buttonElement + "</a></li>");
             });
