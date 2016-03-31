@@ -26,6 +26,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             urlVars = utils.getUrlVars();
             this.setupTabs();
 
+            //Get location data
             connector.getLocationDetails(urlVars.station_id, function(data) {
                 $("#location").html(utils.buildLocationName(data) + " - " + data.travelname);
                 $("#time").html(utils.formatDate(data.date));
@@ -34,6 +35,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     map.scrollToMapPosition(data.latitude, data.longitude);
                 });
 
+                //Setup next/prev Station buttons
                 connector.getNextPrevStation(data.travel, data.date, function(stations) {
                     if (!stations.next) {
                         $("#next_diary").hide();
@@ -54,6 +56,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
 
                 map.setupMap('map_content');
 
+                //Fill Media galleries
                 for (var i = 0; i < data.images.length; i++) {
                     $galleryElement = $("<li class='picture'> <img src='" + data.images[i].thumb_url + "' class='gallery-picture'> </li>");
                     $galleryElement.data(urlKey, data.images[i].url);
@@ -101,6 +104,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     $('#vid_gallery_content').append($galleryElement);
                 }
 
+                //Handle no data cases
                 if (data.images.length != 0) {
                     $("#image_not_available").remove();
                     $("#img_tab_not_available").remove();
@@ -130,8 +134,8 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     $("#player_tab").attr("title", "nicht verfügbar");
                 }
 
+                //Init sly for galleries
                 $(document).ready(function() {
-
                     var options = {
                         horizontal: 1,
                         itemNav: 'basic',
@@ -155,12 +159,14 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                     });
                 });
 
+                //Setup selection indicator for active Elements
                 StationDetails.setSubActiveElements();
                 $activeTab = $('#map_tab');
                 if (urlVars.resultType && urlVars.objectId) {
                     StationDetails.setFocusOnElement(urlVars.objectId, urlVars.resultType)
                 }
 
+                //Setup clickListeners for Gallery arrows
                 $('#backward_pic').click(function(event) {
                     StationDetails.setFocusOnPrevNextElement("images", -1);
                 });
@@ -223,7 +229,10 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
         },
 
         changeActiveElement: function($newActiveElement) {
+            //Flag for not reloading the same element, prevents restart of Video or Audio on tabswitch
             var reloadTabContentFlag = true;
+
+            //Element Selection logic
             if ($newActiveElement != null && !$newActiveElement.is($activeElement)) {
                 $.each(subActiveElements, function(key, value) {
                     if (value != null && value.is($newActiveElement)) {
@@ -278,7 +287,10 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
         },
 
         updatePreviewField: function(id, url, tableName, reloadFlag) {
+            //Database call to setup textField
             connector.getMetaInformation(id, tableName, this.updateTextField);
+
+            //Check for datatype and ajust content in corresponding tab
             if (tableName == "images") {
                 $("#pic_content").empty();
                 $image = factory.getPicture(url);
@@ -303,7 +315,6 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 this.activateTab($('#player_tab'), false);
             }
         },
-
         updateTextField: function(data) {
             $list = $("#attribute_list");
             $list.fadeOut("fast", function() {
@@ -321,7 +332,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 $list.fadeIn("fast");
             });
         },
-
+        //Method to set the focus on a spcific element when you come from search
         setFocusOnElement: function(id, dataType) {
             var $element;
             var galleryItems;
@@ -361,6 +372,7 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
             }
             this.changeActiveElement($element);
         },
+        //Logic for Gallery Arrows
         setFocusOnPrevNextElement: function(dataType, value) {
             var galleryItems;
 
@@ -464,7 +476,6 @@ define(['jquery', './media_player_factory', './maps', './db_connector', './utils
                 }
             }
         },
-
         openColorBoxImagePreview: function($image) {
             $.colorbox({
                 html: "<div id='lightbox_content'><img src='" + $image.attr('src') + "' ></img></div>"
