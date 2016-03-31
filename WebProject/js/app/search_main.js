@@ -62,7 +62,6 @@ define(['jquery', './db_connector', './utils', './search_bar'], function($, dbCo
         }
         idUrlAddition = urlId_constant + object.id;
         if (object.table_name == "stations") {
-            console.log(object);
             resultType = "result_type_station"
             idUrlAddition = "";
             iconURL = "img/mapmarker2.png";
