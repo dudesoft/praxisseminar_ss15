@@ -1,3 +1,5 @@
+// sends requests to php-files
+
 define([], function() {
 
     var Connector = {

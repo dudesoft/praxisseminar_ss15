@@ -4,6 +4,8 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
     var map, locationLayer, travelLayer, travelPaths = [];
 
     var Maps = {
+
+        // initiates the map inside the container
         setupMap: function(containerId) {
             locationLayer = leaflet.layerGroup();
             travelLayer = leaflet.layerGroup();
@@ -29,10 +31,12 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
             db.getAllLocations(this.fillLocationData);
         },
 
+        // adds all elements to the map
         fillLocationData: function(data) {
             var travels = {};
             var locationMarkerList = [];
 
+            // define popups and marker-icons
             var customOptions = {
                 'className': 'custom-popup',
                 'closeButton': false,
@@ -50,7 +54,6 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
                 iconAnchor: [14, 38],
                 popupAnchor: [9, -40]
             });
-
 
             var travelIcon = leaflet.icon({
                 iconUrl: 'img/mapmarker2.png',
@@ -190,6 +193,7 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
             });
         },
 
+        // show overlay, when multiple stations for location exist
         openNewLocation: function(location) {
             if ($("#detail_content").length) {
                 $("#detail_content").fadeOut("slow", function() {
@@ -206,10 +210,12 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
             }
         },
 
+        // pans map to given location
         scrollToMapPosition: function(latitude, longitude) {
             map.panTo(new leaflet.LatLng(latitude, longitude), { animate: true, duration: 1.0 });
         },
 
+        // fills overlay with data for stations
         showStationList: function(stations, name) {
             $("#stations").empty();
 
@@ -242,6 +248,7 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
             });
         },
 
+        // disables all controls on the map
         disableMapControls: function() {
             map.dragging.disable();
             map.touchZoom.disable();
@@ -251,6 +258,7 @@ define(['leaflet', './db_connector', './utils'], function(leaflet, db, utils) {
             $(".leaflet-control-zoom").stop(true, false).fadeOut("fast");
         },
 
+        // enables all controls on the map
         enableMapControls: function() {
             map.dragging.enable();
             map.touchZoom.enable();

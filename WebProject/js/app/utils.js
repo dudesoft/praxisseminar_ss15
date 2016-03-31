@@ -1,6 +1,7 @@
 define(['leaflet'], function(leaflet) {
 
     var Utils = {
+        // puts names for locations in a proper format
         buildLocationName: function(location) {
             var name = location.name;
 
@@ -11,6 +12,7 @@ define(['leaflet'], function(leaflet) {
             return name;
         },
 
+        // generates popups for stations
         generatePopup: function(location, has_images, has_songs, has_videos) {
             var image = "img-icon";
             var audio = "audio-icon";
@@ -38,11 +40,13 @@ define(['leaflet'], function(leaflet) {
             return popupHtml;
         },
 
+        // generates popups for locations
         generateTravelPopup: function(travel) {
             var popupHtml = "<span class='centered_anchor'>" + travel.name + "</span><span class='centered_anchor'>" + this.formatDate(travel.begin) + " - " + this.formatDate(travel.end) + "</span>";
             return popupHtml;
         },
 
+        // returns a color for different travels
         provideColor: function(i) {
             var color = ["#d9003a", "#00d6e6", "#99737d", "#00e6b8", "#ff80b3", "#408062", "#7f2046",
                 "#26332a", "#e600b8", "#0d330d", "#792080", "#50e639", "#311a33", "#d0ffbf", "#cc00ff", "#538020",
@@ -80,6 +84,7 @@ define(['leaflet'], function(leaflet) {
             return latLngList;
         },
 
+        // converts date from yyyy-mm-dd to dd.mm.yyyy format
         formatDate: function(date) {
             if (date == "" || date == null || date == "0000-00-00" || date == (new Date())) {
                 return "Datum unbekannt";
