@@ -102,6 +102,4 @@ define(['jquery', './db_connector', './utils', './search_bar'], function($, dbCo
     };
     SearchMain.initSearchMain();
     return SearchMain;
-
-
 });
