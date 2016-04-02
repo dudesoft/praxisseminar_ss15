@@ -22,7 +22,7 @@
         <?php include 'header.php';?>
         <div id="link_content" class="trans_background">
             <h2>Über Uns</h2>
-            <div id="text_content">Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text. Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
+            <div id="text_content">Diese Webseite ist in Zusammenarbeit mit der Bibliothek von der Universität Regensburg und dem Kurs Praxisseminar aus dem Masterstudiengang Medieninformatik entstanden. Unser Team besteht aus vier Studenten und setzt sich aus folgenden Mitgliedern zusammen: Andrea Hansbauer, Andreas Pritschet, Anna Schreyer und Maximilian Schubert.
             </div>
         </div>
         <?php include 'footer.php';?>
